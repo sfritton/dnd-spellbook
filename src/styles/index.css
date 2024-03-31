@@ -1,0 +1,99 @@
+@import 'footer.css';
+
+:root {
+  --link-color: #155b98;
+  --link-color-hover: #1c79ca;
+  --serif: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+  --sans: system-ui, sans-serif;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-padding: var(--header-height);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  color: #333;
+  /* background: #000; */
+  margin: 0;
+}
+
+section {
+  scroll-snap-align: start;
+  padding: 40px 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--serif);
+}
+
+h2 {
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+a,
+a:visited {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+.hidden {
+  position: absolute;
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0px, 0px, 0px, 0px);
+}
+
+.call-to-action {
+  padding: 13px 32px 11px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #99f;
+  color: #333;
+  position: relative;
+  transition: background 300ms;
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: #77e;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    transition: transform 300ms;
+    transform: scaleX(0);
+  }
+
+  &:hover {
+    background: #aaf;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
