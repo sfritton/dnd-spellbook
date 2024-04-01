@@ -1,5 +1,7 @@
-import { CheerioAPI, load } from 'cheerio';
-import { writeFile } from 'fs/promises';
+import { load } from 'cheerio';
+import { saveSpell } from './save-spell';
+import { fetchDndPage } from './fetch-dnd-page';
+import { rateLimitedForEach, setRandomInterval } from './set-random-interval';
 
 const headers: HeadersInit = {
   accept:
@@ -16,53 +18,39 @@ const options = {
   method: 'GET',
 };
 
-const fetchFromApi = (url: string) => fetch(`http://dnd5e.wikidot.com${url}`, options);
+// const fetchSpellsByClass = async (url: string) => {
+//   const response = await fetchDndPage(url);
 
-const parseSpellPage = async (url: string) => {
-  const response = await fetchFromApi(url);
-  const text = await response.text();
-  const dom = load(text);
+//   const text = await response.text();
 
-  const title = dom('.page-title').text();
-  const pageContents = dom('#page-content').text();
-  const [_, source, level, castingTime, range, components, duration, ...description] = pageContents
-    .replace(/\n+/g, '\n')
-    .split('\n');
+//   const dom = load(text);
 
-  return {
-    title,
-    source: source.replace(/^Source: /i, ''),
-    level,
-    castingTime: castingTime.replace(/^Casting Time: /i, ''),
-    range: range.replace(/^Range: /i, ''),
-    components: components.replace(/^Components: /i, ''),
-    duration: duration.replace(/^Duration: /i, ''),
-    description,
-    // pageContents,
-  };
-};
+//   const spellUrls = dom('td > a').map((_, anchor) =>
+//     anchor.attribs['href']
+//   ).toArray();
+// };
 
-const saveSpell = async (url: string) => {
-  const spell = await parseSpellPage(url);
-  writeFile(
-    `${__dirname}/../../spells/${url.replace(/^\/spell:/i, '')}.json`,
-    JSON.stringify(spell, null, 2),
-  );
-};
-
-const fetchSpellList = async () => {
-  const response = await fetchFromApi('/spells:paladin');
-  // const response = await fetchFromApi('/spell:bless');
-
-  const text = await response.text();
-
-  const dom = load(text);
-
-  dom('#wiki-tab-0-0 td > a').each((_, anchor) => {
-    const url = anchor.attribs['href'];
-    saveSpell(url);
-  });
-};
-
-fetchSpellList();
+// fetchSpellList();
 // saveSpell('/spell:bless');
+
+const CLASS_SPELL_LINKS = [
+  '/spells:artificer',
+  '/spells:bard',
+  '/spells:cleric',
+  '/spells:druid',
+  '/spells:eldritch-knight',
+  '/spells:paladin',
+  '/spells:ranger',
+  '/spells:arcane-trickster',
+  '/spells:sorcerer',
+  '/spells:warlock',
+  '/spells:wizard',
+];
+
+const fetchSpellsByClass = async () => {
+  await rateLimitedForEach(CLASS_SPELL_LINKS, (link, i) => console.log(i, new Date(), link));
+
+  console.log('Done');
+};
+
+fetchSpellsByClass();
