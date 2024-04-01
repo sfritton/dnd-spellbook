@@ -1,37 +1,8 @@
 import { load } from 'cheerio';
 import { saveSpell } from './save-spell';
 import { fetchDndPage } from './fetch-dnd-page';
-import { rateLimitedForEach, setRandomInterval } from './set-random-interval';
-
-const headers: HeadersInit = {
-  accept:
-    'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-  'accept-language': 'en-US,en;q=0.5',
-  'cache-control': 'max-age=0',
-  'sec-gpc': '1',
-  'upgrade-insecure-requests': '1',
-};
-
-const options = {
-  headers,
-  body: null,
-  method: 'GET',
-};
-
-// const fetchSpellsByClass = async (url: string) => {
-//   const response = await fetchDndPage(url);
-
-//   const text = await response.text();
-
-//   const dom = load(text);
-
-//   const spellUrls = dom('td > a').map((_, anchor) =>
-//     anchor.attribs['href']
-//   ).toArray();
-// };
-
-// fetchSpellList();
-// saveSpell('/spell:bless');
+import { rateLimitedForEach } from './rate-limited-for-each';
+import { writeFile } from 'fs/promises';
 
 const CLASS_SPELL_LINKS = [
   '/spells:artificer',
@@ -47,10 +18,30 @@ const CLASS_SPELL_LINKS = [
   '/spells:wizard',
 ];
 
-const fetchSpellsByClass = async () => {
-  await rateLimitedForEach(CLASS_SPELL_LINKS, (link, i) => console.log(i, new Date(), link));
+const fetchSpellListsByClass = async () => {
+  let classSpellLists: Record<string, string[]> = {};
+
+  // TODO: only doing a couple for now
+  await rateLimitedForEach(CLASS_SPELL_LINKS.slice(0, 2), async (url, i) => {
+    console.log(i, new Date(), `Fetching spells from ${url} ...`);
+    const pageHTML = await fetchDndPage(url).then((response) => response.text());
+    const dom = load(pageHTML);
+
+    const spellUrls = dom('td > a')
+      .map((_, anchor) => anchor.attribs['href'])
+      .toArray();
+
+    classSpellLists[url] = spellUrls;
+  });
+
+  console.log('Saving results ...');
+
+  await writeFile(
+    `${__dirname}/../../spells/spell-lists.json`,
+    JSON.stringify(classSpellLists, null, 2),
+  );
 
   console.log('Done');
 };
 
-fetchSpellsByClass();
+fetchSpellListsByClass();

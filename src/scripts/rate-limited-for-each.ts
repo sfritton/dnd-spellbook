@@ -23,6 +23,7 @@ const setRandomInterval = (callback: (remainingIterations: number) => any, itera
     setRandomIntervalInner(callback, iterations, resolve);
   });
 
+// TODO: need to be able to await async callback before starting next iteration
 /**
  * Executes a callback on each element of an array, with a random 2-5s gap between each execution.
  * Intended for responsibly scraping websites without overwhelming them with bot traffic.
