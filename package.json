@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "source": "src/index.html",
   "scripts": {
+    "fetch-spells": "npx tsc && node dist/scripts/fetch-spells.js",
     "start": "parcel",
     "build": "parcel build",
     "publish": "echo '\nBUILDING...\n' && npm run build && echo '\nPUBLISHING...\n' && git add -Af docs && git commit --allow-empty -m 'Publish' && git push && echo '\nPUBLISHED.'"
@@ -13,6 +14,7 @@
     "@parcel/transformer-inline-string": "^2.9.3",
     "@tanstack/eslint-plugin-query": "^5.28.6",
     "@types/debounce": "^1.2.1",
+    "@types/node": "^20.12.2",
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "parcel": "^2.9.3",
@@ -39,6 +41,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.28.9",
+    "cheerio": "^1.0.0-rc.12",
     "debounce": "^1.2.1",
     "html2canvas": "^1.4.1"
   }
