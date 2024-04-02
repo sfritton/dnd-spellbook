@@ -41,9 +41,6 @@
     }
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.28.9",
-    "cheerio": "^1.0.0-rc.12",
-    "debounce": "^1.2.1",
-    "html2canvas": "^1.4.1"
+    "cheerio": "^1.0.0-rc.12"
   }
 }
