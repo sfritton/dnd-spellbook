@@ -2,7 +2,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "module": "commonjs",
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "target": "ES6",
     "moduleResolution": "Node",
     "sourceMap": true,
