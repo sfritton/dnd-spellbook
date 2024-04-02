@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 import { fetchDndPage } from './fetch-dnd-page';
 import { rateLimitedMap } from './rate-limited-map';
 import { writeFile } from 'fs/promises';
-import { nameFromUrl } from './util';
+import { consoleLogEmphasis, nameFromUrl } from './util';
 
 const CLASS_SPELL_LINKS = [
   '/spells:artificer',
@@ -20,9 +20,7 @@ const CLASS_SPELL_LINKS = [
 
 /** Fetches each class's spell list, and saves them in spells/spell-lists.json */
 export const fetchClassSpellLists = async () => {
-  console.log(
-    '\n========================\n FETCHING CLASS SPELL LISTS\n========================\n',
-  );
+  consoleLogEmphasis('FETCHING CLASS SPELL LISTS');
   let classSpellLists: Record<string, { name: string; url: string; level: number }[]> = {};
 
   await rateLimitedMap(CLASS_SPELL_LINKS, async (url, i) => {
