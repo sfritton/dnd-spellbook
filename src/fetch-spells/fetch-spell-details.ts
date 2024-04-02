@@ -2,6 +2,8 @@ import { readdir } from 'fs/promises';
 import { consoleLogEmphasis, nameFromUrl } from './util';
 import { fetchDndPage } from './fetch-dnd-page';
 import { load } from 'cheerio';
+import { rateLimitedMap } from './rate-limited-map';
+import { saveSpell } from './save-spell';
 import { SPELL_DIRECTORY_PATH } from './constants';
 
 export const getSavedSpells = async () => {
@@ -44,18 +46,14 @@ export const fetchSpellDetails = async () => {
       .join('\n  - ')}\n`,
   );
 
-  // TODO: refactor this to a single map
-  // await rateLimitedMap(spellLists, ([className, spellList], i) => {
-  //   console.log(i, new Date(), `Fetching ${className} spells ...`);
-  //   return asyncMap(spellList, async (spell, j) => {
-  //     if (savedSpells[spell.name]) {
-  //       console.log(`\t${i}-${j}`, new Date(), `Found saved version of ${spell.name}, skipping`);
-  //       return;
-  //     }
-  //     console.log(`\t${i}-${j}`, new Date(), `Fetching and saving ${spell.name} ...`);
-  //     return executeThenWait(() => saveSpell(spell.url));
-  //   });
-  // });
+  await rateLimitedMap(spellsToFetch, (spell, i) => {
+    console.log(
+      `${i + 1}/${spellsToFetch.length}`,
+      new Date(),
+      `Fetching and saving ${spell.name} ...`,
+    );
+    return saveSpell(spell.url);
+  });
 
   console.log('Done!');
 };

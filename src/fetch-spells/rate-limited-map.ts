@@ -1,7 +1,7 @@
-const getIntervalLength = () => Math.random() * 3000 + 2000;
+const getIntervalLength = () => Math.random() * 5000 + 10000;
 
 /** Executes a callback, but doesn't return the result for 2-5s. */
-export const executeThenWait = async <ReturnType>(callback: () => Promise<ReturnType>) => {
+const executeThenWait = async <ReturnType>(callback: () => Promise<ReturnType>) => {
   const timer = new Promise<void>((resolve) => setTimeout(resolve, getIntervalLength()));
 
   const result = await callback();
@@ -23,19 +23,6 @@ export const rateLimitedMap = async <ArrayType, ReturnType>(
   const result: ReturnType[] = [];
   for (let i = 0; i < array.length; i++) {
     const instanceResult = await executeThenWait(() => callback(array[i], i));
-    result.push(instanceResult);
-  }
-
-  return result;
-};
-
-export const asyncMap = async <ArrayType, ReturnType>(
-  array: ArrayType[],
-  callback: (instance: ArrayType, index: number) => Promise<ReturnType>,
-) => {
-  const result: ReturnType[] = [];
-  for (let i = 0; i < array.length; i++) {
-    const instanceResult = await callback(array[i], i);
     result.push(instanceResult);
   }
 
