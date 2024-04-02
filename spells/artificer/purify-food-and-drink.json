@@ -1,0 +1,19 @@
+{
+  "title": "Purify Food and Drink",
+  "source": "Player's Handbook",
+  "levelAndSchool": "1st-level transmutation (ritual)",
+  "level": 1,
+  "castingTime": "1 action",
+  "range": "10 feet",
+  "components": "V, S",
+  "duration": "Instantaneous",
+  "description": [
+    "All nonmagical food and drink within a 5-foot-radius sphere centered on a point of your choice within range is purified and rendered free of poison and disease."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:artificer",
+    "http://dnd5e.wikidot.com/spells:cleric",
+    "http://dnd5e.wikidot.com/spells:druid",
+    "http://dnd5e.wikidot.com/spells:paladin"
+  ]
+}

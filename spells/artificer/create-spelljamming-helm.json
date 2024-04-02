@@ -1,0 +1,18 @@
+{
+  "title": "Create Spelljamming Helm",
+  "source": "Spelljammer: Adventures in Space - Astral Adventurer's Guide",
+  "levelAndSchool": "5th-Level Transmutation",
+  "level": 5,
+  "castingTime": "1 action",
+  "range": "Touch",
+  "components": "V, S, M (a crystal rod worth at least 5000 gp, which the spell consumes)",
+  "duration": "Instantaneous",
+  "description": [
+    "Holding the rod used in the casting of the spell, you touch a Large or smaller chair that is unoccupied. The rod disappears, and the chair is transformed into a Spelljamming Helm."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/wondrous-items:spelljamming-helm",
+    "http://dnd5e.wikidot.com/spells:artificer",
+    "http://dnd5e.wikidot.com/spells:wizard"
+  ]
+}

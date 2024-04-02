@@ -1,0 +1,21 @@
+{
+  "title": "Lesser Restoration",
+  "source": "Player's Handbook",
+  "levelAndSchool": "2nd-level abjuration",
+  "level": 2,
+  "castingTime": "1 action",
+  "range": "Touch",
+  "components": "V, S",
+  "duration": "Instantaneous",
+  "description": [
+    "You touch a creature and can end either one disease or one condition afflicting it. The condition can be blinded, deafened, paralyzed, or poisoned."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:artificer",
+    "http://dnd5e.wikidot.com/spells:bard",
+    "http://dnd5e.wikidot.com/spells:cleric",
+    "http://dnd5e.wikidot.com/spells:druid",
+    "http://dnd5e.wikidot.com/spells:paladin",
+    "http://dnd5e.wikidot.com/spells:ranger"
+  ]
+}
