@@ -34,7 +34,7 @@ const parseSpellPage = async (url: string) => {
 export const saveSpell = async (url: string, subdirectory: string) => {
   const spell = await parseSpellPage(url);
   writeFile(
-    `${__dirname}/../../spells/${subdirectory}/${url.replace(/^\/spell:/i, '')}.json`,
+    `${__dirname}/../../../spells/${subdirectory}/${url.replace(/^\/spell:/i, '')}.json`,
     JSON.stringify(spell, null, 2),
   );
 };

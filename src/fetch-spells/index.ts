@@ -1,5 +1,6 @@
 import { fetchClassSpellLists } from './fetch-class-spells';
-import { makeClassFolders } from './make-class-folders';
+import { fetchSpellDetails } from './fetch-spell-details';
 
 // fetchClassSpellLists();
-makeClassFolders();
+
+fetchSpellDetails();
