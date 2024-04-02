@@ -1,57 +1,61 @@
-import { copyFile, readdir } from 'fs/promises';
-import * as SPELL_LISTS from '../../spells/spell-lists.json';
-import { asyncMap, executeThenWait, rateLimitedMap } from './rate-limited-map';
-import { saveSpell } from './save-spell';
-import { consoleLogEmphasis } from './util';
+import { readdir } from 'fs/promises';
+import { consoleLogEmphasis, nameFromUrl } from './util';
+import { fetchDndPage } from './fetch-dnd-page';
+import { load } from 'cheerio';
+import { SPELL_DIRECTORY_PATH } from './constants';
 
 export const getSavedSpells = async () => {
-  const spellDirectoryPath = `${__dirname}/../../../spells`;
-  const spellDirectories = await readdir(spellDirectoryPath);
+  const allSpells = await readdir(SPELL_DIRECTORY_PATH);
 
-  const allSpells = await Promise.all(
-    spellDirectories.map(async (directory) =>
-      /\.json$/.test(directory)
-        ? undefined
-        : {
-            path: `${spellDirectoryPath}/${directory}`,
-            spells: await readdir(`${spellDirectoryPath}/${directory}`),
-          },
-    ),
-  );
-
-  return allSpells.filter(Boolean).reduce<Record<string, string>>(
-    (histogram, { path, spells }) => ({
+  return allSpells.reduce<Record<string, boolean>>(
+    (histogram, spellFileName) => ({
       ...histogram,
-      ...spells.reduce<Record<string, string>>(
-        (classHistogram, spell) => ({ ...classHistogram, [spell.replace(/\.json$/, '')]: path }),
-        {},
-      ),
+      [spellFileName.replace(/\.json$/, '')]: true,
     }),
     {},
   );
 };
 
+const fetchAllSpellNames = async () => {
+  const pageHTML = await fetchDndPage('/spells').then((response) => response.text());
+  const dom = load(pageHTML);
+
+  return dom(`td > a`)
+    .map((_, anchor) => {
+      const url = anchor.attribs['href'];
+
+      return {
+        url,
+        name: nameFromUrl(url),
+      };
+    })
+    .toArray();
+};
+
 export const fetchSpellDetails = async () => {
   consoleLogEmphasis('Fetching Spell Details');
-  const spellLists = Object.entries(SPELL_LISTS);
+  const spellList = await fetchAllSpellNames();
   const savedSpells = await getSavedSpells();
 
-  await rateLimitedMap(spellLists, ([className, spellList], i) => {
-    console.log(i, new Date(), `Fetching ${className} spells ...`);
-    return asyncMap(spellList, async (spell, j) => {
-      const savedSpellPath = savedSpells[spell.name];
-      if (savedSpellPath) {
-        console.log(`\t${i}-${j}`, new Date(), `Found saved version of ${spell.name}, skipping`);
-        await copyFile(
-          `${savedSpellPath}/${spell.name}.json`,
-          `${__dirname}/../../../spells/${className}/${spell.name}.json`,
-        );
-        return;
-      }
-      console.log(`\t${i}-${j}`, new Date(), `Fetching and saving ${spell.name} ...`);
-      return executeThenWait(() => saveSpell(spell.url, className));
-    });
-  });
+  const spellsToFetch = spellList.filter((spell) => !savedSpells[spell.name]);
+  console.log(
+    `\nFound ${spellsToFetch.length} new spells:\n  - ${spellsToFetch
+      .map((spell) => spell.name)
+      .join('\n  - ')}\n`,
+  );
+
+  // TODO: refactor this to a single map
+  // await rateLimitedMap(spellLists, ([className, spellList], i) => {
+  //   console.log(i, new Date(), `Fetching ${className} spells ...`);
+  //   return asyncMap(spellList, async (spell, j) => {
+  //     if (savedSpells[spell.name]) {
+  //       console.log(`\t${i}-${j}`, new Date(), `Found saved version of ${spell.name}, skipping`);
+  //       return;
+  //     }
+  //     console.log(`\t${i}-${j}`, new Date(), `Fetching and saving ${spell.name} ...`);
+  //     return executeThenWait(() => saveSpell(spell.url));
+  //   });
+  // });
 
   console.log('Done!');
 };

@@ -1,6 +1,7 @@
 import { load } from 'cheerio';
 import { writeFile } from 'fs/promises';
 import { fetchDndPage } from './fetch-dnd-page';
+import { SPELL_DIRECTORY_PATH } from './constants';
 
 const parseSpellPage = async (url: string) => {
   const response = await fetchDndPage(url);
@@ -31,10 +32,10 @@ const parseSpellPage = async (url: string) => {
   };
 };
 
-export const saveSpell = async (url: string, subdirectory: string) => {
+export const saveSpell = async (url: string) => {
   const spell = await parseSpellPage(url);
   writeFile(
-    `${__dirname}/../../../spells/${subdirectory}/${url.replace(/^\/spell:/i, '')}.json`,
+    `${SPELL_DIRECTORY_PATH}/${url.replace(/^\/spell:/i, '')}.json`,
     JSON.stringify(spell, null, 2),
   );
 };
