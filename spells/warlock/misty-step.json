@@ -1,0 +1,18 @@
+{
+  "title": "Misty Step",
+  "source": "Player's Handbook",
+  "levelAndSchool": "2nd-level conjuration",
+  "level": 2,
+  "castingTime": "1 bonus action",
+  "range": "Self",
+  "components": "V",
+  "duration": "Instantaneous",
+  "description": [
+    "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:sorcerer",
+    "http://dnd5e.wikidot.com/spells:warlock",
+    "http://dnd5e.wikidot.com/spells:wizard"
+  ]
+}

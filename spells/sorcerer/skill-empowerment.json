@@ -1,0 +1,20 @@
+{
+  "title": "Skill Empowerment",
+  "source": "Xanathar's Guide to Everything",
+  "levelAndSchool": "5th-level transmutation",
+  "level": 5,
+  "castingTime": "1 action",
+  "range": "Touch",
+  "components": "V, S",
+  "duration": "Concentration, up to 1 hour",
+  "description": [
+    "Your magic deepens a creature’s understanding of its own talent. You touch one willing creature and give it expertise in one skill of your choice; until the spell ends, the creature doubles its proficiency bonus for ability checks it makes that use the chosen skill.",
+    "You must choose a skill in which the target is proficient and that isn’t already benefiting from an effect, such as Expertise, that doubles its proficiency bonus."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:bard",
+    "http://dnd5e.wikidot.com/spells:sorcerer",
+    "http://dnd5e.wikidot.com/spells:wizard",
+    "http://dnd5e.wikidot.com/spells:artificer"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Darkvision",
+  "source": "Player's Handbook",
+  "levelAndSchool": "2nd-level transmutation",
+  "level": 2,
+  "castingTime": "1 action",
+  "range": "Touch",
+  "components": "V, S, M (either a pinch of dried carrot or an agate)",
+  "duration": "8 hours",
+  "description": [
+    "You touch a willing creature to grant it the ability to see in the dark. For the duration, that creature has darkvision out to a range of 60 feet."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:artificer",
+    "http://dnd5e.wikidot.com/spells:druid",
+    "http://dnd5e.wikidot.com/spells:ranger",
+    "http://dnd5e.wikidot.com/spells:sorcerer",
+    "http://dnd5e.wikidot.com/spells:wizard"
+  ]
+}

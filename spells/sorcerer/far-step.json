@@ -1,0 +1,18 @@
+{
+  "title": "Far Step",
+  "source": "Xanathar's Guide to Everything",
+  "levelAndSchool": "5th-level conjuration",
+  "level": 5,
+  "castingTime": "1 bonus action",
+  "range": "Self",
+  "components": "V",
+  "duration": "Concentration, up to 1 minute",
+  "description": [
+    "You teleport up to 60 feet to an unoccupied space you can see. On each of your turns before the spell ends, you can use a bonus action to teleport in this way again."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:sorcerer",
+    "http://dnd5e.wikidot.com/spells:warlock",
+    "http://dnd5e.wikidot.com/spells:wizard"
+  ]
+}

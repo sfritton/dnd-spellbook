@@ -1,0 +1,23 @@
+{
+  "title": "Puppet (UA)",
+  "source": "Unearthed Arcana 36 - Starter Spells",
+  "levelAndSchool": "1st-level enchantment",
+  "level": 1,
+  "castingTime": "1 action",
+  "range": "120 feet",
+  "components": "V",
+  "duration": "Instantaneous",
+  "description": [
+    "Your gesture forces one humanoid you can see within range to make a Constitution saving throw. On a failed save, the target must move up to its speed in a direction you choose. In addition, you can cause the target to drop whatever it is holding. This spell has no effect on a humanoid that is immune to being charmed.",
+    "+ Show HB Suggestion",
+    "- Hide HB Suggestion",
+    "HBThis spell is somewhat overpowered. Forced movement is one thing, but forced disarmament is very strong. I would recommend allowing only forced movement or forced disarmament, not both."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:bard",
+    "http://dnd5e.wikidot.com/spells:warlock",
+    "http://dnd5e.wikidot.com/spells:wizard",
+    "javascript:;",
+    "javascript:;"
+  ]
+}

@@ -1,26 +1,34 @@
-import { readdir } from 'fs/promises';
+import { copyFile, readdir } from 'fs/promises';
 import * as SPELL_LISTS from '../../spells/spell-lists.json';
 import { asyncMap, executeThenWait, rateLimitedMap } from './rate-limited-map';
 import { saveSpell } from './save-spell';
 import { consoleLogEmphasis } from './util';
 
 export const getSavedSpells = async () => {
-  const spellDirectories = await readdir(`${__dirname}/../../../spells`);
+  const spellDirectoryPath = `${__dirname}/../../../spells`;
+  const spellDirectories = await readdir(spellDirectoryPath);
 
   const allSpells = await Promise.all(
-    spellDirectories.map((directory) =>
+    spellDirectories.map(async (directory) =>
       /\.json$/.test(directory)
-        ? ([] as string[])
-        : readdir(`${__dirname}/../../../spells/${directory}`),
+        ? undefined
+        : {
+            path: `${spellDirectoryPath}/${directory}`,
+            spells: await readdir(`${spellDirectoryPath}/${directory}`),
+          },
     ),
   );
 
-  return allSpells
-    .flat()
-    .reduce<Record<string, true>>(
-      (histogram, spell) => ({ ...histogram, [spell.replace(/\.json$/, '')]: true }),
-      {},
-    );
+  return allSpells.filter(Boolean).reduce<Record<string, string>>(
+    (histogram, { path, spells }) => ({
+      ...histogram,
+      ...spells.reduce<Record<string, string>>(
+        (classHistogram, spell) => ({ ...classHistogram, [spell.replace(/\.json$/, '')]: path }),
+        {},
+      ),
+    }),
+    {},
+  );
 };
 
 export const fetchSpellDetails = async () => {
@@ -30,9 +38,15 @@ export const fetchSpellDetails = async () => {
 
   await rateLimitedMap(spellLists, ([className, spellList], i) => {
     console.log(i, new Date(), `Fetching ${className} spells ...`);
-    return asyncMap(spellList, (spell, j) => {
-      if (savedSpells[spell.name]) {
+    return asyncMap(spellList, async (spell, j) => {
+      const savedSpellPath = savedSpells[spell.name];
+      if (savedSpellPath) {
         console.log(`\t${i}-${j}`, new Date(), `Found saved version of ${spell.name}, skipping`);
+        await copyFile(
+          `${savedSpellPath}/${spell.name}.json`,
+          `${__dirname}/../../../spells/${className}/${spell.name}.json`,
+        );
+        return;
       }
       console.log(`\t${i}-${j}`, new Date(), `Fetching and saving ${spell.name} ...`);
       return executeThenWait(() => saveSpell(spell.url, className));

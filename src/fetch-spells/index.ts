@@ -3,6 +3,6 @@ import { fetchSpellDetails, getSavedSpells } from './fetch-spell-details';
 
 // fetchClassSpellLists();
 
-// fetchSpellDetails();
+fetchSpellDetails();
 
-getSavedSpells();
+// getSavedSpells();
