@@ -1,26 +1,70 @@
-import { readFile, writeFile } from 'fs/promises';
+import { readFile, readdir, writeFile } from 'fs/promises';
 import SPELL_LISTS from '../../data/spell-lists.json';
 
 const DATA_DIRECTORY_PATH = `${__dirname}/../../../data`;
 
-const transformName = (name: string) => name.replace(/-/g, '_');
+const generateSpellList = async (name: string, spellFileNames: string[]) => {
+  const spells = await Promise.all(
+    spellFileNames.map(async (spellFileName) => {
+      const spellFile = await readFile(`${DATA_DIRECTORY_PATH}/spells/${spellFileName}`, 'utf8');
 
-Object.entries(SPELL_LISTS).map(([className, spells]) => {
-  const imports = spells
-    .map(({ name }) => `import ${transformName(name)} from '../spells/${name}.json';`)
-    .join('\n');
+      const { title, level } = JSON.parse(spellFile);
+      const id = spellFileName.replace(/\.json$/, '');
 
-  const spellNames = spells.map(({ name }) => transformName(name)).join(',\n  ');
+      return {
+        id,
+        title,
+        level,
+        url: `http://dnd5e.wikidot.com/spell:${id}`,
+      };
+    }),
+  );
 
-  writeFile(
-    `${DATA_DIRECTORY_PATH}/class-spell-lists/${className}.ts`,
-    `${imports}
+  const emptyHistogram = new Array(10).fill([]);
 
-export const spellDetails = { 
-  ${spellNames}
+  const spellsByLevel = spells.reduce((histogram, spell) => {
+    return histogram.map((leveledSpells, level) => [
+      ...leveledSpells,
+      ...(level === spell.level ? [spell] : []),
+    ]);
+  }, emptyHistogram);
+
+  return writeFile(
+    `${__dirname}/../../../src/constants/spells/${name}.json`,
+    JSON.stringify(spellsByLevel, null, 2),
+  );
 };
 
-export const spellList = ${JSON.stringify(spells, null, 2)};
-    `,
+const generateSpellLists = async () => {
+  const spellFileNames = await readdir(`${DATA_DIRECTORY_PATH}/spells`);
+
+  generateSpellList('all', spellFileNames);
+  Object.entries(SPELL_LISTS).map(([className, spells]) =>
+    generateSpellList(
+      className,
+      spells.map((spell) => `${spell.name}.json`),
+    ),
   );
-});
+};
+
+generateSpellLists();
+
+// Object.entries(SPELL_LISTS).map(([className, spells]) => {
+//   const imports = spells
+//     .map(({ name }) => `import ${transformName(name)} from '../spells/${name}.json';`)
+//     .join('\n');
+
+//   const spellNames = spells.map(({ name }) => transformName(name)).join(',\n  ');
+
+//   writeFile(
+//     `${DATA_DIRECTORY_PATH}/class-spell-lists/${className}.ts`,
+//     `${imports}
+
+// export const spellDetails = {
+//   ${spellNames}
+// };
+
+// export const spellList = ${JSON.stringify(spells, null, 2)};
+//     `,
+//   );
+// });

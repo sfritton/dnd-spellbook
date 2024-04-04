@@ -1,0 +1,1048 @@
+[
+  [
+    {
+      "id": "blade-ward",
+      "title": "Blade Ward",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:blade-ward"
+    },
+    {
+      "id": "booming-blade",
+      "title": "Booming Blade",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:booming-blade"
+    },
+    {
+      "id": "chill-touch",
+      "title": "Chill Touch",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:chill-touch"
+    },
+    {
+      "id": "create-bonfire",
+      "title": "Create Bonfire",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:create-bonfire"
+    },
+    {
+      "id": "eldritch-blast",
+      "title": "Eldritch Blast",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:eldritch-blast"
+    },
+    {
+      "id": "friends",
+      "title": "Friends",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:friends"
+    },
+    {
+      "id": "frostbite",
+      "title": "Frostbite",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:frostbite"
+    },
+    {
+      "id": "green-flame-blade",
+      "title": "Green-Flame Blade",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:green-flame-blade"
+    },
+    {
+      "id": "infestation",
+      "title": "Infestation",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:infestation"
+    },
+    {
+      "id": "lightning-lure",
+      "title": "Lightning Lure",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:lightning-lure"
+    },
+    {
+      "id": "mage-hand",
+      "title": "Mage Hand",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:mage-hand"
+    },
+    {
+      "id": "magic-stone",
+      "title": "Magic Stone",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:magic-stone"
+    },
+    {
+      "id": "mind-sliver",
+      "title": "Mind Sliver",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:mind-sliver"
+    },
+    {
+      "id": "minor-illusion",
+      "title": "Minor Illusion",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:minor-illusion"
+    },
+    {
+      "id": "on-off",
+      "title": "On/Off (UA)",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:on-off"
+    },
+    {
+      "id": "poison-spray",
+      "title": "Poison Spray",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:poison-spray"
+    },
+    {
+      "id": "prestidigitation",
+      "title": "Prestidigitation",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:prestidigitation"
+    },
+    {
+      "id": "sword-burst",
+      "title": "Sword Burst",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:sword-burst"
+    },
+    {
+      "id": "thunderclap",
+      "title": "Thunderclap",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:thunderclap"
+    },
+    {
+      "id": "toll-the-dead",
+      "title": "Toll the Dead",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:toll-the-dead"
+    },
+    {
+      "id": "true-strike",
+      "title": "True Strike",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:true-strike"
+    }
+  ],
+  [
+    {
+      "id": "armor-of-agathys",
+      "title": "Armor of Agathys",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:armor-of-agathys"
+    },
+    {
+      "id": "arms-of-hadar",
+      "title": "Arms of Hadar",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:arms-of-hadar"
+    },
+    {
+      "id": "cause-fear",
+      "title": "Cause Fear",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:cause-fear"
+    },
+    {
+      "id": "charm-person",
+      "title": "Charm Person",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:charm-person"
+    },
+    {
+      "id": "comprehend-languages",
+      "title": "Comprehend Languages",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:comprehend-languages"
+    },
+    {
+      "id": "distort-value",
+      "title": "Distort Value",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:distort-value"
+    },
+    {
+      "id": "expeditious-retreat",
+      "title": "Expeditious Retreat",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:expeditious-retreat"
+    },
+    {
+      "id": "healing-elixir-ua",
+      "title": "Healing Elixir (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:healing-elixir-ua"
+    },
+    {
+      "id": "hellish-rebuke",
+      "title": "Hellish Rebuke",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:hellish-rebuke"
+    },
+    {
+      "id": "hex",
+      "title": "Hex",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:hex"
+    },
+    {
+      "id": "id-insinuation",
+      "title": "Id Insinuation (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:id-insinuation"
+    },
+    {
+      "id": "illusory-script",
+      "title": "Illusory Script",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:illusory-script"
+    },
+    {
+      "id": "infallible-relay",
+      "title": "Infallible Relay (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:infallible-relay"
+    },
+    {
+      "id": "protection-from-evil-and-good",
+      "title": "Protection from Evil and Good",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-evil-and-good"
+    },
+    {
+      "id": "puppet",
+      "title": "Puppet (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:puppet"
+    },
+    {
+      "id": "remote-access",
+      "title": "Remote Access (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:remote-access"
+    },
+    {
+      "id": "sense-emotion",
+      "title": "Sense Emotion (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:sense-emotion"
+    },
+    {
+      "id": "unseen-servant",
+      "title": "Unseen Servant",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:unseen-servant"
+    },
+    {
+      "id": "witch-bolt",
+      "title": "Witch Bolt",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:witch-bolt"
+    }
+  ],
+  [
+    {
+      "id": "arcane-hacking",
+      "title": "Arcane Hacking (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:arcane-hacking"
+    },
+    {
+      "id": "borrowed-knowledge",
+      "title": "Borrowed Knowledge",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:borrowed-knowledge"
+    },
+    {
+      "id": "cloud-of-daggers",
+      "title": "Cloud of Daggers",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:cloud-of-daggers"
+    },
+    {
+      "id": "crown-of-madness",
+      "title": "Crown of Madness",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:crown-of-madness"
+    },
+    {
+      "id": "darkness",
+      "title": "Darkness",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:darkness"
+    },
+    {
+      "id": "digital-phantom",
+      "title": "Digital Phantom (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:digital-phantom"
+    },
+    {
+      "id": "earthbind",
+      "title": "Earthbind",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:earthbind"
+    },
+    {
+      "id": "enthrall",
+      "title": "Enthrall",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:enthrall"
+    },
+    {
+      "id": "find-vehicle",
+      "title": "Find Vehicle (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:find-vehicle"
+    },
+    {
+      "id": "flock-of-familiars",
+      "title": "Flock of Familiars",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:flock-of-familiars"
+    },
+    {
+      "id": "hold-person",
+      "title": "Hold Person",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:hold-person"
+    },
+    {
+      "id": "invisibility",
+      "title": "Invisibility",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:invisibility"
+    },
+    {
+      "id": "mental-barrier",
+      "title": "Mental Barrier (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:mental-barrier"
+    },
+    {
+      "id": "mind-spike",
+      "title": "Mind Spike",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:mind-spike"
+    },
+    {
+      "id": "mind-thrust",
+      "title": "Mind Thrust (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:mind-thrust"
+    },
+    {
+      "id": "mirror-image",
+      "title": "Mirror Image",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:mirror-image"
+    },
+    {
+      "id": "misty-step",
+      "title": "Misty Step",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:misty-step"
+    },
+    {
+      "id": "ray-of-enfeeblement",
+      "title": "Ray of Enfeeblement",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:ray-of-enfeeblement"
+    },
+    {
+      "id": "shadow-blade",
+      "title": "Shadow Blade",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:shadow-blade"
+    },
+    {
+      "id": "shatter",
+      "title": "Shatter",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:shatter"
+    },
+    {
+      "id": "spider-climb",
+      "title": "Spider Climb",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:spider-climb"
+    },
+    {
+      "id": "spray-of-cards",
+      "title": "Spray Of Cards",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:spray-of-cards"
+    },
+    {
+      "id": "spray-of-cards-ua",
+      "title": "Spray of Cards (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:spray-of-cards-ua"
+    },
+    {
+      "id": "suggestion",
+      "title": "Suggestion",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:suggestion"
+    },
+    {
+      "id": "thought-shield",
+      "title": "Thought Shield (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:thought-shield"
+    },
+    {
+      "id": "warp-sense",
+      "title": "Warp Sense",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:warp-sense"
+    }
+  ],
+  [
+    {
+      "id": "antagonize",
+      "title": "Antagonize",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:antagonize"
+    },
+    {
+      "id": "antagonize-ua",
+      "title": "Antagonize (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:antagonize-ua"
+    },
+    {
+      "id": "counterspell",
+      "title": "Counterspell",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:counterspell"
+    },
+    {
+      "id": "dispel-magic",
+      "title": "Dispel Magic",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:dispel-magic"
+    },
+    {
+      "id": "enemies-abound",
+      "title": "Enemies Abound",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:enemies-abound"
+    },
+    {
+      "id": "fear",
+      "title": "Fear",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:fear"
+    },
+    {
+      "id": "fly",
+      "title": "Fly",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:fly"
+    },
+    {
+      "id": "gaseous-form",
+      "title": "Gaseous Form",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:gaseous-form"
+    },
+    {
+      "id": "haywire",
+      "title": "Haywire (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:haywire"
+    },
+    {
+      "id": "hunger-of-hadar",
+      "title": "Hunger Of Hadar",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:hunger-of-hadar"
+    },
+    {
+      "id": "hypnotic-pattern",
+      "title": "Hypnotic Pattern",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:hypnotic-pattern"
+    },
+    {
+      "id": "incite-greed",
+      "title": "Incite Greed",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:incite-greed"
+    },
+    {
+      "id": "intellect-fortress",
+      "title": "Intellect Fortress",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:intellect-fortress"
+    },
+    {
+      "id": "invisibility-to-cameras",
+      "title": "Invisibility To Cameras (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:invisibility-to-cameras"
+    },
+    {
+      "id": "magic-circle",
+      "title": "Magic Circle",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:magic-circle"
+    },
+    {
+      "id": "major-image",
+      "title": "Major Image",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:major-image"
+    },
+    {
+      "id": "protection-from-ballistics",
+      "title": "Protection from Ballistics (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-ballistics"
+    },
+    {
+      "id": "psionic-blast",
+      "title": "Psionic Blast (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:psionic-blast"
+    },
+    {
+      "id": "remove-curse",
+      "title": "Remove Curse",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:remove-curse"
+    },
+    {
+      "id": "spirit-shroud",
+      "title": "Spirit Shroud",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:spirit-shroud"
+    },
+    {
+      "id": "summon-fey",
+      "title": "Summon Fey",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-fey"
+    },
+    {
+      "id": "summon-lesser-demons",
+      "title": "Summon Lesser Demons",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-lesser-demons"
+    },
+    {
+      "id": "summon-shadowspawn",
+      "title": "Summon Shadowspawn",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-shadowspawn"
+    },
+    {
+      "id": "summon-undead",
+      "title": "Summon Undead",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-undead"
+    },
+    {
+      "id": "summon-warrior-spirit",
+      "title": "Summon Warrior Spirit (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-warrior-spirit"
+    },
+    {
+      "id": "thunder-step",
+      "title": "Thunder Step",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:thunder-step"
+    },
+    {
+      "id": "tongues",
+      "title": "Tongues",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:tongues"
+    },
+    {
+      "id": "vampiric-touch",
+      "title": "Vampiric Touch",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:vampiric-touch"
+    }
+  ],
+  [
+    {
+      "id": "banishment",
+      "title": "Banishment",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:banishment"
+    },
+    {
+      "id": "blight",
+      "title": "Blight",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:blight"
+    },
+    {
+      "id": "charm-monster",
+      "title": "Charm Monster",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:charm-monster"
+    },
+    {
+      "id": "conjure-knowbot",
+      "title": "Conjure Knowbot (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-knowbot"
+    },
+    {
+      "id": "dimension-door",
+      "title": "Dimension Door",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:dimension-door"
+    },
+    {
+      "id": "ego-whip",
+      "title": "Ego Whip (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:ego-whip"
+    },
+    {
+      "id": "elemental-bane",
+      "title": "Elemental Bane",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:elemental-bane"
+    },
+    {
+      "id": "galders-speedy-courier",
+      "title": "Galder's Speedy Courier",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:galders-speedy-courier"
+    },
+    {
+      "id": "gate-seal",
+      "title": "Gate Seal",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:gate-seal"
+    },
+    {
+      "id": "hallucinatory-terrain",
+      "title": "Hallucinatory Terrain",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:hallucinatory-terrain"
+    },
+    {
+      "id": "raulothims-psychic-lance",
+      "title": "Raulothim's Psychic Lance",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:raulothims-psychic-lance"
+    },
+    {
+      "id": "raulothims-psychic-lance-ua",
+      "title": "Raulothim's Psychic Lance (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:raulothims-psychic-lance-ua"
+    },
+    {
+      "id": "shadow-of-moil",
+      "title": "Shadow Of Moil",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:shadow-of-moil"
+    },
+    {
+      "id": "sickening-radiance",
+      "title": "Sickening Radiance",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:sickening-radiance"
+    },
+    {
+      "id": "spirit-of-death",
+      "title": "Spirit Of Death",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:spirit-of-death"
+    },
+    {
+      "id": "spirit-of-death-ua",
+      "title": "Spirit of Death (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:spirit-of-death-ua"
+    },
+    {
+      "id": "summon-aberration",
+      "title": "Summon Aberration",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:summon-aberration"
+    },
+    {
+      "id": "summon-greater-demon",
+      "title": "Summon Greater Demon",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:summon-greater-demon"
+    },
+    {
+      "id": "synchronicity",
+      "title": "Synchronicity (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:synchronicity"
+    },
+    {
+      "id": "system-backdoor",
+      "title": "System Backdoor (UA)",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:system-backdoor"
+    }
+  ],
+  [
+    {
+      "id": "commune-with-city",
+      "title": "Commune with City (UA)",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:commune-with-city"
+    },
+    {
+      "id": "contact-other-plane",
+      "title": "Contact Other Plane",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:contact-other-plane"
+    },
+    {
+      "id": "danse-macabre",
+      "title": "Danse Macabre",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:danse-macabre"
+    },
+    {
+      "id": "dream",
+      "title": "Dream",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:dream"
+    },
+    {
+      "id": "enervation",
+      "title": "Enervation",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:enervation"
+    },
+    {
+      "id": "far-step",
+      "title": "Far Step",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:far-step"
+    },
+    {
+      "id": "hold-monster",
+      "title": "Hold Monster",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:hold-monster"
+    },
+    {
+      "id": "infernal-calling",
+      "title": "Infernal Calling",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:infernal-calling"
+    },
+    {
+      "id": "mislead",
+      "title": "Mislead",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:mislead"
+    },
+    {
+      "id": "negative-energy-flood",
+      "title": "Negative Energy Flood",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:negative-energy-flood"
+    },
+    {
+      "id": "planar-binding",
+      "title": "Planar Binding",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:planar-binding"
+    },
+    {
+      "id": "scrying",
+      "title": "Scrying",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:scrying"
+    },
+    {
+      "id": "shutdown",
+      "title": "Shutdown (UA)",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:shutdown"
+    },
+    {
+      "id": "synaptic-static",
+      "title": "Synaptic Static",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:synaptic-static"
+    },
+    {
+      "id": "teleportation-circle",
+      "title": "Teleportation Circle",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:teleportation-circle"
+    },
+    {
+      "id": "wall-of-light",
+      "title": "Wall of Light",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:wall-of-light"
+    }
+  ],
+  [
+    {
+      "id": "arcane-gate",
+      "title": "Arcane Gate",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:arcane-gate"
+    },
+    {
+      "id": "circle-of-death",
+      "title": "Circle of Death",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:circle-of-death"
+    },
+    {
+      "id": "conjure-fey",
+      "title": "Conjure Fey",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-fey"
+    },
+    {
+      "id": "create-undead",
+      "title": "Create Undead",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:create-undead"
+    },
+    {
+      "id": "eyebite",
+      "title": "Eyebite",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:eyebite"
+    },
+    {
+      "id": "flesh-to-stone",
+      "title": "Flesh to Stone",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:flesh-to-stone"
+    },
+    {
+      "id": "investiture-of-flame",
+      "title": "Investiture of Flame",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-flame"
+    },
+    {
+      "id": "investiture-of-ice",
+      "title": "Investiture of Ice",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-ice"
+    },
+    {
+      "id": "investiture-of-stone",
+      "title": "Investiture of Stone",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-stone"
+    },
+    {
+      "id": "investiture-of-wind",
+      "title": "Investiture of Wind",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-wind"
+    },
+    {
+      "id": "mass-suggestion",
+      "title": "Mass Suggestion",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:mass-suggestion"
+    },
+    {
+      "id": "mental-prison",
+      "title": "Mental Prison",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:mental-prison"
+    },
+    {
+      "id": "otherworldly-form",
+      "title": "Otherworldly Form (UA)",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:otherworldly-form"
+    },
+    {
+      "id": "psychic-crush",
+      "title": "Psychic Crush (UA)",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:psychic-crush"
+    },
+    {
+      "id": "scatter",
+      "title": "Scatter",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:scatter"
+    },
+    {
+      "id": "soul-cage",
+      "title": "Soul Cage",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:soul-cage"
+    },
+    {
+      "id": "summon-fiend",
+      "title": "Summon Fiend",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:summon-fiend"
+    },
+    {
+      "id": "tashas-otherworldly-guise",
+      "title": "Tasha's Otherworldly Guise",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:tashas-otherworldly-guise"
+    },
+    {
+      "id": "true-seeing",
+      "title": "True Seeing",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:true-seeing"
+    }
+  ],
+  [
+    {
+      "id": "crown-of-stars",
+      "title": "Crown of Stars",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:crown-of-stars"
+    },
+    {
+      "id": "dream-of-the-blue-veil",
+      "title": "Dream of the Blue Veil",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:dream-of-the-blue-veil"
+    },
+    {
+      "id": "etherealness",
+      "title": "Etherealness",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:etherealness"
+    },
+    {
+      "id": "finger-of-death",
+      "title": "Finger of Death",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:finger-of-death"
+    },
+    {
+      "id": "forcecage",
+      "title": "Forcecage",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:forcecage"
+    },
+    {
+      "id": "plane-shift",
+      "title": "Plane Shift",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:plane-shift"
+    },
+    {
+      "id": "power-word-pain",
+      "title": "Power Word: Pain",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:power-word-pain"
+    }
+  ],
+  [
+    {
+      "id": "demiplane",
+      "title": "Demiplane",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:demiplane"
+    },
+    {
+      "id": "dominate-monster",
+      "title": "Dominate Monster",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:dominate-monster"
+    },
+    {
+      "id": "feeblemind",
+      "title": "Feeblemind",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:feeblemind"
+    },
+    {
+      "id": "glibness",
+      "title": "Glibness",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:glibness"
+    },
+    {
+      "id": "maddening-darkness",
+      "title": "Maddening Darkness",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:maddening-darkness"
+    },
+    {
+      "id": "power-word-stun",
+      "title": "Power Word: Stun",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:power-word-stun"
+    }
+  ],
+  [
+    {
+      "id": "astral-projection",
+      "title": "Astral Projection",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:astral-projection"
+    },
+    {
+      "id": "blade-of-disaster",
+      "title": "Blade of Disaster",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:blade-of-disaster"
+    },
+    {
+      "id": "foresight",
+      "title": "Foresight",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:foresight"
+    },
+    {
+      "id": "gate",
+      "title": "Gate",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:gate"
+    },
+    {
+      "id": "imprisonment",
+      "title": "Imprisonment",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:imprisonment"
+    },
+    {
+      "id": "power-word-kill",
+      "title": "Power Word: Kill",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:power-word-kill"
+    },
+    {
+      "id": "psychic-scream",
+      "title": "Psychic Scream",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:psychic-scream"
+    },
+    {
+      "id": "true-polymorph",
+      "title": "True Polymorph",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:true-polymorph"
+    },
+    {
+      "id": "weird",
+      "title": "Weird",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:weird"
+    }
+  ]
+]

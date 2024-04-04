@@ -1,0 +1,1078 @@
+[
+  [
+    {
+      "id": "control-flames",
+      "title": "Control Flames",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:control-flames"
+    },
+    {
+      "id": "create-bonfire",
+      "title": "Create Bonfire",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:create-bonfire"
+    },
+    {
+      "id": "druidcraft",
+      "title": "Druidcraft",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:druidcraft"
+    },
+    {
+      "id": "frostbite",
+      "title": "Frostbite",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:frostbite"
+    },
+    {
+      "id": "guidance",
+      "title": "Guidance",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:guidance"
+    },
+    {
+      "id": "gust",
+      "title": "Gust",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:gust"
+    },
+    {
+      "id": "infestation",
+      "title": "Infestation",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:infestation"
+    },
+    {
+      "id": "magic-stone",
+      "title": "Magic Stone",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:magic-stone"
+    },
+    {
+      "id": "mending",
+      "title": "Mending",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:mending"
+    },
+    {
+      "id": "mold-earth",
+      "title": "Mold Earth",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:mold-earth"
+    },
+    {
+      "id": "poison-spray",
+      "title": "Poison Spray",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:poison-spray"
+    },
+    {
+      "id": "primal-savagery",
+      "title": "Primal Savagery",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:primal-savagery"
+    },
+    {
+      "id": "produce-flame",
+      "title": "Produce Flame",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:produce-flame"
+    },
+    {
+      "id": "resistance",
+      "title": "Resistance",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:resistance"
+    },
+    {
+      "id": "shape-water",
+      "title": "Shape Water",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:shape-water"
+    },
+    {
+      "id": "shillelagh",
+      "title": "Shillelagh",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:shillelagh"
+    },
+    {
+      "id": "thorn-whip",
+      "title": "Thorn Whip",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:thorn-whip"
+    },
+    {
+      "id": "thunderclap",
+      "title": "Thunderclap",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:thunderclap"
+    }
+  ],
+  [
+    {
+      "id": "absorb-elements",
+      "title": "Absorb Elements",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:absorb-elements"
+    },
+    {
+      "id": "animal-friendship",
+      "title": "Animal Friendship",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:animal-friendship"
+    },
+    {
+      "id": "beast-bond",
+      "title": "Beast Bond",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:beast-bond"
+    },
+    {
+      "id": "charm-person",
+      "title": "Charm Person",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:charm-person"
+    },
+    {
+      "id": "create-or-destroy-water",
+      "title": "Create or Destroy Water",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:create-or-destroy-water"
+    },
+    {
+      "id": "cure-wounds",
+      "title": "Cure Wounds",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:cure-wounds"
+    },
+    {
+      "id": "detect-magic",
+      "title": "Detect Magic",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-magic"
+    },
+    {
+      "id": "detect-poison-and-disease",
+      "title": "Detect Poison and Disease",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-poison-and-disease"
+    },
+    {
+      "id": "earth-tremor",
+      "title": "Earth Tremor",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:earth-tremor"
+    },
+    {
+      "id": "entangle",
+      "title": "Entangle",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:entangle"
+    },
+    {
+      "id": "faerie-fire",
+      "title": "Faerie Fire",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:faerie-fire"
+    },
+    {
+      "id": "fog-cloud",
+      "title": "Fog Cloud",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:fog-cloud"
+    },
+    {
+      "id": "goodberry",
+      "title": "Goodberry",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:goodberry"
+    },
+    {
+      "id": "guiding-hand-ua",
+      "title": "Guiding Hand (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:guiding-hand-ua"
+    },
+    {
+      "id": "healing-word",
+      "title": "Healing Word",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:healing-word"
+    },
+    {
+      "id": "ice-knife",
+      "title": "Ice Knife",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:ice-knife"
+    },
+    {
+      "id": "jump",
+      "title": "Jump",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:jump"
+    },
+    {
+      "id": "longstrider",
+      "title": "Longstrider",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:longstrider"
+    },
+    {
+      "id": "protection-from-evil-and-good",
+      "title": "Protection from Evil and Good",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-evil-and-good"
+    },
+    {
+      "id": "purify-food-and-drink",
+      "title": "Purify Food and Drink",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:purify-food-and-drink"
+    },
+    {
+      "id": "snare",
+      "title": "Snare",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:snare"
+    },
+    {
+      "id": "speak-with-animals",
+      "title": "Speak with Animals",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:speak-with-animals"
+    },
+    {
+      "id": "thunderwave",
+      "title": "Thunderwave",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:thunderwave"
+    },
+    {
+      "id": "wild-cunning",
+      "title": "Wild Cunning (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:wild-cunning"
+    }
+  ],
+  [
+    {
+      "id": "air-bubble",
+      "title": "Air Bubble",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:air-bubble"
+    },
+    {
+      "id": "animal-messenger",
+      "title": "Animal Messenger",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:animal-messenger"
+    },
+    {
+      "id": "augury",
+      "title": "Augury",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:augury"
+    },
+    {
+      "id": "barkskin",
+      "title": "Barkskin",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:barkskin"
+    },
+    {
+      "id": "beast-sense",
+      "title": "Beast Sense",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:beast-sense"
+    },
+    {
+      "id": "continual-flame",
+      "title": "Continual Flame",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:continual-flame"
+    },
+    {
+      "id": "darkvision",
+      "title": "Darkvision",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:darkvision"
+    },
+    {
+      "id": "dust-devil",
+      "title": "Dust Devil",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:dust-devil"
+    },
+    {
+      "id": "earthbind",
+      "title": "Earthbind",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:earthbind"
+    },
+    {
+      "id": "enhance-ability",
+      "title": "Enhance Ability",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:enhance-ability"
+    },
+    {
+      "id": "enlarge-reduce",
+      "title": "Enlarge/Reduce",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:enlarge-reduce"
+    },
+    {
+      "id": "find-traps",
+      "title": "Find Traps",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:find-traps"
+    },
+    {
+      "id": "flame-blade",
+      "title": "Flame Blade",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:flame-blade"
+    },
+    {
+      "id": "flaming-sphere",
+      "title": "Flaming Sphere",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:flaming-sphere"
+    },
+    {
+      "id": "gust-of-wind",
+      "title": "Gust of Wind",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:gust-of-wind"
+    },
+    {
+      "id": "healing-spirit",
+      "title": "Healing Spirit",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:healing-spirit"
+    },
+    {
+      "id": "heat-metal",
+      "title": "Heat Metal",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:heat-metal"
+    },
+    {
+      "id": "hold-person",
+      "title": "Hold Person",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:hold-person"
+    },
+    {
+      "id": "lesser-restoration",
+      "title": "Lesser Restoration",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:lesser-restoration"
+    },
+    {
+      "id": "locate-animals-or-plants",
+      "title": "Locate Animals or Plants",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:locate-animals-or-plants"
+    },
+    {
+      "id": "locate-object",
+      "title": "Locate Object",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:locate-object"
+    },
+    {
+      "id": "moonbeam",
+      "title": "Moonbeam",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:moonbeam"
+    },
+    {
+      "id": "pass-without-trace",
+      "title": "Pass Without Trace",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:pass-without-trace"
+    },
+    {
+      "id": "protection-from-poison",
+      "title": "Protection from Poison",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-poison"
+    },
+    {
+      "id": "skywrite",
+      "title": "Skywrite",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:skywrite"
+    },
+    {
+      "id": "spike-growth",
+      "title": "Spike Growth",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:spike-growth"
+    },
+    {
+      "id": "summon-beast",
+      "title": "Summon Beast",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:summon-beast"
+    },
+    {
+      "id": "warding-wind",
+      "title": "Warding Wind",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:warding-wind"
+    },
+    {
+      "id": "wither-and-bloom",
+      "title": "Wither and Bloom",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:wither-and-bloom"
+    }
+  ],
+  [
+    {
+      "id": "aura-of-vitality",
+      "title": "Aura of Vitality",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:aura-of-vitality"
+    },
+    {
+      "id": "call-lightning",
+      "title": "Call Lightning",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:call-lightning"
+    },
+    {
+      "id": "conjure-animals",
+      "title": "Conjure Animals",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-animals"
+    },
+    {
+      "id": "daylight",
+      "title": "Daylight",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:daylight"
+    },
+    {
+      "id": "dispel-magic",
+      "title": "Dispel Magic",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:dispel-magic"
+    },
+    {
+      "id": "elemental-weapon",
+      "title": "Elemental Weapon",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:elemental-weapon"
+    },
+    {
+      "id": "erupting-earth",
+      "title": "Erupting Earth",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:erupting-earth"
+    },
+    {
+      "id": "feign-death",
+      "title": "Feign Death",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:feign-death"
+    },
+    {
+      "id": "flame-arrows",
+      "title": "Flame Arrows",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:flame-arrows"
+    },
+    {
+      "id": "freedom-of-the-waves",
+      "title": "Freedom of the Waves (HB)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-the-waves"
+    },
+    {
+      "id": "meld-into-stone",
+      "title": "Meld into Stone",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:meld-into-stone"
+    },
+    {
+      "id": "plant-growth",
+      "title": "Plant Growth",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:plant-growth"
+    },
+    {
+      "id": "protection-from-energy",
+      "title": "Protection from Energy",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-energy"
+    },
+    {
+      "id": "revivify",
+      "title": "Revivify",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:revivify"
+    },
+    {
+      "id": "sleet-storm",
+      "title": "Sleet Storm",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:sleet-storm"
+    },
+    {
+      "id": "speak-with-plants",
+      "title": "Speak with Plants",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:speak-with-plants"
+    },
+    {
+      "id": "summon-fey",
+      "title": "Summon Fey",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-fey"
+    },
+    {
+      "id": "tidal-wave",
+      "title": "Tidal Wave",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:tidal-wave"
+    },
+    {
+      "id": "wall-of-water",
+      "title": "Wall of Water",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:wall-of-water"
+    },
+    {
+      "id": "water-breathing",
+      "title": "Water Breathing",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:water-breathing"
+    },
+    {
+      "id": "water-walk",
+      "title": "Water Walk",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:water-walk"
+    },
+    {
+      "id": "wind-wall",
+      "title": "Wind Wall",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:wind-wall"
+    }
+  ],
+  [
+    {
+      "id": "blight",
+      "title": "Blight",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:blight"
+    },
+    {
+      "id": "charm-monster",
+      "title": "Charm Monster",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:charm-monster"
+    },
+    {
+      "id": "confusion",
+      "title": "Confusion",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:confusion"
+    },
+    {
+      "id": "conjure-minor-elementals",
+      "title": "Conjure Minor Elementals",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-minor-elementals"
+    },
+    {
+      "id": "conjure-woodland-beings",
+      "title": "Conjure Woodland Beings",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-woodland-beings"
+    },
+    {
+      "id": "control-water",
+      "title": "Control Water",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:control-water"
+    },
+    {
+      "id": "divination",
+      "title": "Divination",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:divination"
+    },
+    {
+      "id": "dominate-beast",
+      "title": "Dominate Beast",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:dominate-beast"
+    },
+    {
+      "id": "elemental-bane",
+      "title": "Elemental Bane",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:elemental-bane"
+    },
+    {
+      "id": "fire-shield",
+      "title": "Fire Shield",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:fire-shield"
+    },
+    {
+      "id": "freedom-of-movement",
+      "title": "Freedom of Movement",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-movement"
+    },
+    {
+      "id": "giant-insect",
+      "title": "Giant Insect",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:giant-insect"
+    },
+    {
+      "id": "grasping-vine",
+      "title": "Grasping Vine",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:grasping-vine"
+    },
+    {
+      "id": "guardian-of-nature",
+      "title": "Guardian of Nature",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:guardian-of-nature"
+    },
+    {
+      "id": "hallucinatory-terrain",
+      "title": "Hallucinatory Terrain",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:hallucinatory-terrain"
+    },
+    {
+      "id": "ice-storm",
+      "title": "Ice Storm",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:ice-storm"
+    },
+    {
+      "id": "locate-creature",
+      "title": "Locate Creature",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:locate-creature"
+    },
+    {
+      "id": "polymorph",
+      "title": "Polymorph",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:polymorph"
+    },
+    {
+      "id": "stone-shape",
+      "title": "Stone Shape",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:stone-shape"
+    },
+    {
+      "id": "stoneskin",
+      "title": "Stoneskin",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:stoneskin"
+    },
+    {
+      "id": "summon-elemental",
+      "title": "Summon Elemental",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:summon-elemental"
+    },
+    {
+      "id": "wall-of-fire",
+      "title": "Wall of Fire",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:wall-of-fire"
+    },
+    {
+      "id": "watery-sphere",
+      "title": "Watery Sphere",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:watery-sphere"
+    }
+  ],
+  [
+    {
+      "id": "antilife-shell",
+      "title": "Antilife Shell",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:antilife-shell"
+    },
+    {
+      "id": "awaken",
+      "title": "Awaken",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:awaken"
+    },
+    {
+      "id": "commune-with-nature",
+      "title": "Commune with Nature",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:commune-with-nature"
+    },
+    {
+      "id": "cone-of-cold",
+      "title": "Cone of Cold",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:cone-of-cold"
+    },
+    {
+      "id": "conjure-elemental",
+      "title": "Conjure Elemental",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-elemental"
+    },
+    {
+      "id": "contagion",
+      "title": "Contagion",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:contagion"
+    },
+    {
+      "id": "control-winds",
+      "title": "Control Winds",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:control-winds"
+    },
+    {
+      "id": "freedom-of-the-winds",
+      "title": "Freedom of the Winds (HB)",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-the-winds"
+    },
+    {
+      "id": "geas",
+      "title": "Geas",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:geas"
+    },
+    {
+      "id": "greater-restoration",
+      "title": "Greater Restoration",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:greater-restoration"
+    },
+    {
+      "id": "insect-plague",
+      "title": "Insect Plague",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:insect-plague"
+    },
+    {
+      "id": "maelstrom",
+      "title": "Maelstrom",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:maelstrom"
+    },
+    {
+      "id": "mass-cure-wounds",
+      "title": "Mass Cure Wounds",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:mass-cure-wounds"
+    },
+    {
+      "id": "planar-binding",
+      "title": "Planar Binding",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:planar-binding"
+    },
+    {
+      "id": "reincarnate",
+      "title": "Reincarnate",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:reincarnate"
+    },
+    {
+      "id": "scrying",
+      "title": "Scrying",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:scrying"
+    },
+    {
+      "id": "summon-draconic-spirit",
+      "title": "Summon Draconic Spirit",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:summon-draconic-spirit"
+    },
+    {
+      "id": "summon-draconic-spirit-ua",
+      "title": "Summon Draconic Spirit (UA)",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:summon-draconic-spirit-ua"
+    },
+    {
+      "id": "transmute-rock",
+      "title": "Transmute Rock",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:transmute-rock"
+    },
+    {
+      "id": "tree-stride",
+      "title": "Tree Stride",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:tree-stride"
+    },
+    {
+      "id": "wall-of-stone",
+      "title": "Wall of Stone",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:wall-of-stone"
+    },
+    {
+      "id": "wrath-of-nature",
+      "title": "Wrath Of Nature",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:wrath-of-nature"
+    }
+  ],
+  [
+    {
+      "id": "bones-of-the-earth",
+      "title": "Bones of the Earth",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:bones-of-the-earth"
+    },
+    {
+      "id": "conjure-fey",
+      "title": "Conjure Fey",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-fey"
+    },
+    {
+      "id": "druid-grove",
+      "title": "Druid Grove",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:druid-grove"
+    },
+    {
+      "id": "find-the-path",
+      "title": "Find the Path",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:find-the-path"
+    },
+    {
+      "id": "flesh-to-stone",
+      "title": "Flesh to Stone",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:flesh-to-stone"
+    },
+    {
+      "id": "heal",
+      "title": "Heal",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:heal"
+    },
+    {
+      "id": "heroes-feast",
+      "title": "Heroes' Feast",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:heroes-feast"
+    },
+    {
+      "id": "investiture-of-flame",
+      "title": "Investiture of Flame",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-flame"
+    },
+    {
+      "id": "investiture-of-ice",
+      "title": "Investiture of Ice",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-ice"
+    },
+    {
+      "id": "investiture-of-stone",
+      "title": "Investiture of Stone",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-stone"
+    },
+    {
+      "id": "investiture-of-wind",
+      "title": "Investiture of Wind",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:investiture-of-wind"
+    },
+    {
+      "id": "move-earth",
+      "title": "Move Earth",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:move-earth"
+    },
+    {
+      "id": "primordial-ward",
+      "title": "Primordial Ward",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:primordial-ward"
+    },
+    {
+      "id": "sunbeam",
+      "title": "Sunbeam",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:sunbeam"
+    },
+    {
+      "id": "transport-via-plants",
+      "title": "Transport via Plants",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:transport-via-plants"
+    },
+    {
+      "id": "wall-of-thorns",
+      "title": "Wall of Thorns",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:wall-of-thorns"
+    },
+    {
+      "id": "wind-walk",
+      "title": "Wind Walk",
+      "level": 6,
+      "url": "http://dnd5e.wikidot.com/spell:wind-walk"
+    }
+  ],
+  [
+    {
+      "id": "draconic-transformation",
+      "title": "Draconic Transformation",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:draconic-transformation"
+    },
+    {
+      "id": "draconic-transformation-ua",
+      "title": "Draconic Transformation (UA)",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:draconic-transformation-ua"
+    },
+    {
+      "id": "fire-storm",
+      "title": "Fire Storm",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:fire-storm"
+    },
+    {
+      "id": "mirage-arcane",
+      "title": "Mirage Arcane",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:mirage-arcane"
+    },
+    {
+      "id": "plane-shift",
+      "title": "Plane Shift",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:plane-shift"
+    },
+    {
+      "id": "regenerate",
+      "title": "Regenerate",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:regenerate"
+    },
+    {
+      "id": "reverse-gravity",
+      "title": "Reverse Gravity",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:reverse-gravity"
+    },
+    {
+      "id": "symbol",
+      "title": "Symbol",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:symbol"
+    },
+    {
+      "id": "whirlwind",
+      "title": "Whirlwind",
+      "level": 7,
+      "url": "http://dnd5e.wikidot.com/spell:whirlwind"
+    }
+  ],
+  [
+    {
+      "id": "animal-shapes",
+      "title": "Animal Shapes",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:animal-shapes"
+    },
+    {
+      "id": "antipathy-sympathy",
+      "title": "Antipathy/Sympathy",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:antipathy-sympathy"
+    },
+    {
+      "id": "control-weather",
+      "title": "Control Weather",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:control-weather"
+    },
+    {
+      "id": "earthquake",
+      "title": "Earthquake",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:earthquake"
+    },
+    {
+      "id": "feeblemind",
+      "title": "Feeblemind",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:feeblemind"
+    },
+    {
+      "id": "incendiary-cloud",
+      "title": "Incendiary Cloud",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:incendiary-cloud"
+    },
+    {
+      "id": "sunburst",
+      "title": "Sunburst",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:sunburst"
+    },
+    {
+      "id": "tsunami",
+      "title": "Tsunami",
+      "level": 8,
+      "url": "http://dnd5e.wikidot.com/spell:tsunami"
+    }
+  ],
+  [
+    {
+      "id": "foresight",
+      "title": "Foresight",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:foresight"
+    },
+    {
+      "id": "shapechange",
+      "title": "Shapechange",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:shapechange"
+    },
+    {
+      "id": "storm-of-vengeance",
+      "title": "Storm of Vengeance",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:storm-of-vengeance"
+    },
+    {
+      "id": "true-resurrection",
+      "title": "True Resurrection",
+      "level": 9,
+      "url": "http://dnd5e.wikidot.com/spell:true-resurrection"
+    }
+  ]
+]

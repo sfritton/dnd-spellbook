@@ -1,0 +1,341 @@
+[
+  [],
+  [
+    {
+      "id": "bless",
+      "title": "Bless",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:bless"
+    },
+    {
+      "id": "ceremony",
+      "title": "Ceremony",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:ceremony"
+    },
+    {
+      "id": "command",
+      "title": "Command",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:command"
+    },
+    {
+      "id": "compelled-duel",
+      "title": "Compelled Duel",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:compelled-duel"
+    },
+    {
+      "id": "cure-wounds",
+      "title": "Cure Wounds",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:cure-wounds"
+    },
+    {
+      "id": "detect-evil-and-good",
+      "title": "Detect Evil and Good",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-evil-and-good"
+    },
+    {
+      "id": "detect-magic",
+      "title": "Detect Magic",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-magic"
+    },
+    {
+      "id": "detect-poison-and-disease",
+      "title": "Detect Poison and Disease",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-poison-and-disease"
+    },
+    {
+      "id": "divine-favor",
+      "title": "Divine Favor",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:divine-favor"
+    },
+    {
+      "id": "heroism",
+      "title": "Heroism",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:heroism"
+    },
+    {
+      "id": "protection-from-evil-and-good",
+      "title": "Protection from Evil and Good",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-evil-and-good"
+    },
+    {
+      "id": "purify-food-and-drink",
+      "title": "Purify Food and Drink",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:purify-food-and-drink"
+    },
+    {
+      "id": "searing-smite",
+      "title": "Searing Smite",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:searing-smite"
+    },
+    {
+      "id": "shield-of-faith",
+      "title": "Shield of Faith",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:shield-of-faith"
+    },
+    {
+      "id": "thunderous-smite",
+      "title": "Thunderous Smite",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:thunderous-smite"
+    },
+    {
+      "id": "wrathful-smite",
+      "title": "Wrathful Smite",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:wrathful-smite"
+    }
+  ],
+  [
+    {
+      "id": "aid",
+      "title": "Aid",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:aid"
+    },
+    {
+      "id": "branding-smite",
+      "title": "Branding Smite",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:branding-smite"
+    },
+    {
+      "id": "find-steed",
+      "title": "Find Steed",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:find-steed"
+    },
+    {
+      "id": "find-vehicle",
+      "title": "Find Vehicle (UA)",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:find-vehicle"
+    },
+    {
+      "id": "gentle-repose",
+      "title": "Gentle Repose",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:gentle-repose"
+    },
+    {
+      "id": "lesser-restoration",
+      "title": "Lesser Restoration",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:lesser-restoration"
+    },
+    {
+      "id": "locate-object",
+      "title": "Locate Object",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:locate-object"
+    },
+    {
+      "id": "magic-weapon",
+      "title": "Magic Weapon",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:magic-weapon"
+    },
+    {
+      "id": "prayer-of-healing",
+      "title": "Prayer of Healing",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:prayer-of-healing"
+    },
+    {
+      "id": "protection-from-poison",
+      "title": "Protection from Poison",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-poison"
+    },
+    {
+      "id": "warding-bond",
+      "title": "Warding Bond",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:warding-bond"
+    },
+    {
+      "id": "zone-of-truth",
+      "title": "Zone of Truth",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:zone-of-truth"
+    }
+  ],
+  [
+    {
+      "id": "aura-of-vitality",
+      "title": "Aura of Vitality",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:aura-of-vitality"
+    },
+    {
+      "id": "blinding-smite",
+      "title": "Blinding Smite",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:blinding-smite"
+    },
+    {
+      "id": "create-food-and-water",
+      "title": "Create Food and Water",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:create-food-and-water"
+    },
+    {
+      "id": "crusaders-mantle",
+      "title": "Crusader's Mantle",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:crusaders-mantle"
+    },
+    {
+      "id": "daylight",
+      "title": "Daylight",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:daylight"
+    },
+    {
+      "id": "dispel-magic",
+      "title": "Dispel Magic",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:dispel-magic"
+    },
+    {
+      "id": "elemental-weapon",
+      "title": "Elemental Weapon",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:elemental-weapon"
+    },
+    {
+      "id": "magic-circle",
+      "title": "Magic Circle",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:magic-circle"
+    },
+    {
+      "id": "remove-curse",
+      "title": "Remove Curse",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:remove-curse"
+    },
+    {
+      "id": "revivify",
+      "title": "Revivify",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:revivify"
+    },
+    {
+      "id": "spirit-shroud",
+      "title": "Spirit Shroud",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:spirit-shroud"
+    }
+  ],
+  [
+    {
+      "id": "aura-of-life",
+      "title": "Aura of Life",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:aura-of-life"
+    },
+    {
+      "id": "aura-of-purity",
+      "title": "Aura of Purity",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:aura-of-purity"
+    },
+    {
+      "id": "banishment",
+      "title": "Banishment",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:banishment"
+    },
+    {
+      "id": "death-ward",
+      "title": "Death Ward",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:death-ward"
+    },
+    {
+      "id": "find-greater-steed",
+      "title": "Find Greater Steed",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:find-greater-steed"
+    },
+    {
+      "id": "locate-creature",
+      "title": "Locate Creature",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:locate-creature"
+    },
+    {
+      "id": "staggering-smite",
+      "title": "Staggering Smite",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:staggering-smite"
+    }
+  ],
+  [
+    {
+      "id": "banishing-smite",
+      "title": "Banishing Smite",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:banishing-smite"
+    },
+    {
+      "id": "circle-of-power",
+      "title": "Circle of Power",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:circle-of-power"
+    },
+    {
+      "id": "destructive-wave",
+      "title": "Destructive Wave",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:destructive-wave"
+    },
+    {
+      "id": "dispel-evil-and-good",
+      "title": "Dispel Evil and Good",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:dispel-evil-and-good"
+    },
+    {
+      "id": "geas",
+      "title": "Geas",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:geas"
+    },
+    {
+      "id": "holy-weapon",
+      "title": "Holy Weapon",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:holy-weapon"
+    },
+    {
+      "id": "raise-dead",
+      "title": "Raise Dead",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:raise-dead"
+    },
+    {
+      "id": "summon-celestial",
+      "title": "Summon Celestial",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:summon-celestial"
+    }
+  ],
+  [],
+  [],
+  [],
+  []
+]

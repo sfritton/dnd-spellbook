@@ -1,0 +1,473 @@
+[
+  [],
+  [
+    {
+      "id": "absorb-elements",
+      "title": "Absorb Elements",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:absorb-elements"
+    },
+    {
+      "id": "alarm",
+      "title": "Alarm",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:alarm"
+    },
+    {
+      "id": "animal-friendship",
+      "title": "Animal Friendship",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:animal-friendship"
+    },
+    {
+      "id": "beast-bond",
+      "title": "Beast Bond",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:beast-bond"
+    },
+    {
+      "id": "cure-wounds",
+      "title": "Cure Wounds",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:cure-wounds"
+    },
+    {
+      "id": "detect-magic",
+      "title": "Detect Magic",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-magic"
+    },
+    {
+      "id": "detect-poison-and-disease",
+      "title": "Detect Poison and Disease",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:detect-poison-and-disease"
+    },
+    {
+      "id": "ensnaring-strike",
+      "title": "Ensnaring Strike",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:ensnaring-strike"
+    },
+    {
+      "id": "entangle",
+      "title": "Entangle",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:entangle"
+    },
+    {
+      "id": "fog-cloud",
+      "title": "Fog Cloud",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:fog-cloud"
+    },
+    {
+      "id": "goodberry",
+      "title": "Goodberry",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:goodberry"
+    },
+    {
+      "id": "hail-of-thorns",
+      "title": "Hail of Thorns",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:hail-of-thorns"
+    },
+    {
+      "id": "hunters-mark",
+      "title": "Hunter's Mark",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:hunters-mark"
+    },
+    {
+      "id": "jump",
+      "title": "Jump",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:jump"
+    },
+    {
+      "id": "longstrider",
+      "title": "Longstrider",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:longstrider"
+    },
+    {
+      "id": "searing-smite",
+      "title": "Searing Smite",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:searing-smite"
+    },
+    {
+      "id": "snare",
+      "title": "Snare",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:snare"
+    },
+    {
+      "id": "speak-with-animals",
+      "title": "Speak with Animals",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:speak-with-animals"
+    },
+    {
+      "id": "sudden-awakening",
+      "title": "Sudden Awakening (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:sudden-awakening"
+    },
+    {
+      "id": "wild-cunning",
+      "title": "Wild Cunning (UA)",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:wild-cunning"
+    },
+    {
+      "id": "zephyr-strike",
+      "title": "Zephyr Strike",
+      "level": 1,
+      "url": "http://dnd5e.wikidot.com/spell:zephyr-strike"
+    }
+  ],
+  [
+    {
+      "id": "aid",
+      "title": "Aid",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:aid"
+    },
+    {
+      "id": "air-bubble",
+      "title": "Air Bubble",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:air-bubble"
+    },
+    {
+      "id": "animal-messenger",
+      "title": "Animal Messenger",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:animal-messenger"
+    },
+    {
+      "id": "barkskin",
+      "title": "Barkskin",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:barkskin"
+    },
+    {
+      "id": "beast-sense",
+      "title": "Beast Sense",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:beast-sense"
+    },
+    {
+      "id": "cordon-of-arrows",
+      "title": "Cordon of Arrows",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:cordon-of-arrows"
+    },
+    {
+      "id": "darkvision",
+      "title": "Darkvision",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:darkvision"
+    },
+    {
+      "id": "enhance-ability",
+      "title": "Enhance Ability",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:enhance-ability"
+    },
+    {
+      "id": "find-traps",
+      "title": "Find Traps",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:find-traps"
+    },
+    {
+      "id": "gust-of-wind",
+      "title": "Gust of Wind",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:gust-of-wind"
+    },
+    {
+      "id": "healing-spirit",
+      "title": "Healing Spirit",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:healing-spirit"
+    },
+    {
+      "id": "lesser-restoration",
+      "title": "Lesser Restoration",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:lesser-restoration"
+    },
+    {
+      "id": "locate-animals-or-plants",
+      "title": "Locate Animals or Plants",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:locate-animals-or-plants"
+    },
+    {
+      "id": "locate-object",
+      "title": "Locate Object",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:locate-object"
+    },
+    {
+      "id": "magic-weapon",
+      "title": "Magic Weapon",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:magic-weapon"
+    },
+    {
+      "id": "pass-without-trace",
+      "title": "Pass Without Trace",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:pass-without-trace"
+    },
+    {
+      "id": "protection-from-poison",
+      "title": "Protection from Poison",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-poison"
+    },
+    {
+      "id": "silence",
+      "title": "Silence",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:silence"
+    },
+    {
+      "id": "spike-growth",
+      "title": "Spike Growth",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:spike-growth"
+    },
+    {
+      "id": "summon-beast",
+      "title": "Summon Beast",
+      "level": 2,
+      "url": "http://dnd5e.wikidot.com/spell:summon-beast"
+    }
+  ],
+  [
+    {
+      "id": "ashardalons-stride",
+      "title": "Ashardalon's Stride",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:ashardalons-stride"
+    },
+    {
+      "id": "conjure-animals",
+      "title": "Conjure Animals",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-animals"
+    },
+    {
+      "id": "conjure-barrage",
+      "title": "Conjure Barrage",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-barrage"
+    },
+    {
+      "id": "daylight",
+      "title": "Daylight",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:daylight"
+    },
+    {
+      "id": "elemental-weapon",
+      "title": "Elemental Weapon",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:elemental-weapon"
+    },
+    {
+      "id": "flame-arrows",
+      "title": "Flame Arrows",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:flame-arrows"
+    },
+    {
+      "id": "flame-stride",
+      "title": "Flame Stride (UA)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:flame-stride"
+    },
+    {
+      "id": "freedom-of-the-waves",
+      "title": "Freedom of the Waves (HB)",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-the-waves"
+    },
+    {
+      "id": "lightning-arrow",
+      "title": "Lightning Arrow",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:lightning-arrow"
+    },
+    {
+      "id": "meld-into-stone",
+      "title": "Meld into Stone",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:meld-into-stone"
+    },
+    {
+      "id": "nondetection",
+      "title": "Nondetection",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:nondetection"
+    },
+    {
+      "id": "plant-growth",
+      "title": "Plant Growth",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:plant-growth"
+    },
+    {
+      "id": "protection-from-energy",
+      "title": "Protection from Energy",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:protection-from-energy"
+    },
+    {
+      "id": "revivify",
+      "title": "Revivify",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:revivify"
+    },
+    {
+      "id": "speak-with-plants",
+      "title": "Speak with Plants",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:speak-with-plants"
+    },
+    {
+      "id": "summon-fey",
+      "title": "Summon Fey",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:summon-fey"
+    },
+    {
+      "id": "water-breathing",
+      "title": "Water Breathing",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:water-breathing"
+    },
+    {
+      "id": "water-walk",
+      "title": "Water Walk",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:water-walk"
+    },
+    {
+      "id": "wind-wall",
+      "title": "Wind Wall",
+      "level": 3,
+      "url": "http://dnd5e.wikidot.com/spell:wind-wall"
+    }
+  ],
+  [
+    {
+      "id": "conjure-woodland-beings",
+      "title": "Conjure Woodland Beings",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-woodland-beings"
+    },
+    {
+      "id": "dominate-beast",
+      "title": "Dominate Beast",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:dominate-beast"
+    },
+    {
+      "id": "freedom-of-movement",
+      "title": "Freedom of Movement",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-movement"
+    },
+    {
+      "id": "grasping-vine",
+      "title": "Grasping Vine",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:grasping-vine"
+    },
+    {
+      "id": "guardian-of-nature",
+      "title": "Guardian of Nature",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:guardian-of-nature"
+    },
+    {
+      "id": "locate-creature",
+      "title": "Locate Creature",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:locate-creature"
+    },
+    {
+      "id": "stoneskin",
+      "title": "Stoneskin",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:stoneskin"
+    },
+    {
+      "id": "summon-elemental",
+      "title": "Summon Elemental",
+      "level": 4,
+      "url": "http://dnd5e.wikidot.com/spell:summon-elemental"
+    }
+  ],
+  [
+    {
+      "id": "commune-with-nature",
+      "title": "Commune with Nature",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:commune-with-nature"
+    },
+    {
+      "id": "conjure-volley",
+      "title": "Conjure Volley",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:conjure-volley"
+    },
+    {
+      "id": "freedom-of-the-winds",
+      "title": "Freedom of the Winds (HB)",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:freedom-of-the-winds"
+    },
+    {
+      "id": "greater-restoration",
+      "title": "Greater Restoration",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:greater-restoration"
+    },
+    {
+      "id": "steel-wind-strike",
+      "title": "Steel Wind Strike",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:steel-wind-strike"
+    },
+    {
+      "id": "swift-quiver",
+      "title": "Swift Quiver",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:swift-quiver"
+    },
+    {
+      "id": "tree-stride",
+      "title": "Tree Stride",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:tree-stride"
+    },
+    {
+      "id": "wrath-of-nature",
+      "title": "Wrath Of Nature",
+      "level": 5,
+      "url": "http://dnd5e.wikidot.com/spell:wrath-of-nature"
+    }
+  ],
+  [],
+  [],
+  [],
+  []
+]
