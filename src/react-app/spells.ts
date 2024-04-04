@@ -1,14 +1,14 @@
-import * as artificer from '../../data/class-spell-lists/artificer';
-import * as arcaneTrickster from '../../data/class-spell-lists/arcane-trickster';
-import * as bard from '../../data/class-spell-lists/bard';
-import * as cleric from '../../data/class-spell-lists/cleric';
-import * as druid from '../../data/class-spell-lists/druid';
-import * as eldritchKnight from '../../data/class-spell-lists/eldritch-knight';
-import * as paladin from '../../data/class-spell-lists/paladin';
-import * as ranger from '../../data/class-spell-lists/ranger';
-import * as sorcerer from '../../data/class-spell-lists/sorcerer';
-import * as warlock from '../../data/class-spell-lists/warlock';
-import * as wizard from '../../data/class-spell-lists/wizard';
+import * as artificer from '../constants/spells/artificer.json';
+import * as arcaneTrickster from '../constants/spells/arcane-trickster.json';
+import * as bard from '../constants/spells/bard.json';
+import * as cleric from '../constants/spells/cleric.json';
+import * as druid from '../constants/spells/druid.json';
+import * as eldritchKnight from '../constants/spells/eldritch-knight.json';
+import * as paladin from '../constants/spells/paladin.json';
+import * as ranger from '../constants/spells/ranger.json';
+import * as sorcerer from '../constants/spells/sorcerer.json';
+import * as warlock from '../constants/spells/warlock.json';
+import * as wizard from '../constants/spells/wizard.json';
 
 export {
   artificer,

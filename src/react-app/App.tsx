@@ -4,9 +4,10 @@ import { ClassSpellsInput } from './ClassSpellsInput';
 import { formatSpellLevel } from './util';
 
 interface Spell {
-  name: string;
+  title: string;
   url: string;
   level: number;
+  id: string;
 }
 
 export const App = () => {
@@ -14,7 +15,7 @@ export const App = () => {
   const appendSpells = useCallback((spells: Spell[]) => {
     setMySpells((prevMySpells) => [
       ...prevMySpells,
-      ...spells.filter(({ name }) => prevMySpells.every((prevSpell) => prevSpell.name !== name)),
+      ...spells.filter(({ id }) => prevMySpells.every((prevSpell) => prevSpell.id !== id)),
     ]);
   }, []);
 
@@ -29,9 +30,7 @@ export const App = () => {
       );
 
       appendSpells(
-        spellLists[className as keyof typeof spellLists].spellList.filter((spell) =>
-          levels.includes(spell.level),
-        ),
+        levels.flatMap((level) => spellLists[className as keyof typeof spellLists][level]),
       );
     };
 
@@ -46,9 +45,9 @@ export const App = () => {
         <h2>My Spells</h2>
         {mySpells.length > 0 ? (
           <ul>
-            {mySpells.map(({ name, level }) => (
-              <li key={name}>
-                <b>{name}</b> ({formatSpellLevel(level)})
+            {mySpells.map(({ id, level, title }) => (
+              <li key={id}>
+                <b>{title}</b> ({formatSpellLevel(level)})
               </li>
             ))}
           </ul>
