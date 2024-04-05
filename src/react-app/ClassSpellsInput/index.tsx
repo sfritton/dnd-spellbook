@@ -1,52 +1,6 @@
 import { Fragment, useState } from 'react';
 import { formatSpellLevel } from '../util';
-
-const CLASS_OPTIONS = [
-  {
-    value: 'artificer',
-    label: 'artificer',
-  },
-  {
-    value: 'bard',
-    label: 'bard',
-  },
-  {
-    value: 'cleric',
-    label: 'cleric',
-  },
-  {
-    value: 'druid',
-    label: 'druid',
-  },
-  {
-    value: 'eldritchKnight',
-    label: 'Fighter: eldritch knight',
-  },
-  {
-    value: 'paladin',
-    label: 'paladin',
-  },
-  {
-    value: 'ranger',
-    label: 'ranger',
-  },
-  {
-    value: 'arcaneTrickster',
-    label: 'Rogue: arcane trickster',
-  },
-  {
-    value: 'sorcerer',
-    label: 'sorcerer',
-  },
-  {
-    value: 'warlock',
-    label: 'warlock',
-  },
-  {
-    value: 'wizard',
-    label: 'wizard',
-  },
-] as const;
+import { CLASSES } from '../../constants/classes';
 
 const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   value: i,
@@ -61,9 +15,9 @@ export const ClassSpellsInput = () => {
   return (
     <form onSubmit={() => setIsOpen(false)}>
       <select>
-        {CLASS_OPTIONS.map(({ value, label }) => (
-          <option key={value} value={value}>
-            {label}
+        {CLASSES.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
           </option>
         ))}
       </select>

@@ -2,13 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import * as spellLists from './spells';
 import { ClassSpellsInput } from './ClassSpellsInput';
 import { formatSpellLevel } from './util';
-
-interface Spell {
-  title: string;
-  url: string;
-  level: number;
-  id: string;
-}
+import { Typeahead } from './Typeahead';
+import { Spell } from './types';
 
 export const App = () => {
   const [mySpells, setMySpells] = useState<Spell[]>([]);
@@ -52,7 +47,7 @@ export const App = () => {
             ))}
           </ul>
         ) : null}
-        <input type="text" />
+        <Typeahead appendSpells={appendSpells} />
         <ClassSpellsInput />
         <button>Print Spells</button>
       </section>
