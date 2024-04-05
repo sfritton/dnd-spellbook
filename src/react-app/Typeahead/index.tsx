@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import allSpells from '../../constants/spells/all.json';
 import { Spell } from '../types';
 import styles from './index.module.css';
@@ -6,6 +6,7 @@ import { formatSpellLevel } from '../util';
 
 const allSpellsFlat = allSpells.flat();
 
+// TODO: allow user to add multiple spells
 export const Typeahead = ({ appendSpells }: { appendSpells: (spells: Spell[]) => void }) => {
   const [value, setValue] = useState<string>('');
 

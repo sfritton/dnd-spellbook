@@ -1,0 +1,8 @@
+.classSpellsButton {
+  display: block;
+  width: 100%;
+  border: none;
+  background: var(--link-color);
+  color: #fff;
+  font-size: 16px;
+}
