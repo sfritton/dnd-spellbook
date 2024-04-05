@@ -1,56 +1,27 @@
 import { useCallback, useEffect, useState } from 'react';
-import * as spellLists from './spells';
 import { ClassSpellsInput } from './ClassSpellsInput';
-import { formatSpellLevel } from './util';
 import { Typeahead } from './Typeahead';
 import { Spell } from './types';
+import { SpellList } from './SpellList';
 
 export const App = () => {
   const [mySpells, setMySpells] = useState<Spell[]>([]);
   const appendSpells = useCallback((spells: Spell[]) => {
-    setMySpells((prevMySpells) => [
-      ...prevMySpells,
-      ...spells.filter(({ id }) => prevMySpells.every((prevSpell) => prevSpell.id !== id)),
-    ]);
+    setMySpells((prevMySpells) =>
+      [
+        ...prevMySpells,
+        ...spells.filter(({ id }) => prevMySpells.every((prevSpell) => prevSpell.id !== id)),
+      ].sort((spellA, spellB) => spellA.level - spellB.level),
+    );
   }, []);
 
-  useEffect(() => {
-    const handleSubmit = (e: SubmitEvent) => {
-      e.preventDefault();
-      const [select, fieldset] = e.target as HTMLFormElement;
-
-      const className = (select as HTMLSelectElement).value;
-      const levels = [...fieldset.querySelectorAll('input[type="checkbox"]:checked')].map((input) =>
-        Number.parseInt(input.getAttribute('value'), 10),
-      );
-
-      appendSpells(
-        levels.flatMap((level) => spellLists[className as keyof typeof spellLists][level]),
-      );
-    };
-
-    document.addEventListener('submit', handleSubmit);
-
-    return () => document.removeEventListener('submit', handleSubmit);
-  }, [appendSpells]);
-
   return (
-    <>
-      <section>
-        <h2>My Spells</h2>
-        {mySpells.length > 0 ? (
-          <ul>
-            {mySpells.map(({ id, level, title }) => (
-              <li key={id}>
-                <b>{title}</b> ({formatSpellLevel(level)})
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <Typeahead appendSpells={appendSpells} />
-        <ClassSpellsInput />
-        <button>Print Spells</button>
-      </section>
-    </>
+    <section>
+      <h2>My Spells</h2>
+      <SpellList spells={mySpells} />
+      <Typeahead appendSpells={appendSpells} />
+      <ClassSpellsInput appendSpells={appendSpells} />
+      <button>Print Spells</button>
+    </section>
   );
 };

@@ -1,0 +1,51 @@
+.typeaheadForm {
+  margin: 16px 0;
+
+  & label {
+    display: block;
+  }
+
+  & input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  & ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    border: 1px solid #000;
+    border-top: none;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+    & li > button {
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
+      font-size: 16px;
+      font-family: var(--sans);
+      font-weight: bold;
+      background: transparent;
+      padding: 8px 16px;
+
+      & .level {
+        font-weight: normal;
+        font-size: 14px;
+        color: #666;
+        margin-top: 4px;
+      }
+
+      &:hover {
+        background: #f0f0f8;
+      }
+    }
+  }
+
+}
