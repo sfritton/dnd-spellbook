@@ -30,7 +30,9 @@ export const ClassSpellsInput = ({ appendSpells }: { appendSpells: (spells: Spel
 
   return (
     <form className={styles.classSpellsForm} onSubmit={handleSubmit}>
-      <label htmlFor="class-select">Choose a class</label>
+      <label className={styles.selectLabel} htmlFor="class-select">
+        Choose a class
+      </label>
       <select id="class-select">
         {CLASSES.map(({ id, name }) => (
           <option key={id} value={id}>
@@ -39,12 +41,12 @@ export const ClassSpellsInput = ({ appendSpells }: { appendSpells: (spells: Spel
         ))}
       </select>
       <fieldset>
-        <legend>Spell levels</legend>
+        <legend>Choose spell levels</legend>
         {LEVEL_OPTIONS.map(({ value, label }) => (
-          <Fragment key={value}>
+          <div key={value}>
             <input type="checkbox" value={value} id={`level-${value}`} />
             <label htmlFor={`level-${value}`}>{label}</label>
-          </Fragment>
+          </div>
         ))}
       </fieldset>
       <button type="submit">Load spells</button>

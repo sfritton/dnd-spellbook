@@ -1,8 +1,27 @@
-.classSpellsButton {
-  display: block;
-  width: 100%;
-  border: none;
-  background: var(--link-color);
-  color: #fff;
-  font-size: 16px;
+.classSpellsForm {
+  .selectLabel {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+
+  select {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    border: none;
+    margin: 16px 0;
+    padding: 0;
+
+    legend {
+      margin-bottom: 8px;
+    }
+  }
 }

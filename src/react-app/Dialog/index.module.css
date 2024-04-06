@@ -1,5 +1,6 @@
 .backdrop {
   /* Override defaults */
+  position: fixed;
   display: grid;
   inset: 0;
   max-width: none;
@@ -51,6 +52,11 @@
         height: 40px;
         border-radius: 50%;
         border: none;
+
+        & span {
+          transform: rotate(45deg);
+          font-size: 36px;
+        }
       }
 
     }
