@@ -6,7 +6,7 @@ interface DialogProps {
   className?: string;
 }
 
-const dialogObserver = new MutationObserver((mutations, observer) => {
+const dialogObserver = new MutationObserver((mutations) => {
   mutations.forEach(async (mutation) => {
     if (mutation.attributeName === 'open') {
       const dialog = mutation.target as HTMLDialogElement;
@@ -21,7 +21,6 @@ const dialogObserver = new MutationObserver((mutations, observer) => {
   });
 });
 
-// TODO: manage inert state via MutationObserver
 export const useDialog = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -31,9 +30,11 @@ export const useDialog = () => {
 
   const open = useCallback(() => {
     dialogRef.current?.showModal();
+    dialogRef.current?.removeAttribute('inert');
   }, []);
   const close = useCallback(() => {
     dialogRef.current?.close();
+    dialogRef.current?.setAttribute('inert', 'true');
   }, []);
 
   const Dialog = ({ title, children, className }: PropsWithChildren<DialogProps>) => (

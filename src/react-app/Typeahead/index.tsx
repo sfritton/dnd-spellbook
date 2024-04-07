@@ -3,16 +3,25 @@ import allSpells from '../../constants/spells/all.json';
 import { Spell } from '../types';
 import styles from './index.module.css';
 import { formatSpellLevel } from '../util';
+import { SpellSummary } from '../SpellSummary';
 
 const allSpellsFlat = allSpells.flat();
 
-// TODO: allow user to add multiple spells
 export const Typeahead = ({
   appendSpells,
 }: {
   appendSpells: (spells: Spell.Summary[]) => void;
 }) => {
   const [value, setValue] = useState<string>('');
+  const [spells, setSpells] = useState<Spell.Summary[]>([]);
+
+  const makeHandleChange = (spell: Spell.Summary) => (isChecked: boolean) => {
+    if (isChecked) {
+      setSpells((prevSpells) => [...prevSpells, spell]);
+    } else {
+      setSpells((prevSpells) => prevSpells.filter(({ id }) => id !== spell.id));
+    }
+  };
 
   return (
     <form
@@ -20,7 +29,7 @@ export const Typeahead = ({
       className={styles.typeaheadForm}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(e.target);
+        appendSpells(spells);
       }}
     >
       <input
@@ -31,28 +40,29 @@ export const Typeahead = ({
         style={{ display: 'none' }}
       ></input>
       <label htmlFor="spell-typeahead">Add a spell by name</label>
-      <input id="spell-typeahead" value={value} onChange={(e) => setValue(e.target.value)} />
+      <input
+        type="text"
+        id="spell-typeahead"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
 
-      {value ? (
-        <ul>
-          {allSpellsFlat
-            .filter(({ title }) => title.match(new RegExp(value, 'i')))
-            .slice(0, 10)
-            .map((spell) => (
-              <li key={spell.id} value={spell.id}>
-                <button
-                  onClick={() => {
-                    appendSpells([spell]);
-                    setValue('');
-                  }}
-                >
-                  {spell.title}
-                  <div className={styles.level}>{formatSpellLevel(spell.level)}</div>
-                </button>
-              </li>
-            ))}
-        </ul>
-      ) : null}
+      <ul>
+        {value
+          ? allSpellsFlat
+              .filter(({ title }) => title.match(new RegExp(value, 'i')))
+              .slice(0, 10)
+              .map((spell) => (
+                <SpellSummary
+                  key={spell.id}
+                  {...spell}
+                  isChecked={Boolean(spells.find(({ id }) => id === spell.id))}
+                  onChange={makeHandleChange(spell)}
+                />
+              ))
+          : null}
+      </ul>
+      {spells.length > 0 ? <button type="submit">Add selected spells</button> : null}
     </form>
   );
 };
