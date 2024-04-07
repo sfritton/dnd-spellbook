@@ -9,3 +9,20 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.printableSpells {
+  display: none;
+}
+
+@media print {
+  :not(:has(.printableSpells), .printableSpells, .printableSpells *) {
+    display: none !important;
+  }
+
+  .printableSpells {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-right: 1px;
+    padding-bottom: 1px;
+  }
+}

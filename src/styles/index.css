@@ -111,3 +111,13 @@ footer {
   --link-color-hover: #cbe7ff;
   }
 }
+
+@media print {
+  main {
+    padding: 0;
+  }
+
+  section {
+    margin: 0;
+  }
+}

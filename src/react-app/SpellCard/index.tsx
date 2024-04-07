@@ -32,7 +32,7 @@ export const SpellCard = ({ id, className }: { id: string; className?: string })
       </div>
       <div className={styles.description}>
         {description.map((line) => (
-          <p key={line}>
+          <div key={line}>
             {line.match(/^at higher levels\./i) ? (
               <>
                 <b>At Higher Levels.</b> {line.replace(/^at higher levels\./i, '')}
@@ -40,7 +40,7 @@ export const SpellCard = ({ id, className }: { id: string; className?: string })
             ) : (
               line
             )}
-          </p>
+          </div>
         ))}
       </div>
       <div className={styles.source}>Source: {source}</div>

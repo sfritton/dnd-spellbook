@@ -5,6 +5,7 @@ import { Spell } from '../types';
 import { SpellList } from '../SpellList';
 import styles from './index.module.css';
 import { useDialog } from '../Dialog';
+import { SpellCard } from '../SpellCard';
 
 export const App = () => {
   // TODO: convert to spells by level
@@ -38,7 +39,12 @@ export const App = () => {
         <ClassSpellsDialog title="Add class spells">
           <ClassSpellsInput appendSpells={appendSpells} />
         </ClassSpellsDialog>
-        <button>Print Spells</button>
+        {mySpells.length > 0 ? <button onClick={() => window.print()}>Print Spells</button> : null}
+      </div>
+      <div className={styles.printableSpells}>
+        {mySpells.map(({ id }) => (
+          <SpellCard id={id} key={id} />
+        ))}
       </div>
     </section>
   );

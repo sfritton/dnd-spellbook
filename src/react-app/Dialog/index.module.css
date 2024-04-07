@@ -55,6 +55,7 @@
         height: 40px;
         border-radius: 50%;
         border: none;
+        text-decoration: none;
 
         & span {
           transform: rotate(45deg);
