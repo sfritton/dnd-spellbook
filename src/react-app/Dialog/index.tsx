@@ -3,6 +3,7 @@ import styles from './index.module.css';
 
 interface DialogProps {
   title: string;
+  className?: string;
 }
 
 const dialogObserver = new MutationObserver((mutations, observer) => {
@@ -35,14 +36,14 @@ export const useDialog = () => {
     dialogRef.current?.close();
   }, []);
 
-  const Dialog = ({ title, children }: PropsWithChildren<DialogProps>) => (
+  const Dialog = ({ title, children, className }: PropsWithChildren<DialogProps>) => (
     <dialog
       className={styles.backdrop}
       // @ts-expect-error -- TS doesn't recognize the inert prop
       inert="true"
       ref={dialogRef}
     >
-      <div className={styles.dialog}>
+      <div className={`${styles.dialog} ${className}`}>
         <header className="dialogHeader">
           <h3>{title}</h3>
           <button className="secondary" autoFocus aria-label="Close" onClick={close}>

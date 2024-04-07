@@ -1,0 +1,41 @@
+.spellCard {
+  --gap: 4px;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  background: #f7f7f7;
+  border: 1px solid #d6d6d6;
+  padding: var(--gap);
+  border-radius: 12px;
+
+  > * {
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    > div {
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+  }
+
+  p {
+    line-height: 1.4;
+  }
+
+  h3,
+  .description,
+  .levelAndSchool,
+  .source {
+    grid-column: span 2;
+    margin: 0;
+  }
+
+  .source {
+    font-size: 12px;
+    /* background: transparent; */
+    padding: 4px 16px;
+  }
+}

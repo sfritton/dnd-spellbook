@@ -35,6 +35,19 @@ const generateSpellList = async (name: string, spellFileNames: string[]) => {
   );
 };
 
+const generateSpellTypescriptImports = async (spellFileNames: string[]) => {
+  const imports = spellFileNames.map(
+    (spellFileName, index) => `import spell${index} from '../../data/spells/${spellFileName}';`,
+  );
+  const exports = spellFileNames.map(
+    (spellFileName, index) => `  '${spellFileName.replace(/\.json$/, '')}': spell${index},`,
+  );
+
+  const fileText = [...imports, '', 'export const spellDetails = {', ...exports, '};'].join('\n');
+
+  return writeFile(`${__dirname}/../../../src/constants/spell-details.ts`, fileText);
+};
+
 const generateSpellLists = async () => {
   const spellFileNames = await readdir(`${DATA_DIRECTORY_PATH}/spells`);
 
@@ -45,6 +58,8 @@ const generateSpellLists = async () => {
       spells.map((spell) => `${spell.name}.json`),
     ),
   );
+
+  generateSpellTypescriptImports(spellFileNames);
 };
 
 generateSpellLists();

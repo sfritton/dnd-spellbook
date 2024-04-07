@@ -7,7 +7,11 @@ import { formatSpellLevel } from '../util';
 const allSpellsFlat = allSpells.flat();
 
 // TODO: allow user to add multiple spells
-export const Typeahead = ({ appendSpells }: { appendSpells: (spells: Spell[]) => void }) => {
+export const Typeahead = ({
+  appendSpells,
+}: {
+  appendSpells: (spells: Spell.Summary[]) => void;
+}) => {
   const [value, setValue] = useState<string>('');
 
   return (

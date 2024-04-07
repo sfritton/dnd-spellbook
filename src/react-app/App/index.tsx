@@ -8,8 +8,8 @@ import { useDialog } from '../Dialog';
 
 export const App = () => {
   // TODO: convert to spells by level
-  const [mySpells, setMySpells] = useState<Spell[]>([]);
-  const appendSpells = useCallback((spells: Spell[]) => {
+  const [mySpells, setMySpells] = useState<Spell.Summary[]>([]);
+  const appendSpells = useCallback((spells: Spell.Summary[]) => {
     setMySpells((prevMySpells) =>
       [
         ...prevMySpells,

@@ -10,7 +10,11 @@ const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   label: formatSpellLevel(i, true),
 }));
 
-export const ClassSpellsInput = ({ appendSpells }: { appendSpells: (spells: Spell[]) => void }) => {
+export const ClassSpellsInput = ({
+  appendSpells,
+}: {
+  appendSpells: (spells: Spell.Summary[]) => void;
+}) => {
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();

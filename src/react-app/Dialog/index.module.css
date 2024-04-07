@@ -9,6 +9,7 @@
   width: 100vw;
   height: 100vh;
   align-items: center;
+  z-index: 1;
 
   /* Styles */
   backdrop-filter: blur(16px);
@@ -41,6 +42,7 @@
     padding: 16px 20px;
     box-shadow: 0 -2px 5px 0 hsl(220 40% 2% / calc(10% + 2%)), 0 1px 1px -2px hsl(220 40% 2% / calc(10% + 3%)), 0 2px 2px -2px hsl(220 40% 2% / calc(10% + 3%)), 0 5px 5px -2px hsl(220 40% 2% / calc(10% + 4%)), 0 9px 9px -2px hsl(220 40% 2% / calc(10% + 5%)), 0 16px 16px -2px hsl(220 40% 2% / calc(10% + 6%));
     border-radius: 8px;
+    margin: 0 auto;
 
     & header {
       display: flex;
