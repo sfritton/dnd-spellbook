@@ -44,7 +44,7 @@ export const useDialog = () => {
       inert="true"
       ref={dialogRef}
     >
-      <div className={`${styles.dialog} ${className}`}>
+      <div className={`${styles.dialog} ${className} parchment overlay`}>
         <header className="dialogHeader">
           <h3>{title}</h3>
           <button className="secondary" autoFocus aria-label="Close" onClick={close}>

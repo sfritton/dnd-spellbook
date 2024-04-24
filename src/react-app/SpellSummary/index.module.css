@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #f7f7fb;
+  background: #fff6;
+  border-radius: 2px;
   padding: 8px 16px;
 
   .summary {
@@ -22,28 +23,34 @@
     width: auto;
     padding: 0;
     background: transparent;
-    color: var(--link-color);
+    color: var(--color-accent);
     text-decoration: underline;
     font-size: 14px;
 
     &:hover {
       background: transparent;
-      color: var(--link-color-hover);
+      color: var(--color-accent-hover);
     }
   }
 
   .dialog {
-    max-width: 400px;
-    padding: 4px;
-    border: 1px solid #d6d6d6;
-    border-radius: 12px;
-    background: #f7f7f7;
+    max-width: 480px;
+    padding: 4px 8px;
+    border-radius: 8px;
 
     header {
       padding: 8px 0 8px 16px;
 
       h3 {
         margin: 0;
+      }
+
+      button {
+        background: #fff6;
+
+        &:hover {
+          background: #fff;
+        }
       }
 
     }

@@ -1,10 +1,9 @@
 .stickyFooter {
   position: sticky;
   bottom: 0;
-  background: #fff;
   padding: 16px 20px;
   margin: 0 -20px;
-  border-top: 1px solid #d6d6d6;
+  border-top: 1px solid var(--color-parchment-dark);
   display: flex;
   flex-direction: column;
   gap: 16px;

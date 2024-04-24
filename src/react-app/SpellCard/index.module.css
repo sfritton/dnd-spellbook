@@ -1,20 +1,18 @@
 .spellCard {
-  --gap: 4px;
+  --gap: 8px;
   max-width: 400px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto auto 1fr auto;
   gap: var(--gap);
-  background: #f7f7f7;
-  border: 1px solid #d6d6d6;
   padding: var(--gap);
   border-radius: 12px;
 
   > * {
-    background: #fff;
+    background: #fff6;
+    outline: 1px solid var(--color-parchment-dark);
     padding: 8px 16px;
-    border-radius: 8px;
-
+    border-radius: 2px;
   }
 
   .detail > div {

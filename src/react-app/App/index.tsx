@@ -46,7 +46,7 @@ export const App = () => {
     <section>
       <h2>My Spells</h2>
       <SpellList spells={mySpells} spellsToSkip={spellsToSkip} makeToggleSpell={makeToggleSpell} />
-      <div className={styles.stickyFooter}>
+      <div className={`${styles.stickyFooter} parchment overlay`}>
         <button className="secondary" onClick={openTypeahead}>
           Add spells by name
         </button>

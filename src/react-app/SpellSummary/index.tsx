@@ -20,7 +20,7 @@ export const SpellSummary = ({ id, title, level, isChecked, onChange }: SpellSum
         <div>{formatSpellLevel(level)}</div>
       </div>
       <button onClick={openSpellDialog}>View details</button>
-      <SpellDialog className={styles.dialog} title={title}>
+      <SpellDialog className={`${styles.dialog} parchment`} title={title}>
         <SpellCard className={styles.spellCard} id={id} />
       </SpellDialog>
     </li>
