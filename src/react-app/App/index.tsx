@@ -1,51 +1,33 @@
-import { useCallback, useEffect, useState } from 'react';
 import { ClassSpellsInput } from '../ClassSpellsInput';
 import { Typeahead } from '../Typeahead';
-import { Spell } from '../types';
 import { SpellList } from '../SpellList';
 import styles from './index.module.css';
 import { useDialog } from '../Dialog';
 import { SpellCard } from '../SpellCard';
-import { getDescriptionLength } from '../util';
+import { formatSpellLevel, getDescriptionLength } from '../util';
+import { useSpellListContext } from '../SpellListContext';
 
 export const App = () => {
-  // TODO: convert to spells by level
-  const [mySpells, setMySpells] = useState<Spell.Summary[]>([]);
-  const appendSpells = useCallback((spells: Spell.Summary[]) => {
-    setMySpells((prevMySpells) =>
-      [
-        ...prevMySpells,
-        ...spells.filter(({ id }) => prevMySpells.every((prevSpell) => prevSpell.id !== id)),
-      ].sort((spellA, spellB) => spellA.level - spellB.level),
-    );
-  }, []);
-
+  const { spellLists, appendSpells, preparedSpells } = useSpellListContext();
   const [TypeaheadDialog, { open: openTypeahead }] = useDialog();
   const [ClassSpellsDialog, { open: openClassSpells }] = useDialog();
 
-  const [spellsToSkip, setSpellsToSkip] = useState<string[]>([]);
-  const makeToggleSpell = useCallback(
-    (id: string) => (isChecked: boolean) => {
-      setSpellsToSkip((prevSpellsToSkip) => {
-        const spellIndex = prevSpellsToSkip.findIndex((spellId) => spellId === id);
-
-        if (!isChecked) return [...prevSpellsToSkip, id];
-
-        if (spellIndex === -1) return prevSpellsToSkip;
-
-        return [
-          ...prevSpellsToSkip.slice(0, spellIndex),
-          ...prevSpellsToSkip.slice(spellIndex + 1),
-        ];
-      });
-    },
-    [],
-  );
-
   return (
-    <section>
-      <h2>My Spells</h2>
-      <SpellList spells={mySpells} spellsToSkip={spellsToSkip} makeToggleSpell={makeToggleSpell} />
+    <>
+      {preparedSpells.length > 0 ? (
+        <section>
+          <h2>Prepared Spells</h2>
+          <SpellList spells={preparedSpells} showLevel />
+        </section>
+      ) : null}
+      {spellLists.map((spells, index) =>
+        spells.length > 0 ? (
+          <section key={index}>
+            <h2>{formatSpellLevel(index, true)}</h2>
+            <SpellList spells={spells} />
+          </section>
+        ) : null,
+      )}
       <div className={`${styles.stickyFooter} parchment overlay`}>
         <button className="secondary" onClick={openTypeahead}>
           Add spells by name
@@ -59,9 +41,9 @@ export const App = () => {
         <ClassSpellsDialog title="Add class spells">
           <ClassSpellsInput appendSpells={appendSpells} />
         </ClassSpellsDialog>
-        {mySpells.length > 0 ? <button onClick={() => window.print()}>Print Spells</button> : null}
+        {/* {mySpells.length > 0 ? <button onClick={() => window.print()}>Print Spells</button> : null} */}
       </div>
-      <div className={styles.printableSpells}>
+      {/* <div className={styles.printableSpells}>
         {mySpells
           .filter(({ id }) => !spellsToSkip.includes(id))
           .sort((spellA, spellB) => {
@@ -75,7 +57,7 @@ export const App = () => {
           .map(({ id }) => (
             <SpellCard id={id} key={id} />
           ))}
-      </div>
-    </section>
+      </div> */}
+    </>
   );
 };

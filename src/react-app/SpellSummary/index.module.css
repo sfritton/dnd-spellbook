@@ -1,5 +1,6 @@
 .spellSummary {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
   align-items: center;
   gap: 8px;
   background: #fff6;
@@ -7,15 +8,17 @@
   padding: 8px 16px;
 
   .summary {
-    flex-grow: 1;
-
+    overflow: hidden;
     h3 {
       margin: 0;
       font-size: 16px;
     }
 
-    div {
+    .levelAndTime {
       font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

@@ -58,6 +58,7 @@ export const Typeahead = ({
                   {...spell}
                   isChecked={Boolean(spells.find(({ id }) => id === spell.id))}
                   onChange={makeHandleChange(spell)}
+                  showLevel
                 />
               ))
           : null}

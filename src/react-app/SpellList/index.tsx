@@ -1,25 +1,26 @@
+import { SpellSummaryData, useSpellListContext } from '../SpellListContext';
 import { SpellSummary } from '../SpellSummary';
-import { Spell } from '../types';
 import styles from './index.module.css';
 
 export const SpellList = ({
   spells,
-  spellsToSkip,
-  makeToggleSpell,
+  showLevel = false,
 }: {
-  spells: Spell.Summary[];
-  spellsToSkip: string[];
-  makeToggleSpell: (id: string) => (isChecked: boolean) => void;
+  spells: SpellSummaryData[];
+  showLevel?: boolean;
 }) => {
+  const { makeToggleSpell } = useSpellListContext();
+
   if (spells.length < 1) return null;
 
   return (
     <ul className={styles.spellList}>
       {spells.map((spell) => (
         <SpellSummary
-          isChecked={!spellsToSkip.includes(spell.id)}
-          onChange={makeToggleSpell(spell.id)}
+          isChecked={spell.isPrepared}
+          onChange={makeToggleSpell({ id: spell.id, level: spell.level })}
           key={spell.id}
+          showLevel={showLevel}
           {...spell}
         />
       ))}
