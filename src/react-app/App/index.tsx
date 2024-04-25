@@ -32,7 +32,7 @@ export const App = () => {
       {!hasSpells ? (
         <section>
           <div className={styles.spellListPlaceholder}>
-            Your spell book is empty! Use the buttons below to start adding spells.
+            Your spellbook is empty! Use the buttons below to start filling it out.
           </div>
         </section>
       ) : null}
