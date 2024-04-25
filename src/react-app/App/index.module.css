@@ -9,6 +9,16 @@
   gap: 16px;
 }
 
+.spellListPlaceholder {
+  background: #fff6;
+  border-radius: 2px;
+  padding: 8px 16px;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .printableSpells {
   display: none;
 }

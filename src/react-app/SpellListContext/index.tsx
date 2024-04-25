@@ -3,6 +3,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -19,9 +20,10 @@ export interface SpellSummaryData extends Spell.Summary {
 
 interface SpellListContextValue {
   spellLists: SpellSummaryData[][];
+  preparedSpells: SpellSummaryData[];
   appendSpells: (spells: Spell.Summary[]) => void;
   makeToggleSpell: MakeToggleSpell;
-  preparedSpells: SpellSummaryData[];
+  clearSpells: () => void;
 }
 
 const SpellListContext = createContext<SpellListContextValue>({
@@ -29,10 +31,22 @@ const SpellListContext = createContext<SpellListContextValue>({
   preparedSpells: [],
   appendSpells: () => {},
   makeToggleSpell: () => () => {},
+  clearSpells: () => {},
 });
 
+const getStoredSpellLists = (): SpellSummaryData[][] | undefined => {
+  const storedString = localStorage.getItem('spell-lists');
+
+  if (!storedString) return undefined;
+
+  return JSON.parse(storedString);
+};
+
 export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
-  const [spellLists, setSpellLists] = useState<SpellSummaryData[][]>(new Array(10).fill([]));
+  const storedSpellLists = getStoredSpellLists();
+  const [spellLists, setSpellLists] = useState<SpellSummaryData[][]>(
+    storedSpellLists ?? new Array(10).fill([]),
+  );
   const appendSpells = useCallback((spells: Spell.Summary[]) => {
     setSpellLists((prevSpells) =>
       prevSpells.map((leveledSpells, currentLevel) =>
@@ -71,15 +85,23 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
     [],
   );
 
+  const clearSpells = useCallback(() => {
+    setSpellLists(new Array(10).fill([]));
+  }, []);
+
   const preparedSpells = useMemo(
     () => spellLists.flatMap((spells) => spells.filter(({ isPrepared }) => isPrepared)),
     [spellLists],
   );
 
   const value = useMemo(
-    () => ({ spellLists, appendSpells, makeToggleSpell, preparedSpells }),
-    [spellLists, appendSpells, makeToggleSpell, preparedSpells],
+    () => ({ spellLists, appendSpells, makeToggleSpell, preparedSpells, clearSpells }),
+    [spellLists, appendSpells, makeToggleSpell, preparedSpells, clearSpells],
   );
+
+  useEffect(() => {
+    localStorage.setItem('spell-lists', JSON.stringify(spellLists));
+  }, [spellLists]);
 
   return <SpellListContext.Provider value={value}>{children}</SpellListContext.Provider>;
 };

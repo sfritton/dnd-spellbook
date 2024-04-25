@@ -8,16 +8,32 @@ import { formatSpellLevel, getDescriptionLength } from '../util';
 import { useSpellListContext } from '../SpellListContext';
 
 export const App = () => {
-  const { spellLists, appendSpells, preparedSpells } = useSpellListContext();
+  const { spellLists, preparedSpells, appendSpells, clearSpells } = useSpellListContext();
   const [TypeaheadDialog, { open: openTypeahead }] = useDialog();
   const [ClassSpellsDialog, { open: openClassSpells }] = useDialog();
 
+  const hasSpells = spellLists.some((spells) => spells.length > 0);
+  const hasPreparedSpells = preparedSpells.length > 0;
+
   return (
     <>
-      {preparedSpells.length > 0 ? (
+      {hasSpells ? (
         <section>
           <h2>Prepared Spells</h2>
-          <SpellList spells={preparedSpells} showLevel />
+          {hasPreparedSpells ? (
+            <SpellList spells={preparedSpells} showLevel />
+          ) : (
+            <div className={styles.spellListPlaceholder}>
+              Check the box next to a spell to add it to your prepared spells.
+            </div>
+          )}
+        </section>
+      ) : null}
+      {!hasSpells ? (
+        <section>
+          <div className={styles.spellListPlaceholder}>
+            Your spell book is empty! Use the buttons below to start adding spells.
+          </div>
         </section>
       ) : null}
       {spellLists.map((spells, index) =>
@@ -41,6 +57,11 @@ export const App = () => {
         <ClassSpellsDialog title="Add class spells">
           <ClassSpellsInput appendSpells={appendSpells} />
         </ClassSpellsDialog>
+        {hasSpells ? (
+          <button className="secondary" onClick={clearSpells}>
+            Clear spells
+          </button>
+        ) : null}
         {/* {mySpells.length > 0 ? <button onClick={() => window.print()}>Print Spells</button> : null} */}
       </div>
       {/* <div className={styles.printableSpells}>

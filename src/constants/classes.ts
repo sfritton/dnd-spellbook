@@ -16,7 +16,7 @@ export const CLASSES = [
     name: 'Druid',
   },
   {
-    id: 'eldritch-knight',
+    id: 'eldritchKnight',
     name: 'Fighter: Eldritch Knight',
   },
   {
@@ -28,7 +28,7 @@ export const CLASSES = [
     name: 'Ranger',
   },
   {
-    id: 'arcane-trickster',
+    id: 'arcaneTrickster',
     name: 'Rogue: Arcane Trickster',
   },
   {
