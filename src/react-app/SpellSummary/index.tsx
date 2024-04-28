@@ -1,5 +1,6 @@
+import { useCallback } from 'react';
 import { spellDetails } from '../../constants/spell-details';
-import { useDialog } from '../Dialog';
+import { useSingleDialog } from '../Dialog';
 import { SpellCard } from '../SpellCard';
 import { Spell } from '../types';
 import { formatSpellLevel } from '../util';
@@ -19,23 +20,28 @@ export const SpellSummary = ({
   onChange,
   showLevel = false,
 }: SpellSummaryProps) => {
-  const [SpellDialog, { open: openSpellDialog }] = useDialog();
+  const { open } = useSingleDialog();
   const { castingTime }: Spell.Details = spellDetails[id];
+
+  const openSpellDialog = useCallback(() => {
+    open({
+      title,
+      className: styles.dialog,
+      children: <SpellCard className={styles.spellCard} id={id} />,
+    });
+  }, [open, title, id]);
 
   return (
     <li className={styles.spellSummary}>
       <input type="checkbox" checked={isChecked} onChange={(e) => onChange(e.target.checked)} />
       <div className={styles.summary}>
-        <h3>{title}</h3>
+        <h4>{title}</h4>
         <div className={styles.levelAndTime}>
           {showLevel ? <>{formatSpellLevel(level)} &bull; </> : null}
           {castingTime}
         </div>
       </div>
       <button onClick={openSpellDialog}>View details</button>
-      <SpellDialog className={styles.dialog} title={title}>
-        <SpellCard className={styles.spellCard} id={id} />
-      </SpellDialog>
     </li>
   );
 };

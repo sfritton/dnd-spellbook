@@ -20,7 +20,7 @@ export interface SpellSummaryData extends Spell.Summary {
 
 interface SpellListContextValue {
   spellLists: SpellSummaryData[][];
-  preparedSpells: SpellSummaryData[];
+  preparedSpells: SpellSummaryData[][];
   appendSpells: (spells: Spell.Summary[]) => void;
   makeToggleSpell: MakeToggleSpell;
   clearSpells: () => void;
@@ -90,7 +90,7 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const preparedSpells = useMemo(
-    () => spellLists.flatMap((spells) => spells.filter(({ isPrepared }) => isPrepared)),
+    () => spellLists.map((spells) => spells.filter(({ isPrepared }) => isPrepared)),
     [spellLists],
   );
 

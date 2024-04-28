@@ -30,7 +30,7 @@
     }
   
     &[open] .dialog {
-      animation: slide-up 300ms ease forwards;
+      animation: grow 300ms ease forwards;
     }
   }
 
@@ -68,12 +68,12 @@
 
 @keyframes shrink {
   to {
-    transform: scale(0.3);
+    transform: scale(0);
   }
 }
 
-@keyframes slide-up {
+@keyframes grow {
   from {
-    transform: translateY(60px);
+    transform: scale(0);
   }
 }
