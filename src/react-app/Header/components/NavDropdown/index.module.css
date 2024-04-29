@@ -1,0 +1,35 @@
+.dropdownWrapper {
+  position: relative;
+
+  .dropdown {
+    background: var(--color-accent);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    transition: all 300ms;
+    z-index: -1;
+    color: #fff;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+
+  &:hover,
+  &:focus-within {
+    .dropdown {
+      transition-delay: 200ms;
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .dropdownTrigger.dropdownTrigger {
+      width: 200px;
+
+      & span {
+        opacity: 1;
+        padding-left: 8px;
+      }
+    }
+  }
+}

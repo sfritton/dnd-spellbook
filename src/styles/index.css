@@ -28,6 +28,7 @@ body {
   font-family: var(--serif);
   color: var(--color-text);
   margin: 0;
+  background: #000;
 }
 
 .parchment {

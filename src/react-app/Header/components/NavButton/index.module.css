@@ -1,0 +1,31 @@
+.navButton {
+  width: 44px;
+  height: 44px;
+  background: #000;
+  transition: width 300ms ease;
+
+  svg {
+    fill: #fff;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .buttonLabel {
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 300ms, padding 300ms;
+  }
+
+  &:hover,
+  &:focus {
+    background: #222;
+    width: 200px;
+
+    .buttonLabel {
+      opacity: 1;
+      padding-left: 8px;
+    }
+  }
+}

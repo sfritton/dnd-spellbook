@@ -1,77 +1,51 @@
 .header {
-  font-family: var(--sans);
-  background: #000;
   position: sticky;
   top: 0;
-  color: #fff;
-  padding: 8px 20px;
-  min-height: 44px;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
 
-  h1 {
-    font-size: 20px;
-    margin: 0;
-  }
+  > .visualHeader {
+    font-family: var(--sans);
+    background: #000;
+    color: #fff;
+    padding: 8px 20px;
+    min-height: 44px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: var(--shadow-md);
 
-  nav {
-    margin: -8px;
-    margin-left: 0;
-    margin-right: -20px;
-
-    ul {
-      list-style: none;
+    h1 {
+      font-size: 20px;
       margin: 0;
-      padding: 0;
-      display: flex;
+    }
 
-      .summaryView {
-        height: 44px;
+    nav {
+      margin: -8px;
+      margin-left: 0;
+      margin-right: -12px;
 
-        &:hover {
-          background: #222;
-        }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        .summaryView {
+          height: 44px;
+
+          &:hover {
+            background: #222;
+          }
 
 
-        label {
-          cursor: pointer;
-          height: 100%;
-          display: inline-flex;
-          align-items: center;
-          padding: 0 16px 0 8px;
-        }
-      }
-
-      button {
-        width: 44px;
-        height: 44px;
-        background: #000;
-        transition: width 300ms ease;
-
-        svg {
-          fill: #fff;
-          width: 24px;
-          height: 24px;
-          flex-shrink: 0;
-        }
-
-        .buttonLabel {
-          overflow: hidden;
-          white-space: nowrap;
-          opacity: 0;
-          transition: opacity 300ms, padding 300ms;
-        }
-
-        &:hover {
-          background: #222;
-          width: 160px;
-
-          .buttonLabel {
-            opacity: 1;
-            padding-left: 8px;
+          label {
+            cursor: pointer;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 16px 0 8px;
           }
         }
+
       }
     }
   }
