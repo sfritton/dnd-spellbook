@@ -12,8 +12,10 @@ const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
 
 export const ClassSpellsInput = ({
   appendSpells,
+  close,
 }: {
   appendSpells: (spells: Spell.Summary[]) => void;
+  close: () => void;
 }) => {
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -28,8 +30,9 @@ export const ClassSpellsInput = ({
       appendSpells(
         levels.flatMap((level) => spellLists[className as keyof typeof spellLists][level]),
       );
+      close();
     },
-    [appendSpells],
+    [appendSpells, close],
   );
 
   return (
@@ -54,6 +57,9 @@ export const ClassSpellsInput = ({
         ))}
       </fieldset>
       <button type="submit">Load spells</button>
+      <button onClick={close} className="secondary">
+        Cancel
+      </button>
     </form>
   );
 };

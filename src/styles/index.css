@@ -40,7 +40,7 @@ body {
 }
 
 main {
-  padding: 16px 20px 8px;
+  padding: 16px 20px 8px 395px;
   min-height: calc(100vh - 50px);
 }
 
@@ -124,6 +124,7 @@ footer {
   background: #112;
   color: #fff;
   padding: 16px 20px;
+  padding-left: 395px;
 
   & a {
   --color-accent: #fff;

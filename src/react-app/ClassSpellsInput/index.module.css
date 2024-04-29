@@ -2,6 +2,7 @@
   .selectLabel {
     display: block;
     margin-bottom: 8px;
+    font-weight: bold;
   }
 
 
@@ -24,6 +25,7 @@
 
     legend {
       margin-bottom: 8px;
+      font-weight: bold;
     }
   }
 }

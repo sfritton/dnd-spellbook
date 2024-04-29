@@ -9,8 +9,10 @@ const allSpellsFlat = allSpells.flat();
 
 export const Typeahead = ({
   appendSpells,
+  close,
 }: {
   appendSpells: (spells: Spell.Summary[]) => void;
+  close: () => void;
 }) => {
   const [value, setValue] = useState<string>('');
   const [spells, setSpells] = useState<Spell.Summary[]>([]);
@@ -30,6 +32,7 @@ export const Typeahead = ({
       onSubmit={(e) => {
         e.preventDefault();
         appendSpells(spells);
+        close();
       }}
     >
       <input
@@ -39,7 +42,9 @@ export const Typeahead = ({
         type="text"
         style={{ display: 'none' }}
       ></input>
-      <label htmlFor="spell-typeahead">Add a spell by name</label>
+      <label htmlFor="spell-typeahead" className="hidden">
+        Add a spell by name
+      </label>
       <input
         type="text"
         id="spell-typeahead"
@@ -64,6 +69,9 @@ export const Typeahead = ({
           : null}
       </ul>
       {spells.length > 0 ? <button type="submit">Add selected spells</button> : null}
+      <button className="secondary" onClick={close}>
+        Cancel
+      </button>
     </form>
   );
 };
