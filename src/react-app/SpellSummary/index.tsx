@@ -21,7 +21,7 @@ export const SpellSummary = ({
   showLevel = false,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
-  const { castingTime }: Spell.Details = spellDetails[id];
+  const { castingTime, duration }: Spell.Details = spellDetails[id];
 
   const openSpellDialog = useCallback(() => {
     open({
@@ -38,7 +38,8 @@ export const SpellSummary = ({
         <h4>{title}</h4>
         <div className={styles.levelAndTime}>
           {showLevel ? <>{formatSpellLevel(level)} &bull; </> : null}
-          {castingTime}
+          {castingTime.split(',')[0]}
+          {/concentration/i.test(duration) ? <> &bull; Concentration</> : null}
         </div>
       </div>
       <button onClick={openSpellDialog}>View details</button>
