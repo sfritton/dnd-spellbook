@@ -13,7 +13,7 @@ export const Spellbook = () => {
   const hasPreparedSpells = preparedSpells.some((spells) => spells.length > 0);
 
   return (
-    <div className={styles.spellbook}>
+    <main className={styles.spellbook}>
       <section>
         <h2>Prepared Spells</h2>
         {hasPreparedSpells ? (
@@ -53,6 +53,6 @@ export const Spellbook = () => {
           )}
         </>
       ) : null}
-    </div>
+    </main>
   );
 };

@@ -1,5 +1,6 @@
 :root {
-  --sans: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  --sans: var(--serif);
 
   --color-text: #23130a;
   --color-accent: #155b98;
@@ -24,7 +25,7 @@ html {
 }
 
 body {
-  font-family: var(--sans);
+  font-family: var(--serif);
   color: var(--color-text);
   margin: 0;
 }
@@ -37,11 +38,6 @@ body {
   .overlay {
     box-shadow: var(--shadow-md), var(--shadow-parchment);
   }
-}
-
-main {
-  padding: 16px 20px 8px 395px;
-  min-height: calc(100vh - 50px);
 }
 
 section {
@@ -90,6 +86,7 @@ a:hover {
 
 
 button {
+  font-family: var(--serif);
   display: flex;
   width: 100%;
   justify-content: center;
@@ -118,13 +115,11 @@ button {
 }
 
 footer {
-  height: 50px;
   font-size: 14px;
   text-align: center;
-  background: #112;
+  background: #000;
   color: #fff;
-  padding: 16px 20px;
-  padding-left: 395px;
+  padding: 8px 20px;
 
   & a {
   --color-accent: #fff;

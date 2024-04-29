@@ -1,3 +1,7 @@
+.spellbook {
+  padding: 16px 20px 8px;
+  min-height: calc(100vh - 50px);
+}
 
 .spellListPlaceholder {
   background: #fff6;
