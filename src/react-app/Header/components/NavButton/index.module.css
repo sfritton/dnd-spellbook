@@ -19,7 +19,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background: #222;
     width: 200px;
 

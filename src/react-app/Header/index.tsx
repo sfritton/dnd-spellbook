@@ -1,41 +1,39 @@
-import { useState } from 'react';
 import { IconAdd } from '../icons/IconAdd';
 import { IconDelete } from '../icons/IconDelete';
+import { IconPrint } from '../icons/IconPrint';
+import { IconSettings } from '../icons/IconSettings';
 import { NavDropdown } from './components/NavDropdown';
 import styles from './index.module.css';
 import { NavButton } from './components/NavButton';
+import { useSpellListContext } from '../SpellListContext';
+import { TypeaheadButton } from './components/TypeaheadButton';
+import { ClassSpellsButton } from './components/ClassSpellsButton';
 
 export const Header = () => {
-  const [isAddDropdownOpen, setIsAddDropdownOpen] = useState(false);
+  const { clearSpells } = useSpellListContext();
   return (
-    <header className={styles.header} onMouseLeave={() => setIsAddDropdownOpen(false)}>
+    <header className={styles.header}>
       <div className={styles.visualHeader}>
         <h1>DnD 5e Spellbook</h1>
         <nav>
           <ul>
-            {/* TODO */}
-            {/* <li className={styles.summaryView}>
-            <input id="card-view" type="checkbox" />
-            <label htmlFor="card-view">Card view</label>
-          </li> */}
             <li>
-              <NavButton icon={<IconDelete />} label="Clear spells" />
+              <NavButton icon={<IconDelete />} label="Clear spells" onClick={clearSpells} />
             </li>
             {/* TODO */}
-            {/* <li><button>Print</button></li> */}
+            {/* <li>
+              <NavButton icon={<IconPrint />} label="Print spells" />
+            </li> */}
             <li>
-              {/* <button
-                className={isAddDropdownOpen ? styles.isOpen : undefined}
-                onMouseEnter={() => setIsAddDropdownOpen(true)}
-              >
-                <IconAdd />
-                <span className={styles.buttonLabel}> Add spells</span>
-              </button> */}
               <NavDropdown title="Add spells" icon={<IconAdd />}>
-                <button>Add by name</button>
-                <button>Add from class list</button>
+                <TypeaheadButton />
+                <ClassSpellsButton />
               </NavDropdown>
             </li>
+            {/* TODO */}
+            {/* <li>
+              <NavButton icon={<IconSettings />} label="Settings" />
+            </li> */}
           </ul>
         </nav>
       </div>

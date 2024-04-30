@@ -9,12 +9,14 @@ import {
   useState,
 } from 'react';
 import styles from './index.module.css';
+import { IconClose } from '../icons/IconClose';
 
 // TODO: this whole file is a mess, let's find a better way to combine react + dialog + animations
 interface DialogProps {
   title: string;
   className?: string;
   onClose?: () => void;
+  isDrawer?: boolean;
 }
 
 const dialogObserver = new MutationObserver((mutations) => {
@@ -49,7 +51,13 @@ export const useDialog = () => {
   }, []);
 
   const Dialog = useCallback(
-    ({ title, children, className, onClose }: PropsWithChildren<DialogProps>) => {
+    ({
+      title,
+      children,
+      className = '',
+      onClose,
+      isDrawer = false,
+    }: PropsWithChildren<DialogProps>) => {
       return (
         <dialog
           className={styles.backdrop}
@@ -57,11 +65,15 @@ export const useDialog = () => {
           inert="true"
           ref={dialogRef}
         >
-          <div className={`${styles.dialog} ${className} parchment overlay`}>
+          <div
+            className={`${styles.dialog} ${className} ${
+              isDrawer ? styles.drawer : styles.modal
+            } parchment overlay`}
+          >
             <header className="dialogHeader">
               <h3>{title}</h3>
               <button className="secondary" autoFocus aria-label="Close" onClick={onClose ?? close}>
-                <span aria-hidden="true">+</span>
+                <IconClose />
               </button>
             </header>
             {children}
