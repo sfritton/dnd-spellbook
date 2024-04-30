@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { MouseEventHandler, useCallback } from 'react';
 import { spellDetails } from '../../constants/spell-details';
 import { useSingleDialog } from '../Dialog';
 import { SpellCard } from '../SpellCard';
@@ -23,26 +23,30 @@ export const SpellSummary = ({
   const { open } = useSingleDialog();
   const { castingTime, duration }: Spell.Details = spellDetails[id];
 
-  const openSpellDialog = useCallback(() => {
-    open({
-      title,
-      className: styles.dialog,
-      children: <SpellCard className={styles.spellCard} id={id} />,
-    });
-  }, [open, title, id]);
+  const openSpellDialog = useCallback<MouseEventHandler>(
+    (e) => {
+      e.preventDefault();
+      open({
+        title,
+        className: styles.dialog,
+        children: <SpellCard className={styles.spellCard} id={id} />,
+      });
+    },
+    [open, title, id],
+  );
 
   return (
     <li className={styles.spellSummary}>
+      {/* TODO: larger touch target for checkbox, cursor pointer, hover color */}
       <input type="checkbox" checked={isChecked} onChange={(e) => onChange(e.target.checked)} />
-      <div className={styles.summary}>
+      <a className={styles.summary} tabIndex={0} onClick={openSpellDialog}>
         <h4>{title}</h4>
         <div className={styles.levelAndTime}>
           {showLevel ? <>{formatSpellLevel(level)} &bull; </> : null}
           {castingTime.split(',')[0]}
           {/concentration/i.test(duration) ? <> &bull; Concentration</> : null}
         </div>
-      </div>
-      <button onClick={openSpellDialog}>View details</button>
+      </a>
     </li>
   );
 };

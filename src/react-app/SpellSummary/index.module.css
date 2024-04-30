@@ -1,14 +1,16 @@
 .spellSummary {
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  align-items: center;
-  gap: 8px;
+  grid-template-columns: auto 1fr;
   background: #fff6;
   border-radius: 2px;
-  padding: 8px 16px;
+  padding-left: 12px;
 
   .summary {
+    color: var(--color-text);
     overflow: hidden;
+    cursor: pointer;
+    padding: 8px 16px 8px 12px;
+
     h4 {
       margin: 0;
       font-size: 16px;
@@ -20,19 +22,9 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-  }
-
-  button {
-    width: auto;
-    padding: 0;
-    background: transparent;
-    color: var(--color-accent);
-    text-decoration: underline;
-    font-size: 14px;
 
     &:hover {
-      background: transparent;
-      color: var(--color-accent-hover);
+      text-decoration: underline;
     }
   }
 
