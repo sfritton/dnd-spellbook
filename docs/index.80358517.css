@@ -517,11 +517,6 @@
   display: grid;
 }
 
-.BGWDaa_spellbook {
-  min-height: calc(100vh - 50px);
-  padding: 16px 20px 8px;
-}
-
 .BGWDaa_spellListPlaceholder {
   background: #fff6;
   border-radius: 2px;
@@ -560,4 +555,20 @@
     display: grid;
   }
 }
-/*# sourceMappingURL=index.b1f44e74.css.map */
+
+.C2D9ya_welcome {
+  max-width: 420px;
+  margin: 64px auto 32px;
+}
+
+.C2D9ya_welcome h3 {
+  margin-top: 32px;
+}
+
+.C2D9ya_welcome .C2D9ya_buttons {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  display: flex;
+}
+/*# sourceMappingURL=index.80358517.css.map */

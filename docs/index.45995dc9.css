@@ -29,6 +29,15 @@ body {
   margin: 0;
 }
 
+main {
+  min-height: calc(100vh - 80px);
+  padding: 16px 20px 8px;
+}
+
+main > * {
+  animation: .3s both fadeIn;
+}
+
 .parchment {
   box-shadow: var(--shadow-parchment);
   background: var(--color-parchment-light);
@@ -37,6 +46,19 @@ body {
 
 .parchment .overlay {
   box-shadow: var(--shadow-md), var(--shadow-parchment);
+}
+
+.placeholder-header {
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  background: #000;
+  min-height: 44px;
+  padding: 8px 20px;
+}
+
+.placeholder-header h1 {
+  margin: 0;
+  font-size: 20px;
 }
 
 section {
@@ -133,4 +155,10 @@ footer a {
     margin: 0;
   }
 }
-/*# sourceMappingURL=index.64848912.css.map */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=index.45995dc9.css.map */
