@@ -7938,7 +7938,8 @@ var $bwXBY = parcelRequire("bwXBY");
 
 
 
-const $c3fbb44f23bacc75$export$4176b1d4e95be624 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+const $c3fbb44f23bacc75$export$4176b1d4e95be624 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
         focusable: "false",
         "aria-hidden": "true",
         viewBox: "0 0 24 24",
@@ -8024,12 +8025,15 @@ const $19456708aad159cc$export$461cb598b7fcff7b = ({ children: children, title: 
 
 var $157a59a2d978efda$exports = {};
 
+$parcel$export($157a59a2d978efda$exports, "clearDialog", function () { return $157a59a2d978efda$export$cedab6903badeb9a; }, function (v) { return $157a59a2d978efda$export$cedab6903badeb9a = v; });
 $parcel$export($157a59a2d978efda$exports, "header", function () { return $157a59a2d978efda$export$38e42c68cf43b5d4; }, function (v) { return $157a59a2d978efda$export$38e42c68cf43b5d4 = v; });
 $parcel$export($157a59a2d978efda$exports, "summaryView", function () { return $157a59a2d978efda$export$2099952e92af2fc7; }, function (v) { return $157a59a2d978efda$export$2099952e92af2fc7 = v; });
 $parcel$export($157a59a2d978efda$exports, "visualHeader", function () { return $157a59a2d978efda$export$e75a5077ed9b40c7; }, function (v) { return $157a59a2d978efda$export$e75a5077ed9b40c7 = v; });
+var $157a59a2d978efda$export$cedab6903badeb9a;
 var $157a59a2d978efda$export$38e42c68cf43b5d4;
 var $157a59a2d978efda$export$2099952e92af2fc7;
 var $157a59a2d978efda$export$e75a5077ed9b40c7;
+$157a59a2d978efda$export$cedab6903badeb9a = `iPi3oW_clearDialog`;
 $157a59a2d978efda$export$38e42c68cf43b5d4 = `iPi3oW_header`;
 $157a59a2d978efda$export$2099952e92af2fc7 = `iPi3oW_summaryView`;
 $157a59a2d978efda$export$e75a5077ed9b40c7 = `iPi3oW_visualHeader`;
@@ -11337,7 +11341,13 @@ $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = `O3yP9W_summary`;
 
 const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false })=>{
     const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
-    const { castingTime: castingTime, duration: duration } = (0, $f278a73600af97eb$export$400852b624061e8)[id];
+    const { castingTime: castingTime, duration: duration, levelAndSchool: levelAndSchool } = (0, $f278a73600af97eb$export$400852b624061e8)[id];
+    const isRitual = /ritual/i.test(levelAndSchool);
+    console.log({
+        id: id,
+        isRitual: isRitual,
+        levelAndSchool: levelAndSchool
+    });
     const openSpellDialog = (0, $bwXBY.useCallback)((e)=>{
         e.preventDefault();
         open({
@@ -11369,20 +11379,14 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
                         children: title
                     }),
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                         className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).levelAndTime,
                         children: [
-                            showLevel ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
-                                children: [
-                                    (0, $afae47e020802ade$export$89c6395f9ab5b552)(level),
-                                    " \u2022 "
-                                ]
-                            }) : null,
+                            showLevel ? (0, $afae47e020802ade$export$89c6395f9ab5b552)(level) : false,
                             castingTime.split(",")[0],
-                            /concentration/i.test(duration) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $086df4e28a6f4e89$exports.Fragment), {
-                                children: " \u2022 Concentration"
-                            }) : null
-                        ]
+                            isRitual ? "Ritual" : false,
+                            /concentration/i.test(duration) ? "Concentration" : false
+                        ].filter(Boolean).join(" \u2022 ")
                     })
                 ]
             })
@@ -11681,8 +11685,48 @@ const $a51311e2ece224b3$export$57985164aefcb841 = ()=>{
 };
 
 
+
+
+var $bwXBY = parcelRequire("bwXBY");
 const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
-    const { clearSpells: clearSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { clearSpells: clearSpells, spellLists: spellLists } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { open: open, close: close } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
+    const hasSpells = (0, $bwXBY.useMemo)(()=>spellLists.some((list)=>list.length > 0), [
+        spellLists
+    ]);
+    const openClearDialog = (0, $bwXBY.useCallback)(()=>{
+        const handleYes = ()=>{
+            clearSpells();
+            close();
+        };
+        open({
+            title: "Remove all spells?",
+            className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).clearDialog,
+            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                        children: "Are you sure you want to remove all spells from your spellbook? "
+                    }),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
+                        children: "This cannot be undone."
+                    }),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("button", {
+                        className: "secondary",
+                        onClick: handleYes,
+                        children: "Yes"
+                    }),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("button", {
+                        onClick: close,
+                        children: "No"
+                    })
+                ]
+            })
+        });
+    }, [
+        open,
+        close,
+        clearSpells
+    ]);
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("header", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).header,
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
@@ -11694,13 +11738,13 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
                     children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("ul", {
                         children: [
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                            hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
                                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
                                     icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
-                                    label: "Clear spells",
-                                    onClick: clearSpells
+                                    label: "Remove spells",
+                                    onClick: openClearDialog
                                 })
-                            }),
+                            }) : null,
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
                                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $19456708aad159cc$export$461cb598b7fcff7b), {
                                     title: "Add spells",
@@ -11751,12 +11795,15 @@ const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: 
 
 var $be3d386fe1bd10b8$exports = {};
 
+$parcel$export($be3d386fe1bd10b8$exports, "placeholderIcon", function () { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4; }, function (v) { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "printableSpells", function () { return $be3d386fe1bd10b8$export$913944d4aab150e0; }, function (v) { return $be3d386fe1bd10b8$export$913944d4aab150e0 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListPlaceholder", function () { return $be3d386fe1bd10b8$export$e1a569003bc35eb5; }, function (v) { return $be3d386fe1bd10b8$export$e1a569003bc35eb5 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellbook", function () { return $be3d386fe1bd10b8$export$ee3a6d6a73837251; }, function (v) { return $be3d386fe1bd10b8$export$ee3a6d6a73837251 = v; });
+var $be3d386fe1bd10b8$export$29d4bf464ef1d8a4;
 var $be3d386fe1bd10b8$export$913944d4aab150e0;
 var $be3d386fe1bd10b8$export$e1a569003bc35eb5;
 var $be3d386fe1bd10b8$export$ee3a6d6a73837251;
+$be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = `BGWDaa_placeholderIcon`;
 $be3d386fe1bd10b8$export$913944d4aab150e0 = `BGWDaa_printableSpells`;
 $be3d386fe1bd10b8$export$e1a569003bc35eb5 = `BGWDaa_spellListPlaceholder`;
 $be3d386fe1bd10b8$export$ee3a6d6a73837251 = `BGWDaa_spellbook`;
@@ -11766,6 +11813,7 @@ $be3d386fe1bd10b8$export$ee3a6d6a73837251 = `BGWDaa_spellbook`;
 
 
 var $bwXBY = parcelRequire("bwXBY");
+
 const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
     const { spellLists: spellLists, preparedSpells: preparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
     // TODO: add a checkbox to show/hide this
@@ -11801,9 +11849,16 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
             areKnownSpellsVisible ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
                 children: [
                     !hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
-                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                             className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListPlaceholder,
-                            children: "Your spellbook is empty! Use the buttons below to start filling it out."
+                            children: [
+                                "Your spellbook is empty! Click the ",
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {
+                                    className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).placeholderIcon
+                                }),
+                                " ",
+                                "above to start adding spells."
+                            ]
                         })
                     }) : null,
                     spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
@@ -11848,4 +11903,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.0f546b59.js.map
+//# sourceMappingURL=index.f356af73.js.map
