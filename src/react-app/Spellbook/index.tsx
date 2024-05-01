@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import { formatSpellLevel } from '../util';
 import { useSpellListContext } from '../SpellListContext';
 import { useState } from 'react';
-import { IconAdd } from '../icons/IconAdd';
+import { WelcomePage } from '../WelcomePage';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
@@ -13,8 +13,10 @@ export const Spellbook = () => {
   const hasSpells = spellLists.some((spells) => spells.length > 0);
   const hasPreparedSpells = preparedSpells.some((spells) => spells.length > 0);
 
+  if (!hasSpells) return <WelcomePage />;
+
   return (
-    <main className={styles.spellbook}>
+    <>
       <section>
         <h2>Prepared Spells</h2>
         {hasPreparedSpells ? (
@@ -28,25 +30,13 @@ export const Spellbook = () => {
           )
         ) : (
           <div className={styles.spellListPlaceholder}>
-            {hasSpells
-              ? 'Check the box next to a spell to add it to your prepared spells.'
-              : 'As you fill out your spellbook, you can prepare spells to see them here.'}
+            Check the box next to a spell to add it to your prepared spells.
           </div>
         )}
       </section>
       <h2>Known Spells</h2>
       {areKnownSpellsVisible ? (
         <>
-          {!hasSpells ? (
-            <section>
-              <div className={styles.spellListPlaceholder}>
-                <div>
-                  Your spellbook is empty! Click the <IconAdd className={styles.placeholderIcon} />{' '}
-                  above to start adding spells.
-                </div>
-              </div>
-            </section>
-          ) : null}
           {spellLists.map((spells, index) =>
             spells.length > 0 ? (
               <section key={index}>
@@ -57,6 +47,6 @@ export const Spellbook = () => {
           )}
         </>
       ) : null}
-    </main>
+    </>
   );
 };

@@ -5,7 +5,9 @@ export const App = () => {
   return (
     <>
       <Header />
-      <Spellbook />
+      <main>
+        <Spellbook />
+      </main>
     </>
   );
 };

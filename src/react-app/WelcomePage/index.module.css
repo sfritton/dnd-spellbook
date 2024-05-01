@@ -1,0 +1,15 @@
+.welcome {
+  margin: 64px auto 32px;
+  max-width: 420px;
+
+  h3 {
+    margin-top: 32px;
+  }
+
+  .buttons {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
