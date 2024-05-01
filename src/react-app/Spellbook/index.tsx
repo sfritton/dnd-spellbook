@@ -40,8 +40,10 @@ export const Spellbook = () => {
           {!hasSpells ? (
             <section>
               <div className={styles.spellListPlaceholder}>
-                Your spellbook is empty! Click the <IconAdd className={styles.placeholderIcon} />{' '}
-                above to start adding spells.
+                <div>
+                  Your spellbook is empty! Click the <IconAdd className={styles.placeholderIcon} />{' '}
+                  above to start adding spells.
+                </div>
               </div>
             </section>
           ) : null}
