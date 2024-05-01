@@ -1,4 +1,5 @@
 import {
+  MouseEventHandler,
   PropsWithChildren,
   createContext,
   useCallback,
@@ -34,7 +35,7 @@ const dialogObserver = new MutationObserver((mutations) => {
   });
 });
 
-export const useDialog = () => {
+const useDialog = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -58,11 +59,23 @@ export const useDialog = () => {
       onClose,
       isDrawer = false,
     }: PropsWithChildren<DialogProps>) => {
+      const closeFn = onClose ?? close;
+
+      const handleBackdropClick = useCallback<MouseEventHandler<HTMLDialogElement>>(
+        (e) => {
+          if (e.target !== dialogRef.current) return;
+
+          closeFn();
+        },
+        [closeFn],
+      );
+
       return (
         <dialog
           className={styles.backdrop}
           // @ts-expect-error -- TS doesn't recognize the inert prop
           inert="true"
+          onClick={handleBackdropClick}
           ref={dialogRef}
         >
           <div
@@ -72,7 +85,7 @@ export const useDialog = () => {
           >
             <header className="dialogHeader">
               <h3>{title}</h3>
-              <button className="secondary" autoFocus aria-label="Close" onClick={onClose ?? close}>
+              <button className="secondary" autoFocus aria-label="Close" onClick={closeFn}>
                 <IconClose />
               </button>
             </header>
@@ -114,7 +127,6 @@ export const DialogProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    console.log('dialogProps.isOpen', dialogProps.isOpen);
     if (dialogProps.isOpen) openDialog();
     else closeDialog();
   }, [dialogProps.isOpen]);

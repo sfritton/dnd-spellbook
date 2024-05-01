@@ -2,10 +2,9 @@ import { Fragment, useState, useCallback, FormEvent } from 'react';
 import { formatSpellLevel } from '../../../util';
 import { CLASSES } from '../../../../constants/classes';
 import * as spellLists from '../../../spells';
-import { Spell } from '../../../types';
 import styles from './index.module.css';
 import { useSpellListContext } from '../../../SpellListContext';
-import { useDialog, useSingleDialog } from '../../../Dialog';
+import { useSingleDialog } from '../../../Dialog';
 
 const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   value: i,
