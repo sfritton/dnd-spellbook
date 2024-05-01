@@ -534,6 +534,7 @@
 
 .BGWDaa_spellListPlaceholder .BGWDaa_placeholderIcon {
   fill: var(--color-text);
+  vertical-align: bottom;
   width: 24px;
   height: 24px;
   display: inline-block;
@@ -559,4 +560,4 @@
     display: grid;
   }
 }
-/*# sourceMappingURL=index.eeac88b9.css.map */
+/*# sourceMappingURL=index.b1f44e74.css.map */

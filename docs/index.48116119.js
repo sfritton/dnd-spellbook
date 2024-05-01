@@ -11849,16 +11849,18 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
             areKnownSpellsVisible ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
                 children: [
                     !hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
-                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                             className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListPlaceholder,
-                            children: [
-                                "Your spellbook is empty! Click the ",
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {
-                                    className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).placeholderIcon
-                                }),
-                                " ",
-                                "above to start adding spells."
-                            ]
+                            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                                children: [
+                                    "Your spellbook is empty! Click the ",
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {
+                                        className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).placeholderIcon
+                                    }),
+                                    " ",
+                                    "above to start adding spells."
+                                ]
+                            })
                         })
                     }) : null,
                     spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
@@ -11903,4 +11905,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.f356af73.js.map
+//# sourceMappingURL=index.48116119.js.map
