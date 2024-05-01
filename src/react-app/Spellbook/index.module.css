@@ -11,6 +11,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .placeholderIcon {
+    fill: var(--color-text);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+  }
 }
 
 .printableSpells {

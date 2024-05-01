@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import { formatSpellLevel } from '../util';
 import { useSpellListContext } from '../SpellListContext';
 import { useState } from 'react';
+import { IconAdd } from '../icons/IconAdd';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
@@ -39,7 +40,8 @@ export const Spellbook = () => {
           {!hasSpells ? (
             <section>
               <div className={styles.spellListPlaceholder}>
-                Your spellbook is empty! Use the buttons below to start filling it out.
+                Your spellbook is empty! Click the <IconAdd className={styles.placeholderIcon} />{' '}
+                above to start adding spells.
               </div>
             </section>
           ) : null}

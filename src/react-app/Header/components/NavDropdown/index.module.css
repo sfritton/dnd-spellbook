@@ -36,17 +36,22 @@
   &:hover,
   &:focus-within {
     .dropdown {
-      transition-delay: 200ms;
       opacity: 1;
       transform: translateY(0px);
     }
 
-    .dropdownTrigger.dropdownTrigger {
-      width: 200px;
+    @media (min-width: 600px) {
+      .dropdown {
+        transition-delay: 200ms;
+      }
 
-      & span {
-        opacity: 1;
-        padding-left: 8px;
+      .dropdownTrigger.dropdownTrigger {
+        width: 200px;
+
+        & span {
+          opacity: 1;
+          padding-left: 8px;
+        }
       }
     }
   }

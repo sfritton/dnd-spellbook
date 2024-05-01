@@ -8,18 +8,47 @@ import { NavButton } from './components/NavButton';
 import { useSpellListContext } from '../SpellListContext';
 import { TypeaheadButton } from './components/TypeaheadButton';
 import { ClassSpellsButton } from './components/ClassSpellsButton';
+import { useSingleDialog } from '../Dialog';
+import { useCallback, useMemo } from 'react';
 
 export const Header = () => {
-  const { clearSpells } = useSpellListContext();
+  const { clearSpells, spellLists } = useSpellListContext();
+  const { open, close } = useSingleDialog();
+
+  const hasSpells = useMemo(() => spellLists.some((list) => list.length > 0), [spellLists]);
+
+  const openClearDialog = useCallback(() => {
+    const handleYes = () => {
+      clearSpells();
+      close();
+    };
+    open({
+      title: 'Remove all spells?',
+      className: styles.clearDialog,
+      children: (
+        <>
+          <div>Are you sure you want to remove all spells from your spellbook? </div>
+          <b>This cannot be undone.</b>
+          <button className="secondary" onClick={handleYes}>
+            Yes
+          </button>
+          <button onClick={close}>No</button>
+        </>
+      ),
+    });
+  }, [open, close, clearSpells]);
+
   return (
     <header className={styles.header}>
       <div className={styles.visualHeader}>
         <h1>DnD 5e Spellbook</h1>
         <nav>
           <ul>
-            <li>
-              <NavButton icon={<IconDelete />} label="Clear spells" onClick={clearSpells} />
-            </li>
+            {hasSpells ? (
+              <li>
+                <NavButton icon={<IconDelete />} label="Remove spells" onClick={openClearDialog} />
+              </li>
+            ) : null}
             {/* TODO */}
             {/* <li>
               <NavButton icon={<IconPrint />} label="Print spells" />

@@ -50,3 +50,24 @@
     }
   }
 }
+
+.clearDialog {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 400px;
+
+  header {
+    h3 {
+      margin: 0;
+    }
+
+    button {
+      display: none;
+    }
+  }
+
+  >:not(button) {
+    grid-column: span 2;
+  }
+}

@@ -21,11 +21,14 @@
   &:hover,
   &:focus-visible {
     background: #222;
-    width: 200px;
 
-    .buttonLabel {
-      opacity: 1;
-      padding-left: 8px;
+    @media (min-width: 600px) {
+      width: 200px;
+
+      .buttonLabel {
+        opacity: 1;
+        padding-left: 8px;
+      }
     }
   }
 }
