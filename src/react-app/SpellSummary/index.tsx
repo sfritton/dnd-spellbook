@@ -21,7 +21,9 @@ export const SpellSummary = ({
   showLevel = false,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
-  const { castingTime, duration }: Spell.Details = spellDetails[id];
+  const { castingTime, duration, levelAndSchool }: Spell.Details = spellDetails[id];
+  const isRitual = /ritual/i.test(levelAndSchool);
+  console.log({ id, isRitual, levelAndSchool });
 
   const openSpellDialog = useCallback<MouseEventHandler>(
     (e) => {
@@ -42,9 +44,14 @@ export const SpellSummary = ({
       <a className={styles.summary} tabIndex={0} onClick={openSpellDialog}>
         <h4>{title}</h4>
         <div className={styles.levelAndTime}>
-          {showLevel ? <>{formatSpellLevel(level)} &bull; </> : null}
-          {castingTime.split(',')[0]}
-          {/concentration/i.test(duration) ? <> &bull; Concentration</> : null}
+          {[
+            showLevel ? formatSpellLevel(level) : false,
+            castingTime.split(',')[0],
+            isRitual ? 'Ritual' : false,
+            /concentration/i.test(duration) ? 'Concentration' : false,
+          ]
+            .filter(Boolean)
+            .join(' • ')}
         </div>
       </a>
     </li>
