@@ -126,6 +126,7 @@
 }
 
 .iPi3oW_header {
+  z-index: 1;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -571,4 +572,4 @@
   margin-top: 16px;
   display: flex;
 }
-/*# sourceMappingURL=index.80358517.css.map */
+/*# sourceMappingURL=index.35419d5d.css.map */
