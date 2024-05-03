@@ -31,6 +31,10 @@
       border-bottom-color: transparent;
       filter: drop-shadow(var(--shadow-md));
     }
+
+    button {
+      border-radius: 0;
+    }
   }
 
   &:hover,

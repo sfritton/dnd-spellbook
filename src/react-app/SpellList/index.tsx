@@ -5,11 +5,11 @@ import styles from './index.module.css';
 export const SpellList = ({
   spells,
   showLevel = false,
-  isInPreparedSection,
+  checkboxIdSuffix,
 }: {
   spells: SpellSummaryData[];
   showLevel?: boolean;
-  isInPreparedSection?: boolean;
+  checkboxIdSuffix: string;
 }) => {
   const { makeToggleSpell } = useSpellListContext();
 
@@ -23,7 +23,7 @@ export const SpellList = ({
           onChange={makeToggleSpell({ id: spell.id, level: spell.level })}
           key={spell.id}
           showLevel={showLevel}
-          isInPreparedSection={isInPreparedSection}
+          checkboxIdSuffix={checkboxIdSuffix}
           {...spell}
         />
       ))}

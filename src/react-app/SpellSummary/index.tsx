@@ -11,7 +11,7 @@ interface SpellSummaryProps extends Spell.Summary {
   isChecked: boolean;
   onChange: (isChecked: boolean) => void;
   showLevel?: boolean;
-  isInPreparedSection?: boolean;
+  checkboxIdSuffix: string;
 }
 
 export const SpellSummary = ({
@@ -21,7 +21,7 @@ export const SpellSummary = ({
   isChecked,
   onChange,
   showLevel = false,
-  isInPreparedSection = false,
+  checkboxIdSuffix,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
   const { castingTime, duration, levelAndSchool }: Spell.Details = spellDetails[id];
@@ -47,7 +47,7 @@ export const SpellSummary = ({
         label={
           isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`
         }
-        id={`${id}-${isInPreparedSection ? 'prepared' : 'known'}`}
+        id={`${id}-${checkboxIdSuffix}`}
         checked={isChecked}
         onChange={onChange}
         hideLabel

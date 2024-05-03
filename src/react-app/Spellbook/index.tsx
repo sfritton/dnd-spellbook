@@ -21,7 +21,7 @@ export const Spellbook = () => {
             spells.length > 0 ? (
               <section key={index}>
                 <h3>{formatSpellLevel(index, true)}</h3>
-                <SpellList spells={spells} isInPreparedSection />
+                <SpellList spells={spells} checkboxIdSuffix="prepared" />
               </section>
             ) : null,
           )
@@ -36,7 +36,7 @@ export const Spellbook = () => {
         spells.length > 0 ? (
           <section key={index}>
             <h3>{formatSpellLevel(index, true)}</h3>
-            <SpellList spells={spells} />
+            <SpellList spells={spells} checkboxIdSuffix="known" />
           </section>
         ) : null,
       )}

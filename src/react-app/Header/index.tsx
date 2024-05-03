@@ -10,6 +10,7 @@ import { TypeaheadButton } from './components/TypeaheadButton';
 import { ClassSpellsButton } from './components/ClassSpellsButton';
 import { useSingleDialog } from '../Dialog';
 import { useCallback, useMemo } from 'react';
+import { SettingsButton } from './components/SettingsButton';
 
 export const Header = () => {
   const { clearSpells, spellLists } = useSpellListContext();
@@ -45,9 +46,19 @@ export const Header = () => {
         <nav>
           <ul>
             {hasSpells ? (
-              <li>
-                <NavButton icon={<IconDelete />} label="Remove spells" onClick={openClearDialog} />
-              </li>
+              <>
+                <li>
+                  <NavButton
+                    icon={<IconDelete />}
+                    label="Remove spells"
+                    onClick={openClearDialog}
+                  />
+                </li>
+                {/* TODO */}
+                {/* <li>
+                  <SettingsButton />
+                </li> */}
+              </>
             ) : null}
             {/* TODO */}
             {/* <li>
@@ -59,10 +70,6 @@ export const Header = () => {
                 <ClassSpellsButton />
               </NavDropdown>
             </li>
-            {/* TODO */}
-            {/* <li>
-              <NavButton icon={<IconSettings />} label="Settings" />
-            </li> */}
           </ul>
         </nav>
       </div>

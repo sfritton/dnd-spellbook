@@ -53,6 +53,7 @@ export const TypeaheadDrawerContent = ({ close }: { close: () => void }) => {
                   {...spell}
                   isChecked={Boolean(spells.find(({ id }) => id === spell.id))}
                   onChange={makeHandleChange(spell)}
+                  checkboxIdSuffix="typeahead"
                   showLevel
                 />
               ))

@@ -3,6 +3,7 @@
   height: 44px;
   background: #000;
   transition: width 300ms ease;
+  border-radius: 0;
 
   svg {
     fill: #fff;
