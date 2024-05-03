@@ -114,6 +114,7 @@ button {
   color: #fff;
   cursor: pointer;
   border: none;
+  border-radius: 2px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -130,11 +131,11 @@ button:hover {
 button.secondary {
   color: var(--color-accent);
   border: 1px solid var(--color-accent);
-  background: #fff;
+  background: #fff6;
 }
 
 button.secondary:hover {
-  background: #f7f7f7;
+  background: #fff8;
 }
 
 footer {
@@ -165,4 +166,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.1b7daad4.css.map */
+/*# sourceMappingURL=index.9afe7bea.css.map */

@@ -11384,7 +11384,7 @@ const $da63c334bfef3117$export$48513f6b9f8ce62d = ({ className: className = "", 
 };
 
 
-const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, isInPreparedSection: isInPreparedSection = false })=>{
+const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix })=>{
     const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
     const { castingTime: castingTime, duration: duration, levelAndSchool: levelAndSchool } = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     const isRitual = /ritual/i.test(levelAndSchool);
@@ -11414,7 +11414,7 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).checkbox,
                 label: isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`,
-                id: `${id}-${isInPreparedSection ? "prepared" : "known"}`,
+                id: `${id}-${checkboxIdSuffix}`,
                 checked: isChecked,
                 onChange: onChange,
                 hideLabel: true
@@ -11491,6 +11491,7 @@ const $8e95d3204fa8d178$export$7c0840db14dfe479 = ({ close: close })=>{
                         ...spell,
                         isChecked: Boolean(spells.find(({ id: id })=>id === spell.id)),
                         onChange: makeHandleChange(spell),
+                        checkboxIdSuffix: "typeahead",
                         showLevel: true
                     }, spell.id)) : null
             }),
@@ -11779,11 +11780,13 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
                     children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("ul", {
                         children: [
-                            hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
-                                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
-                                    icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
-                                    label: "Remove spells",
-                                    onClick: openClearDialog
+                            hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $086df4e28a6f4e89$exports.Fragment), {
+                                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                                        icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
+                                        label: "Remove spells",
+                                        onClick: openClearDialog
+                                    })
                                 })
                             }) : null,
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
@@ -11816,7 +11819,7 @@ var $e4856f61199e68c5$export$749abddb1d4b6b5a;
 $e4856f61199e68c5$export$749abddb1d4b6b5a = `_6B68uG_spellList`;
 
 
-const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: showLevel = false, isInPreparedSection: isInPreparedSection })=>{
+const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix })=>{
     const { makeToggleSpell: makeToggleSpell } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
     if (spells.length < 1) return null;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("ul", {
@@ -11828,7 +11831,7 @@ const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: 
                     level: spell.level
                 }),
                 showLevel: showLevel,
-                isInPreparedSection: isInPreparedSection,
+                checkboxIdSuffix: checkboxIdSuffix,
                 ...spell
             }, spell.id))
     });
@@ -11910,7 +11913,7 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
                                 }),
                                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
                                     spells: spells,
-                                    isInPreparedSection: true
+                                    checkboxIdSuffix: "prepared"
                                 })
                             ]
                         }, index) : null) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
@@ -11928,7 +11931,8 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
                             children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
                         }),
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                            spells: spells
+                            spells: spells,
+                            checkboxIdSuffix: "known"
                         })
                     ]
                 }, index) : null)
@@ -11964,4 +11968,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.eddc559a.js.map
+//# sourceMappingURL=index.3b318793.js.map
