@@ -2,13 +2,10 @@ import { SpellList } from '../SpellList';
 import styles from './index.module.css';
 import { formatSpellLevel } from '../util';
 import { useSpellListContext } from '../SpellListContext';
-import { useState } from 'react';
 import { WelcomePage } from '../WelcomePage';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
-  // TODO: add a checkbox to show/hide this
-  const [areKnownSpellsVisible, setAreKnownSpellsVisible] = useState(true);
 
   const hasSpells = spellLists.some((spells) => spells.length > 0);
   const hasPreparedSpells = preparedSpells.some((spells) => spells.length > 0);
@@ -24,7 +21,7 @@ export const Spellbook = () => {
             spells.length > 0 ? (
               <section key={index}>
                 <h3>{formatSpellLevel(index, true)}</h3>
-                <SpellList spells={spells} />
+                <SpellList spells={spells} isInPreparedSection />
               </section>
             ) : null,
           )
@@ -35,18 +32,14 @@ export const Spellbook = () => {
         )}
       </section>
       <h2>Known Spells</h2>
-      {areKnownSpellsVisible ? (
-        <>
-          {spellLists.map((spells, index) =>
-            spells.length > 0 ? (
-              <section key={index}>
-                <h3>{formatSpellLevel(index, true)}</h3>
-                <SpellList spells={spells} />
-              </section>
-            ) : null,
-          )}
-        </>
-      ) : null}
+      {spellLists.map((spells, index) =>
+        spells.length > 0 ? (
+          <section key={index}>
+            <h3>{formatSpellLevel(index, true)}</h3>
+            <SpellList spells={spells} />
+          </section>
+        ) : null,
+      )}
     </>
   );
 };

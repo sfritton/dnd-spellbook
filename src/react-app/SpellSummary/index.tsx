@@ -5,11 +5,13 @@ import { SpellCard } from '../SpellCard';
 import { Spell } from '../types';
 import { formatSpellLevel } from '../util';
 import styles from './index.module.css';
+import { Checkbox } from '../Checkbox';
 
 interface SpellSummaryProps extends Spell.Summary {
   isChecked: boolean;
   onChange: (isChecked: boolean) => void;
   showLevel?: boolean;
+  isInPreparedSection?: boolean;
 }
 
 export const SpellSummary = ({
@@ -19,6 +21,7 @@ export const SpellSummary = ({
   isChecked,
   onChange,
   showLevel = false,
+  isInPreparedSection = false,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
   const { castingTime, duration, levelAndSchool }: Spell.Details = spellDetails[id];
@@ -39,9 +42,17 @@ export const SpellSummary = ({
 
   return (
     <li className={styles.spellSummary}>
-      {/* TODO: larger touch target for checkbox, cursor pointer, hover color */}
-      <input type="checkbox" checked={isChecked} onChange={(e) => onChange(e.target.checked)} />
-      <a className={styles.summary} tabIndex={0} onClick={openSpellDialog}>
+      <Checkbox
+        className={styles.checkbox}
+        label={
+          isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`
+        }
+        id={`${id}-${isInPreparedSection ? 'prepared' : 'known'}`}
+        checked={isChecked}
+        onChange={onChange}
+        hideLabel
+      />
+      <a className={styles.summary} tabIndex={0} href="#" onClick={openSpellDialog}>
         <h4>{title}</h4>
         <div className={styles.levelAndTime}>
           {[

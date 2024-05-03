@@ -97,6 +97,10 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
+svg:focus {
+  outline: none;
+}
+
 .hidden {
   position: absolute;
   display: inline-block;

@@ -3,13 +3,18 @@
   grid-template-columns: auto 1fr;
   background: #fff6;
   border-radius: 2px;
-  padding-left: 12px;
+
+  .checkbox {
+    justify-content: center;
+    padding-right: 12px;
+  }
 
   .summary {
     color: var(--color-text);
     overflow: hidden;
     cursor: pointer;
-    padding: 8px 16px 8px 12px;
+    padding: 8px 16px 8px 4px;
+    text-decoration: none;
 
     h4 {
       margin: 0;
@@ -25,6 +30,7 @@
 
     &:hover {
       text-decoration: underline;
+      background: #fff6;
     }
   }
 

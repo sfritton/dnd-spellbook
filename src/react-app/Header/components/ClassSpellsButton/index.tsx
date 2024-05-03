@@ -1,10 +1,11 @@
-import { Fragment, useState, useCallback, FormEvent } from 'react';
+import { useCallback, FormEvent } from 'react';
 import { formatSpellLevel } from '../../../util';
 import { CLASSES } from '../../../../constants/classes';
 import * as spellLists from '../../../spells';
 import styles from './index.module.css';
 import { useSpellListContext } from '../../../SpellListContext';
 import { useSingleDialog } from '../../../Dialog';
+import { Checkbox } from '../../../Checkbox';
 
 const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   value: i,
@@ -22,7 +23,7 @@ export const ClassSpellsButton = () => {
 
       const className = (select as HTMLSelectElement).value;
       const levels = [...fieldset.querySelectorAll('input[type="checkbox"]:checked')].map((input) =>
-        Number.parseInt(input.getAttribute('value'), 10),
+        Number.parseInt(input.getAttribute('id').replace('level-', ''), 10),
       );
 
       appendSpells(
@@ -53,10 +54,7 @@ export const ClassSpellsButton = () => {
             <fieldset>
               <legend>Choose spell levels</legend>
               {LEVEL_OPTIONS.map(({ value, label }) => (
-                <div key={value}>
-                  <input type="checkbox" value={value} id={`level-${value}`} />
-                  <label htmlFor={`level-${value}`}>{label}</label>
-                </div>
+                <Checkbox key={value} id={`level-${value}`} label={label} />
               ))}
             </fieldset>
             <button type="submit">Load spells</button>
