@@ -54,10 +54,9 @@ export const Header = () => {
                     onClick={openClearDialog}
                   />
                 </li>
-                {/* TODO */}
-                {/* <li>
+                <li>
                   <SettingsButton />
-                </li> */}
+                </li>
               </>
             ) : null}
             {/* TODO */}

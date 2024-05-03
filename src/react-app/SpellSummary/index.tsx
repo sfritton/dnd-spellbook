@@ -6,10 +6,31 @@ import { Spell } from '../types';
 import { formatSpellLevel } from '../util';
 import styles from './index.module.css';
 import { Checkbox } from '../Checkbox';
+import { HighlightKey, useSettingsContext } from '../SettingsContext';
+
+const getSpellHighlight = (
+  { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
+  highlight: HighlightKey,
+) => {
+  switch (highlight) {
+    case 'isRitual':
+      return /ritual/i.test(levelAndSchool) ? 'Ritual' : false;
+    case 'isConcentration':
+      return /concentration/i.test(duration) ? 'Concentration' : false;
+    case 'castingTime':
+      return castingTime.split(',')[0];
+    case 'duration':
+      return duration;
+    case 'range':
+      return range;
+    case 'components':
+      return components.split(' (')[0];
+  }
+};
 
 interface SpellSummaryProps extends Spell.Summary {
-  isChecked: boolean;
-  onChange: (isChecked: boolean) => void;
+  isChecked?: boolean;
+  onChange?: (isChecked: boolean) => void;
   showLevel?: boolean;
   checkboxIdSuffix: string;
 }
@@ -24,9 +45,8 @@ export const SpellSummary = ({
   checkboxIdSuffix,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
-  const { castingTime, duration, levelAndSchool }: Spell.Details = spellDetails[id];
-  const isRitual = /ritual/i.test(levelAndSchool);
-  console.log({ id, isRitual, levelAndSchool });
+  const spell: Spell.Details = spellDetails[id];
+  const { highlights } = useSettingsContext();
 
   const openSpellDialog = useCallback<MouseEventHandler>(
     (e) => {
@@ -57,9 +77,7 @@ export const SpellSummary = ({
         <div className={styles.levelAndTime}>
           {[
             showLevel ? formatSpellLevel(level) : false,
-            castingTime.split(',')[0],
-            isRitual ? 'Ritual' : false,
-            /concentration/i.test(duration) ? 'Concentration' : false,
+            ...highlights.map((highlight) => getSpellHighlight(spell, highlight)),
           ]
             .filter(Boolean)
             .join(' • ')}

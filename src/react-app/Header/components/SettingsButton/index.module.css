@@ -1,0 +1,25 @@
+.settings {
+  .selectLabel {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+
+  select {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    border-radius: 4px;
+    background: #fff6;
+    cursor: pointer;
+
+    &:hover {
+      background: #fff8;
+    }
+  }
+}
