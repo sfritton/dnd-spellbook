@@ -94,6 +94,10 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
+svg:focus {
+  outline: none;
+}
+
 .hidden {
   clip: rect(0px, 0px, 0px, 0px);
   width: 1px;
@@ -161,4 +165,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.45995dc9.css.map */
+/*# sourceMappingURL=index.1b7daad4.css.map */
