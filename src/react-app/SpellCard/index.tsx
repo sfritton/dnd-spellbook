@@ -7,12 +7,10 @@ export const SpellCard = ({ id, className }: { id: string; className?: string })
 
   if (!spell) return null;
 
-  const { title, source, levelAndSchool, castingTime, range, components, duration, description } =
-    spell;
+  const { source, levelAndSchool, castingTime, range, components, duration, description } = spell;
 
   return (
     <div className={`${styles.spellCard} ${className}`}>
-      <h3>{title}</h3>
       <div className={styles.levelAndSchool}>{levelAndSchool}</div>
       <div className={styles.detail}>
         <div>Casting time</div>
