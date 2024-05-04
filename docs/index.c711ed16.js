@@ -11237,13 +11237,10 @@ $ac7f15f1745ea116$export$c943065ee198321e = `PzCXpG_spellCard`;
 const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: className })=>{
     const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     if (!spell) return null;
-    const { title: title, source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description } = spell;
+    const { source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description } = spell;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
         className: `${(0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).spellCard} ${className}`,
         children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                children: title
-            }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).levelAndSchool,
                 children: levelAndSchool
@@ -11327,18 +11324,21 @@ $parcel$export($c817a00ac5469ae7$exports, "dialog", function () { return $c817a0
 $parcel$export($c817a00ac5469ae7$exports, "levelAndTime", function () { return $c817a00ac5469ae7$export$abe5a6512064abec; }, function (v) { return $c817a00ac5469ae7$export$abe5a6512064abec = v; });
 $parcel$export($c817a00ac5469ae7$exports, "spellCard", function () { return $c817a00ac5469ae7$export$c943065ee198321e; }, function (v) { return $c817a00ac5469ae7$export$c943065ee198321e = v; });
 $parcel$export($c817a00ac5469ae7$exports, "spellSummary", function () { return $c817a00ac5469ae7$export$434ef77de6fd99a2; }, function (v) { return $c817a00ac5469ae7$export$434ef77de6fd99a2 = v; });
+$parcel$export($c817a00ac5469ae7$exports, "spellWrapper", function () { return $c817a00ac5469ae7$export$37de2bbeee209b64; }, function (v) { return $c817a00ac5469ae7$export$37de2bbeee209b64 = v; });
 $parcel$export($c817a00ac5469ae7$exports, "summary", function () { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58; }, function (v) { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = v; });
 var $c817a00ac5469ae7$export$b07e517d22efa1ca;
 var $c817a00ac5469ae7$export$518824cf31321346;
 var $c817a00ac5469ae7$export$abe5a6512064abec;
 var $c817a00ac5469ae7$export$c943065ee198321e;
 var $c817a00ac5469ae7$export$434ef77de6fd99a2;
+var $c817a00ac5469ae7$export$37de2bbeee209b64;
 var $c817a00ac5469ae7$export$9a2dbef7a17e2e58;
 $c817a00ac5469ae7$export$b07e517d22efa1ca = `O3yP9W_checkbox`;
 $c817a00ac5469ae7$export$518824cf31321346 = `O3yP9W_dialog`;
 $c817a00ac5469ae7$export$abe5a6512064abec = `O3yP9W_levelAndTime`;
 $c817a00ac5469ae7$export$c943065ee198321e = `O3yP9W_spellCard`;
 $c817a00ac5469ae7$export$434ef77de6fd99a2 = `O3yP9W_spellSummary`;
+$c817a00ac5469ae7$export$37de2bbeee209b64 = `O3yP9W_spellWrapper`;
 $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = `O3yP9W_summary`;
 
 
@@ -11384,15 +11384,77 @@ const $da63c334bfef3117$export$48513f6b9f8ce62d = ({ className: className = "", 
 };
 
 
+
+
+var $bwXBY = parcelRequire("bwXBY");
+const $2772f785971991b7$var$SettingsContext = /*#__PURE__*/ (0, $bwXBY.createContext)({
+    isCardMode: false,
+    hideKnownSpells: false,
+    highlights: [],
+    setIsCardMode: ()=>{},
+    setHideKnownSpells: ()=>{},
+    makeUpdateHighlight: ()=>()=>{}
+});
+const $2772f785971991b7$export$e498e32368a8ac8c = ({ children: children })=>{
+    const [isCardMode, setIsCardMode] = (0, $bwXBY.useState)(false);
+    const [hideKnownSpells, setHideKnownSpells] = (0, $bwXBY.useState)(false);
+    const [highlights, setHighlights] = (0, $bwXBY.useState)([
+        "castingTime",
+        "isRitual",
+        "isConcentration"
+    ]);
+    const makeUpdateHighlight = (0, $bwXBY.useCallback)((index)=>(highlight)=>{
+            setHighlights((prevHighlights)=>{
+                const newHighlights = [
+                    ...prevHighlights
+                ];
+                newHighlights[index] = highlight;
+                return newHighlights;
+            });
+        }, []);
+    const value = (0, $bwXBY.useMemo)(()=>({
+            isCardMode: isCardMode,
+            setIsCardMode: setIsCardMode,
+            hideKnownSpells: hideKnownSpells,
+            setHideKnownSpells: setHideKnownSpells,
+            highlights: highlights,
+            makeUpdateHighlight: makeUpdateHighlight
+        }), [
+        isCardMode,
+        setIsCardMode,
+        hideKnownSpells,
+        setHideKnownSpells,
+        highlights,
+        makeUpdateHighlight
+    ]);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)($2772f785971991b7$var$SettingsContext.Provider, {
+        value: value,
+        children: children
+    });
+};
+const $2772f785971991b7$export$c56093d34e5fa43e = ()=>(0, $bwXBY.useContext)($2772f785971991b7$var$SettingsContext);
+
+
+const $e96eb16661e54a09$var$getSpellHighlight = ({ castingTime: castingTime, levelAndSchool: levelAndSchool, duration: duration, range: range, components: components }, highlight)=>{
+    switch(highlight){
+        case "isRitual":
+            return /ritual/i.test(levelAndSchool) ? "Ritual" : false;
+        case "isConcentration":
+            return /concentration/i.test(duration) ? "Concentration" : false;
+        case "castingTime":
+            return castingTime.split(",")[0];
+        case "duration":
+            return duration;
+        case "range":
+            return range;
+        case "components":
+            return components.split(" (")[0];
+    }
+};
 const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix })=>{
     const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
-    const { castingTime: castingTime, duration: duration, levelAndSchool: levelAndSchool } = (0, $f278a73600af97eb$export$400852b624061e8)[id];
-    const isRitual = /ritual/i.test(levelAndSchool);
-    console.log({
-        id: id,
-        isRitual: isRitual,
-        levelAndSchool: levelAndSchool
-    });
+    const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
+    const { highlights: highlights, isCardMode: isCardMode } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
     const openSpellDialog = (0, $bwXBY.useCallback)((e)=>{
         e.preventDefault();
         open({
@@ -11409,36 +11471,43 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
         id
     ]);
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("li", {
-        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellSummary,
+        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellWrapper,
         children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).checkbox,
-                label: isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`,
-                id: `${id}-${checkboxIdSuffix}`,
-                checked: isChecked,
-                onChange: onChange,
-                hideLabel: true
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("a", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).summary,
-                tabIndex: 0,
-                href: "#",
-                onClick: openSpellDialog,
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellSummary,
                 children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
-                        children: title
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).checkbox,
+                        label: isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`,
+                        id: `${id}-${checkboxIdSuffix}`,
+                        checked: isChecked,
+                        onChange: onChange,
+                        hideLabel: true
                     }),
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).levelAndTime,
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("a", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).summary,
+                        tabIndex: 0,
+                        href: "#",
+                        onClick: openSpellDialog,
                         children: [
-                            showLevel ? (0, $afae47e020802ade$export$89c6395f9ab5b552)(level) : false,
-                            castingTime.split(",")[0],
-                            isRitual ? "Ritual" : false,
-                            /concentration/i.test(duration) ? "Concentration" : false
-                        ].filter(Boolean).join(" \u2022 ")
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
+                                children: title
+                            }),
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).levelAndTime,
+                                children: [
+                                    showLevel ? (0, $afae47e020802ade$export$89c6395f9ab5b552)(level) : false,
+                                    ...highlights.map((highlight)=>$e96eb16661e54a09$var$getSpellHighlight(spell, highlight))
+                                ].filter(Boolean).join(" \u2022 ")
+                            })
+                        ]
                     })
                 ]
-            })
+            }),
+            isCardMode ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e001f39552be76ae$export$2934401d8f5f7fb3), {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellCard,
+                id: id
+            }) : null
         ]
     });
 };
@@ -11730,6 +11799,141 @@ const $a51311e2ece224b3$export$57985164aefcb841 = ()=>{
 
 
 var $bwXBY = parcelRequire("bwXBY");
+
+
+const $9917e8a1c9cc274e$export$f8295d9ceeb6d2d6 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
+        })
+    });
+
+
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
+
+var $c069e0c64752bfed$exports = {};
+
+$parcel$export($c069e0c64752bfed$exports, "selectLabel", function () { return $c069e0c64752bfed$export$b1245c4d27ba3799; }, function (v) { return $c069e0c64752bfed$export$b1245c4d27ba3799 = v; });
+$parcel$export($c069e0c64752bfed$exports, "settings", function () { return $c069e0c64752bfed$export$a5a6e0b888b2c992; }, function (v) { return $c069e0c64752bfed$export$a5a6e0b888b2c992 = v; });
+var $c069e0c64752bfed$export$b1245c4d27ba3799;
+var $c069e0c64752bfed$export$a5a6e0b888b2c992;
+$c069e0c64752bfed$export$b1245c4d27ba3799 = `h8tqUW_selectLabel`;
+$c069e0c64752bfed$export$a5a6e0b888b2c992 = `h8tqUW_settings`;
+
+
+
+
+
+
+const $a9a1e86cd248f07a$var$SAMPLE_SPELL = (0, (/*@__PURE__*/$parcel$interopDefault($3a54764133d6f900$exports)))[1].find(({ id: id })=>id === "detect-magic");
+const $a9a1e86cd248f07a$var$HIGHLIGHT_LABEL_MAP = {
+    castingTime: "Casting Time",
+    isRitual: "Ritual",
+    isConcentration: "Concentration",
+    range: "Range",
+    components: "Components",
+    duration: "Duration"
+};
+const $a9a1e86cd248f07a$var$OPTIONS = Object.entries($a9a1e86cd248f07a$var$HIGHLIGHT_LABEL_MAP).map(([value, label])=>({
+        value: value,
+        label: label
+    })).sort((a, b)=>a.label.localeCompare(b.label));
+const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ()=>{
+    const { isCardMode: isCardMode, setIsCardMode: setIsCardMode, hideKnownSpells: hideKnownSpells, setHideKnownSpells: setHideKnownSpells, highlights: highlights, makeUpdateHighlight: makeUpdateHighlight } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+        className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).settings,
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
+                checked: isCardMode,
+                onChange: setIsCardMode,
+                label: "Card mode",
+                id: "card-mode"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
+                checked: hideKnownSpells,
+                onChange: setHideKnownSpells,
+                label: "Hide known spells",
+                id: "hide-known-spells"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                children: "Spell highlights"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
+                ...$a9a1e86cd248f07a$var$SAMPLE_SPELL,
+                checkboxIdSuffix: "sample"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).selectLabel,
+                htmlFor: "higlight-1",
+                children: "Primary highlight"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("select", {
+                id: "highlight-1",
+                value: highlights[0],
+                onChange: (e)=>makeUpdateHighlight(0)(e.target.value),
+                children: $a9a1e86cd248f07a$var$OPTIONS.map(({ label: label, value: value })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("option", {
+                        value: value,
+                        children: label
+                    }, value))
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).selectLabel,
+                htmlFor: "higlight-2",
+                children: "Secondary highlight"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("select", {
+                id: "highlight-2",
+                value: highlights[1],
+                onChange: (e)=>makeUpdateHighlight(1)(e.target.value),
+                children: $a9a1e86cd248f07a$var$OPTIONS.map(({ label: label, value: value })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("option", {
+                        value: value,
+                        children: label
+                    }, value))
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).selectLabel,
+                htmlFor: "higlight-3",
+                children: "Tertiary highlight"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("select", {
+                id: "highlight-3",
+                value: highlights[2],
+                onChange: (e)=>makeUpdateHighlight(2)(e.target.value),
+                children: $a9a1e86cd248f07a$var$OPTIONS.map(({ label: label, value: value })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("option", {
+                        value: value,
+                        children: label
+                    }, value))
+            })
+        ]
+    });
+};
+
+
+const $b8f3d6f68091dea0$export$e2457e1974c298c3 = ()=>{
+    const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
+    const openSettingsDrawer = (0, $bwXBY.useCallback)(()=>{
+        open({
+            title: "Settings",
+            isDrawer: true,
+            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $a9a1e86cd248f07a$export$9cde5251e401e1c3), {})
+        });
+    }, [
+        open
+    ]);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+        label: "Settings",
+        icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $9917e8a1c9cc274e$export$f8295d9ceeb6d2d6), {}),
+        onClick: openSettingsDrawer
+    });
+};
+
+
 const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
     const { clearSpells: clearSpells, spellLists: spellLists } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
     const { open: open, close: close } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
@@ -11780,14 +11984,19 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
                     children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("ul", {
                         children: [
-                            hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $086df4e28a6f4e89$exports.Fragment), {
-                                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
-                                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
-                                        icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
-                                        label: "Remove spells",
-                                        onClick: openClearDialog
+                            hasSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                                            icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
+                                            label: "Remove spells",
+                                            onClick: openClearDialog
+                                        })
+                                    }),
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b8f3d6f68091dea0$export$e2457e1974c298c3), {})
                                     })
-                                })
+                                ]
                             }) : null,
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
                                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $19456708aad159cc$export$461cb598b7fcff7b), {
@@ -11894,8 +12103,10 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
 };
 
 
+
 const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
     const { spellLists: spellLists, preparedSpells: preparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { hideKnownSpells: hideKnownSpells } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
     const hasSpells = spellLists.some((spells)=>spells.length > 0);
     const hasPreparedSpells = preparedSpells.some((spells)=>spells.length > 0);
     if (!hasSpells) return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $f38424f14b50a993$export$630ad10f0e1a953d), {});
@@ -11922,50 +12133,55 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
                     })
                 ]
             }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                children: "Known Spells"
-            }),
-            spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
-                    children: [
-                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                            children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
-                        }),
-                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                            spells: spells,
-                            checkboxIdSuffix: "known"
-                        })
-                    ]
-                }, index) : null)
-        ]
-    });
-};
-
-
-const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
-    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5c113dab75ce6f68$export$8b251419efc915eb), {}),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("main", {
-                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {})
+            hideKnownSpells ? null : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
+                        children: "Known Spells"
+                    }),
+                    spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
+                            children: [
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                                    children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
+                                }),
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
+                                    spells: spells,
+                                    checkboxIdSuffix: "known"
+                                })
+                            ]
+                        }, index) : null)
+                ]
             })
         ]
     });
 };
 
 
+
+
+
+const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2772f785971991b7$export$e498e32368a8ac8c), {
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $624eed663fdde719$export$42c2aab753184bed), {
+            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $12c96dc3e262eca0$export$7ab5cfe96fae86d3), {
+                children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5c113dab75ce6f68$export$8b251419efc915eb), {}),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("main", {
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {})
+                    })
+                ]
+            })
+        })
+    });
+};
 
 
 const $8f07faf69cb4dee9$var$container = document.getElementById("react-app");
 if ($8f07faf69cb4dee9$var$container) {
     const root = (0, $cf5a9a8e188415ae$export$882461b6382ed46c)($8f07faf69cb4dee9$var$container);
     root.render(/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $bwXBY.StrictMode), {
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $624eed663fdde719$export$42c2aab753184bed), {
-            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $12c96dc3e262eca0$export$7ab5cfe96fae86d3), {
-                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7c3f3016d2ebaa98$export$86fbec116b87613f), {})
-            })
-        })
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7c3f3016d2ebaa98$export$86fbec116b87613f), {})
     }));
 }
 
 
-//# sourceMappingURL=index.3b318793.js.map
+//# sourceMappingURL=index.c711ed16.js.map
