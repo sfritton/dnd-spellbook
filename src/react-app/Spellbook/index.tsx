@@ -3,9 +3,11 @@ import styles from './index.module.css';
 import { formatSpellLevel } from '../util';
 import { useSpellListContext } from '../SpellListContext';
 import { WelcomePage } from '../WelcomePage';
+import { useSettingsContext } from '../SettingsContext';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
+  const { hideKnownSpells } = useSettingsContext();
 
   const hasSpells = spellLists.some((spells) => spells.length > 0);
   const hasPreparedSpells = preparedSpells.some((spells) => spells.length > 0);
@@ -31,14 +33,18 @@ export const Spellbook = () => {
           </div>
         )}
       </section>
-      <h2>Known Spells</h2>
-      {spellLists.map((spells, index) =>
-        spells.length > 0 ? (
-          <section key={index}>
-            <h3>{formatSpellLevel(index, true)}</h3>
-            <SpellList spells={spells} checkboxIdSuffix="known" />
-          </section>
-        ) : null,
+      {hideKnownSpells ? null : (
+        <>
+          <h2>Known Spells</h2>
+          {spellLists.map((spells, index) =>
+            spells.length > 0 ? (
+              <section key={index}>
+                <h3>{formatSpellLevel(index, true)}</h3>
+                <SpellList spells={spells} checkboxIdSuffix="known" />
+              </section>
+            ) : null,
+          )}
+        </>
       )}
     </>
   );
