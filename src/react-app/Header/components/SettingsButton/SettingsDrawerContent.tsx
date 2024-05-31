@@ -3,6 +3,7 @@ import { Checkbox } from '../../../Checkbox';
 import { HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';
 import allSpells from '../../../../constants/spells/all.json';
+import { IconDelete } from '../../../icons/IconDelete';
 
 const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic');
 const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {
@@ -18,7 +19,11 @@ const OPTIONS = Object.entries(HIGHLIGHT_LABEL_MAP)
   .map(([value, label]) => ({ value, label }))
   .sort((a, b) => a.label.localeCompare(b.label));
 
-export const SettingsDrawerContent = () => {
+export const SettingsDrawerContent = ({
+  onClickClearSpells,
+}: {
+  onClickClearSpells: () => void;
+}) => {
   const {
     isCardMode,
     setIsCardMode,
@@ -30,6 +35,10 @@ export const SettingsDrawerContent = () => {
 
   return (
     <div className={style.settings}>
+      <button className={`secondary ${style.removeSpellsButton}`} onClick={onClickClearSpells}>
+        <IconDelete /> Remove all spells
+      </button>
+      <h4>Spell display options</h4>
       <Checkbox checked={isCardMode} onChange={setIsCardMode} label="Card mode" id="card-mode" />
       <Checkbox
         checked={hideKnownSpells}
@@ -37,8 +46,6 @@ export const SettingsDrawerContent = () => {
         label="Hide known spells"
         id="hide-known-spells"
       />
-      <h3>Spell highlights</h3>
-      <SpellSummary {...SAMPLE_SPELL} checkboxIdSuffix="sample" />
       <label className={style.selectLabel} htmlFor="higlight-1">
         Primary highlight
       </label>
@@ -81,6 +88,9 @@ export const SettingsDrawerContent = () => {
           </option>
         ))}
       </select>
+      <ul>
+        <SpellSummary {...SAMPLE_SPELL} checkboxIdSuffix="sample" />
+      </ul>
     </div>
   );
 };
