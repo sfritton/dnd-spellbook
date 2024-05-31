@@ -1,9 +1,8 @@
 .navButton {
-  width: 44px;
   height: 44px;
   background: #000;
-  transition: width 300ms ease;
   border-radius: 0;
+  justify-content: flex-start;
 
   svg {
     fill: #fff;
@@ -15,21 +14,44 @@
   .buttonLabel {
     overflow: hidden;
     white-space: nowrap;
-    opacity: 0;
     transition: opacity 300ms, padding 300ms;
+    padding-left: 8px;
   }
 
   &:hover,
   &:focus-visible {
     background: #222;
+  }
 
-    @media (min-width: 600px) {
+  @media (min-width: 600px) {
+    transition: width 300ms ease;
+    width: 44px;
+    justify-content: center;
+
+    .buttonLabel {
+      opacity: 0;
+      padding-left: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
       width: 200px;
 
       .buttonLabel {
         opacity: 1;
         padding-left: 8px;
       }
+    }
+  }
+
+  &.forceSmall {
+    transition: width 300ms ease;
+    width: 44px;
+    justify-content: center;
+
+    .buttonLabel {
+      opacity: 0;
+      padding-left: 0;
     }
   }
 }

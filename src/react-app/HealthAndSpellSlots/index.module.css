@@ -1,0 +1,117 @@
+.healthAndSpellSlots {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 375px;
+  z-index: 1;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--color-parchment-dark);
+  animation: slideUp 300ms;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      text-decoration: none;
+      padding: 0;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        fill: var(--color-accent);
+        transition: transform 300ms;
+      }
+    }
+
+    .iconOpen {
+      transform: rotate(180deg);
+    }
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  input[type="number"] {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    border-radius: 4px;
+    background: #fff6;
+  }
+
+  .health {
+    display: grid;
+    grid-template-columns: 1fr minmax(75px, auto);
+    gap: 8px;
+
+    label {
+      font-size: 14px;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: span 2;
+
+      input[type="range"] {
+        cursor: ew-resize;
+      }
+    }
+  }
+
+  fieldset, .slot {
+    border: none;
+    margin: 0;
+    padding: 0 16px;
+    background: #fff4;
+    margin: 8px 0;
+    border-radius: 2px;
+    min-height: 44px;
+
+    > div {
+      display: grid;
+      grid-template-columns: 78px repeat(5, 44px);
+      align-items: center;
+
+      label {
+        padding: 12px;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .slot {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}
