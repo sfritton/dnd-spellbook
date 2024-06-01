@@ -10,8 +10,7 @@
     padding: 8px 20px;
     min-height: 44px;
     display: flex;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 2px;
     box-shadow: var(--shadow-md);
     position: relative;
 
@@ -22,12 +21,8 @@
 
     .menuButton {
       margin: -8px;
-      margin-left: 0;
-      margin-right: -20px;
-
-      @media (min-width: 600px) {
-        display: none;
-      }
+      margin-right: 0;
+      margin-left: -20px;
     }
 
 
@@ -42,13 +37,10 @@
       transform: translateY(-200px);
       z-index: -1;
       transition: opacity 300ms, transform 300ms;
+      box-shadow: var(--shadow-md);
 
       @media (min-width: 600px) {
-        transition: none;
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-        z-index: auto;
+        max-width: 250px;
       }
 
       > ul {
@@ -62,21 +54,6 @@
       opacity: 1;
       pointer-events: auto;
       transform: none;
-    }
-
-    @media (min-width: 600px) {
-      nav {
-        width: auto;
-        margin: -8px;
-        margin-left: 0;
-        margin-right: -12px;
-        position: static;
-        border: none;
-
-        > ul {
-          display: flex;
-        }
-      }
     }
   }
 }

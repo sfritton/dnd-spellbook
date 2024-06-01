@@ -131,6 +131,10 @@ button {
     background: var(--color-accent-hover);
   }
 
+  &:focus-visible {
+    text-decoration: underline;
+  }
+
   &.secondary {
     background: #fff6;
     color: var(--color-accent);

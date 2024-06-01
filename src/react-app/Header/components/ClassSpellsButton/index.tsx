@@ -6,13 +6,15 @@ import styles from './index.module.css';
 import { useSpellListContext } from '../../../SpellListContext';
 import { useSingleDialog } from '../../../Dialog';
 import { Checkbox } from '../../../Checkbox';
+import { NavButton } from '../NavButton';
+import { IconAdd } from '../../../icons/IconAdd';
 
 const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   value: i,
   label: formatSpellLevel(i, true),
 }));
 
-export const ClassSpellsButton = () => {
+export const ClassSpellsButton = ({ isNav = false }: { isNav?: boolean }) => {
   const { appendSpells } = useSpellListContext();
   const { open, close } = useSingleDialog();
 
@@ -63,6 +65,10 @@ export const ClassSpellsButton = () => {
       ),
     });
   }, [handleSubmit, open]);
+
+  if (isNav) {
+    return <NavButton icon={<IconAdd />} label="Add spells" onClick={openDialog} />;
+  }
 
   return <button onClick={openDialog}>Add from class list</button>;
 };

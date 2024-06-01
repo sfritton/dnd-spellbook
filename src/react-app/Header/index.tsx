@@ -1,9 +1,6 @@
-import { IconAdd } from '../icons/IconAdd';
-import { NavDropdown } from './components/NavDropdown';
 import styles from './index.module.css';
 import { NavButton } from './components/NavButton';
 import { useSpellListContext } from '../SpellListContext';
-import { TypeaheadButton } from './components/TypeaheadButton';
 import { ClassSpellsButton } from './components/ClassSpellsButton';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { SettingsButton } from './components/SettingsButton';
@@ -17,18 +14,19 @@ export const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
+  // Close nav on a click outside
   useEffect(() => {
     const closeNav = (e: MouseEvent) => {
       // @ts-expect-error -- TS doesn't believe in .closest(), but it's real
       const isInHeader = Boolean(e.target.closest?.(`.${styles.visualHeader}`));
 
-      // Ignore clicks inside the header
       if (isInHeader) return;
 
       setIsNavOpen(false);
     };
 
     document.addEventListener('click', closeNav);
+    // TODO: close on ESC press
 
     return () => document.removeEventListener('click', closeNav);
   }, []);
@@ -38,21 +36,24 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.visualHeader} ref={headerRef}>
-        <h1>DnD 5e Spellbook</h1>
         <NavButton
           className={styles.menuButton}
           icon={<IconMenu />}
           label="Menu"
           onClick={() => setIsNavOpen((prev) => !prev)}
-          forceSmall
+          isSmall
         />
-        <nav className={isNavOpen ? styles.open : styles.closed}>
+        <h1>DnD 5e Spellbook</h1>
+        <nav
+          className={isNavOpen ? styles.open : styles.closed}
+          aria-hidden={isNavOpen ? undefined : 'true'}
+          // @ts-expect-error -- TS doesn't believe in inert, but it's real
+          inert={isNavOpen ? undefined : 'true'}
+        >
           <ul>
-            {hasSpells ? (
-              <li>
-                <SettingsButton />
-              </li>
-            ) : null}
+            <li>
+              <ClassSpellsButton isNav />
+            </li>
             <li>
               <NavButton
                 icon={<IconCharacter />}
@@ -60,12 +61,11 @@ export const Header = () => {
                 onClick={() => setIsCharacterOpen(true)}
               />
             </li>
-            <li>
-              <NavDropdown title="Add spells" icon={<IconAdd />}>
-                <TypeaheadButton />
-                <ClassSpellsButton />
-              </NavDropdown>
-            </li>
+            {hasSpells ? (
+              <li>
+                <SettingsButton />
+              </li>
+            ) : null}
           </ul>
         </nav>
       </div>

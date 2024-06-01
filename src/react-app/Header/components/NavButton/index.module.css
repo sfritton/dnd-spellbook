@@ -3,6 +3,7 @@
   background: #000;
   border-radius: 0;
   justify-content: flex-start;
+  padding: 10px;
 
   svg {
     fill: #fff;
@@ -12,10 +13,7 @@
   }
 
   .buttonLabel {
-    overflow: hidden;
-    white-space: nowrap;
-    transition: opacity 300ms, padding 300ms;
-    padding-left: 8px;
+    padding-left: 12px;
   }
 
   &:hover,
@@ -23,35 +21,8 @@
     background: #222;
   }
 
-  @media (min-width: 600px) {
-    transition: width 300ms ease;
+  &.small {
     width: 44px;
     justify-content: center;
-
-    .buttonLabel {
-      opacity: 0;
-      padding-left: 0;
-    }
-
-    &:hover,
-    &:focus-visible {
-      width: 200px;
-
-      .buttonLabel {
-        opacity: 1;
-        padding-left: 8px;
-      }
-    }
-  }
-
-  &.forceSmall {
-    transition: width 300ms ease;
-    width: 44px;
-    justify-content: center;
-
-    .buttonLabel {
-      opacity: 0;
-      padding-left: 0;
-    }
   }
 }
