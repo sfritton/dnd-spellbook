@@ -30,8 +30,14 @@ body {
 }
 
 main {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 134px);
   padding: 16px 20px 8px;
+}
+
+@media (width >= 630px) {
+  main {
+    min-height: calc(100vh - 84px);
+  }
 }
 
 main > * {
@@ -52,8 +58,14 @@ main > * {
   color: #fff;
   box-shadow: var(--shadow-md);
   background: #000;
-  min-height: 44px;
-  padding: 8px 20px;
+  min-height: 98px;
+  padding: 10px 20px 10px 48px;
+}
+
+@media (width >= 630px) {
+  .placeholder-header {
+    min-height: 48px;
+  }
 }
 
 .placeholder-header h1 {
@@ -128,6 +140,10 @@ button:hover {
   background: var(--color-accent-hover);
 }
 
+button:focus-visible {
+  text-decoration: underline;
+}
+
 button.secondary {
   color: var(--color-accent);
   border: 1px solid var(--color-accent);
@@ -166,4 +182,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.9afe7bea.css.map */
+/*# sourceMappingURL=index.3aa74469.css.map */

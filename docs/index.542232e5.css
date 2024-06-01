@@ -1,0 +1,851 @@
+.iPi3oW_header {
+  z-index: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader {
+  font-family: var(--sans);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  background: #000;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 2px;
+  display: grid;
+  position: relative;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader > button, .iPi3oW_header > .iPi3oW_visualHeader input, .iPi3oW_header > .iPi3oW_visualHeader div > svg {
+  animation: .3s iPi3oW_fadeIn;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader nav {
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: var(--shadow-md);
+  border-top: 1px solid #555;
+  width: 100%;
+  transition: opacity .3s, transform .3s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(-200px);
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader nav > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 630px) {
+  .iPi3oW_header > .iPi3oW_visualHeader {
+    grid-template-columns: auto 1fr 400px 0fr;
+  }
+
+  .iPi3oW_header > .iPi3oW_visualHeader nav {
+    max-width: 250px;
+  }
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader nav.iPi3oW_open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.iPi3oW_clearDialog {
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 400px;
+  display: grid;
+}
+
+.iPi3oW_clearDialog header h3 {
+  margin: 0;
+}
+
+.iPi3oW_clearDialog header button {
+  display: none;
+}
+
+.iPi3oW_clearDialog > :not(button) {
+  grid-column: span 2;
+}
+
+@keyframes iPi3oW_fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+._Ood6G_navButton {
+  background: #000;
+  border-radius: 0;
+  justify-content: flex-start;
+  height: 48px;
+  padding: 12px;
+}
+
+._Ood6G_navButton svg {
+  fill: #fff;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+._Ood6G_navButton ._Ood6G_buttonLabel {
+  padding-left: 12px;
+}
+
+._Ood6G_navButton:hover, ._Ood6G_navButton:focus-visible {
+  background: #222;
+}
+
+._Ood6G_navButton._Ood6G_small {
+  justify-content: center;
+  width: 46px;
+  padding-right: 10px;
+}
+
+.pidmea_classSpellsForm .pidmea_selectLabel {
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: block;
+}
+
+.pidmea_classSpellsForm select {
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  cursor: pointer;
+  background: #fff6;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  display: block;
+}
+
+.pidmea_classSpellsForm select:hover {
+  background: #fff8;
+}
+
+.pidmea_classSpellsForm fieldset {
+  border: none;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  margin: 16px 0;
+  padding: 0;
+  display: grid;
+}
+
+.pidmea_classSpellsForm fieldset legend {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.Q3_1la_backdrop {
+  z-index: 1;
+  backdrop-filter: blur(16px);
+  background: #0004;
+  border: none;
+  align-items: center;
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  padding: 0;
+  transition: opacity .3s;
+  display: grid;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.Q3_1la_backdrop:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Q3_1la_backdrop .Q3_1la_dialog {
+    animation: .3s forwards Q3_1la_shrink;
+  }
+
+  .Q3_1la_backdrop[open] .Q3_1la_dialog {
+    animation: .3s forwards Q3_1la_grow;
+  }
+
+  .Q3_1la_backdrop .Q3_1la_drawer {
+    animation: .3s forwards Q3_1la_slideRight;
+  }
+
+  .Q3_1la_backdrop[open] .Q3_1la_drawer {
+    animation: .3s forwards Q3_1la_slideLeft;
+  }
+}
+
+.Q3_1la_backdrop::backdrop {
+  opacity: 0;
+}
+
+.Q3_1la_backdrop .Q3_1la_dialog {
+  border: 1px solid var(--color-parchment-dark);
+  border-radius: 8px;
+  max-height: calc(100svh - 40px);
+  margin: 20px auto;
+  padding: 16px 20px;
+  overflow-y: auto;
+}
+
+.Q3_1la_backdrop .Q3_1la_dialog header {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.Q3_1la_backdrop .Q3_1la_dialog header button {
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.Q3_1la_backdrop .Q3_1la_dialog header button svg {
+  fill: var(--color-accent);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer {
+  border-radius: 0;
+  width: 375px;
+  max-height: none;
+  margin: 0;
+  padding: 4px 16px 16px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+@keyframes Q3_1la_shrink {
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes Q3_1la_grow {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes Q3_1la_slideLeft {
+  from {
+    transform: translateX(375px);
+  }
+}
+
+@keyframes Q3_1la_slideRight {
+  to {
+    transform: translateX(375px);
+  }
+}
+
+._3_6aeG_checkboxWrapper {
+  cursor: pointer;
+  border-radius: 2px;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  display: flex;
+}
+
+._3_6aeG_checkboxWrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+}
+
+._3_6aeG_checkboxWrapper ._3_6aeG_checkbox {
+  border: 1px solid var(--color-text);
+  outline-offset: -1px;
+  background: #fff6;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  transition: background .3s;
+  display: inline-block;
+  position: relative;
+}
+
+._3_6aeG_checkboxWrapper ._3_6aeG_checkbox:after {
+  font-family: var(--serif);
+  content: "✔";
+  color: #fff;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2px;
+  padding-left: 1px;
+  font-size: 16px;
+  transition: opacity .3s, transform .3s;
+  display: flex;
+  position: absolute;
+  inset: 0;
+  transform: scale(0);
+}
+
+._3_6aeG_checkboxWrapper input:checked ~ ._3_6aeG_checkbox {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+._3_6aeG_checkboxWrapper input:checked ~ ._3_6aeG_checkbox:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+._3_6aeG_checkboxWrapper:hover {
+  background: #fff6;
+}
+
+._3_6aeG_checkboxWrapper:has(:focus-visible) {
+  outline: 5px auto highlight;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.h8tqUW_settings .h8tqUW_removeSpellsButton {
+  margin: 16px 0;
+}
+
+.h8tqUW_settings .h8tqUW_removeSpellsButton svg {
+  fill: var(--color-accent);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.h8tqUW_settings h4 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.h8tqUW_settings .h8tqUW_selectLabel {
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+}
+
+.h8tqUW_settings select {
+  font-family: var(--serif);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  cursor: pointer;
+  background: #fff6;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  display: block;
+}
+
+.h8tqUW_settings select:hover {
+  background: #fff8;
+}
+
+.h8tqUW_settings ul {
+  margin: 32px 0;
+  padding: 0;
+}
+
+.PzCXpG_spellCard {
+  --gap: 12px;
+  gap: var(--gap);
+  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  max-width: 400px;
+  padding: 8px 16px;
+  font-size: 14px;
+  display: grid;
+}
+
+.PzCXpG_spellCard > * {
+  border-radius: 2px;
+}
+
+.PzCXpG_spellCard .PzCXpG_detail > div {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.PzCXpG_spellCard .PzCXpG_description, .PzCXpG_spellCard .PzCXpG_levelAndSchool, .PzCXpG_spellCard .PzCXpG_source {
+  grid-column: span 2;
+  margin: 0;
+}
+
+.PzCXpG_spellCard .PzCXpG_levelAndSchool {
+  font-style: italic;
+}
+
+.PzCXpG_spellCard .PzCXpG_description {
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+  line-height: 1.4;
+  display: flex;
+}
+
+.PzCXpG_spellCard .PzCXpG_description > div:last-child {
+  flex-grow: 1;
+}
+
+.PzCXpG_spellCard .PzCXpG_source {
+  font-size: 12px;
+}
+
+@media print {
+  .PzCXpG_spellCard {
+    color: #000;
+    background: #d6d6d6;
+    border-radius: 0;
+    gap: 8px 16px;
+    margin-bottom: -1px;
+    margin-right: -1px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .PzCXpG_spellCard h3 {
+    font-size: 16px;
+  }
+
+  .PzCXpG_spellCard > * {
+    padding: 0;
+  }
+
+  .PzCXpG_spellCard > .PzCXpG_detail > div {
+    font-size: 10px;
+  }
+
+  .PzCXpG_spellCard .PzCXpG_source {
+    padding: 0;
+    font-size: 8px;
+  }
+}
+
+.O3yP9W_spellWrapper {
+  background: #fff6;
+  border-radius: 2px;
+  list-style: none;
+}
+
+.O3yP9W_spellWrapper:has( > .O3yP9W_spellCard) {
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  display: grid;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_addButton {
+  background: none;
+  border: none;
+  flex-shrink: 0;
+  width: 48px;
+  height: 100%;
+  padding: 0;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_addButton > svg {
+  fill: var(--color-accent);
+  width: 24px;
+  height: 24px;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_addButton:hover {
+  background: #fff6;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary {
+  border-radius: 2px;
+  grid-template-columns: auto 1fr;
+  display: grid;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 44px;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary:has( ~ .O3yP9W_spellCard) {
+  background-color: #efefe8;
+  border-bottom: 1px solid #dac3a6;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_checkbox {
+  justify-content: center;
+  padding-right: 12px;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary {
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 8px 16px 8px 4px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary .O3yP9W_levelAndTime {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary:hover {
+  background: #fff6;
+  text-decoration: underline;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellCard {
+  grid-column: span 2;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog {
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog header {
+  padding-bottom: 8px;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog header h3 {
+  margin: 0;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog header button {
+  background: #fff6;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog header button:hover {
+  background: #fff;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog .O3yP9W_spellCard {
+  gap: 8px;
+  padding: 0;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog .O3yP9W_spellCard > * {
+  background: #fff6;
+  border-radius: 2px;
+  padding: 8px 16px;
+}
+
+.O3yP9W_dialog.O3yP9W_dialog .O3yP9W_spellCard > :not(:last-child) {
+  font-size: 16px;
+}
+
+._3djqFW_searchBar {
+  grid-column: span 2;
+  padding: 4px 12px 12px;
+}
+
+@media (width >= 630px) {
+  ._3djqFW_searchBar {
+    padding: 8px 12px;
+  }
+}
+
+._3djqFW_searchBar ._3djqFW_searchWrapper {
+  position: relative;
+}
+
+._3djqFW_searchBar ._3djqFW_searchWrapper > input {
+  font-size: 16px;
+  font-family: var(--serif);
+  color: #fff;
+  background: #222;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  height: 32px;
+  padding: 0 48px 0 16px;
+  display: block;
+}
+
+._3djqFW_searchBar ._3djqFW_searchWrapper > input::placeholder {
+  color: #bbb;
+}
+
+._3djqFW_searchBar ._3djqFW_searchWrapper > input:focus {
+  outline: 2px solid #666;
+}
+
+._3djqFW_searchBar ._3djqFW_searchWrapper > svg {
+  pointer-events: none;
+  fill: #bbb;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 4px;
+  right: 12px;
+}
+
+._3djqFW_searchBar ._3djqFW_dropdown {
+  z-index: -2;
+  opacity: 0;
+  border-bottom: 1px solid var(--color-parchment-dark);
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  transition: opacity .3s, transform .3s;
+  display: flex;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform: translateY(-200px);
+}
+
+@media (width >= 630px) {
+  ._3djqFW_searchBar ._3djqFW_dropdown {
+    border: 1px solid var(--color-parchment-dark);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-width: 400px;
+  }
+}
+
+._3djqFW_searchBar ._3djqFW_dropdown:focus-within, ._3djqFW_searchBar ._3djqFW_dropdown:hover, ._3djqFW_searchBar ._3djqFW_searchWrapper:focus-within ~ ._3djqFW_dropdown._3djqFW_open {
+  opacity: 1;
+  transform: none;
+}
+
+._6B68uG_spellList {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.BGWDaa_spellListPlaceholder {
+  background: #fff6;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  min-height: 58px;
+  padding: 8px 16px;
+  display: flex;
+}
+
+.BGWDaa_spellListPlaceholder .BGWDaa_placeholderIcon {
+  fill: var(--color-text);
+  vertical-align: bottom;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.BGWDaa_printableSpells {
+  display: none;
+}
+
+@media print {
+  :not(:is(:has(.BGWDaa_printableSpells), .BGWDaa_printableSpells, .BGWDaa_printableSpells *)) {
+    display: none !important;
+  }
+
+  :not(:is(:has(.BGWDaa_printableSpells), .BGWDaa_printableSpells, .BGWDaa_printableSpells *)) {
+    display: none !important;
+  }
+
+  .BGWDaa_printableSpells {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-bottom: 1px;
+    padding-right: 1px;
+    display: grid;
+  }
+}
+
+.C2D9ya_welcome {
+  max-width: 420px;
+  margin: 64px auto 32px;
+}
+
+.C2D9ya_welcome h3 {
+  margin-top: 32px;
+}
+
+.C2D9ya_welcome .C2D9ya_buttons {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  display: flex;
+}
+
+.omtYtG_healthAndSpellSlots {
+  z-index: 1;
+  border: 1px solid var(--color-parchment-dark);
+  border-radius: 8px;
+  width: 375px;
+  padding: 16px 20px;
+  animation: .3s omtYtG_slideUp;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_header {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_header button {
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_header button svg {
+  fill: var(--color-accent);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  transition: transform .3s;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_header .omtYtG_iconOpen {
+  transform: rotate(180deg);
+}
+
+.omtYtG_healthAndSpellSlots h3 {
+  font-size: 16px;
+}
+
+.omtYtG_healthAndSpellSlots input[type="number"] {
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  background: #fff6;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  display: block;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_health {
+  grid-template-columns: 1fr minmax(75px, auto);
+  gap: 8px;
+  display: grid;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_health label {
+  grid-template-columns: subgrid;
+  grid-column: span 2;
+  font-size: 14px;
+  display: grid;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_health label input[type="range"] {
+  cursor: ew-resize;
+}
+
+.omtYtG_healthAndSpellSlots fieldset {
+  background: #fff4;
+  border: none;
+  border-radius: 2px;
+  min-height: 44px;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+.omtYtG_healthAndSpellSlots fieldset > div {
+  grid-template-columns: 78px repeat(5, 44px);
+  align-items: center;
+  display: grid;
+}
+
+.omtYtG_healthAndSpellSlots fieldset > div label {
+  border-radius: 2px;
+  padding: 12px;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_slot {
+  background: #fff4;
+  border: none;
+  border-radius: 2px;
+  min-height: 44px;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_slot > div {
+  grid-template-columns: 78px repeat(5, 44px);
+  align-items: center;
+  display: grid;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_slot > div label {
+  border-radius: 2px;
+  padding: 12px;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_slot {
+  background: none;
+  grid-template-columns: 78px 1fr;
+  align-items: center;
+  padding: 0;
+  display: grid;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_buttons {
+  gap: 8px;
+  margin-top: 16px;
+  display: flex;
+}
+
+@keyframes omtYtG_slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}
+/*# sourceMappingURL=index.542232e5.css.map */
