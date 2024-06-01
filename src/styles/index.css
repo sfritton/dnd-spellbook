@@ -33,7 +33,11 @@ body {
 
 main {
   padding: 16px 20px 8px;
-  min-height: calc(100vh - 44px - 36px);
+  min-height: calc(100vh - 98px - 36px);
+
+  @media (min-width: 630px) {
+    min-height: calc(100vh - 48px - 36px);
+  }
 
   > * {
     animation: fadeIn 300ms ease both;
@@ -53,9 +57,14 @@ main {
 .placeholder-header {
   background: #000;
   color: #fff;
-  padding: 8px 20px;
-  min-height: 44px;
+  padding: 10px 20px;
+  padding-left: 48px;
+  min-height: 98px;
   box-shadow: var(--shadow-md);
+
+  @media (min-width: 630px) {
+    min-height: 48px;
+  }
 
   h1 {
     font-size: 20px;
