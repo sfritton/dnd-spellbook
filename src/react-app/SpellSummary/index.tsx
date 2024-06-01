@@ -7,6 +7,7 @@ import { formatSpellLevel } from '../util';
 import styles from './index.module.css';
 import { Checkbox } from '../Checkbox';
 import { HighlightKey, useSettingsContext } from '../SettingsContext';
+import { IconAdd } from '../icons/IconAdd';
 
 const getSpellHighlight = (
   { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
@@ -33,6 +34,7 @@ interface SpellSummaryProps extends Spell.Summary {
   onChange?: (isChecked: boolean) => void;
   showLevel?: boolean;
   checkboxIdSuffix: string;
+  isInSearchList?: boolean;
 }
 
 export const SpellSummary = ({
@@ -43,6 +45,7 @@ export const SpellSummary = ({
   onChange,
   showLevel = false,
   checkboxIdSuffix,
+  isInSearchList = false,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
   const spell: Spell.Details = spellDetails[id];
@@ -63,18 +66,25 @@ export const SpellSummary = ({
   return (
     <li className={styles.spellWrapper}>
       <div className={styles.spellSummary}>
-        <Checkbox
-          className={styles.checkbox}
-          label={
-            isChecked
-              ? `Remove "${title}" from prepared spells`
-              : `Add "${title}" to prepared spells`
-          }
-          id={`${id}-${checkboxIdSuffix}`}
-          checked={isChecked}
-          onChange={onChange}
-          hideLabel
-        />
+        {isInSearchList ? (
+          <button className={`${styles.addButton} secondary`} onClick={() => onChange(false)}>
+            <IconAdd />
+            <span className="hidden">Add spell</span>
+          </button>
+        ) : (
+          <Checkbox
+            className={styles.checkbox}
+            label={
+              isChecked
+                ? `Remove "${title}" from prepared spells`
+                : `Add "${title}" to prepared spells`
+            }
+            id={`${id}-${checkboxIdSuffix}`}
+            checked={isChecked}
+            onChange={onChange}
+            hideLabel
+          />
+        )}
         <a className={styles.summary} tabIndex={0} href="#" onClick={openSpellDialog}>
           <h4>{title}</h4>
           <div className={styles.levelAndTime}>

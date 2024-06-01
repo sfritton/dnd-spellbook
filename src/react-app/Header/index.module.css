@@ -7,9 +7,9 @@
     font-family: var(--sans);
     background: #000;
     color: #fff;
-    padding: 8px 20px;
-    min-height: 44px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
     gap: 2px;
     box-shadow: var(--shadow-md);
     position: relative;
@@ -17,12 +17,6 @@
     h1 {
       font-size: 20px;
       margin: 0;
-    }
-
-    .menuButton {
-      margin: -8px;
-      margin-right: 0;
-      margin-left: -20px;
     }
 
 
@@ -39,14 +33,17 @@
       transition: opacity 300ms, transform 300ms;
       box-shadow: var(--shadow-md);
 
-      @media (min-width: 600px) {
-        max-width: 250px;
-      }
-
       > ul {
         list-style: none;
         margin: 0;
         padding: 0;
+      }
+    }
+
+    @media (min-width: 630px) {
+      grid-template-columns: auto 1fr 400px 0fr;
+      nav {
+        max-width: 250px;
       }
     }
 

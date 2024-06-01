@@ -1,5 +1,4 @@
 import { ClassSpellsButton } from '../Header/components/ClassSpellsButton';
-import { TypeaheadButton } from '../Header/components/TypeaheadButton';
 import styles from './index.module.css';
 
 export const WelcomePage = () => {
@@ -13,7 +12,9 @@ export const WelcomePage = () => {
         </p>
         <h3>Start adding spells</h3>
         <div className={styles.buttons}>
-          <TypeaheadButton />
+          <button onClick={() => document.getElementById('search-bar')?.focus()}>
+            Add by name
+          </button>
           <ClassSpellsButton />
         </div>
       </div>

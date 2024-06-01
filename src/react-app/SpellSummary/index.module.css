@@ -9,6 +9,25 @@
     grid-template-columns: 1fr;
   }
 
+  .addButton {
+    border: none;
+    width: 48px;
+    padding: 0;
+    height: 100%;
+    background: transparent;
+    flex-shrink: 0;
+
+    > svg {
+      fill: var(--color-accent);
+      height: 24px;
+      width: 24px;
+    }
+
+    &:hover {
+      background: #fff6;
+    }
+  }
+
   .spellSummary {
     position: sticky;
     top: 44px;

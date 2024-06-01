@@ -1,16 +1,15 @@
 import styles from './index.module.css';
 import { NavButton } from './components/NavButton';
-import { useSpellListContext } from '../SpellListContext';
 import { ClassSpellsButton } from './components/ClassSpellsButton';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SettingsButton } from './components/SettingsButton';
 import { IconCharacter } from '../icons/IconCharacter';
 import { useSettingsContext } from '../SettingsContext';
 import { IconMenu } from '../icons/IconMenu';
+import { SearchBar } from './components/SearchBar';
 
 export const Header = () => {
-  const { spellLists } = useSpellListContext();
-  const { setIsCharacterOpen } = useSettingsContext();
+  const { setIsCharacterOpen, isCharacterOpen } = useSettingsContext();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -19,8 +18,10 @@ export const Header = () => {
     const closeNav = (e: MouseEvent) => {
       // @ts-expect-error -- TS doesn't believe in .closest(), but it's real
       const isInHeader = Boolean(e.target.closest?.(`.${styles.visualHeader}`));
+      // @ts-expect-error -- TS doesn't believe in .closest(), but it's real
+      const isInSearchBar = Boolean(e.target.closest?.('#search-bar'));
 
-      if (isInHeader) return;
+      if (isInHeader && !isInSearchBar) return;
 
       setIsNavOpen(false);
     };
@@ -30,8 +31,6 @@ export const Header = () => {
 
     return () => document.removeEventListener('click', closeNav);
   }, []);
-
-  const hasSpells = useMemo(() => spellLists.some((list) => list.length > 0), [spellLists]);
 
   return (
     <header className={styles.header}>
@@ -58,16 +57,15 @@ export const Header = () => {
               <NavButton
                 icon={<IconCharacter />}
                 label="Character status"
-                onClick={() => setIsCharacterOpen(true)}
+                onClick={() => setIsCharacterOpen(!isCharacterOpen)}
               />
             </li>
-            {hasSpells ? (
-              <li>
-                <SettingsButton />
-              </li>
-            ) : null}
+            <li>
+              <SettingsButton />
+            </li>
           </ul>
         </nav>
+        <SearchBar />
       </div>
     </header>
   );

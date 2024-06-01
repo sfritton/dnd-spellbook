@@ -1,0 +1,77 @@
+.searchBar {
+  grid-column: span 2;
+  padding: 4px 12px 12px;
+
+  @media (min-width: 630px) {
+    padding: 8px 12px;
+  }
+
+  .searchWrapper {
+    position: relative;
+
+    > input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 16px;
+    padding-right: 48px;
+    height: 32px;
+    border-radius: 8px;
+    font-family: var(--serif);
+    border: none;
+    background: #222;
+    color: #fff;
+    /* cursor: pointer; */
+
+    &::placeholder {
+      color: #bbb;
+    }
+
+    &:focus {
+      outline: 2px solid #666;
+    }
+    }
+
+    > svg {
+      pointer-events: none;
+      position: absolute;
+      right: 12px;
+      top: 4px;
+      fill: #bbb;
+      width: 24px;
+      height: 24px;
+    }
+
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    right: 0;
+    transform: translateY(-200px);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+    margin: 0;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-parchment-dark);
+
+    @media (min-width: 630px) {
+      max-width: 400px;
+      border-radius: 0 0 8px 8px;
+      border: 1px solid var(--color-parchment-dark);
+      border-top: none;
+    }
+  }
+
+  .dropdown:focus-within,
+  .dropdown:hover,
+  .searchWrapper:focus-within ~ .dropdown.open {
+    opacity: 1;
+    transform: none;
+  }
+}
