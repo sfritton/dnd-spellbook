@@ -11441,17 +11441,14 @@ var $bwXBY = parcelRequire("bwXBY");
 const $2772f785971991b7$var$SettingsContext = /*#__PURE__*/ (0, $bwXBY.createContext)({
     isCharacterOpen: false,
     isCardMode: false,
-    hideKnownSpells: false,
     highlights: [],
     setIsCardMode: ()=>{},
     setIsCharacterOpen: ()=>{},
-    setHideKnownSpells: ()=>{},
     makeUpdateHighlight: ()=>()=>{}
 });
 const $2772f785971991b7$export$e498e32368a8ac8c = ({ children: children })=>{
     const [isCardMode, setIsCardMode] = (0, $bwXBY.useState)(false);
     const [isCharacterOpen, setIsCharacterOpen] = (0, $bwXBY.useState)(false);
-    const [hideKnownSpells, setHideKnownSpells] = (0, $bwXBY.useState)(false);
     const [highlights, setHighlights] = (0, $bwXBY.useState)([
         "castingTime",
         "isRitual",
@@ -11471,8 +11468,6 @@ const $2772f785971991b7$export$e498e32368a8ac8c = ({ children: children })=>{
             setIsCardMode: setIsCardMode,
             isCharacterOpen: isCharacterOpen,
             setIsCharacterOpen: setIsCharacterOpen,
-            hideKnownSpells: hideKnownSpells,
-            setHideKnownSpells: setHideKnownSpells,
             highlights: highlights,
             makeUpdateHighlight: makeUpdateHighlight
         }), [
@@ -11480,8 +11475,6 @@ const $2772f785971991b7$export$e498e32368a8ac8c = ({ children: children })=>{
         setIsCardMode,
         isCharacterOpen,
         setIsCharacterOpen,
-        hideKnownSpells,
-        setHideKnownSpells,
         highlights,
         makeUpdateHighlight
     ]);
@@ -11742,7 +11735,7 @@ const $a9a1e86cd248f07a$var$OPTIONS = Object.entries($a9a1e86cd248f07a$var$HIGHL
         label: label
     })).sort((a, b)=>a.label.localeCompare(b.label));
 const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClickClearSpells })=>{
-    const { isCardMode: isCardMode, setIsCardMode: setIsCardMode, hideKnownSpells: hideKnownSpells, setHideKnownSpells: setHideKnownSpells, highlights: highlights, makeUpdateHighlight: makeUpdateHighlight } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
+    const { isCardMode: isCardMode, setIsCardMode: setIsCardMode, highlights: highlights, makeUpdateHighlight: makeUpdateHighlight } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).settings,
         children: [
@@ -11762,12 +11755,6 @@ const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClick
                 onChange: setIsCardMode,
                 label: "Card mode",
                 id: "card-mode"
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
-                checked: hideKnownSpells,
-                onChange: setHideKnownSpells,
-                label: "Hide known spells",
-                id: "hide-known-spells"
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).selectLabel,
@@ -12084,12 +12071,15 @@ var $be3d386fe1bd10b8$exports = {};
 
 $parcel$export($be3d386fe1bd10b8$exports, "placeholderIcon", function () { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4; }, function (v) { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "printableSpells", function () { return $be3d386fe1bd10b8$export$913944d4aab150e0; }, function (v) { return $be3d386fe1bd10b8$export$913944d4aab150e0 = v; });
+$parcel$export($be3d386fe1bd10b8$exports, "spellListHeader", function () { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202; }, function (v) { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListPlaceholder", function () { return $be3d386fe1bd10b8$export$e1a569003bc35eb5; }, function (v) { return $be3d386fe1bd10b8$export$e1a569003bc35eb5 = v; });
 var $be3d386fe1bd10b8$export$29d4bf464ef1d8a4;
 var $be3d386fe1bd10b8$export$913944d4aab150e0;
+var $be3d386fe1bd10b8$export$e1e7aee3ce61d202;
 var $be3d386fe1bd10b8$export$e1a569003bc35eb5;
 $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = `BGWDaa_placeholderIcon`;
 $be3d386fe1bd10b8$export$913944d4aab150e0 = `BGWDaa_printableSpells`;
+$be3d386fe1bd10b8$export$e1e7aee3ce61d202 = `BGWDaa_spellListHeader`;
 $be3d386fe1bd10b8$export$e1a569003bc35eb5 = `BGWDaa_spellListPlaceholder`;
 
 
@@ -12142,53 +12132,97 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
 
 
 
+var $14dc7c3fd80c79ce$exports = {};
+
+$parcel$export($14dc7c3fd80c79ce$exports, "collapsible", function () { return $14dc7c3fd80c79ce$export$4f19aad4974d270c; }, function (v) { return $14dc7c3fd80c79ce$export$4f19aad4974d270c = v; });
+$parcel$export($14dc7c3fd80c79ce$exports, "content", function () { return $14dc7c3fd80c79ce$export$a7db06668cad9adb; }, function (v) { return $14dc7c3fd80c79ce$export$a7db06668cad9adb = v; });
+$parcel$export($14dc7c3fd80c79ce$exports, "icon", function () { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27; }, function (v) { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = v; });
+var $14dc7c3fd80c79ce$export$4f19aad4974d270c;
+var $14dc7c3fd80c79ce$export$a7db06668cad9adb;
+var $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27;
+$14dc7c3fd80c79ce$export$4f19aad4974d270c = `GXXjnG_collapsible`;
+$14dc7c3fd80c79ce$export$a7db06668cad9adb = `GXXjnG_content`;
+$14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = `GXXjnG_icon`;
+
+
+
+const $95ed042b922313c2$export$14bd1eab81cd3160 = ({ className: className = "" })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+        })
+    });
+
+
+const $7c1eac6cf4db4260$export$6eb0f7ddcda6131f = ({ children: children, title: title })=>{
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("details", {
+                open: true,
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).collapsible,
+                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("summary", {
+                    children: [
+                        title,
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $95ed042b922313c2$export$14bd1eab81cd3160), {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).icon
+                        })
+                    ]
+                })
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).content,
+                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                    children: children
+                })
+            })
+        ]
+    });
+};
+
+
 const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
     const { spellLists: spellLists, preparedSpells: preparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
-    const { hideKnownSpells: hideKnownSpells } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
     const hasSpells = spellLists.some((spells)=>spells.length > 0);
     const hasPreparedSpells = preparedSpells.some((spells)=>spells.length > 0);
     if (!hasSpells) return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $f38424f14b50a993$export$630ad10f0e1a953d), {});
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
         children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                        children: "Prepared Spells"
-                    }),
-                    hasPreparedSpells ? preparedSpells.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                                    children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
-                                }),
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                                    spells: spells,
-                                    checkboxIdSuffix: "prepared"
-                                })
-                            ]
-                        }, index) : null) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListPlaceholder,
-                        children: "Check the box next to a spell to add it to your prepared spells."
-                    })
-                ]
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
+                children: "Prepared Spells"
             }),
-            hideKnownSpells ? null : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                        children: "Known Spells"
-                    }),
-                    spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
-                            children: [
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                                    children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
-                                }),
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                                    spells: spells,
-                                    checkboxIdSuffix: "known"
-                                })
-                            ]
-                        }, index) : null)
-                ]
-            })
+            hasPreparedSpells ? preparedSpells.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
+                    children: [
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                            children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
+                        }),
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
+                            spells: spells,
+                            checkboxIdSuffix: "prepared"
+                        })
+                    ]
+                }, index) : null) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListPlaceholder,
+                children: "Check the box next to a spell to add it to your prepared spells."
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
+                children: "Known Spells"
+            }),
+            spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
+                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7c1eac6cf4db4260$export$6eb0f7ddcda6131f), {
+                        title: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListHeader,
+                            children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
+                        }),
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
+                            spells: spells,
+                            checkboxIdSuffix: "known"
+                        })
+                    })
+                }, index) : null)
         ]
     });
 };
@@ -12486,4 +12520,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.882ed2d1.js.map
+//# sourceMappingURL=index.0a2f9dab.js.map

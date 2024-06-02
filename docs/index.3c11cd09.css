@@ -675,6 +675,10 @@
   display: inline-block;
 }
 
+.BGWDaa_spellListHeader {
+  margin: 0;
+}
+
 .BGWDaa_printableSpells {
   display: none;
 }
@@ -710,6 +714,59 @@
   gap: 16px;
   margin-top: 16px;
   display: flex;
+}
+
+.GXXjnG_collapsible summary {
+  cursor: pointer;
+  border-radius: 2px;
+  justify-content: space-between;
+  align-items: center;
+  margin: -2px -4px;
+  padding: 2px 4px;
+  list-style: none;
+  display: flex;
+}
+
+.GXXjnG_collapsible summary:hover {
+  background: #fff6;
+}
+
+.GXXjnG_collapsible summary::marker {
+  display: none;
+}
+
+.GXXjnG_collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.GXXjnG_collapsible summary .GXXjnG_icon {
+  fill: var(--color-text);
+  width: 32px;
+  height: 32px;
+  transition: transform .3s;
+}
+
+.GXXjnG_collapsible[open] .GXXjnG_icon {
+  transform: rotate(-180deg);
+}
+
+.GXXjnG_content {
+  opacity: 0;
+  transform-origin: top;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s, opacity .3s, transform .3s;
+  display: grid;
+  transform: scaleY(.5);
+}
+
+.GXXjnG_content > div {
+  overflow: hidden;
+}
+
+.GXXjnG_collapsible[open] + .GXXjnG_content, .GXXjnG_content:focus-within {
+  opacity: 1;
+  grid-template-rows: 1fr;
+  transform: none;
 }
 
 .omtYtG_healthAndSpellSlots {
@@ -848,4 +905,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.542232e5.css.map */
+/*# sourceMappingURL=index.3c11cd09.css.map */
