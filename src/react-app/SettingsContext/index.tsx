@@ -18,29 +18,24 @@ export type HighlightKey =
 interface SettingsContextValue {
   isCardMode: boolean;
   isCharacterOpen: boolean;
-  hideKnownSpells: boolean;
   highlights: HighlightKey[];
   setIsCardMode: (isCardMode: boolean) => void;
   setIsCharacterOpen: (isCharacterOpen: boolean) => void;
-  setHideKnownSpells: (hideKnownSpells: boolean) => void;
   makeUpdateHighlight: (index: number) => (highlight: HighlightKey) => void;
 }
 
 const SettingsContext = createContext<SettingsContextValue>({
   isCharacterOpen: false,
   isCardMode: false,
-  hideKnownSpells: false,
   highlights: [],
   setIsCardMode: () => {},
   setIsCharacterOpen: () => {},
-  setHideKnownSpells: () => {},
   makeUpdateHighlight: () => () => {},
 });
 
 export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
   const [isCardMode, setIsCardMode] = useState(false);
   const [isCharacterOpen, setIsCharacterOpen] = useState(false);
-  const [hideKnownSpells, setHideKnownSpells] = useState(false);
   const [highlights, setHighlights] = useState<HighlightKey[]>([
     'castingTime',
     'isRitual',
@@ -65,8 +60,6 @@ export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
       setIsCardMode,
       isCharacterOpen,
       setIsCharacterOpen,
-      hideKnownSpells,
-      setHideKnownSpells,
       highlights,
       makeUpdateHighlight,
     }),
@@ -75,8 +68,6 @@ export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
       setIsCardMode,
       isCharacterOpen,
       setIsCharacterOpen,
-      hideKnownSpells,
-      setHideKnownSpells,
       highlights,
       makeUpdateHighlight,
     ],

@@ -1,0 +1,54 @@
+.collapsible {
+  summary {
+    cursor: pointer;
+    border-radius: 2px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -2px -4px;
+    padding: 2px 4px;
+
+    &:hover {
+      background: #fff6;
+    }
+
+    &::marker, &::-webkit-details-marker {
+      display: none;
+    }
+
+    .icon {
+      fill: var(--color-text);
+      width: 32px;
+      height: 32px;
+      transition: transform 300ms;
+    }
+  }
+
+
+  &[open] {
+    .icon {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition: grid-template-rows 300ms, opacity 300ms, transform 300ms;
+  transform-origin: top;
+
+  > div {
+    overflow: hidden;
+  }
+}
+
+.collapsible[open] + .content,
+.content:focus-within {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+}

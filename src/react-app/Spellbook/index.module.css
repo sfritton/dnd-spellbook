@@ -16,6 +16,10 @@
   }
 }
 
+.spellListHeader {
+  margin: 0;
+}
+
 .printableSpells {
   display: none;
 }

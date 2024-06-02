@@ -24,14 +24,7 @@ export const SettingsDrawerContent = ({
 }: {
   onClickClearSpells: () => void;
 }) => {
-  const {
-    isCardMode,
-    setIsCardMode,
-    hideKnownSpells,
-    setHideKnownSpells,
-    highlights,
-    makeUpdateHighlight,
-  } = useSettingsContext();
+  const { isCardMode, setIsCardMode, highlights, makeUpdateHighlight } = useSettingsContext();
 
   return (
     <div className={style.settings}>
@@ -40,12 +33,6 @@ export const SettingsDrawerContent = ({
       </button>
       <h4>Spell display options</h4>
       <Checkbox checked={isCardMode} onChange={setIsCardMode} label="Card mode" id="card-mode" />
-      <Checkbox
-        checked={hideKnownSpells}
-        onChange={setHideKnownSpells}
-        label="Hide known spells"
-        id="hide-known-spells"
-      />
       <label className={style.selectLabel} htmlFor="higlight-1">
         Primary highlight
       </label>
