@@ -232,12 +232,12 @@
 .Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer {
   border-radius: 0;
   width: 375px;
+  height: 100dvh;
   max-height: none;
   margin: 0;
   padding: 4px 16px 16px;
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
   overflow-y: auto;
 }
@@ -505,7 +505,13 @@
   display: grid;
   position: -webkit-sticky;
   position: sticky;
-  top: 44px;
+  top: 98px;
+}
+
+@media (width >= 630px) {
+  .O3yP9W_spellWrapper .O3yP9W_spellSummary {
+    top: 48px;
+  }
 }
 
 .O3yP9W_spellWrapper .O3yP9W_spellSummary:has( ~ .O3yP9W_spellCard) {
@@ -920,4 +926,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.874576ee.css.map */
+/*# sourceMappingURL=index.d6bd9271.css.map */
