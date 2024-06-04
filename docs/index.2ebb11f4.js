@@ -11592,6 +11592,8 @@ const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: classNam
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("a", {
                             href: url,
+                            target: "_blank",
+                            rel: "noopener noreferrer",
                             children: "See spell's wiki page"
                         })
                     }),
@@ -12544,4 +12546,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.d1e93ff4.js.map
+//# sourceMappingURL=index.2ebb11f4.js.map
