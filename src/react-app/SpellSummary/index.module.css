@@ -30,10 +30,14 @@
 
   .spellSummary {
     position: sticky;
-    top: 44px;
+    top: 98px;
     display: grid;
     grid-template-columns: auto 1fr;
     border-radius: 2px;
+
+    @media (min-width: 630px) {
+      top: 48px;
+    }
 
     &:has(~ .spellCard) {
       border-bottom: 1px solid #dac3a6;
