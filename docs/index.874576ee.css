@@ -242,6 +242,12 @@
   overflow-y: auto;
 }
 
+.Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer header {
+  border-bottom: 1px solid #caac8e;
+  margin: -4px -16px 32px;
+  padding: 4px 16px;
+}
+
 @keyframes Q3_1la_shrink {
   to {
     transform: scale(0);
@@ -347,9 +353,10 @@
   margin-right: 8px;
 }
 
-.h8tqUW_settings h4 {
+.h8tqUW_settings h4, .h8tqUW_settings h5 {
   margin-top: 32px;
   margin-bottom: 8px;
+  font-size: 16px;
 }
 
 .h8tqUW_settings .h8tqUW_selectLabel {
@@ -378,7 +385,7 @@
 }
 
 .h8tqUW_settings ul {
-  margin: 32px 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -425,6 +432,10 @@
 
 .PzCXpG_spellCard .PzCXpG_source {
   font-size: 12px;
+}
+
+.PzCXpG_spellCard .PzCXpG_source > div {
+  margin-bottom: 4px;
 }
 
 @media print {
@@ -769,6 +780,10 @@
   transform: none;
 }
 
+:is(.GXXjnG_collapsible[open] + .GXXjnG_content, .GXXjnG_content:focus-within) > div {
+  overflow: visible;
+}
+
 .omtYtG_healthAndSpellSlots {
   z-index: 1;
   border: 1px solid var(--color-parchment-dark);
@@ -905,4 +920,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.3c11cd09.css.map */
+/*# sourceMappingURL=index.874576ee.css.map */

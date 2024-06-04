@@ -11185,7 +11185,6 @@ const $12c96dc3e262eca0$var$useDialog = ()=>{
                 className: `${(0, (/*@__PURE__*/$parcel$interopDefault($72ff5829cd5892ea$exports))).dialog} ${className} ${isDrawer ? (0, (/*@__PURE__*/$parcel$interopDefault($72ff5829cd5892ea$exports))).drawer : (0, (/*@__PURE__*/$parcel$interopDefault($72ff5829cd5892ea$exports))).modal} parchment overlay`,
                 children: [
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("header", {
-                        className: "dialogHeader",
                         children: [
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
                                 children: title
@@ -11512,10 +11511,10 @@ $ac7f15f1745ea116$export$c943065ee198321e = `PzCXpG_spellCard`;
 
 
 
-const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: className })=>{
+const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: className, url: url })=>{
     const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     if (!spell) return null;
-    const { source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description } = spell;
+    const { source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description, spellLists: spellLists } = spell;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
         className: `${(0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).spellCard} ${className}`,
         children: [
@@ -11559,23 +11558,43 @@ const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: classNam
                     duration
                 ]
             }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).description,
-                children: description.map((line)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: line.match(/^at higher levels\./i) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
-                            children: [
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
-                                    children: "At Higher Levels."
-                                }),
-                                " ",
-                                line.replace(/^at higher levels\./i, "")
-                            ]
-                        }) : line
-                    }, line))
+                children: [
+                    description.map((line)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                            children: line.match(/^at higher levels\./i) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
+                                        children: "At Higher Levels."
+                                    }),
+                                    " ",
+                                    line.replace(/^at higher levels\./i, "")
+                                ]
+                            }) : line
+                        }, line)),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
+                                children: "Class lists:"
+                            }),
+                            " ",
+                            spellLists.map((spellList)=>{
+                                const listName = spellList.split(":").at(-1).replace(/\//g, "").replace(/-/g, " ");
+                                return listName.charAt(0).toUpperCase() + listName.slice(1);
+                            }).join(", ")
+                        ]
+                    })
+                ]
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).source,
                 children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("a", {
+                            href: url,
+                            children: "See spell's wiki page"
+                        })
+                    }),
                     "Source: ",
                     source
                 ]
@@ -11633,7 +11652,7 @@ const $e96eb16661e54a09$var$getSpellHighlight = ({ castingTime: castingTime, lev
             return components.split(" (")[0];
     }
 };
-const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix, isInSearchList: isInSearchList = false })=>{
+const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix, isInSearchList: isInSearchList = false, url: url })=>{
     const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
     const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     const { highlights: highlights, isCardMode: isCardMode } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
@@ -11644,7 +11663,8 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
             className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).dialog,
             children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e001f39552be76ae$export$2934401d8f5f7fb3), {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellCard,
-                id: id
+                id: id,
+                url: url
             })
         });
     }, [
@@ -11698,7 +11718,8 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
             }),
             isCardMode ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e001f39552be76ae$export$2934401d8f5f7fb3), {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellCard,
-                id: id
+                id: id,
+                url: url
             }) : null
         ]
     });
@@ -11797,6 +11818,9 @@ const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClick
                         value: value,
                         children: label
                     }, value))
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h5", {
+                children: "Preview"
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("ul", {
                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
@@ -12520,4 +12544,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.0a2f9dab.js.map
+//# sourceMappingURL=index.d1e93ff4.js.map
