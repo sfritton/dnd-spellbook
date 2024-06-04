@@ -1,13 +1,28 @@
 .healthAndSpellSlots {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  width: 375px;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
   padding: 16px 20px;
-  border-radius: 8px;
-  border: 1px solid var(--color-parchment-dark);
+  overflow-y: auto;
+  z-index: 1;
   animation: slideUp 300ms;
+
+  @media (min-width: 480px) {
+    top: auto;
+    left: auto;
+    bottom: 16px;
+    right: 16px;
+    width: 375px;
+    height: auto;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100svh - 32px);
+    max-width: calc(100vw - 32px);
+    border-radius: 8px;
+    border: 1px solid var(--color-parchment-dark);
+  }
 
   .header {
     display: flex;
