@@ -792,14 +792,26 @@
 
 .omtYtG_healthAndSpellSlots {
   z-index: 1;
-  border: 1px solid var(--color-parchment-dark);
-  border-radius: 8px;
-  width: 375px;
+  width: 100vw;
+  height: 100svh;
   padding: 16px 20px;
   animation: .3s omtYtG_slideUp;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+@media (width >= 480px) {
+  .omtYtG_healthAndSpellSlots {
+    border: 1px solid var(--color-parchment-dark);
+    border-radius: 8px;
+    width: 375px;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    max-height: calc(100svh - 32px);
+    inset: auto 16px 16px auto;
+  }
 }
 
 .omtYtG_healthAndSpellSlots .omtYtG_header {
@@ -926,4 +938,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.9685421b.css.map */
+/*# sourceMappingURL=index.6d3860a2.css.map */
