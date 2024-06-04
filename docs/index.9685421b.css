@@ -161,13 +161,13 @@
   align-items: center;
   width: 100vw;
   max-width: none;
-  height: 100vh;
+  height: 100dvh;
   max-height: none;
   padding: 0;
   transition: opacity .3s;
   display: grid;
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto;
   overflow: hidden;
 }
 
@@ -232,7 +232,7 @@
 .Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer {
   border-radius: 0;
   width: 375px;
-  height: 100dvh;
+  height: 100%;
   max-height: none;
   margin: 0;
   padding: 4px 16px 16px;
@@ -926,4 +926,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.d6bd9271.css.map */
+/*# sourceMappingURL=index.9685421b.css.map */
