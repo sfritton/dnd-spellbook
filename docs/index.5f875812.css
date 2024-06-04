@@ -122,22 +122,6 @@
   display: block;
 }
 
-.pidmea_classSpellsForm select {
-  border: 1px solid var(--color-text);
-  color: var(--color-text);
-  cursor: pointer;
-  background: #fff6;
-  border-radius: 4px;
-  width: 100%;
-  padding: 8px 16px;
-  font-size: 16px;
-  display: block;
-}
-
-.pidmea_classSpellsForm select:hover {
-  background: #fff8;
-}
-
 .pidmea_classSpellsForm fieldset {
   border: none;
   grid-template-rows: repeat(5, 1fr);
@@ -155,7 +139,7 @@
 
 .Q3_1la_backdrop {
   z-index: 1;
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   background: #0004;
   border: none;
   align-items: center;
@@ -365,23 +349,6 @@
   font-size: 14px;
   font-weight: bold;
   display: block;
-}
-
-.h8tqUW_settings select {
-  font-family: var(--serif);
-  border: 1px solid var(--color-text);
-  color: var(--color-text);
-  cursor: pointer;
-  background: #fff6;
-  border-radius: 4px;
-  width: 100%;
-  padding: 8px 16px;
-  font-size: 16px;
-  display: block;
-}
-
-.h8tqUW_settings select:hover {
-  background: #fff8;
 }
 
 .h8tqUW_settings ul {
@@ -938,4 +905,4 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.6d3860a2.css.map */
+/*# sourceMappingURL=index.5f875812.css.map */
