@@ -69,7 +69,9 @@ export const SpellCard = ({
       </div>
       <div className={styles.source}>
         <div>
-          <a href={url}>See spell's wiki page</a>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            See spell's wiki page
+          </a>
         </div>
         Source: {source}
       </div>
