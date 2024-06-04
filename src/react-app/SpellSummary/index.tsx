@@ -46,6 +46,7 @@ export const SpellSummary = ({
   showLevel = false,
   checkboxIdSuffix,
   isInSearchList = false,
+  url,
 }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
   const spell: Spell.Details = spellDetails[id];
@@ -57,7 +58,7 @@ export const SpellSummary = ({
       open({
         title,
         className: styles.dialog,
-        children: <SpellCard className={styles.spellCard} id={id} />,
+        children: <SpellCard className={styles.spellCard} id={id} url={url} />,
       });
     },
     [open, title, id],
@@ -97,7 +98,7 @@ export const SpellSummary = ({
           </div>
         </a>
       </div>
-      {isCardMode ? <SpellCard className={styles.spellCard} id={id} /> : null}
+      {isCardMode ? <SpellCard className={styles.spellCard} id={id} url={url} /> : null}
     </li>
   );
 };

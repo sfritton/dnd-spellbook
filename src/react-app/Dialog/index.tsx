@@ -83,7 +83,7 @@ const useDialog = () => {
               isDrawer ? styles.drawer : styles.modal
             } parchment overlay`}
           >
-            <header className="dialogHeader">
+            <header>
               <h3>{title}</h3>
               <button className="secondary" autoFocus aria-label="Close" onClick={closeFn}>
                 <IconClose />

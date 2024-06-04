@@ -42,6 +42,10 @@
 
   .source {
     font-size: 12px;
+    
+    > div {
+      margin-bottom: 4px;
+    }
   }
 
   @media print {

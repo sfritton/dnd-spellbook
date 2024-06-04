@@ -75,6 +75,7 @@ export const SettingsDrawerContent = ({
           </option>
         ))}
       </select>
+      <h5>Preview</h5>
       <ul>
         <SpellSummary {...SAMPLE_SPELL} checkboxIdSuffix="sample" />
       </ul>

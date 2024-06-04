@@ -11,9 +11,10 @@
     }
   }
 
-  h4 {
+  h4, h5 {
     margin-bottom: 8px;
     margin-top: 32px;
+    font-size: 16px;
   }
 
   .selectLabel {
@@ -43,6 +44,6 @@
 
   ul {
     padding: 0;
-    margin: 32px 0;
+    margin: 0;
   }
 }
