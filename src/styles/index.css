@@ -156,6 +156,33 @@ button {
   }
 }
 
+select {
+  appearance: none;
+  font-family: var(--serif);
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  border-radius: 4px;
+  background-color: #fff6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgb(35,19,10)' %3E%3Cpath d='M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff8;
+  }
+}
+
+select,
+input {
+  font-family: var(--serif);
+}
+
 footer {
   font-size: 14px;
   text-align: center;
