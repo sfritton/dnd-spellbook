@@ -2,12 +2,16 @@
   /* Override defaults */
   position: fixed;
   display: grid;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
   max-width: none;
   max-height: none;
   border: none;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   align-items: center;
   z-index: 1;
   overflow: hidden;
@@ -81,8 +85,7 @@
       right: 0;
       top: 0;
       margin: 0;
-      height: 100vh;
-      height: 100dvh;
+      height: 100%;
       border-radius: 0;
       width: 375px;
       overflow-y: auto;
