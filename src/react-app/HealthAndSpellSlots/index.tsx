@@ -36,6 +36,7 @@ export const HealthAndSpellSlots = () => {
   const [hp, setHp] = useState(defaults?.hp ?? 0);
   const [tempHp, setTempHp] = useState(defaults?.tempHp ?? 0);
   const [spellSlots, setSpellSlots] = useState(defaults?.spellSlots ?? new Array(9).fill(0));
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   const makeUpdateSpellSlots = useCallback(
     (level: number, index: number) => (checked: boolean) => {
@@ -61,6 +62,10 @@ export const HealthAndSpellSlots = () => {
     );
   }, [maximums, hp, tempHp, spellSlots]);
 
+  useEffect(() => {
+    if (isCharacterOpen) headingRef.current?.focus();
+  }, [isCharacterOpen]);
+
   // If max HP is 0, we want to default to edit mode
   const [isEditing, setIsEditing] = useState(maximums.hp === 0);
 
@@ -77,7 +82,9 @@ export const HealthAndSpellSlots = () => {
   return (
     <div className={`parchment overlay ${styles.healthAndSpellSlots}`}>
       <div className={styles.header}>
-        <h2>Character Status</h2>
+        <h2 tabIndex={-1} ref={headingRef}>
+          Character Status
+        </h2>
         <button
           className="secondary"
           onClick={() => setIsCharacterOpen(false)}

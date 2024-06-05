@@ -131,6 +131,18 @@ export const DialogProvider = ({ children }: PropsWithChildren) => {
     else closeDialog();
   }, [dialogProps.isOpen]);
 
+  useEffect(() => {
+    const escHandler = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+
+      close();
+    };
+
+    document.addEventListener('keyup', escHandler);
+
+    return () => document.removeEventListener('keyup', escHandler);
+  }, [close]);
+
   const value = useMemo(() => ({ open, close }), [open, close]);
 
   return (
