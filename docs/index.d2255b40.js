@@ -11029,6 +11029,7 @@ const $624eed663fdde719$var$SpellListContext = /*#__PURE__*/ (0, $bwXBY.createCo
     spellLists: new Array(10).fill([]),
     preparedSpells: [],
     appendSpells: ()=>{},
+    removeSpell: ()=>{},
     makeToggleSpell: ()=>()=>{},
     clearSpells: ()=>{}
 });
@@ -11048,6 +11049,15 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                             isPrepared: false
                         }))
                 ].sort((spellA, spellB)=>spellA.level - spellB.level)));
+    }, []);
+    const removeSpell = (0, $bwXBY.useCallback)((spell)=>{
+        setSpellLists((prevSpells)=>{
+            const newSpells = [
+                ...prevSpells
+            ];
+            newSpells[spell.level] = newSpells[spell.level].filter(({ id: id })=>id !== spell.id);
+            return newSpells;
+        });
     }, []);
     const makeToggleSpell = (0, $bwXBY.useCallback)(({ id: id, level: level })=>(isPrepared)=>{
             setSpellLists((prevSpellLists)=>{
@@ -11073,12 +11083,14 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
     const value = (0, $bwXBY.useMemo)(()=>({
             spellLists: spellLists,
             appendSpells: appendSpells,
+            removeSpell: removeSpell,
             makeToggleSpell: makeToggleSpell,
             preparedSpells: preparedSpells,
             clearSpells: clearSpells
         }), [
         spellLists,
         appendSpells,
+        removeSpell,
         makeToggleSpell,
         preparedSpells,
         clearSpells
@@ -11656,6 +11668,18 @@ $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = `O3yP9W_summary`;
 
 
 
+
+const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+        })
+    });
+
+
 const $e96eb16661e54a09$var$getSpellHighlight = ({ castingTime: castingTime, levelAndSchool: levelAndSchool, duration: duration, range: range, components: components }, highlight)=>{
     switch(highlight){
         case "isRitual":
@@ -11700,12 +11724,12 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
                 children: [
                     isInSearchList ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
                         className: `${(0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).addButton} secondary`,
-                        onClick: ()=>onChange(false),
+                        onClick: ()=>onChange(isChecked),
                         children: [
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {}),
+                            isChecked ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {}),
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
                                 className: "hidden",
-                                children: "Add spell"
+                                children: isChecked ? `Remove "${title}" from known spells` : `Add "${title}" to known spells`
                             })
                         ]
                     }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
@@ -11973,7 +11997,7 @@ const $51681b8ab1dcebc0$export$2be804e19c04baed = ()=>/*#__PURE__*/ (0, $086df4e
 const $6ceefef6d1a49563$var$allSpellsFlat = (0, (/*@__PURE__*/$parcel$interopDefault($3a54764133d6f900$exports))).flat();
 const $6ceefef6d1a49563$export$79d13b60110f33be = ()=>{
     const [value, setValue] = (0, $bwXBY.useState)("");
-    const { appendSpells: appendSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { appendSpells: appendSpells, removeSpell: removeSpell, spellLists: spellLists } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
     const matchingSpells = value ? $6ceefef6d1a49563$var$allSpellsFlat.filter(({ title: title })=>title.match(new RegExp(value, "i"))).slice(0, 3) : [];
     const showDropdown = matchingSpells.length > 0;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
@@ -12002,9 +12026,10 @@ const $6ceefef6d1a49563$export$79d13b60110f33be = ()=>{
                 children: showDropdown ? matchingSpells.map((spell)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
                         ...spell,
                         isInSearchList: true,
-                        onChange: ()=>appendSpells([
+                        onChange: (isChecked)=>isChecked ? removeSpell(spell) : appendSpells([
                                 spell
                             ]),
+                        isChecked: spellLists[spell.level].some(({ id: id })=>id === spell.id),
                         checkboxIdSuffix: "search",
                         showLevel: true
                     }, spell.id)) : null
@@ -12735,4 +12760,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.0742a7d7.js.map
+//# sourceMappingURL=index.d2255b40.js.map
