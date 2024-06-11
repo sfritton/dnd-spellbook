@@ -50,6 +50,8 @@ main {
   background-image: var(--parchment-background-image);
 
   .overlay {
+    --color-parchment-dark: #d9b28a;
+    --shadow-parchment: 0 0 var(--parchment-blur) var(--color-parchment-dark) inset;
     box-shadow: var(--shadow-md), var(--shadow-parchment);
   }
 }

@@ -1,12 +1,15 @@
 .spellCard {
   --gap: 12px;
-  max-width: 400px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto 1fr auto;
   gap: var(--gap);
   padding: 8px 16px;
   font-size: 14px;
+
+  @media (min-width: 480px) {
+    max-width: 400px;
+  }
 
   > * {
     border-radius: 2px;
