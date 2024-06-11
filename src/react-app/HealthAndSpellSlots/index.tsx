@@ -143,42 +143,46 @@ export const HealthAndSpellSlots = () => {
             </label>
           </div>
         )}
-        <h3>Spell Slots</h3>
-        <div className={styles.spellSlots}>
-          {maximums.spellSlots.map((slots, level) =>
-            isEditing ? (
-              <div className={styles.slot} key={`spell-slots-${level}`}>
-                <label htmlFor={`spell-slots-${level}`}>{formatSpellLevel(level + 1)}</label>
-                <input
-                  id={`spell-slots-${level}`}
-                  type="number"
-                  value={slots}
-                  onChange={(e) => {
-                    const newSlotCount = Number(e.target.value);
-                    if (isNaN(newSlotCount)) return;
+        {isEditing || maximums.spellSlots.some((level) => level > 0) ? (
+          <>
+            <h3>Spell Slots</h3>
+            <div className={styles.spellSlots}>
+              {maximums.spellSlots.map((slots, level) =>
+                isEditing ? (
+                  <div className={styles.slot} key={`spell-slots-${level}`}>
+                    <label htmlFor={`spell-slots-${level}`}>{formatSpellLevel(level + 1)}</label>
+                    <input
+                      id={`spell-slots-${level}`}
+                      type="number"
+                      value={slots}
+                      onChange={(e) => {
+                        const newSlotCount = Number(e.target.value);
+                        if (isNaN(newSlotCount)) return;
 
-                    const newSpellSlots = [...maximums.spellSlots];
-                    // Must be between 0 and 5
-                    newSpellSlots[level] = Math.max(0, newSlotCount);
+                        const newSpellSlots = [...maximums.spellSlots];
+                        // Must be between 0 and 5
+                        newSpellSlots[level] = Math.max(0, newSlotCount);
 
-                    setMaximums((prev) => ({
-                      ...prev,
-                      spellSlots: newSpellSlots,
-                    }));
-                  }}
-                />
-              </div>
-            ) : slots > 0 ? (
-              <AbilityTracker
-                key={level}
-                name={formatSpellLevel(level + 1)}
-                current={spellSlots[level]}
-                maximum={slots}
-                onChange={makeUpdateSpellSlots(level)}
-              />
-            ) : null,
-          )}
-        </div>
+                        setMaximums((prev) => ({
+                          ...prev,
+                          spellSlots: newSpellSlots,
+                        }));
+                      }}
+                    />
+                  </div>
+                ) : slots > 0 ? (
+                  <AbilityTracker
+                    key={level}
+                    name={formatSpellLevel(level + 1)}
+                    current={spellSlots[level]}
+                    maximum={slots}
+                    onChange={makeUpdateSpellSlots(level)}
+                  />
+                ) : null,
+              )}
+            </div>
+          </>
+        ) : null}
         {isEditing || abilities.length ? (
           <>
             <h3>Abilities</h3>
