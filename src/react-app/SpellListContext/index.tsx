@@ -22,6 +22,7 @@ interface SpellListContextValue {
   spellLists: SpellSummaryData[][];
   preparedSpells: SpellSummaryData[][];
   appendSpells: (spells: Spell.Summary[]) => void;
+  removeSpell: (spell: Spell.Summary) => void;
   makeToggleSpell: MakeToggleSpell;
   clearSpells: () => void;
 }
@@ -30,6 +31,7 @@ const SpellListContext = createContext<SpellListContextValue>({
   spellLists: new Array(10).fill([]),
   preparedSpells: [],
   appendSpells: () => {},
+  removeSpell: () => {},
   makeToggleSpell: () => () => {},
   clearSpells: () => {},
 });
@@ -61,6 +63,16 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
         ].sort((spellA, spellB) => spellA.level - spellB.level),
       ),
     );
+  }, []);
+
+  const removeSpell = useCallback((spell: Spell.Summary) => {
+    setSpellLists((prevSpells) => {
+      const newSpells = [...prevSpells];
+
+      newSpells[spell.level] = newSpells[spell.level].filter(({ id }) => id !== spell.id);
+
+      return newSpells;
+    });
   }, []);
 
   const makeToggleSpell = useCallback<MakeToggleSpell>(
@@ -95,8 +107,8 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
   );
 
   const value = useMemo(
-    () => ({ spellLists, appendSpells, makeToggleSpell, preparedSpells, clearSpells }),
-    [spellLists, appendSpells, makeToggleSpell, preparedSpells, clearSpells],
+    () => ({ spellLists, appendSpells, removeSpell, makeToggleSpell, preparedSpells, clearSpells }),
+    [spellLists, appendSpells, removeSpell, makeToggleSpell, preparedSpells, clearSpells],
   );
 
   useEffect(() => {

@@ -9,7 +9,7 @@ const allSpellsFlat = allSpells.flat();
 
 export const SearchBar = () => {
   const [value, setValue] = useState<string>('');
-  const { appendSpells } = useSpellListContext();
+  const { appendSpells, removeSpell, spellLists } = useSpellListContext();
 
   const matchingSpells = value
     ? allSpellsFlat.filter(({ title }) => title.match(new RegExp(value, 'i'))).slice(0, 3)
@@ -39,7 +39,8 @@ export const SearchBar = () => {
                 key={spell.id}
                 {...spell}
                 isInSearchList
-                onChange={() => appendSpells([spell])}
+                onChange={(isChecked) => (isChecked ? removeSpell(spell) : appendSpells([spell]))}
+                isChecked={spellLists[spell.level].some(({ id }) => id === spell.id)}
                 checkboxIdSuffix="search"
                 showLevel
               />
