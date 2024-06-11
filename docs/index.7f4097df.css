@@ -51,6 +51,8 @@ main > * {
 }
 
 .parchment .overlay {
+  --color-parchment-dark: #d9b28a;
+  --shadow-parchment: 0 0 var(--parchment-blur) var(--color-parchment-dark) inset;
   box-shadow: var(--shadow-md), var(--shadow-parchment);
 }
 
@@ -210,4 +212,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.be4e128b.css.map */
+/*# sourceMappingURL=index.7f4097df.css.map */

@@ -11106,15 +11106,19 @@ $parcel$export($72ff5829cd5892ea$exports, "dialog", function () { return $72ff58
 $parcel$export($72ff5829cd5892ea$exports, "drawer", function () { return $72ff5829cd5892ea$export$4df8d4373bc60300; }, function (v) { return $72ff5829cd5892ea$export$4df8d4373bc60300 = v; });
 $parcel$export($72ff5829cd5892ea$exports, "grow", function () { return $72ff5829cd5892ea$export$7c46c61af7b724fc; }, function (v) { return $72ff5829cd5892ea$export$7c46c61af7b724fc = v; });
 $parcel$export($72ff5829cd5892ea$exports, "shrink", function () { return $72ff5829cd5892ea$export$8b1f3092f5e28575; }, function (v) { return $72ff5829cd5892ea$export$8b1f3092f5e28575 = v; });
+$parcel$export($72ff5829cd5892ea$exports, "slideDown", function () { return $72ff5829cd5892ea$export$abdd11a06a163232; }, function (v) { return $72ff5829cd5892ea$export$abdd11a06a163232 = v; });
 $parcel$export($72ff5829cd5892ea$exports, "slideLeft", function () { return $72ff5829cd5892ea$export$1e947a1dfc5a5548; }, function (v) { return $72ff5829cd5892ea$export$1e947a1dfc5a5548 = v; });
 $parcel$export($72ff5829cd5892ea$exports, "slideRight", function () { return $72ff5829cd5892ea$export$19b9a771608c4321; }, function (v) { return $72ff5829cd5892ea$export$19b9a771608c4321 = v; });
+$parcel$export($72ff5829cd5892ea$exports, "slideUp", function () { return $72ff5829cd5892ea$export$deed561b1a0ff1ea; }, function (v) { return $72ff5829cd5892ea$export$deed561b1a0ff1ea = v; });
 var $72ff5829cd5892ea$export$48e901322468f6d5;
 var $72ff5829cd5892ea$export$518824cf31321346;
 var $72ff5829cd5892ea$export$4df8d4373bc60300;
 var $72ff5829cd5892ea$export$7c46c61af7b724fc;
 var $72ff5829cd5892ea$export$8b1f3092f5e28575;
+var $72ff5829cd5892ea$export$abdd11a06a163232;
 var $72ff5829cd5892ea$export$1e947a1dfc5a5548;
 var $72ff5829cd5892ea$export$19b9a771608c4321;
+var $72ff5829cd5892ea$export$deed561b1a0ff1ea;
 $72ff5829cd5892ea$export$48e901322468f6d5 = `Q3_1la_backdrop`;
 $72ff5829cd5892ea$export$518824cf31321346 = `Q3_1la_dialog`;
 $72ff5829cd5892ea$export$4df8d4373bc60300 = `Q3_1la_drawer`;
@@ -11122,10 +11126,14 @@ $72ff5829cd5892ea$export$7c46c61af7b724fc = `Q3_1la_grow`;
 $72ff5829cd5892ea$export$7c46c61af7b724fc;
 $72ff5829cd5892ea$export$8b1f3092f5e28575 = `Q3_1la_shrink`;
 $72ff5829cd5892ea$export$8b1f3092f5e28575;
+$72ff5829cd5892ea$export$abdd11a06a163232 = `Q3_1la_slideDown`;
+$72ff5829cd5892ea$export$abdd11a06a163232;
 $72ff5829cd5892ea$export$1e947a1dfc5a5548 = `Q3_1la_slideLeft`;
 $72ff5829cd5892ea$export$1e947a1dfc5a5548;
 $72ff5829cd5892ea$export$19b9a771608c4321 = `Q3_1la_slideRight`;
 $72ff5829cd5892ea$export$19b9a771608c4321;
+$72ff5829cd5892ea$export$deed561b1a0ff1ea = `Q3_1la_slideUp`;
+$72ff5829cd5892ea$export$deed561b1a0ff1ea;
 
 
 
@@ -11244,6 +11252,16 @@ const $12c96dc3e262eca0$export$7ab5cfe96fae86d3 = ({ children: children })=>{
         else closeDialog();
     }, [
         dialogProps.isOpen
+    ]);
+    (0, $bwXBY.useEffect)(()=>{
+        const escHandler = (e)=>{
+            if (e.key !== "Escape") return;
+            close();
+        };
+        document.addEventListener("keyup", escHandler);
+        return ()=>document.removeEventListener("keyup", escHandler);
+    }, [
+        close
     ]);
     const value = (0, $bwXBY.useMemo)(()=>({
             open: open,
@@ -12263,6 +12281,8 @@ var $bwXBY = parcelRequire("bwXBY");
 var $d4c4e74eb4a3e8fd$exports = {};
 
 $parcel$export($d4c4e74eb4a3e8fd$exports, "buttons", function () { return $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f; }, function (v) { return $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f = v; });
+$parcel$export($d4c4e74eb4a3e8fd$exports, "content", function () { return $d4c4e74eb4a3e8fd$export$a7db06668cad9adb; }, function (v) { return $d4c4e74eb4a3e8fd$export$a7db06668cad9adb = v; });
+$parcel$export($d4c4e74eb4a3e8fd$exports, "editAbility", function () { return $d4c4e74eb4a3e8fd$export$4364154e621a5cd6; }, function (v) { return $d4c4e74eb4a3e8fd$export$4364154e621a5cd6 = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "header", function () { return $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4; }, function (v) { return $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4 = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "health", function () { return $d4c4e74eb4a3e8fd$export$f0784a54fb0af903; }, function (v) { return $d4c4e74eb4a3e8fd$export$f0784a54fb0af903 = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "healthAndSpellSlots", function () { return $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef; }, function (v) { return $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef = v; });
@@ -12270,6 +12290,8 @@ $parcel$export($d4c4e74eb4a3e8fd$exports, "iconOpen", function () { return $d4c4
 $parcel$export($d4c4e74eb4a3e8fd$exports, "slideUp", function () { return $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea; }, function (v) { return $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "slot", function () { return $d4c4e74eb4a3e8fd$export$103b78750979eead; }, function (v) { return $d4c4e74eb4a3e8fd$export$103b78750979eead = v; });
 var $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f;
+var $d4c4e74eb4a3e8fd$export$a7db06668cad9adb;
+var $d4c4e74eb4a3e8fd$export$4364154e621a5cd6;
 var $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4;
 var $d4c4e74eb4a3e8fd$export$f0784a54fb0af903;
 var $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef;
@@ -12277,6 +12299,8 @@ var $d4c4e74eb4a3e8fd$export$42710960887feca;
 var $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea;
 var $d4c4e74eb4a3e8fd$export$103b78750979eead;
 $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f = `omtYtG_buttons`;
+$d4c4e74eb4a3e8fd$export$a7db06668cad9adb = `omtYtG_content`;
+$d4c4e74eb4a3e8fd$export$4364154e621a5cd6 = `omtYtG_editAbility`;
 $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4 = `omtYtG_header`;
 $d4c4e74eb4a3e8fd$export$f0784a54fb0af903 = `omtYtG_health`;
 $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef = `omtYtG_healthAndSpellSlots`;
@@ -12288,6 +12312,77 @@ $d4c4e74eb4a3e8fd$export$103b78750979eead = `omtYtG_slot`;
 
 
 
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
+
+var $d3f597f7ea930208$exports = {};
+
+$parcel$export($d3f597f7ea930208$exports, "abilityCheckboxes", function () { return $d3f597f7ea930208$export$3baa659a1b991061; }, function (v) { return $d3f597f7ea930208$export$3baa659a1b991061 = v; });
+$parcel$export($d3f597f7ea930208$exports, "abilityRange", function () { return $d3f597f7ea930208$export$7da31afd23320207; }, function (v) { return $d3f597f7ea930208$export$7da31afd23320207 = v; });
+var $d3f597f7ea930208$export$3baa659a1b991061;
+var $d3f597f7ea930208$export$7da31afd23320207;
+$d3f597f7ea930208$export$3baa659a1b991061 = `HYU1Gq_abilityCheckboxes`;
+$d3f597f7ea930208$export$7da31afd23320207 = `HYU1Gq_abilityRange`;
+
+
+const $0ef8e0f3500f1f09$export$ee299be2ec43f3d = ({ name: name, current: current, maximum: maximum, onChange: onChange, isRange: isRange = false })=>{
+    const handleChange = (0, $bwXBY.useCallback)((e)=>{
+        const newValue = Number(e.target.value);
+        if (isNaN(newValue)) return;
+        onChange(newValue);
+    }, [
+        onChange
+    ]);
+    const makeHandleCheckboxChange = (0, $bwXBY.useCallback)((index)=>(isChecked)=>{
+            onChange(isChecked ? index : index - 1);
+        }, [
+        onChange
+    ]);
+    if (maximum > 5 || isRange) return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+        className: (0, (/*@__PURE__*/$parcel$interopDefault($d3f597f7ea930208$exports))).abilityRange,
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                htmlFor: `Ability - ${name}`,
+                children: name
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                id: `Ability - ${name}`,
+                type: "range",
+                max: maximum,
+                value: current,
+                onChange: handleChange
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                children: [
+                    current,
+                    "/",
+                    maximum
+                ]
+            })
+        ]
+    });
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("fieldset", {
+        className: (0, (/*@__PURE__*/$parcel$interopDefault($d3f597f7ea930208$exports))).abilityCheckboxes,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+            children: [
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("legend", {
+                    children: name
+                }),
+                [
+                    ...new Array(maximum)
+                ].map((_, index)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
+                        hideLabel: true,
+                        id: `${name} - ${index + 1} of ${maximum}`,
+                        label: `${name} - ${index + 1} of ${maximum}`,
+                        checked: current >= index,
+                        onChange: makeHandleCheckboxChange(index)
+                    }, index))
+            ]
+        })
+    });
+};
 
 
 const $b20b8bb4b1343cb6$var$getStoredHealthAndSpellSlots = ()=>{
@@ -12309,12 +12404,15 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
     const [tempHp, setTempHp] = (0, $bwXBY.useState)((_defaults_tempHp = defaults === null || defaults === void 0 ? void 0 : defaults.tempHp) !== null && _defaults_tempHp !== void 0 ? _defaults_tempHp : 0);
     var _defaults_spellSlots;
     const [spellSlots, setSpellSlots] = (0, $bwXBY.useState)((_defaults_spellSlots = defaults === null || defaults === void 0 ? void 0 : defaults.spellSlots) !== null && _defaults_spellSlots !== void 0 ? _defaults_spellSlots : new Array(9).fill(0));
-    const makeUpdateSpellSlots = (0, $bwXBY.useCallback)((level, index)=>(checked)=>{
+    var _defaults_abilities;
+    const [abilities, setAbilities] = (0, $bwXBY.useState)((_defaults_abilities = defaults === null || defaults === void 0 ? void 0 : defaults.abilities) !== null && _defaults_abilities !== void 0 ? _defaults_abilities : []);
+    const headingRef = (0, $bwXBY.useRef)(null);
+    const makeUpdateSpellSlots = (0, $bwXBY.useCallback)((level)=>(newValue)=>{
             setSpellSlots((prev)=>{
                 const newSlots = [
                     ...prev
                 ];
-                newSlots[level] = checked ? index : index - 1;
+                newSlots[level] = newValue;
                 return newSlots;
             });
         }, []);
@@ -12323,13 +12421,21 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
             maximums: maximums,
             hp: hp,
             tempHp: tempHp,
-            spellSlots: spellSlots
+            spellSlots: spellSlots,
+            abilities: abilities
         }));
     }, [
         maximums,
         hp,
         tempHp,
-        spellSlots
+        spellSlots,
+        abilities
+    ]);
+    (0, $bwXBY.useEffect)(()=>{
+        var _headingRef_current;
+        if (isCharacterOpen) (_headingRef_current = headingRef.current) === null || _headingRef_current === void 0 ? void 0 : _headingRef_current.focus();
+    }, [
+        isCharacterOpen
     ]);
     // If max HP is 0, we want to default to edit mode
     const [isEditing, setIsEditing] = (0, $bwXBY.useState)(maximums.hp === 0);
@@ -12339,6 +12445,10 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
         setSpellSlots([
             ...maximums.spellSlots
         ]);
+        setAbilities((prev)=>prev.map((ability)=>({
+                    ...ability,
+                    current: ability.maximum
+                })));
     }, [
         maximums
     ]);
@@ -12351,6 +12461,8 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).header,
                 children: [
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
+                        tabIndex: -1,
+                        ref: headingRef,
                         children: "Character Status"
                     }),
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("button", {
@@ -12361,123 +12473,200 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
                     })
                 ]
             }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                children: "HP"
-            }),
-            isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).content,
                 children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
-                        children: "Maximum HP"
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                        children: "HP"
                     }),
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
-                        type: "number",
-                        value: maximums.hp,
-                        onChange: (e)=>{
-                            const newMaxHp = Number(e.target.value);
-                            if (isNaN(newMaxHp)) return;
-                            setMaximums((prev)=>({
-                                    ...prev,
-                                    hp: Math.max(0, newMaxHp)
-                                }));
-                        }
-                    })
-                ]
-            }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).health,
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("label", {
-                        children: [
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
-                                className: "hidden",
-                                children: "Temp HP"
-                            }),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
-                                type: "range",
-                                max: maximums.hp,
-                                value: tempHp,
-                                onChange: (e)=>setTempHp(Number(e.target.value))
-                            }),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
-                                children: [
-                                    tempHp,
-                                    " temp HP"
-                                ]
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("label", {
-                        children: [
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
-                                className: "hidden",
-                                children: "HP"
-                            }),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
-                                type: "range",
-                                max: maximums.hp,
-                                value: hp,
-                                onChange: (e)=>setHp(Number(e.target.value))
-                            }),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
-                                children: [
-                                    hp,
-                                    "/",
-                                    maximums.hp,
-                                    " HP"
-                                ]
-                            })
-                        ]
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
-                children: "Spell Slots"
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).spellSlots,
-                children: maximums.spellSlots.map((slots, level)=>isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                        className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).slot,
+                    isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
                         children: [
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
-                                htmlFor: `spell-slots-${level}`,
-                                children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1)
+                                children: "Maximum HP"
                             }),
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
-                                id: `spell-slots-${level}`,
                                 type: "number",
-                                value: slots,
+                                value: maximums.hp,
                                 onChange: (e)=>{
-                                    const newSlotCount = Number(e.target.value);
-                                    if (isNaN(newSlotCount)) return;
-                                    const newSpellSlots = [
-                                        ...maximums.spellSlots
-                                    ];
-                                    // Must be between 0 and 5
-                                    newSpellSlots[level] = Math.max(0, Math.min(newSlotCount, 5));
+                                    const newMaxHp = Number(e.target.value);
+                                    if (isNaN(newMaxHp)) return;
                                     setMaximums((prev)=>({
                                             ...prev,
-                                            spellSlots: newSpellSlots
+                                            hp: Math.max(0, newMaxHp)
                                         }));
                                 }
                             })
                         ]
-                    }, `spell-slots-${level}`) : slots > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("fieldset", {
-                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                            children: [
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("legend", {
-                                    children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1)
-                                }),
-                                [
-                                    ...new Array(slots)
-                                ].map((_, index)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
-                                        hideLabel: true,
-                                        id: `${(0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1)} Spell Slots - ${index + 1} of ${slots}`,
-                                        label: `${(0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1)} Spell Slots - ${index + 1} of ${slots}`,
-                                        checked: spellSlots[level] >= index,
-                                        onChange: makeUpdateSpellSlots(level, index)
-                                    }, index))
-                            ]
-                        })
-                    }, level) : null)
+                    }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).health,
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("label", {
+                                children: [
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
+                                        className: "hidden",
+                                        children: "Temp HP"
+                                    }),
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                                        type: "range",
+                                        max: maximums.hp,
+                                        value: tempHp,
+                                        onChange: (e)=>setTempHp(Number(e.target.value))
+                                    }),
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                                        children: [
+                                            tempHp,
+                                            " temp HP"
+                                        ]
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("label", {
+                                children: [
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
+                                        className: "hidden",
+                                        children: "HP"
+                                    }),
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                                        type: "range",
+                                        max: maximums.hp,
+                                        value: hp,
+                                        onChange: (e)=>setHp(Number(e.target.value))
+                                    }),
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                                        children: [
+                                            hp,
+                                            "/",
+                                            maximums.hp,
+                                            " HP"
+                                        ]
+                                    })
+                                ]
+                            })
+                        ]
+                    }),
+                    isEditing || maximums.spellSlots.some((level)=>level > 0) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                                children: "Spell Slots"
+                            }),
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).spellSlots,
+                                children: maximums.spellSlots.map((slots, level)=>isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                                        className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).slot,
+                                        children: [
+                                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                                                htmlFor: `spell-slots-${level}`,
+                                                children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1)
+                                            }),
+                                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                                                id: `spell-slots-${level}`,
+                                                type: "number",
+                                                value: slots,
+                                                onChange: (e)=>{
+                                                    const newSlotCount = Number(e.target.value);
+                                                    if (isNaN(newSlotCount)) return;
+                                                    const newSpellSlots = [
+                                                        ...maximums.spellSlots
+                                                    ];
+                                                    // Must be between 0 and 5
+                                                    newSpellSlots[level] = Math.max(0, newSlotCount);
+                                                    setMaximums((prev)=>({
+                                                            ...prev,
+                                                            spellSlots: newSpellSlots
+                                                        }));
+                                                }
+                                            })
+                                        ]
+                                    }, `spell-slots-${level}`) : slots > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0ef8e0f3500f1f09$export$ee299be2ec43f3d), {
+                                        name: (0, $afae47e020802ade$export$89c6395f9ab5b552)(level + 1),
+                                        current: spellSlots[level],
+                                        maximum: slots,
+                                        onChange: makeUpdateSpellSlots(level)
+                                    }, level) : null)
+                            })
+                        ]
+                    }) : null,
+                    isEditing || abilities.length ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                                children: "Abilities"
+                            }),
+                            abilities.map(({ name: name, current: current, maximum: maximum }, index)=>isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                                    className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).editAbility,
+                                    children: [
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                                            children: "Name"
+                                        }),
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                                            type: "text",
+                                            value: name,
+                                            onChange: (e)=>setAbilities((prev)=>{
+                                                    const newPrev = [
+                                                        ...prev
+                                                    ];
+                                                    newPrev[index] = {
+                                                        ...newPrev[index],
+                                                        name: e.target.value
+                                                    };
+                                                    return newPrev;
+                                                })
+                                        }),
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                                            children: "Maximum"
+                                        }),
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                                            type: "number",
+                                            value: maximum,
+                                            onChange: (e)=>setAbilities((prev)=>{
+                                                    const newMaximum = Number(e.target.value);
+                                                    if (isNaN(newMaximum)) return prev;
+                                                    const newPrev = [
+                                                        ...prev
+                                                    ];
+                                                    newPrev[index] = {
+                                                        ...newPrev[index],
+                                                        maximum: newMaximum
+                                                    };
+                                                    return newPrev;
+                                                })
+                                        })
+                                    ]
+                                }, index) : Boolean(name.length && maximum) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0ef8e0f3500f1f09$export$ee299be2ec43f3d), {
+                                    isRange: true,
+                                    name: name,
+                                    current: current,
+                                    maximum: maximum,
+                                    onChange: (newCurrent)=>{
+                                        setAbilities((prev)=>{
+                                            const newPrev = [
+                                                ...prev
+                                            ];
+                                            newPrev[index] = {
+                                                ...newPrev[index],
+                                                current: newCurrent
+                                            };
+                                            return newPrev;
+                                        });
+                                    }
+                                }, index) : null)
+                        ]
+                    }) : null,
+                    isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("a", {
+                        href: "#",
+                        onClick: (e)=>{
+                            e.preventDefault();
+                            setAbilities((prev)=>[
+                                    ...prev,
+                                    {
+                                        name: "",
+                                        current: 0,
+                                        maximum: 0
+                                    }
+                                ]);
+                        },
+                        children: "Add ability"
+                    }) : null
+                ]
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).buttons,
@@ -12546,4 +12735,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.2ebb11f4.js.map
+//# sourceMappingURL=index.0742a7d7.js.map

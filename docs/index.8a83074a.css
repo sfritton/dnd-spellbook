@@ -139,7 +139,7 @@
 
 .Q3_1la_backdrop {
   z-index: 1;
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   background: #0004;
   border: none;
   align-items: center;
@@ -162,6 +162,16 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .Q3_1la_backdrop .Q3_1la_dialog {
+    animation: .3s forwards Q3_1la_slideDown;
+  }
+
+  .Q3_1la_backdrop[open] .Q3_1la_dialog {
+    animation: .3s forwards Q3_1la_slideUp;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (width >= 480px) {
+  .Q3_1la_backdrop .Q3_1la_dialog {
     animation: .3s forwards Q3_1la_shrink;
   }
 
@@ -170,11 +180,11 @@
   }
 
   .Q3_1la_backdrop .Q3_1la_drawer {
-    animation: .3s forwards Q3_1la_slideRight;
+    animation: .3s forwards Q3_1la_slideLeft;
   }
 
   .Q3_1la_backdrop[open] .Q3_1la_drawer {
-    animation: .3s forwards Q3_1la_slideLeft;
+    animation: .3s forwards Q3_1la_slideRight;
   }
 }
 
@@ -183,12 +193,19 @@
 }
 
 .Q3_1la_backdrop .Q3_1la_dialog {
-  border: 1px solid var(--color-parchment-dark);
-  border-radius: 8px;
-  max-height: calc(100svh - 40px);
-  margin: 20px auto;
+  height: 100svh;
   padding: 16px 20px;
   overflow-y: auto;
+}
+
+@media (width >= 480px) {
+  .Q3_1la_backdrop .Q3_1la_dialog {
+    border: 1px solid var(--color-parchment-dark);
+    border-radius: 8px;
+    height: auto;
+    max-height: calc(100svh - 40px);
+    margin: 20px auto;
+  }
 }
 
 .Q3_1la_backdrop .Q3_1la_dialog header {
@@ -215,15 +232,21 @@
 
 .Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer {
   border-radius: 0;
-  width: 375px;
+  width: 100%;
   height: 100%;
   max-height: none;
   margin: 0;
   padding: 4px 16px 16px;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   overflow-y: auto;
+}
+
+@media (width >= 480px) {
+  .Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer {
+    width: 375px;
+  }
 }
 
 .Q3_1la_backdrop .Q3_1la_dialog.Q3_1la_drawer header {
@@ -245,14 +268,28 @@
 }
 
 @keyframes Q3_1la_slideLeft {
-  from {
-    transform: translateX(375px);
+  to {
+    transform: translateX(-375px);
   }
 }
 
 @keyframes Q3_1la_slideRight {
+  from {
+    transform: translateX(-375px);
+  }
+}
+
+@keyframes Q3_1la_slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+}
+
+@keyframes Q3_1la_slideDown {
   to {
-    transform: translateX(375px);
+    opacity: 0;
+    transform: translateY(200px);
   }
 }
 
@@ -361,10 +398,15 @@
   gap: var(--gap);
   grid-template-rows: auto auto auto 1fr auto;
   grid-template-columns: 1fr 1fr;
-  max-width: 400px;
   padding: 8px 16px;
   font-size: 14px;
   display: grid;
+}
+
+@media (width >= 480px) {
+  .PzCXpG_spellCard {
+    max-width: 400px;
+  }
 }
 
 .PzCXpG_spellCard > * {
@@ -521,7 +563,6 @@
 }
 
 .O3yP9W_dialog.O3yP9W_dialog {
-  border-radius: 8px;
   padding: 16px;
 }
 
@@ -759,14 +800,15 @@
 
 .omtYtG_healthAndSpellSlots {
   z-index: 1;
+  grid-template-rows: auto 1fr auto;
   width: 100vw;
   height: 100svh;
-  padding: 16px 20px;
+  padding: 16px 0;
   animation: .3s omtYtG_slideUp;
+  display: grid;
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto;
 }
 
 @media (width >= 480px) {
@@ -781,9 +823,16 @@
   }
 }
 
+.omtYtG_healthAndSpellSlots > * {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .omtYtG_healthAndSpellSlots .omtYtG_header {
+  border-bottom: 1px solid var(--color-parchment-dark);
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 16px;
   display: flex;
 }
 
@@ -817,7 +866,7 @@
   font-size: 16px;
 }
 
-.omtYtG_healthAndSpellSlots input[type="number"] {
+.omtYtG_healthAndSpellSlots input[type="number"], .omtYtG_healthAndSpellSlots input[type="text"] {
   border: 1px solid var(--color-text);
   color: var(--color-text);
   background: #fff6;
@@ -826,6 +875,11 @@
   padding: 8px 16px;
   font-size: 16px;
   display: block;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_content {
+  padding-bottom: 16px;
+  overflow-y: auto;
 }
 
 .omtYtG_healthAndSpellSlots .omtYtG_health {
@@ -845,33 +899,14 @@
   cursor: ew-resize;
 }
 
-.omtYtG_healthAndSpellSlots fieldset {
-  background: #fff4;
-  border: none;
-  border-radius: 2px;
-  min-height: 44px;
-  margin: 8px 0;
-  padding: 0 16px;
-}
-
-.omtYtG_healthAndSpellSlots fieldset > div {
-  grid-template-columns: 78px repeat(5, 44px);
-  align-items: center;
-  display: grid;
-}
-
-.omtYtG_healthAndSpellSlots fieldset > div label {
-  border-radius: 2px;
-  padding: 12px;
-}
-
 .omtYtG_healthAndSpellSlots .omtYtG_slot {
-  background: #fff4;
-  border: none;
-  border-radius: 2px;
+  background: none;
+  grid-template-columns: 78px 1fr;
+  align-items: center;
   min-height: 44px;
   margin: 8px 0;
-  padding: 0 16px;
+  padding: 0;
+  display: grid;
 }
 
 .omtYtG_healthAndSpellSlots .omtYtG_slot > div {
@@ -885,17 +920,23 @@
   padding: 12px;
 }
 
-.omtYtG_healthAndSpellSlots .omtYtG_slot {
-  background: none;
-  grid-template-columns: 78px 1fr;
-  align-items: center;
-  padding: 0;
+.omtYtG_healthAndSpellSlots .omtYtG_editAbility {
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 80px;
+  grid-auto-flow: column;
+  gap: 2px 8px;
+  margin: 16px 0;
   display: grid;
 }
 
+.omtYtG_healthAndSpellSlots .omtYtG_editAbility > label {
+  font-size: 14px;
+}
+
 .omtYtG_healthAndSpellSlots .omtYtG_buttons {
+  border-top: 1px solid var(--color-parchment-dark);
   gap: 8px;
-  margin-top: 16px;
+  padding-top: 16px;
   display: flex;
 }
 
@@ -905,4 +946,43 @@
     transform: translateY(200px);
   }
 }
-/*# sourceMappingURL=index.5f875812.css.map */
+
+.HYU1Gq_abilityCheckboxes {
+  background: #fff4;
+  border: none;
+  border-radius: 2px;
+  min-height: 44px;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+.HYU1Gq_abilityCheckboxes > div {
+  grid-template-columns: 78px repeat(5, 44px);
+  align-items: center;
+  display: grid;
+}
+
+.HYU1Gq_abilityCheckboxes > div label {
+  border-radius: 2px;
+  padding: 12px;
+}
+
+.HYU1Gq_abilityRange {
+  background: #fff4;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 12px;
+  min-height: 44px;
+  margin: 8px 0;
+  padding: 8px 16px;
+  display: grid;
+}
+
+.HYU1Gq_abilityRange > label {
+  grid-column: span 2;
+}
+
+.HYU1Gq_abilityRange > span {
+  font-size: 14px;
+}
+/*# sourceMappingURL=index.8a83074a.css.map */
