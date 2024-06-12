@@ -11639,7 +11639,6 @@ const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: classNam
 
 var $c817a00ac5469ae7$exports = {};
 
-$parcel$export($c817a00ac5469ae7$exports, "addButton", function () { return $c817a00ac5469ae7$export$76174c80c75f9baa; }, function (v) { return $c817a00ac5469ae7$export$76174c80c75f9baa = v; });
 $parcel$export($c817a00ac5469ae7$exports, "checkbox", function () { return $c817a00ac5469ae7$export$b07e517d22efa1ca; }, function (v) { return $c817a00ac5469ae7$export$b07e517d22efa1ca = v; });
 $parcel$export($c817a00ac5469ae7$exports, "dialog", function () { return $c817a00ac5469ae7$export$518824cf31321346; }, function (v) { return $c817a00ac5469ae7$export$518824cf31321346 = v; });
 $parcel$export($c817a00ac5469ae7$exports, "levelAndTime", function () { return $c817a00ac5469ae7$export$abe5a6512064abec; }, function (v) { return $c817a00ac5469ae7$export$abe5a6512064abec = v; });
@@ -11647,7 +11646,6 @@ $parcel$export($c817a00ac5469ae7$exports, "spellCard", function () { return $c81
 $parcel$export($c817a00ac5469ae7$exports, "spellSummary", function () { return $c817a00ac5469ae7$export$434ef77de6fd99a2; }, function (v) { return $c817a00ac5469ae7$export$434ef77de6fd99a2 = v; });
 $parcel$export($c817a00ac5469ae7$exports, "spellWrapper", function () { return $c817a00ac5469ae7$export$37de2bbeee209b64; }, function (v) { return $c817a00ac5469ae7$export$37de2bbeee209b64 = v; });
 $parcel$export($c817a00ac5469ae7$exports, "summary", function () { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58; }, function (v) { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = v; });
-var $c817a00ac5469ae7$export$76174c80c75f9baa;
 var $c817a00ac5469ae7$export$b07e517d22efa1ca;
 var $c817a00ac5469ae7$export$518824cf31321346;
 var $c817a00ac5469ae7$export$abe5a6512064abec;
@@ -11655,7 +11653,6 @@ var $c817a00ac5469ae7$export$c943065ee198321e;
 var $c817a00ac5469ae7$export$434ef77de6fd99a2;
 var $c817a00ac5469ae7$export$37de2bbeee209b64;
 var $c817a00ac5469ae7$export$9a2dbef7a17e2e58;
-$c817a00ac5469ae7$export$76174c80c75f9baa = `O3yP9W_addButton`;
 $c817a00ac5469ae7$export$b07e517d22efa1ca = `O3yP9W_checkbox`;
 $c817a00ac5469ae7$export$518824cf31321346 = `O3yP9W_dialog`;
 $c817a00ac5469ae7$export$abe5a6512064abec = `O3yP9W_levelAndTime`;
@@ -11668,6 +11665,17 @@ $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = `O3yP9W_summary`;
 
 
 
+var $401edcf88d588555$exports = {};
+
+$parcel$export($401edcf88d588555$exports, "addButton", function () { return $401edcf88d588555$export$76174c80c75f9baa; }, function (v) { return $401edcf88d588555$export$76174c80c75f9baa = v; });
+$parcel$export($401edcf88d588555$exports, "checked", function () { return $401edcf88d588555$export$b96bb35bc88d6fa; }, function (v) { return $401edcf88d588555$export$b96bb35bc88d6fa = v; });
+var $401edcf88d588555$export$76174c80c75f9baa;
+var $401edcf88d588555$export$b96bb35bc88d6fa;
+$401edcf88d588555$export$76174c80c75f9baa = `X1OeaG_addButton`;
+$401edcf88d588555$export$b96bb35bc88d6fa = `X1OeaG_checked`;
+
+
+
 
 const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
         focusable: "false",
@@ -11677,6 +11685,17 @@ const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ()=>/*#__PURE__*/ (0, $086df4e
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
             d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
         })
+    });
+
+
+const $bf10d29403c27397$export$d84c9c0292438f58 = ({ isChecked: isChecked, onChange: onChange, title: title })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+        "aria-label": isChecked ? `Remove "${title}" from known spells` : `Add "${title}" to known spells`,
+        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($401edcf88d588555$exports))).addButton} ${isChecked ? (0, (/*@__PURE__*/$parcel$interopDefault($401edcf88d588555$exports))).checked : ""} secondary`,
+        onClick: ()=>onChange(isChecked),
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {})
+        ]
     });
 
 
@@ -11722,16 +11741,10 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellSummary,
                 children: [
-                    isInSearchList ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
-                        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).addButton} secondary`,
-                        onClick: ()=>onChange(isChecked),
-                        children: [
-                            isChecked ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {}),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
-                                className: "hidden",
-                                children: isChecked ? `Remove "${title}" from known spells` : `Add "${title}" to known spells`
-                            })
-                        ]
+                    isInSearchList ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $bf10d29403c27397$export$d84c9c0292438f58), {
+                        isChecked: isChecked,
+                        onChange: onChange,
+                        title: title
                     }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
                         className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).checkbox,
                         label: isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`,
@@ -12112,8 +12125,12 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
 
 var $e4856f61199e68c5$exports = {};
 
+$parcel$export($e4856f61199e68c5$exports, "fadeIn", function () { return $e4856f61199e68c5$export$82e6205b15e6c637; }, function (v) { return $e4856f61199e68c5$export$82e6205b15e6c637 = v; });
 $parcel$export($e4856f61199e68c5$exports, "spellList", function () { return $e4856f61199e68c5$export$749abddb1d4b6b5a; }, function (v) { return $e4856f61199e68c5$export$749abddb1d4b6b5a = v; });
+var $e4856f61199e68c5$export$82e6205b15e6c637;
 var $e4856f61199e68c5$export$749abddb1d4b6b5a;
+$e4856f61199e68c5$export$82e6205b15e6c637 = `_6B68uG_fadeIn`;
+$e4856f61199e68c5$export$82e6205b15e6c637;
 $e4856f61199e68c5$export$749abddb1d4b6b5a = `_6B68uG_spellList`;
 
 
@@ -12760,4 +12777,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.d2255b40.js.map
+//# sourceMappingURL=index.2913a39f.js.map
