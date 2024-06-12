@@ -7,8 +7,7 @@ import { formatSpellLevel } from '../util';
 import styles from './index.module.css';
 import { Checkbox } from '../Checkbox';
 import { HighlightKey, useSettingsContext } from '../SettingsContext';
-import { IconAdd } from '../icons/IconAdd';
-import { IconCheckmark } from '../icons/IconCheckmark';
+import { AddRemoveButton } from './AddRemoveButton';
 
 const getSpellHighlight = (
   { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
@@ -69,12 +68,7 @@ export const SpellSummary = ({
     <li className={styles.spellWrapper}>
       <div className={styles.spellSummary}>
         {isInSearchList ? (
-          <button className={`${styles.addButton} secondary`} onClick={() => onChange(isChecked)}>
-            {isChecked ? <IconCheckmark /> : <IconAdd />}
-            <span className="hidden">
-              {isChecked ? `Remove "${title}" from known spells` : `Add "${title}" to known spells`}
-            </span>
-          </button>
+          <AddRemoveButton isChecked={isChecked} onChange={onChange} title={title} />
         ) : (
           <Checkbox
             className={styles.checkbox}
