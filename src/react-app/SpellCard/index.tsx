@@ -46,8 +46,8 @@ export const SpellCard = ({
         {duration}
       </div>
       <div className={styles.description}>
-        {description.map((line) => (
-          <div key={line}>
+        {description.map((line, index) => (
+          <div key={`${index}-${line}`}>
             {line.match(/^at higher levels\./i) ? (
               <>
                 <b>At Higher Levels.</b> {line.replace(/^at higher levels\./i, '')}
