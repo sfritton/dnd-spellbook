@@ -11591,7 +11591,7 @@ const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: classNam
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).description,
                 children: [
-                    description.map((line)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                    description.map((line, index)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                             children: line.match(/^at higher levels\./i) ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
                                 children: [
                                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
@@ -11601,7 +11601,7 @@ const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: classNam
                                     line.replace(/^at higher levels\./i, "")
                                 ]
                             }) : line
-                        }, line)),
+                        }, `${index}-${line}`)),
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                         children: [
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
@@ -12777,4 +12777,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.2913a39f.js.map
+//# sourceMappingURL=index.e42ed5cb.js.map
