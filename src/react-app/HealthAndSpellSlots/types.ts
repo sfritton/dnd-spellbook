@@ -1,5 +1,5 @@
 export interface Ability {
   name: string;
-  maximum: number;
+  maximum: '' | number;
   current: number;
 }

@@ -2,45 +2,91 @@ import { ChangeEvent, useCallback } from 'react';
 import { Checkbox } from '../../../Checkbox';
 import { Ability } from '../../types';
 import styles from './index.module.css';
+import { getAbilityNumber, validateAbilityInput } from '../../util';
+
+interface AbilityTrackerProps extends Ability {
+  onChangeCurrent: (value: number) => void;
+  onChangeMaximum: (value: number | '') => void;
+  onChangeName?: (value: string) => void;
+  isRange?: boolean;
+  isEditing: boolean;
+  isNameSuffix?: boolean;
+}
 
 export const AbilityTracker = ({
   name,
   current,
   maximum,
-  onChange,
+  onChangeCurrent,
+  onChangeMaximum,
+  onChangeName,
   isRange = false,
-}: Ability & { onChange: (value: number) => void; isRange?: boolean }) => {
-  const handleChange = useCallback(
+  isNameSuffix = false,
+  isEditing,
+}: AbilityTrackerProps) => {
+  const handleChangeCurrent = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      const newValue = Number(e.target.value);
+      const newValue = validateAbilityInput(e.target.value);
 
-      if (isNaN(newValue)) return;
-
-      onChange(newValue);
+      onChangeCurrent(getAbilityNumber(newValue));
     },
-    [onChange],
+    [onChangeCurrent],
   );
 
   const makeHandleCheckboxChange = useCallback(
     (index: number) => (isChecked: boolean) => {
-      onChange(isChecked ? index : index - 1);
+      onChangeCurrent(isChecked ? index : index - 1);
     },
-    [onChange],
+    [onChangeCurrent],
   );
 
-  if (maximum > 5 || isRange) {
+  const isNameEditable = Boolean(onChangeName);
+
+  if (isEditing && !isNameEditable)
+    return (
+      <div className={styles.lockedName}>
+        <label htmlFor={name}>{name}</label>
+        <input
+          id={name}
+          type="number"
+          value={maximum}
+          onChange={(e) => onChangeMaximum(validateAbilityInput(e.target.value))}
+        />
+      </div>
+    );
+
+  if (isEditing)
+    return (
+      <div className={styles.editAbility}>
+        <label>Name</label>
+        <input type="text" value={name} onChange={(e) => onChangeName?.(e.target.value)} />
+        <label>Maximum</label>
+        <input
+          type="number"
+          value={maximum}
+          onChange={(e) => onChangeMaximum(validateAbilityInput(e.target.value))}
+        />
+      </div>
+    );
+
+  if (!name.length || getAbilityNumber(maximum) < 1) return;
+
+  if (getAbilityNumber(maximum) > 5 || isRange) {
     return (
       <div className={styles.abilityRange}>
-        <label htmlFor={`Ability - ${name}`}>{name}</label>
+        <label className={isNameSuffix ? 'hidden' : undefined} htmlFor={`Ability - ${name}`}>
+          {name}
+        </label>
         <input
           id={`Ability - ${name}`}
           type="range"
-          max={maximum}
+          max={getAbilityNumber(maximum)}
           value={current}
-          onChange={handleChange}
+          onChange={handleChangeCurrent}
         />
         <span>
-          {current}/{maximum}
+          {current}/{getAbilityNumber(maximum)}
+          {isNameSuffix ? ` ${name}` : ''}
         </span>
       </div>
     );
@@ -56,8 +102,8 @@ export const AbilityTracker = ({
             hideLabel
             id={`${name} - ${index + 1} of ${maximum}`}
             label={`${name} - ${index + 1} of ${maximum}`}
-            checked={current >= index}
-            onChange={makeHandleCheckboxChange(index)}
+            checked={current > index}
+            onChange={makeHandleCheckboxChange(index + 1)}
           />
         ))}
       </div>

@@ -1,86 +1,37 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
-import { formatSpellLevel } from '../util';
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
 import { Ability } from './types';
 import { AbilityTracker } from './components/AbilityTracker';
-
-const getStoredHealthAndSpellSlots = ():
-  | {
-      maximums: {
-        hp: number;
-        spellSlots: number[];
-      };
-      hp: number;
-      tempHp: number;
-      spellSlots: number[];
-      abilities: Ability[];
-    }
-  | undefined => {
-  const storedString = localStorage.getItem('character-status');
-
-  if (!storedString) return undefined;
-
-  return JSON.parse(storedString);
-};
+import { getAbilityNumber, validateAbilityInput } from './util';
+import { useAbilities } from './use-abilities';
 
 export const HealthAndSpellSlots = () => {
   const { isCharacterOpen, setIsCharacterOpen } = useSettingsContext();
-  const defaults = getStoredHealthAndSpellSlots();
-  const [maximums, setMaximums] = useState(
-    defaults?.maximums ?? {
-      hp: 0,
-      spellSlots: new Array(9).fill(0),
-    },
-  );
-
-  const [hp, setHp] = useState(defaults?.hp ?? 0);
-  const [tempHp, setTempHp] = useState(defaults?.tempHp ?? 0);
-  const [spellSlots, setSpellSlots] = useState(defaults?.spellSlots ?? new Array(9).fill(0));
-  const [abilities, setAbilities] = useState(defaults?.abilities ?? []);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  const makeUpdateSpellSlots = useCallback(
-    (level: number) => (newValue: number) => {
-      setSpellSlots((prev) => {
-        const newSlots = [...prev];
-        newSlots[level] = newValue;
-
-        return newSlots;
-      });
-    },
-    [],
-  );
-
-  useEffect(() => {
-    localStorage.setItem(
-      'character-status',
-      JSON.stringify({
-        maximums,
-        hp,
-        tempHp,
-        spellSlots,
-        abilities,
-      }),
-    );
-  }, [maximums, hp, tempHp, spellSlots, abilities]);
+  const {
+    hp,
+    setHp,
+    tempHp,
+    setTempHp,
+    spellSlots,
+    abilities,
+    setAbilities,
+    makeUpdateSpellSlot,
+    makeUpdateAbility,
+    handleLongRest,
+  } = useAbilities();
 
   useEffect(() => {
     if (isCharacterOpen) headingRef.current?.focus();
   }, [isCharacterOpen]);
 
   // If max HP is 0, we want to default to edit mode
-  const [isEditing, setIsEditing] = useState(maximums.hp === 0);
+  const [isEditing, setIsEditing] = useState(getAbilityNumber(hp.maximum) === 0);
 
-  const handleLongRest = useCallback(() => {
-    setHp(maximums.hp);
-    setTempHp(0);
-    setSpellSlots([...maximums.spellSlots]);
-    setAbilities((prev) => prev.map((ability) => ({ ...ability, current: ability.maximum })));
-  }, [maximums]);
-
-  const storedMaximums = useRef<typeof maximums>(maximums);
+  // const storedMaximums = useRef<typeof maximums>(maximums);
 
   if (!isCharacterOpen) return null;
 
@@ -105,15 +56,9 @@ export const HealthAndSpellSlots = () => {
             <label>Maximum HP</label>
             <input
               type="number"
-              value={maximums.hp}
+              value={hp.maximum}
               onChange={(e) => {
-                const newMaxHp = Number(e.target.value);
-                if (isNaN(newMaxHp)) return;
-
-                setMaximums((prev) => ({
-                  ...prev,
-                  hp: Math.max(0, newMaxHp),
-                }));
+                setHp((prev) => ({ ...prev, maximum: validateAbilityInput(e.target.value) }));
               }}
             />
           </>
@@ -123,129 +68,72 @@ export const HealthAndSpellSlots = () => {
               <span className="hidden">Temp HP</span>
               <input
                 type="range"
-                max={maximums.hp}
-                value={tempHp}
-                onChange={(e) => setTempHp(Number(e.target.value))}
+                max={hp.maximum}
+                value={tempHp.current}
+                onChange={(e) =>
+                  setTempHp((prev) => ({
+                    ...prev,
+                    current: getAbilityNumber(validateAbilityInput(e.target.value)),
+                  }))
+                }
               />
-              <span>{tempHp} temp HP</span>
+              <span>{tempHp.current} temp HP</span>
             </label>
             <label>
               <span className="hidden">HP</span>
               <input
                 type="range"
-                max={maximums.hp}
-                value={hp}
-                onChange={(e) => setHp(Number(e.target.value))}
+                max={getAbilityNumber(hp.maximum)}
+                value={hp.current}
+                onChange={(e) =>
+                  setHp((prev) => ({
+                    ...prev,
+                    current: getAbilityNumber(validateAbilityInput(e.target.value)),
+                  }))
+                }
               />
               <span>
-                {hp}/{maximums.hp} HP
+                {hp.current}/{getAbilityNumber(hp.maximum)} HP
               </span>
             </label>
           </div>
         )}
-        {isEditing || maximums.spellSlots.some((level) => level > 0) ? (
-          <>
-            <h3>Spell Slots</h3>
-            <div className={styles.spellSlots}>
-              {maximums.spellSlots.map((slots, level) =>
-                isEditing ? (
-                  <div className={styles.slot} key={`spell-slots-${level}`}>
-                    <label htmlFor={`spell-slots-${level}`}>{formatSpellLevel(level + 1)}</label>
-                    <input
-                      id={`spell-slots-${level}`}
-                      type="number"
-                      value={slots}
-                      onChange={(e) => {
-                        const newSlotCount = Number(e.target.value);
-                        if (isNaN(newSlotCount)) return;
-
-                        const newSpellSlots = [...maximums.spellSlots];
-                        // Must be between 0 and 5
-                        newSpellSlots[level] = Math.max(0, newSlotCount);
-
-                        setMaximums((prev) => ({
-                          ...prev,
-                          spellSlots: newSpellSlots,
-                        }));
-                      }}
-                    />
-                  </div>
-                ) : slots > 0 ? (
-                  <AbilityTracker
-                    key={level}
-                    name={formatSpellLevel(level + 1)}
-                    current={spellSlots[level]}
-                    maximum={slots}
-                    onChange={makeUpdateSpellSlots(level)}
-                  />
-                ) : null,
-              )}
-            </div>
-          </>
+        {isEditing || spellSlots.some(({ maximum }) => getAbilityNumber(maximum) > 0) ? (
+          <h3>Spell Slots</h3>
         ) : null}
-        {isEditing || abilities.length ? (
-          <>
-            <h3>Abilities</h3>
-            {abilities.map(({ name, current, maximum }, index) =>
-              isEditing ? (
-                <div className={styles.editAbility} key={index}>
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) =>
-                      setAbilities((prev) => {
-                        const newPrev = [...prev];
-
-                        newPrev[index] = { ...newPrev[index], name: e.target.value };
-
-                        return newPrev;
-                      })
-                    }
-                  />
-                  <label>Maximum</label>
-                  <input
-                    type="number"
-                    value={maximum}
-                    onChange={(e) =>
-                      setAbilities((prev) => {
-                        const newMaximum = Number(e.target.value);
-                        if (isNaN(newMaximum)) return prev;
-
-                        const newPrev = [...prev];
-                        newPrev[index] = { ...newPrev[index], maximum: newMaximum };
-
-                        return newPrev;
-                      })
-                    }
-                  />
-                </div>
-              ) : Boolean(name.length && maximum) ? (
-                <AbilityTracker
-                  key={index}
-                  isRange
-                  name={name}
-                  current={current}
-                  maximum={maximum}
-                  onChange={(newCurrent) => {
-                    setAbilities((prev) => {
-                      const newPrev = [...prev];
-                      newPrev[index] = { ...newPrev[index], current: newCurrent };
-
-                      return newPrev;
-                    });
-                  }}
-                />
-              ) : null,
-            )}
-          </>
+        {spellSlots.map(({ name, current, maximum }, index) => (
+          <AbilityTracker
+            key={index}
+            name={name}
+            current={current}
+            maximum={maximum}
+            isEditing={isEditing}
+            onChangeCurrent={makeUpdateSpellSlot('current', index)}
+            onChangeMaximum={makeUpdateSpellSlot('maximum', index)}
+          />
+        ))}
+        {isEditing || abilities.filter(({ name, maximum }) => name.length && maximum).length ? (
+          <h3>Abilities</h3>
         ) : null}
+        {abilities.map(({ name, current, maximum }, index) => (
+          <AbilityTracker
+            key={index}
+            isRange
+            name={name}
+            current={current}
+            maximum={maximum}
+            isEditing={isEditing}
+            onChangeCurrent={makeUpdateAbility('current', index)}
+            onChangeMaximum={makeUpdateAbility('maximum', index)}
+            onChangeName={makeUpdateAbility('name', index)}
+          />
+        ))}
         {isEditing ? (
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              setAbilities((prev) => [...prev, { name: '', current: 0, maximum: 0 }]);
+              setAbilities((prev) => [...prev, { name: '', current: 0, maximum: 0 } as const]);
             }}
           >
             Add ability
@@ -259,7 +147,8 @@ export const HealthAndSpellSlots = () => {
             <button
               className="secondary"
               onClick={() => {
-                setMaximums(storedMaximums.current);
+                // TODO
+                // setMaximums(storedMaximums.current);
                 setIsEditing(false);
               }}
             >
@@ -271,7 +160,8 @@ export const HealthAndSpellSlots = () => {
             <button onClick={handleLongRest}>Long rest</button>
             <button
               onClick={() => {
-                storedMaximums.current = maximums;
+                // TODO
+                // storedMaximums.current = maximums;
                 setIsEditing(true);
               }}
               className="secondary"
