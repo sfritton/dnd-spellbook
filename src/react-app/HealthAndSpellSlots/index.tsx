@@ -21,6 +21,8 @@ export const HealthAndSpellSlots = () => {
     makeUpdateSpellSlot,
     makeUpdateAbility,
     handleLongRest,
+    handleEdit,
+    handleCancelEdit,
   } = useAbilities();
 
   useEffect(() => {
@@ -126,8 +128,7 @@ export const HealthAndSpellSlots = () => {
             <button
               className="secondary"
               onClick={() => {
-                // TODO
-                // setMaximums(storedMaximums.current);
+                handleCancelEdit();
                 setIsEditing(false);
               }}
             >
@@ -139,8 +140,7 @@ export const HealthAndSpellSlots = () => {
             <button onClick={handleLongRest}>Long rest</button>
             <button
               onClick={() => {
-                // TODO
-                // storedMaximums.current = maximums;
+                handleEdit();
                 setIsEditing(true);
               }}
               className="secondary"

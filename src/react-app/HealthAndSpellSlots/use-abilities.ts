@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Ability } from './types';
 import { formatSpellLevel } from '../util';
 import { getAbilityNumber } from './util';
@@ -66,6 +66,29 @@ export const useAbilities = () => {
   const [spellSlots, setSpellSlots] = useState(defaultAbilities.spellSlots);
   const [abilities, setAbilities] = useState(defaultAbilities.abilities ?? []);
 
+  const uneditedCharacterStatusRef = useRef<CharacterStatus>({
+    hp,
+    tempHp,
+    spellSlots,
+    abilities,
+  });
+
+  const stashCharacterStatus = useCallback(() => {
+    uneditedCharacterStatusRef.current = {
+      hp,
+      tempHp,
+      spellSlots,
+      abilities,
+    };
+  }, [hp, tempHp, spellSlots, abilities]);
+
+  const restoreCharacterStatus = useCallback(() => {
+    setHp(uneditedCharacterStatusRef.current.hp);
+    setTempHp(uneditedCharacterStatusRef.current.tempHp);
+    setSpellSlots(uneditedCharacterStatusRef.current.spellSlots);
+    setAbilities(uneditedCharacterStatusRef.current.abilities);
+  }, []);
+
   useEffect(() => {
     const characterStatus: CharacterStatus = { hp, tempHp, spellSlots, abilities };
     localStorage.setItem('character-status', JSON.stringify(characterStatus));
@@ -120,6 +143,8 @@ export const useAbilities = () => {
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,
+      handleEdit: stashCharacterStatus,
+      handleCancelEdit: restoreCharacterStatus,
     }),
     [
       hp,
@@ -132,6 +157,8 @@ export const useAbilities = () => {
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,
+      stashCharacterStatus,
+      restoreCharacterStatus,
     ],
   );
 };
