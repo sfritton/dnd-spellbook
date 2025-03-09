@@ -5,15 +5,15 @@ import { FilterDrawerContent } from './FilterDrawerContent';
 import { IconFilter } from '../../../icons/IconFilter';
 
 export const FilterButton = () => {
-  const { open: openFilterDrawer } = useSingleDialog();
+  const { open: openFilterDrawer, close: closeFilterDrawer } = useSingleDialog();
 
   const handleClick = useCallback(() => {
     openFilterDrawer({
       title: 'Filter spells',
       isDrawer: true,
-      children: <FilterDrawerContent />,
+      children: <FilterDrawerContent closeFilterDrawer={closeFilterDrawer} />,
     });
-  }, [open]);
+  }, [openFilterDrawer, closeFilterDrawer]);
 
   return <NavButton icon={<IconFilter />} label="Filter spells" onClick={handleClick} />;
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useFilterContext } from '../../../FilterContext';
 import { FilterSection } from './FilterSection';
 
-export const FilterDrawerContent = () => {
+export const FilterDrawerContent = ({ closeFilterDrawer }: { closeFilterDrawer: () => void }) => {
   const { filters: filtersFromContext, setFilters: setContextFilters } = useFilterContext();
   const [filters, setFilters] = useState(filtersFromContext);
 
@@ -11,8 +11,14 @@ export const FilterDrawerContent = () => {
       {Object.keys(filters).map((filterId) => (
         <FilterSection key={filterId} id={filterId} filters={filters} setFilters={setFilters} />
       ))}
-      {/* TODO: close drawer */}
-      <button onClick={() => setContextFilters(filters)}>Apply filters</button>
+      <button
+        onClick={() => {
+          setContextFilters(filters);
+          closeFilterDrawer();
+        }}
+      >
+        Apply filters
+      </button>
     </div>
   );
 };
