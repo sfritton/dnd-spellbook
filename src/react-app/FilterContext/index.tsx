@@ -9,35 +9,7 @@ import {
 import { Spell } from '../types';
 import { spellDetails } from '../../constants/spell-details';
 
-export interface Filters {
-  casting_time: {
-    action: boolean;
-    bonus_action: boolean;
-    reaction: boolean;
-    other: boolean;
-  };
-  components: {
-    v: boolean;
-    s: boolean;
-    m: boolean;
-  };
-  concentration: {
-    concentration: boolean;
-    non_concentration: boolean;
-  };
-  ritual: {
-    ritual: boolean;
-    non_ritual: boolean;
-  };
-}
-
-interface FilterContextValue {
-  filters: Filters;
-  setFilters: (filters: Filters) => void;
-  getShouldShowSpell: (spell: Spell.Summary) => void;
-}
-
-const DEFAULT_FILTERS: Filters = {
+const DEFAULT_FILTERS = {
   casting_time: {
     action: true,
     bonus_action: true,
@@ -58,6 +30,14 @@ const DEFAULT_FILTERS: Filters = {
     non_ritual: true,
   },
 };
+
+export type Filters = typeof DEFAULT_FILTERS;
+
+interface FilterContextValue {
+  filters: Filters;
+  setFilters: (filters: Filters) => void;
+  getShouldShowSpell: (spell: Spell.Summary) => void;
+}
 
 const FilterContext = createContext<FilterContextValue>({
   filters: DEFAULT_FILTERS,
