@@ -21,12 +21,42 @@ const DEFAULT_ABILITIES: CharacterStatus = {
   abilities: [],
 };
 
+const convertLegacyStructure = ({
+  hp,
+  maximums,
+  tempHp,
+  spellSlots,
+  abilities,
+}: {
+  maximums: {
+    hp: number;
+    spellSlots: number[];
+  };
+  hp: number;
+  tempHp: number;
+  spellSlots: number[];
+  abilities: Ability[];
+}): CharacterStatus => ({
+  hp: { name: 'HP', current: hp, maximum: maximums.hp },
+  tempHp: { name: 'temp HP', current: tempHp, maximum: maximums.hp },
+  spellSlots: spellSlots.map((current, index) => ({
+    name: formatSpellLevel(index + 1),
+    current,
+    maximum: maximums.spellSlots[index],
+  })),
+  abilities,
+});
+
 const getDefaultAbilities = (): CharacterStatus => {
   const storedString = localStorage.getItem('character-status');
 
   if (!storedString) return DEFAULT_ABILITIES;
 
-  return JSON.parse(storedString);
+  const parsedValue = JSON.parse(storedString);
+
+  if (parsedValue.maximums) return convertLegacyStructure(parsedValue);
+
+  return parsedValue;
 };
 
 export const useAbilities = () => {
@@ -34,7 +64,7 @@ export const useAbilities = () => {
   const [hp, setHp] = useState(defaultAbilities.hp);
   const [tempHp, setTempHp] = useState(defaultAbilities.tempHp);
   const [spellSlots, setSpellSlots] = useState(defaultAbilities.spellSlots);
-  const [abilities, setAbilities] = useState(defaultAbilities.abilities);
+  const [abilities, setAbilities] = useState(defaultAbilities.abilities ?? []);
 
   useEffect(() => {
     const characterStatus: CharacterStatus = { hp, tempHp, spellSlots, abilities };

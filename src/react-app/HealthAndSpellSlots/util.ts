@@ -2,7 +2,6 @@ export const validateAbilityInput = (valueStr: string) => {
   if (valueStr === '') return valueStr;
 
   const valueNumber = Number(valueStr);
-  console.log(valueNumber);
 
   if (isNaN(valueNumber) || valueNumber < 0) return 0;
 

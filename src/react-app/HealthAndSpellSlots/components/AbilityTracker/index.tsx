@@ -6,11 +6,12 @@ import { getAbilityNumber, validateAbilityInput } from '../../util';
 
 interface AbilityTrackerProps extends Ability {
   onChangeCurrent: (value: number) => void;
-  onChangeMaximum: (value: number | '') => void;
+  onChangeMaximum?: (value: number | '') => void;
   onChangeName?: (value: string) => void;
   isRange?: boolean;
   isEditing: boolean;
   isNameSuffix?: boolean;
+  hideMaximum?: boolean;
 }
 
 export const AbilityTracker = ({
@@ -22,6 +23,7 @@ export const AbilityTracker = ({
   onChangeName,
   isRange = false,
   isNameSuffix = false,
+  hideMaximum = false,
   isEditing,
 }: AbilityTrackerProps) => {
   const handleChangeCurrent = useCallback(
@@ -50,7 +52,7 @@ export const AbilityTracker = ({
           id={name}
           type="number"
           value={maximum}
-          onChange={(e) => onChangeMaximum(validateAbilityInput(e.target.value))}
+          onChange={(e) => onChangeMaximum?.(validateAbilityInput(e.target.value))}
         />
       </div>
     );
@@ -85,7 +87,8 @@ export const AbilityTracker = ({
           onChange={handleChangeCurrent}
         />
         <span>
-          {current}/{getAbilityNumber(maximum)}
+          {current}
+          {hideMaximum ? '' : `/${getAbilityNumber(maximum)}`}
           {isNameSuffix ? ` ${name}` : ''}
         </span>
       </div>

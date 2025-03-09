@@ -9,6 +9,11 @@
   > label {
     font-size: 14px;
   }
+
+  > input[type="number"] {
+    text-align: right;
+    padding-right: 4px;
+  }
 }
 
 .lockedName {
@@ -17,6 +22,22 @@
   display: grid;
   grid-template-columns: 1fr 80px;
   align-items: center;
+
+  > label {
+    font-size: 14px;
+    position: relative;
+    background: #fff4;
+    padding: 8px 16px;
+    min-height: 32px;
+    border-radius: 16px 0 0 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  > input[type="number"] {
+    text-align: right;
+    padding-right: 4px;
+  }
 }
 
 .abilityCheckboxes {

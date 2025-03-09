@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './index.module.css';
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
-import { Ability } from './types';
 import { AbilityTracker } from './components/AbilityTracker';
-import { getAbilityNumber, validateAbilityInput } from './util';
+import { getAbilityNumber } from './util';
 import { useAbilities } from './use-abilities';
 
 export const HealthAndSpellSlots = () => {
@@ -31,8 +30,6 @@ export const HealthAndSpellSlots = () => {
   // If max HP is 0, we want to default to edit mode
   const [isEditing, setIsEditing] = useState(getAbilityNumber(hp.maximum) === 0);
 
-  // const storedMaximums = useRef<typeof maximums>(maximums);
-
   if (!isCharacterOpen) return null;
 
   return (
@@ -50,54 +47,36 @@ export const HealthAndSpellSlots = () => {
         </button>
       </div>
       <div className={styles.content}>
-        <h3>HP</h3>
-        {isEditing ? (
-          <>
-            <label>Maximum HP</label>
-            <input
-              type="number"
-              value={hp.maximum}
-              onChange={(e) => {
-                setHp((prev) => ({ ...prev, maximum: validateAbilityInput(e.target.value) }));
-              }}
-            />
-          </>
-        ) : (
-          <div className={styles.health}>
-            <label>
-              <span className="hidden">Temp HP</span>
-              <input
-                type="range"
-                max={hp.maximum}
-                value={tempHp.current}
-                onChange={(e) =>
-                  setTempHp((prev) => ({
-                    ...prev,
-                    current: getAbilityNumber(validateAbilityInput(e.target.value)),
-                  }))
-                }
-              />
-              <span>{tempHp.current} temp HP</span>
-            </label>
-            <label>
-              <span className="hidden">HP</span>
-              <input
-                type="range"
-                max={getAbilityNumber(hp.maximum)}
-                value={hp.current}
-                onChange={(e) =>
-                  setHp((prev) => ({
-                    ...prev,
-                    current: getAbilityNumber(validateAbilityInput(e.target.value)),
-                  }))
-                }
-              />
-              <span>
-                {hp.current}/{getAbilityNumber(hp.maximum)} HP
-              </span>
-            </label>
-          </div>
+        <h3>Health</h3>
+        {isEditing ? null : (
+          <AbilityTracker
+            {...tempHp}
+            isEditing={isEditing}
+            isNameSuffix
+            isRange
+            hideMaximum
+            onChangeCurrent={(newCurrent) =>
+              setTempHp((prev) => ({ ...prev, current: newCurrent }))
+            }
+          />
         )}
+        <AbilityTracker
+          {...hp}
+          name={isEditing ? 'Maximum HP' : hp.name}
+          isEditing={isEditing}
+          isNameSuffix
+          isRange
+          onChangeCurrent={(newCurrent) =>
+            setHp((prev) => ({
+              ...prev,
+              current: newCurrent,
+            }))
+          }
+          onChangeMaximum={(newMaximum) => {
+            setHp((prev) => ({ ...prev, maximum: newMaximum }));
+            setTempHp((prev) => ({ ...prev, maximum: newMaximum }));
+          }}
+        />
         {isEditing || spellSlots.some(({ maximum }) => getAbilityNumber(maximum) > 0) ? (
           <h3>Spell Slots</h3>
         ) : null}
