@@ -1,8 +1,8 @@
 import { NavButton } from '../NavButton';
-import { IconSearch } from '../../../icons/IconSearch';
 import { useSingleDialog } from '../../../Dialog';
 import { useCallback } from 'react';
 import { FilterDrawerContent } from './FilterDrawerContent';
+import { IconFilter } from '../../../icons/IconFilter';
 
 export const FilterButton = () => {
   const { open: openFilterDrawer } = useSingleDialog();
@@ -15,12 +15,5 @@ export const FilterButton = () => {
     });
   }, [open]);
 
-  return (
-    <NavButton
-      // TODO: better icon
-      icon={<IconSearch />}
-      label="Filter spells"
-      onClick={handleClick}
-    />
-  );
+  return <NavButton icon={<IconFilter />} label="Filter spells" onClick={handleClick} />;
 };

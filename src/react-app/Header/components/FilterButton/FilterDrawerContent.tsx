@@ -1,13 +1,17 @@
+import { useState } from 'react';
+import { useFilterContext } from '../../../FilterContext';
 import { FilterSection } from './FilterSection';
-import { FILTERS } from './constants';
 
 export const FilterDrawerContent = () => {
+  const { filters: filtersFromContext, setFilters: setContextFilters } = useFilterContext();
+  const [filters, setFilters] = useState(filtersFromContext);
+
   return (
     <div>
-      {FILTERS.map((filter) => (
-        <FilterSection key={filter.name} {...filter} />
+      {Object.keys(filters).map((filterId) => (
+        <FilterSection key={filterId} id={filterId} filters={filters} setFilters={setFilters} />
       ))}
-      <button>Apply filters</button>
+      <button onClick={() => setContextFilters(filters)}>Apply filters</button>
     </div>
   );
 };

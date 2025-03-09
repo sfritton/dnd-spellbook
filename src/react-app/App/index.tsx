@@ -4,19 +4,22 @@ import { SpellListContextProvider } from '../SpellListContext';
 import { DialogProvider } from '../Dialog';
 import { SettingsContextProvider } from '../SettingsContext';
 import { HealthAndSpellSlots } from '../HealthAndSpellSlots';
+import { FilterContextProvider } from '../FilterContext';
 
 export const App = () => {
   return (
     <SettingsContextProvider>
-      <SpellListContextProvider>
-        <DialogProvider>
-          <Header />
-          <main>
-            <HealthAndSpellSlots />
-            <Spellbook />
-          </main>
-        </DialogProvider>
-      </SpellListContextProvider>
+      <FilterContextProvider>
+        <SpellListContextProvider>
+          <DialogProvider>
+            <Header />
+            <main>
+              <HealthAndSpellSlots />
+              <Spellbook />
+            </main>
+          </DialogProvider>
+        </SpellListContextProvider>
+      </FilterContextProvider>
     </SettingsContextProvider>
   );
 };
