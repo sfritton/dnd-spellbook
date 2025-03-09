@@ -1,5 +1,5 @@
 .spellListPlaceholder {
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 2px;
   padding: 8px 16px;
   min-height: 58px;

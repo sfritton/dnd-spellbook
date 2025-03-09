@@ -7,6 +7,7 @@ import { IconCharacter } from '../icons/IconCharacter';
 import { useSettingsContext } from '../SettingsContext';
 import { IconMenu } from '../icons/IconMenu';
 import { SearchBar } from './components/SearchBar';
+import { FilterButton } from './components/FilterButton';
 
 export const Header = () => {
   const { setIsCharacterOpen, isCharacterOpen } = useSettingsContext();
@@ -52,6 +53,9 @@ export const Header = () => {
           <ul>
             <li>
               <ClassSpellsButton isNav />
+            </li>
+            <li>
+              <FilterButton />
             </li>
             <li>
               <NavButton

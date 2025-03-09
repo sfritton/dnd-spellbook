@@ -77,7 +77,7 @@
     border: 1px solid var(--color-text);
     color: var(--color-text);
     border-radius: 4px;
-    background: #fff6;
+    background: var(--color-bg-white);
   }
 
   .content {

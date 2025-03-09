@@ -46,6 +46,6 @@ button.addButton.addButton {
   }
 
   &:hover {
-    background: #fff6;
+    background: var(--color-bg-white);
   }
 }

@@ -10,7 +10,7 @@
     padding: 2px 4px;
 
     &:hover {
-      background: #fff6;
+      background: var(--color-bg-white);
     }
 
     &::marker, &::-webkit-details-marker {

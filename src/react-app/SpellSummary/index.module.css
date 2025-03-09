@@ -1,5 +1,5 @@
 .spellWrapper {
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 2px;
   list-style: none;
 
@@ -51,7 +51,7 @@
 
       &:hover {
         text-decoration: underline;
-        background: #fff6;
+        background: var(--color-bg-white);
       }
     }
   }
@@ -73,7 +73,7 @@
     }
 
     button {
-      background: #fff6;
+      background: var(--color-bg-white);
 
       &:hover {
         background: #fff;
@@ -86,7 +86,7 @@
     gap: 8px;
 
     > * {
-      background: #fff6;
+      background: var(--color-bg-white);
       padding: 8px 16px;
       border-radius: 2px;
     }
