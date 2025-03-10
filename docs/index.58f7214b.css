@@ -843,6 +843,7 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 }
 
 .cwR1FG_filterSummary {
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   display: flex;
@@ -1064,4 +1065,4 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .HYU1Gq_abilityRange > input {
   cursor: ew-resize;
 }
-/*# sourceMappingURL=index.0b03b4b7.css.map */
+/*# sourceMappingURL=index.58f7214b.css.map */
