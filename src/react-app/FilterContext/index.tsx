@@ -1,5 +1,7 @@
 import {
+  Dispatch,
   PropsWithChildren,
+  SetStateAction,
   createContext,
   useCallback,
   useContext,
@@ -9,25 +11,25 @@ import {
 import { Spell } from '../types';
 import { spellDetails } from '../../constants/spell-details';
 
-const DEFAULT_FILTERS = {
+export const DEFAULT_FILTERS = {
   casting_time: {
-    action: true,
-    bonus_action: true,
-    reaction: true,
-    other: true,
+    action: false,
+    bonus_action: false,
+    reaction: false,
+    other: false,
   },
   components: {
-    v: true,
-    s: true,
-    m: true,
+    v: false,
+    s: false,
+    m: false,
   },
   concentration: {
-    concentration: true,
-    non_concentration: true,
+    concentration: false,
+    non_concentration: false,
   },
   ritual: {
-    ritual: true,
-    non_ritual: true,
+    ritual: false,
+    non_ritual: false,
   },
 };
 
@@ -35,7 +37,7 @@ export type Filters = typeof DEFAULT_FILTERS;
 
 interface FilterContextValue {
   filters: Filters;
-  setFilters: (filters: Filters) => void;
+  setFilters: Dispatch<SetStateAction<Filters>>;
   getShouldShowSpell: (spell: Spell.Summary) => void;
 }
 
@@ -52,36 +54,54 @@ export const FilterContextProvider = ({ children }: PropsWithChildren) => {
       const spell = spellDetails[spellSummary.id] as Spell.Details;
 
       // Casting Time
-      const isAction = /1 action/gi.test(spell.castingTime);
-      const isBonusAction = /1 bonus action/gi.test(spell.castingTime);
-      const isReaction = /reaction/gi.test(spell.castingTime);
-      const isOther = !isAction && !isBonusAction && !isReaction;
+      const areAllCastingTimesValid = Object.values(filters.casting_time).every((value) => !value);
 
-      if (!filters.casting_time.action && isAction) return false;
-      if (!filters.casting_time.bonus_action && isBonusAction) return false;
-      if (!filters.casting_time.reaction && isReaction) return false;
-      if (!filters.casting_time.other && isOther) return false;
+      if (!areAllCastingTimesValid) {
+        const isAction = /1 action/gi.test(spell.castingTime);
+        const isBonusAction = /1 bonus action/gi.test(spell.castingTime);
+        const isReaction = /reaction/gi.test(spell.castingTime);
+        const isOther = !isAction && !isBonusAction && !isReaction;
+
+        if (!filters.casting_time.action && isAction) return false;
+        if (!filters.casting_time.bonus_action && isBonusAction) return false;
+        if (!filters.casting_time.reaction && isReaction) return false;
+        if (!filters.casting_time.other && isOther) return false;
+      }
 
       // Components
-      const isV = /v/gi.test(spell.components);
-      const isS = /s/gi.test(spell.components);
-      const isM = /m/gi.test(spell.components);
+      const areAllComponentsValid = Object.values(filters.components).every((value) => !value);
 
-      if (!filters.components.v && isV) return false;
-      if (!filters.components.s && isS) return false;
-      if (!filters.components.m && isM) return false;
+      if (!areAllComponentsValid) {
+        const isV = /v/gi.test(spell.components);
+        const isS = /s/gi.test(spell.components);
+        const isM = /m/gi.test(spell.components);
+
+        if (!filters.components.v && isV) return false;
+        if (!filters.components.s && isS) return false;
+        if (!filters.components.m && isM) return false;
+      }
 
       // Concentration
-      const isConcentration = /concentration/i.test(spell.duration);
+      const areAllConcentrationsValid = Object.values(filters.concentration).every(
+        (value) => !value,
+      );
 
-      if (!filters.concentration.concentration && isConcentration) return false;
-      if (!filters.concentration.non_concentration && !isConcentration) return false;
+      if (!areAllConcentrationsValid) {
+        const isConcentration = /concentration/i.test(spell.duration);
+
+        if (!filters.concentration.concentration && isConcentration) return false;
+        if (!filters.concentration.non_concentration && !isConcentration) return false;
+      }
 
       // Ritual
-      const isRitual = /ritual/i.test(spell.levelAndSchool);
+      const areAllRitualsValid = Object.values(filters.ritual).every((value) => !value);
 
-      if (!filters.ritual.ritual && isRitual) return false;
-      if (!filters.ritual.non_ritual && !isRitual) return false;
+      if (!areAllRitualsValid) {
+        const isRitual = /ritual/i.test(spell.levelAndSchool);
+
+        if (!filters.ritual.ritual && isRitual) return false;
+        if (!filters.ritual.non_ritual && !isRitual) return false;
+      }
 
       return true;
     },

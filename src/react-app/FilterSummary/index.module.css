@@ -1,0 +1,22 @@
+.filterSummary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    text-transform: capitalize;
+    width: auto;
+    height: 32px;
+    padding: 0 8px;
+    align-items: center;
+    border: none !important;
+
+    & > svg {
+      fill: var(--color-accent);
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      margin-top: 2px;
+    }
+  }
+}

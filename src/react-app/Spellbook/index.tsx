@@ -4,6 +4,7 @@ import { formatSpellLevel } from '../util';
 import { useSpellListContext } from '../SpellListContext';
 import { WelcomePage } from '../WelcomePage';
 import { Collapsible } from '../Collapsible';
+import { FilterSummary } from '../FilterSummary';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
@@ -15,6 +16,7 @@ export const Spellbook = () => {
 
   return (
     <>
+      <FilterSummary />
       <h2>Prepared Spells</h2>
       {hasPreparedSpells ? (
         preparedSpells.map((spells, index) =>

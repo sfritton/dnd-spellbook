@@ -5,9 +5,4 @@
   h4 {
     margin: 8px 0;
   }
-
-  .divider {
-    border-top: 1px solid var(--color-parchment-dark);
-    margin: 4px 16px;
-  }
 }

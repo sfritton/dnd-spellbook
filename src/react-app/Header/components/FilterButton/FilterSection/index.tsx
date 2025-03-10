@@ -12,24 +12,11 @@ export const FilterSection = ({
   filters: Filters;
   setFilters: Dispatch<SetStateAction<Filters>>;
 }) => {
-  const isAllChecked = Object.keys(filters[id]).every((key) => filters[id][key]);
   const name = id.replace(/_/g, ' ');
 
   return (
     <div className={styles.filterSection}>
       <h4>{name}</h4>
-      <Checkbox
-        label="All"
-        id={`${id}-all`}
-        checked={isAllChecked}
-        onChange={() =>
-          setFilters((prev) => ({
-            ...prev,
-            [id]: Object.fromEntries(Object.keys(prev[id]).map((key) => [key, !isAllChecked])),
-          }))
-        }
-      />
-      <div className={styles.divider}></div>
       {Object.keys(filters[id]).map((value) => (
         <Checkbox
           key={value}
