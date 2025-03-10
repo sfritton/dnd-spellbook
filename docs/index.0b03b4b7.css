@@ -315,7 +315,8 @@
 ._3_6aeG_checkboxWrapper ._3_6aeG_checkbox {
   border: 1px solid var(--color-text);
   outline-offset: -1px;
-  background: #fff6;
+  background: none;
+  background: var(--color-bg-white);
   border-radius: 4px;
   width: 20px;
   height: 20px;
@@ -354,7 +355,7 @@
 }
 
 ._3_6aeG_checkboxWrapper:hover {
-  background: #fff6;
+  background: var(--color-bg-white);
 }
 
 ._3_6aeG_checkboxWrapper:has(:focus-visible) {
@@ -478,7 +479,7 @@
 }
 
 .O3yP9W_spellWrapper {
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 2px;
   list-style: none;
 }
@@ -535,7 +536,7 @@
 }
 
 .O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary:hover {
-  background: #fff6;
+  background: var(--color-bg-white);
   text-decoration: underline;
 }
 
@@ -556,7 +557,7 @@
 }
 
 .O3yP9W_dialog.O3yP9W_dialog header button {
-  background: #fff6;
+  background: var(--color-bg-white);
 }
 
 .O3yP9W_dialog.O3yP9W_dialog header button:hover {
@@ -569,7 +570,7 @@
 }
 
 .O3yP9W_dialog.O3yP9W_dialog .O3yP9W_spellCard > * {
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 2px;
   padding: 8px 16px;
 }
@@ -618,7 +619,7 @@ button.X1OeaG_addButton.X1OeaG_addButton.X1OeaG_checked > svg:last-child {
 }
 
 button.X1OeaG_addButton.X1OeaG_addButton:hover {
-  background: #fff6;
+  background: var(--color-bg-white);
 }
 
 ._3djqFW_searchBar {
@@ -698,6 +699,15 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
   transform: none;
 }
 
+.Vjl1AW_filterSection {
+  text-transform: capitalize;
+  margin: 20px 0;
+}
+
+.Vjl1AW_filterSection h4 {
+  margin: 8px 0;
+}
+
 ._6B68uG_spellList {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 8px;
@@ -717,7 +727,7 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 }
 
 .BGWDaa_spellListPlaceholder {
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 2px;
   justify-content: center;
   align-items: center;
@@ -787,7 +797,7 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 }
 
 .GXXjnG_collapsible summary:hover {
-  background: #fff6;
+  background: var(--color-bg-white);
 }
 
 .GXXjnG_collapsible summary::marker {
@@ -830,6 +840,29 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 
 :is(.GXXjnG_collapsible[open] + .GXXjnG_content, .GXXjnG_content:focus-within) > div {
   overflow: visible;
+}
+
+.cwR1FG_filterSummary {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.cwR1FG_filterSummary button {
+  text-transform: capitalize;
+  align-items: center;
+  width: auto;
+  height: 32px;
+  padding: 0 8px;
+  border: none !important;
+}
+
+.cwR1FG_filterSummary button > svg {
+  fill: var(--color-accent);
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  margin-left: 8px;
 }
 
 .omtYtG_healthAndSpellSlots {
@@ -903,7 +936,7 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .omtYtG_healthAndSpellSlots input[type="number"], .omtYtG_healthAndSpellSlots input[type="text"] {
   border: 1px solid var(--color-text);
   color: var(--color-text);
-  background: #fff6;
+  background: var(--color-bg-white);
   border-radius: 4px;
   width: 100%;
   padding: 8px 16px;
@@ -933,40 +966,6 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
   cursor: ew-resize;
 }
 
-.omtYtG_healthAndSpellSlots .omtYtG_slot {
-  background: none;
-  grid-template-columns: 78px 1fr;
-  align-items: center;
-  min-height: 44px;
-  margin: 8px 0;
-  padding: 0;
-  display: grid;
-}
-
-.omtYtG_healthAndSpellSlots .omtYtG_slot > div {
-  grid-template-columns: 78px repeat(5, 44px);
-  align-items: center;
-  display: grid;
-}
-
-.omtYtG_healthAndSpellSlots .omtYtG_slot > div label {
-  border-radius: 2px;
-  padding: 12px;
-}
-
-.omtYtG_healthAndSpellSlots .omtYtG_editAbility {
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr 80px;
-  grid-auto-flow: column;
-  gap: 2px 8px;
-  margin: 16px 0;
-  display: grid;
-}
-
-.omtYtG_healthAndSpellSlots .omtYtG_editAbility > label {
-  font-size: 14px;
-}
-
 .omtYtG_healthAndSpellSlots .omtYtG_buttons {
   border-top: 1px solid var(--color-parchment-dark);
   gap: 8px;
@@ -979,6 +978,48 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
     opacity: 0;
     transform: translateY(200px);
   }
+}
+
+.HYU1Gq_editAbility {
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 80px;
+  grid-auto-flow: column;
+  gap: 2px 8px;
+  margin: 16px 0;
+  display: grid;
+}
+
+.HYU1Gq_editAbility > label {
+  font-size: 14px;
+}
+
+.HYU1Gq_editAbility > input[type="number"] {
+  text-align: right;
+  padding-right: 4px;
+}
+
+.HYU1Gq_lockedName {
+  grid-template-columns: 1fr 80px;
+  align-items: center;
+  min-height: 44px;
+  margin: 8px 0;
+  display: grid;
+}
+
+.HYU1Gq_lockedName > label {
+  background: #fff4;
+  border-radius: 16px 0 0 16px;
+  align-items: center;
+  min-height: 32px;
+  padding: 8px 16px;
+  font-size: 14px;
+  display: flex;
+  position: relative;
+}
+
+.HYU1Gq_lockedName > input[type="number"] {
+  text-align: right;
+  padding-right: 4px;
 }
 
 .HYU1Gq_abilityCheckboxes {
@@ -1019,4 +1060,8 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .HYU1Gq_abilityRange > span {
   font-size: 14px;
 }
-/*# sourceMappingURL=index.a5655520.css.map */
+
+.HYU1Gq_abilityRange > input {
+  cursor: ew-resize;
+}
+/*# sourceMappingURL=index.0b03b4b7.css.map */

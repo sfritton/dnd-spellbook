@@ -6,6 +6,7 @@
   --color-accent-hover: #1c79ca;
   --color-parchment-light: #fffef0;
   --color-parchment-dark: #d09963;
+  --color-bg-white: #fff6;
   --parchment-blur: 125px;
   --shadow-md: 0 4px 16px #00000080;
   --shadow-parchment: 0 0 var(--parchment-blur) var(--color-parchment-dark) inset;
@@ -148,9 +149,9 @@ button:focus-visible {
 }
 
 button.secondary {
+  background: var(--color-bg-white);
   color: var(--color-accent);
   border: 1px solid var(--color-accent);
-  background: #fff6;
 }
 
 button.secondary:hover {
@@ -163,8 +164,8 @@ select {
   font-family: var(--serif);
   border: 1px solid var(--color-text);
   color: var(--color-text);
+  background-color: var(--color-bg-white);
   cursor: pointer;
-  background-color: #fff6;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgb(35,19,10)' %3E%3Cpath d='M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z'%3E%3C/path%3E%3C/svg%3E");
   background-position: right 8px center;
   background-repeat: no-repeat;
@@ -212,4 +213,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.7f4097df.css.map */
+/*# sourceMappingURL=index.bc983fcd.css.map */
