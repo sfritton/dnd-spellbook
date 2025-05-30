@@ -1,7 +1,6 @@
 import { SpellSummaryData, useSpellListContext } from '../SpellListContext';
 import { formatSpellLevel } from '../util';
 import { spellDetails } from '../../constants/spell-details';
-import styles from './index.module.css';
 import { SpellCard } from '../SpellCard';
 
 const sortByLength = (spellSummaryA: SpellSummaryData, spellSummaryB: SpellSummaryData) => {
@@ -19,7 +18,7 @@ export const PrintSection = () => {
 
   return preparedSpells.map((spells, index) =>
     spells.length > 0 ? (
-      <section className={styles.printableSpells} key={index}>
+      <section className="printableSpells" key={index}>
         <h2>{formatSpellLevel(index, true)}</h2>
         <ul>
           {spells.sort(sortByLength).map((spell) => (
