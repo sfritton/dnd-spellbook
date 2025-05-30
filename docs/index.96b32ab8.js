@@ -12315,7 +12315,10 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
                                     icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b5ff744370571cdc$export$8e9f25373eb3da50), {}),
                                     label: "Character status",
-                                    onClick: ()=>setIsCharacterOpen(!isCharacterOpen)
+                                    onClick: ()=>{
+                                        setIsCharacterOpen(!isCharacterOpen);
+                                        setIsNavOpen(false);
+                                    }
                                 })
                             }),
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
@@ -12586,6 +12589,7 @@ $parcel$export($d4c4e74eb4a3e8fd$exports, "header", function () { return $d4c4e7
 $parcel$export($d4c4e74eb4a3e8fd$exports, "health", function () { return $d4c4e74eb4a3e8fd$export$f0784a54fb0af903; }, function (v) { return $d4c4e74eb4a3e8fd$export$f0784a54fb0af903 = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "healthAndSpellSlots", function () { return $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef; }, function (v) { return $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "iconOpen", function () { return $d4c4e74eb4a3e8fd$export$42710960887feca; }, function (v) { return $d4c4e74eb4a3e8fd$export$42710960887feca = v; });
+$parcel$export($d4c4e74eb4a3e8fd$exports, "slideLeft", function () { return $d4c4e74eb4a3e8fd$export$1e947a1dfc5a5548; }, function (v) { return $d4c4e74eb4a3e8fd$export$1e947a1dfc5a5548 = v; });
 $parcel$export($d4c4e74eb4a3e8fd$exports, "slideUp", function () { return $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea; }, function (v) { return $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea = v; });
 var $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f;
 var $d4c4e74eb4a3e8fd$export$a7db06668cad9adb;
@@ -12593,6 +12597,7 @@ var $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4;
 var $d4c4e74eb4a3e8fd$export$f0784a54fb0af903;
 var $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef;
 var $d4c4e74eb4a3e8fd$export$42710960887feca;
+var $d4c4e74eb4a3e8fd$export$1e947a1dfc5a5548;
 var $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea;
 $d4c4e74eb4a3e8fd$export$bbea856fdb3e3c5f = `omtYtG_buttons`;
 $d4c4e74eb4a3e8fd$export$a7db06668cad9adb = `omtYtG_content`;
@@ -12600,6 +12605,8 @@ $d4c4e74eb4a3e8fd$export$38e42c68cf43b5d4 = `omtYtG_header`;
 $d4c4e74eb4a3e8fd$export$f0784a54fb0af903 = `omtYtG_health`;
 $d4c4e74eb4a3e8fd$export$239012e6f5ff27ef = `omtYtG_healthAndSpellSlots`;
 $d4c4e74eb4a3e8fd$export$42710960887feca = `omtYtG_iconOpen`;
+$d4c4e74eb4a3e8fd$export$1e947a1dfc5a5548 = `omtYtG_slideLeft`;
+$d4c4e74eb4a3e8fd$export$1e947a1dfc5a5548;
 $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea = `omtYtG_slideUp`;
 $d4c4e74eb4a3e8fd$export$deed561b1a0ff1ea;
 
@@ -13097,8 +13104,8 @@ const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $d81e426059e8d23d$export$53d846d902cb1eb8), {}),
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("main", {
                             children: [
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b20b8bb4b1343cb6$export$aefa9c246aea9939), {}),
-                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {})
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {}),
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b20b8bb4b1343cb6$export$aefa9c246aea9939), {})
                             ]
                         })
                     ]
@@ -13118,4 +13125,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.e6293c43.js.map
+//# sourceMappingURL=index.96b32ab8.js.map
