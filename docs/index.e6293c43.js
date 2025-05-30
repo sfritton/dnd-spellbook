@@ -11525,67 +11525,82 @@ var $ac7f15f1745ea116$exports = {};
 
 $parcel$export($ac7f15f1745ea116$exports, "description", function () { return $ac7f15f1745ea116$export$6d59db4903f20f7d; }, function (v) { return $ac7f15f1745ea116$export$6d59db4903f20f7d = v; });
 $parcel$export($ac7f15f1745ea116$exports, "detail", function () { return $ac7f15f1745ea116$export$13a2d28b88853ef2; }, function (v) { return $ac7f15f1745ea116$export$13a2d28b88853ef2 = v; });
+$parcel$export($ac7f15f1745ea116$exports, "details", function () { return $ac7f15f1745ea116$export$41ee12f6f6f05843; }, function (v) { return $ac7f15f1745ea116$export$41ee12f6f6f05843 = v; });
 $parcel$export($ac7f15f1745ea116$exports, "levelAndSchool", function () { return $ac7f15f1745ea116$export$4b8fd7c1b2ef74e1; }, function (v) { return $ac7f15f1745ea116$export$4b8fd7c1b2ef74e1 = v; });
 $parcel$export($ac7f15f1745ea116$exports, "source", function () { return $ac7f15f1745ea116$export$b4d5da5f34fb77ad; }, function (v) { return $ac7f15f1745ea116$export$b4d5da5f34fb77ad = v; });
 $parcel$export($ac7f15f1745ea116$exports, "spellCard", function () { return $ac7f15f1745ea116$export$c943065ee198321e; }, function (v) { return $ac7f15f1745ea116$export$c943065ee198321e = v; });
+$parcel$export($ac7f15f1745ea116$exports, "title", function () { return $ac7f15f1745ea116$export$fb184b623420d9be; }, function (v) { return $ac7f15f1745ea116$export$fb184b623420d9be = v; });
 var $ac7f15f1745ea116$export$6d59db4903f20f7d;
 var $ac7f15f1745ea116$export$13a2d28b88853ef2;
+var $ac7f15f1745ea116$export$41ee12f6f6f05843;
 var $ac7f15f1745ea116$export$4b8fd7c1b2ef74e1;
 var $ac7f15f1745ea116$export$b4d5da5f34fb77ad;
 var $ac7f15f1745ea116$export$c943065ee198321e;
+var $ac7f15f1745ea116$export$fb184b623420d9be;
 $ac7f15f1745ea116$export$6d59db4903f20f7d = `PzCXpG_description`;
 $ac7f15f1745ea116$export$13a2d28b88853ef2 = `PzCXpG_detail`;
+$ac7f15f1745ea116$export$41ee12f6f6f05843 = `PzCXpG_details`;
 $ac7f15f1745ea116$export$4b8fd7c1b2ef74e1 = `PzCXpG_levelAndSchool`;
 $ac7f15f1745ea116$export$b4d5da5f34fb77ad = `PzCXpG_source`;
 $ac7f15f1745ea116$export$c943065ee198321e = `PzCXpG_spellCard`;
+$ac7f15f1745ea116$export$fb184b623420d9be = `PzCXpG_title`;
 
 
 
-const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: className, url: url })=>{
+const $e001f39552be76ae$export$2934401d8f5f7fb3 = ({ id: id, className: className, url: url, showTitle: showTitle = false })=>{
     const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     if (!spell) return null;
-    const { source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description, spellLists: spellLists } = spell;
+    const { title: title, source: source, levelAndSchool: levelAndSchool, castingTime: castingTime, range: range, components: components, duration: duration, description: description, spellLists: spellLists } = spell;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
         className: `${(0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).spellCard} ${className}`,
         children: [
+            showTitle ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).title,
+                children: title
+            }) : null,
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).levelAndSchool,
                 children: levelAndSchool
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).details,
                 children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: "Casting time"
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                children: "Casting time"
+                            }),
+                            castingTime
+                        ]
                     }),
-                    castingTime
-                ]
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: "Range"
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                children: "Range"
+                            }),
+                            range
+                        ]
                     }),
-                    range
-                ]
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: "Components"
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                children: "Components"
+                            }),
+                            components
+                        ]
                     }),
-                    components
-                ]
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
-                children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: "Duration"
-                    }),
-                    duration
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($ac7f15f1745ea116$exports))).detail,
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                                children: "Duration"
+                            }),
+                            duration
+                        ]
+                    })
                 ]
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
@@ -12355,15 +12370,12 @@ const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: 
 var $be3d386fe1bd10b8$exports = {};
 
 $parcel$export($be3d386fe1bd10b8$exports, "placeholderIcon", function () { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4; }, function (v) { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = v; });
-$parcel$export($be3d386fe1bd10b8$exports, "printableSpells", function () { return $be3d386fe1bd10b8$export$913944d4aab150e0; }, function (v) { return $be3d386fe1bd10b8$export$913944d4aab150e0 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListHeader", function () { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202; }, function (v) { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListPlaceholder", function () { return $be3d386fe1bd10b8$export$e1a569003bc35eb5; }, function (v) { return $be3d386fe1bd10b8$export$e1a569003bc35eb5 = v; });
 var $be3d386fe1bd10b8$export$29d4bf464ef1d8a4;
-var $be3d386fe1bd10b8$export$913944d4aab150e0;
 var $be3d386fe1bd10b8$export$e1e7aee3ce61d202;
 var $be3d386fe1bd10b8$export$e1a569003bc35eb5;
 $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = `BGWDaa_placeholderIcon`;
-$be3d386fe1bd10b8$export$913944d4aab150e0 = `BGWDaa_printableSpells`;
 $be3d386fe1bd10b8$export$e1e7aee3ce61d202 = `BGWDaa_spellListHeader`;
 $be3d386fe1bd10b8$export$e1a569003bc35eb5 = `BGWDaa_spellListPlaceholder`;
 
@@ -13041,6 +13053,40 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
 
 
 
+
+
+var $bwXBY = parcelRequire("bwXBY");
+
+
+
+
+const $d81e426059e8d23d$var$sortByLength = (spellSummaryA, spellSummaryB)=>{
+    const spellA = JSON.stringify((0, $f278a73600af97eb$export$400852b624061e8)[spellSummaryA.id]);
+    const spellB = JSON.stringify((0, $f278a73600af97eb$export$400852b624061e8)[spellSummaryB.id]);
+    return spellA.length - spellB.length;
+};
+const $d81e426059e8d23d$export$53d846d902cb1eb8 = ()=>{
+    const { preparedSpells: preparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const hasPreparedSpells = preparedSpells.some((spells)=>spells.length > 0);
+    if (!hasPreparedSpells) return null;
+    return preparedSpells.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
+            className: "printableSpells",
+            children: [
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
+                    children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
+                }),
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("ul", {
+                    children: spells.sort($d81e426059e8d23d$var$sortByLength).map((spell)=>/*#__PURE__*/ (0, $bwXBY.createElement)((0, $e001f39552be76ae$export$2934401d8f5f7fb3), {
+                            ...spell,
+                            key: spell.id,
+                            showTitle: true
+                        }))
+                })
+            ]
+        }, index) : null);
+};
+
+
 const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2772f785971991b7$export$e498e32368a8ac8c), {
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ba83cb97b7fd8383$export$eb71bf38f5ae0f9c), {
@@ -13048,6 +13094,7 @@ const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $12c96dc3e262eca0$export$7ab5cfe96fae86d3), {
                     children: [
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5c113dab75ce6f68$export$8b251419efc915eb), {}),
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $d81e426059e8d23d$export$53d846d902cb1eb8), {}),
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("main", {
                             children: [
                                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b20b8bb4b1343cb6$export$aefa9c246aea9939), {}),
@@ -13071,4 +13118,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.16f0af1f.js.map
+//# sourceMappingURL=index.e6293c43.js.map

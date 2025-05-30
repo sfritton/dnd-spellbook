@@ -198,19 +198,9 @@ footer a {
   --color-accent-hover: #cbe7ff;
 }
 
-@media print {
-  main {
-    padding: 0;
-  }
-
-  section {
-    margin: 0;
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.bc983fcd.css.map */
+/*# sourceMappingURL=index.11f4ff35.css.map */
