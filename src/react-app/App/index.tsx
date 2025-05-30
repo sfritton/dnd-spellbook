@@ -16,8 +16,8 @@ export const App = () => {
             <Header />
             <PrintSection />
             <main>
-              <HealthAndSpellSlots />
               <Spellbook />
+              <HealthAndSpellSlots />
             </main>
           </DialogProvider>
         </SpellListContextProvider>

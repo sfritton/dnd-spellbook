@@ -61,7 +61,10 @@ export const Header = () => {
               <NavButton
                 icon={<IconCharacter />}
                 label="Character status"
-                onClick={() => setIsCharacterOpen(!isCharacterOpen)}
+                onClick={() => {
+                  setIsCharacterOpen(!isCharacterOpen);
+                  setIsNavOpen(false);
+                }}
               />
             </li>
             <li>
