@@ -6,7 +6,9 @@ export const SpellCard = ({
   id,
   className,
   url,
+  showTitle = false,
 }: {
+  showTitle?: boolean;
   id: string;
   className?: string;
   url: string;
@@ -16,6 +18,7 @@ export const SpellCard = ({
   if (!spell) return null;
 
   const {
+    title,
     source,
     levelAndSchool,
     castingTime,
@@ -28,22 +31,25 @@ export const SpellCard = ({
 
   return (
     <div className={`${styles.spellCard} ${className}`}>
+      {showTitle ? <h3 className={styles.title}>{title}</h3> : null}
       <div className={styles.levelAndSchool}>{levelAndSchool}</div>
-      <div className={styles.detail}>
-        <div>Casting time</div>
-        {castingTime}
-      </div>
-      <div className={styles.detail}>
-        <div>Range</div>
-        {range}
-      </div>
-      <div className={styles.detail}>
-        <div>Components</div>
-        {components}
-      </div>
-      <div className={styles.detail}>
-        <div>Duration</div>
-        {duration}
+      <div className={styles.details}>
+        <div className={styles.detail}>
+          <div>Casting time</div>
+          {castingTime}
+        </div>
+        <div className={styles.detail}>
+          <div>Range</div>
+          {range}
+        </div>
+        <div className={styles.detail}>
+          <div>Components</div>
+          {components}
+        </div>
+        <div className={styles.detail}>
+          <div>Duration</div>
+          {duration}
+        </div>
       </div>
       <div className={styles.description}>
         {description.map((line, index) => (

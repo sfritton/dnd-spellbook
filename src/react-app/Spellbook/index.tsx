@@ -5,6 +5,7 @@ import { useSpellListContext } from '../SpellListContext';
 import { WelcomePage } from '../WelcomePage';
 import { Collapsible } from '../Collapsible';
 import { FilterSummary } from '../FilterSummary';
+import { PrintSection } from '../PrintSection';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells } = useSpellListContext();
@@ -32,6 +33,7 @@ export const Spellbook = () => {
           Check the box next to a spell to add it to your prepared spells.
         </div>
       )}
+      <PrintSection />
       <h2>Known Spells</h2>
       {spellLists.map((spells, index) =>
         spells.length > 0 ? (

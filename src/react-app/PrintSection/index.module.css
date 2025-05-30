@@ -1,0 +1,27 @@
+.printableSpells {
+  display: none;
+}
+
+@media print {
+  :not(:has(.printableSpells), .printableSpells, .printableSpells *) {
+    display: none !important;
+  }
+
+  .printableSpells {
+    display: block;
+
+    h2 {
+      break-before: page;
+      margin: 16px 8px 8px;
+      font-size: 16px;
+    }
+
+    ul {
+      margin: 8px;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+  }
+}

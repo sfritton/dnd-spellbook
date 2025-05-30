@@ -1,8 +1,8 @@
 .spellCard {
   --gap: 12px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
   gap: var(--gap);
   padding: 8px 16px;
   font-size: 14px;
@@ -15,15 +15,30 @@
     border-radius: 2px;
   }
 
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .detail {
+    background: var(--color-bg-white);
+    padding: 8px 16px;
+    border-radius: 2px;
+  }
+
   .detail > div {
     font-weight: bold;
     font-size: 14px;
   }
 
+  .title {
+    font-weight: bold;
+  }
+
   .description,
   .levelAndSchool,
   .source {
-    grid-column: span 2;
     margin: 0;
   }
 
@@ -52,30 +67,59 @@
   }
 
   @media print {
-    padding: 8px 16px;
-    gap: 8px 16px;
-    border-radius: 0;
-    background: #d6d6d6;
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+    color-adjust: exact !important;                 /* Firefox 48 – 96 */
+    print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+    padding: 8px;
+    gap: 8px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 0.5px solid #666;
     color: #000;
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: -1px;
     margin-right: -1px;
+    grid-template-rows: auto auto auto 1fr auto;
+    break-inside: avoid;
 
     h3 {
-      font-size: 16px;
+      text-align: center;
+      font-size: 12px;
+      margin: 0;
     }
 
-    > * {
-      padding: 0;
+    > *:not(.details) {
+      background: #fff;
+      border-radius: 4px;
+      padding: 4px 8px;
     }
 
-    > .detail > div {
-      font-size: 10px;
+    .details {
+      gap: 8px;
+      margin: 0;
+    }
+
+    .detail > div {
+      font-size: 8px;
+    }
+
+    .detail {
+      background: #fff;
+      border-radius: 4px;
+      padding: 8px;
+    }
+
+    .description {
+      margin: 0;
+      padding: 12px 8px 8px;
     }
 
     .source {
       font-size: 8px;
-      padding: 0;
+
+      div {
+        display: none;
+      }
     }
   }
 }

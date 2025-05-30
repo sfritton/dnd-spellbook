@@ -30,6 +30,10 @@ body {
   color: var(--color-text);
   margin: 0;
   background: #000;
+
+  @media print {
+    background: #fff;
+  }
 }
 
 main {
@@ -54,6 +58,11 @@ main {
     --color-parchment-dark: #d9b28a;
     --shadow-parchment: 0 0 var(--parchment-blur) var(--color-parchment-dark) inset;
     box-shadow: var(--shadow-md), var(--shadow-parchment);
+  }
+
+  @media print {
+    background: #fff;
+    box-shadow: none;
   }
 }
 
