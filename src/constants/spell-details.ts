@@ -318,266 +318,267 @@ import spell316 from '../../data/spells/longstrider.json';
 import spell317 from '../../data/spells/maddening-darkness.json';
 import spell318 from '../../data/spells/maelstrom.json';
 import spell319 from '../../data/spells/mage-armor.json';
-import spell320 from '../../data/spells/mage-hand.json';
-import spell321 from '../../data/spells/magic-circle.json';
-import spell322 from '../../data/spells/magic-jar.json';
-import spell323 from '../../data/spells/magic-missile.json';
-import spell324 from '../../data/spells/magic-mouth.json';
-import spell325 from '../../data/spells/magic-stone.json';
-import spell326 from '../../data/spells/magic-weapon.json';
-import spell327 from '../../data/spells/magnify-gravity.json';
-import spell328 from '../../data/spells/major-image.json';
-import spell329 from '../../data/spells/mass-cure-wounds.json';
-import spell330 from '../../data/spells/mass-heal.json';
-import spell331 from '../../data/spells/mass-healing-word.json';
-import spell332 from '../../data/spells/mass-polymorph.json';
-import spell333 from '../../data/spells/mass-suggestion.json';
-import spell334 from '../../data/spells/maximillians-earthen-grasp.json';
-import spell335 from '../../data/spells/maze.json';
-import spell336 from '../../data/spells/meld-into-stone.json';
-import spell337 from '../../data/spells/melfs-acid-arrow.json';
-import spell338 from '../../data/spells/melfs-minute-meteors.json';
-import spell339 from '../../data/spells/mending.json';
-import spell340 from '../../data/spells/mental-barrier.json';
-import spell341 from '../../data/spells/mental-prison.json';
-import spell342 from '../../data/spells/message.json';
-import spell343 from '../../data/spells/meteor-swarm.json';
-import spell344 from '../../data/spells/mighty-fortress.json';
-import spell345 from '../../data/spells/mind-blank.json';
-import spell346 from '../../data/spells/mind-sliver.json';
-import spell347 from '../../data/spells/mind-spike.json';
-import spell348 from '../../data/spells/mind-thrust.json';
-import spell349 from '../../data/spells/minor-illusion.json';
-import spell350 from '../../data/spells/mirage-arcane.json';
-import spell351 from '../../data/spells/mirror-image.json';
-import spell352 from '../../data/spells/mislead.json';
-import spell353 from '../../data/spells/misty-step.json';
-import spell354 from '../../data/spells/modify-memory.json';
-import spell355 from '../../data/spells/mold-earth.json';
-import spell356 from '../../data/spells/moonbeam.json';
-import spell357 from '../../data/spells/mordenkainens-faithful-hound.json';
-import spell358 from '../../data/spells/mordenkainens-magnificent-mansion.json';
-import spell359 from '../../data/spells/mordenkainens-private-sanctum.json';
-import spell360 from '../../data/spells/mordenkainens-sword.json';
-import spell361 from '../../data/spells/motivational-speech.json';
-import spell362 from '../../data/spells/move-earth.json';
-import spell363 from '../../data/spells/nathairs-mischief-ua.json';
-import spell364 from '../../data/spells/nathairs-mischief.json';
-import spell365 from '../../data/spells/negative-energy-flood.json';
-import spell366 from '../../data/spells/nondetection.json';
-import spell367 from '../../data/spells/nystuls-magic-aura.json';
-import spell368 from '../../data/spells/on-off.json';
-import spell369 from '../../data/spells/otherworldly-form.json';
-import spell370 from '../../data/spells/otilukes-freezing-sphere.json';
-import spell371 from '../../data/spells/otilukes-resilient-sphere.json';
-import spell372 from '../../data/spells/ottos-irresistible-dance.json';
-import spell373 from '../../data/spells/pass-without-trace.json';
-import spell374 from '../../data/spells/passwall.json';
-import spell375 from '../../data/spells/phantasmal-force.json';
-import spell376 from '../../data/spells/phantasmal-killer.json';
-import spell377 from '../../data/spells/phantom-steed.json';
-import spell378 from '../../data/spells/planar-ally.json';
-import spell379 from '../../data/spells/planar-binding.json';
-import spell380 from '../../data/spells/plane-shift.json';
-import spell381 from '../../data/spells/plant-growth.json';
-import spell382 from '../../data/spells/poison-spray.json';
-import spell383 from '../../data/spells/polymorph.json';
-import spell384 from '../../data/spells/power-word-heal.json';
-import spell385 from '../../data/spells/power-word-kill.json';
-import spell386 from '../../data/spells/power-word-pain.json';
-import spell387 from '../../data/spells/power-word-stun.json';
-import spell388 from '../../data/spells/prayer-of-healing.json';
-import spell389 from '../../data/spells/prestidigitation.json';
-import spell390 from '../../data/spells/primal-savagery.json';
-import spell391 from '../../data/spells/primordial-ward.json';
-import spell392 from '../../data/spells/prismatic-spray.json';
-import spell393 from '../../data/spells/prismatic-wall.json';
-import spell394 from '../../data/spells/produce-flame.json';
-import spell395 from '../../data/spells/programmed-illusion.json';
-import spell396 from '../../data/spells/project-image.json';
-import spell397 from '../../data/spells/protection-from-ballistics.json';
-import spell398 from '../../data/spells/protection-from-energy.json';
-import spell399 from '../../data/spells/protection-from-evil-and-good.json';
-import spell400 from '../../data/spells/protection-from-poison.json';
-import spell401 from '../../data/spells/psionic-blast.json';
-import spell402 from '../../data/spells/psychic-crush.json';
-import spell403 from '../../data/spells/psychic-scream.json';
-import spell404 from '../../data/spells/pulse-wave.json';
-import spell405 from '../../data/spells/puppet.json';
-import spell406 from '../../data/spells/purify-food-and-drink.json';
-import spell407 from '../../data/spells/pyrotechnics.json';
-import spell408 from '../../data/spells/raise-dead.json';
-import spell409 from '../../data/spells/rarys-telepathic-bond.json';
-import spell410 from '../../data/spells/raulothims-psychic-lance-ua.json';
-import spell411 from '../../data/spells/raulothims-psychic-lance.json';
-import spell412 from '../../data/spells/ravenous-void.json';
-import spell413 from '../../data/spells/ray-of-enfeeblement.json';
-import spell414 from '../../data/spells/ray-of-frost.json';
-import spell415 from '../../data/spells/ray-of-sickness.json';
-import spell416 from '../../data/spells/reality-break.json';
-import spell417 from '../../data/spells/regenerate.json';
-import spell418 from '../../data/spells/reincarnate.json';
-import spell419 from '../../data/spells/remote-access.json';
-import spell420 from '../../data/spells/remove-curse.json';
-import spell421 from '../../data/spells/resistance.json';
-import spell422 from '../../data/spells/resurrection.json';
-import spell423 from '../../data/spells/reverse-gravity.json';
-import spell424 from '../../data/spells/revivify.json';
-import spell425 from '../../data/spells/rimes-binding-ice.json';
-import spell426 from '../../data/spells/rope-trick.json';
-import spell427 from '../../data/spells/sacred-flame.json';
-import spell428 from '../../data/spells/sanctuary.json';
-import spell429 from '../../data/spells/sapping-sting.json';
-import spell430 from '../../data/spells/scatter.json';
-import spell431 from '../../data/spells/scorching-ray.json';
-import spell432 from '../../data/spells/scrying.json';
-import spell433 from '../../data/spells/searing-smite.json';
-import spell434 from '../../data/spells/see-invisibility.json';
-import spell435 from '../../data/spells/seeming.json';
-import spell436 from '../../data/spells/sending.json';
-import spell437 from '../../data/spells/sense-emotion.json';
-import spell438 from '../../data/spells/sequester.json';
-import spell439 from '../../data/spells/shadow-blade.json';
-import spell440 from '../../data/spells/shadow-of-moil.json';
-import spell441 from '../../data/spells/shape-water.json';
-import spell442 from '../../data/spells/shapechange.json';
-import spell443 from '../../data/spells/shatter.json';
-import spell444 from '../../data/spells/shield-of-faith.json';
-import spell445 from '../../data/spells/shield.json';
-import spell446 from '../../data/spells/shillelagh.json';
-import spell447 from '../../data/spells/shocking-grasp.json';
-import spell448 from '../../data/spells/shutdown.json';
-import spell449 from '../../data/spells/sickening-radiance.json';
-import spell450 from '../../data/spells/silence.json';
-import spell451 from '../../data/spells/silent-image.json';
-import spell452 from '../../data/spells/silvery-barbs.json';
-import spell453 from '../../data/spells/simulacrum.json';
-import spell454 from '../../data/spells/skill-empowerment.json';
-import spell455 from '../../data/spells/skywrite.json';
-import spell456 from '../../data/spells/sleep.json';
-import spell457 from '../../data/spells/sleet-storm.json';
-import spell458 from '../../data/spells/slow.json';
-import spell459 from '../../data/spells/snare.json';
-import spell460 from '../../data/spells/snillocs-snowball-storm.json';
-import spell461 from '../../data/spells/soul-cage.json';
-import spell462 from '../../data/spells/spare-the-dying.json';
-import spell463 from '../../data/spells/speak-with-animals.json';
-import spell464 from '../../data/spells/speak-with-dead.json';
-import spell465 from '../../data/spells/speak-with-plants.json';
-import spell466 from '../../data/spells/spider-climb.json';
-import spell467 from '../../data/spells/spike-growth.json';
-import spell468 from '../../data/spells/spirit-guardians.json';
-import spell469 from '../../data/spells/spirit-of-death-ua.json';
-import spell470 from '../../data/spells/spirit-of-death.json';
-import spell471 from '../../data/spells/spirit-shroud.json';
-import spell472 from '../../data/spells/spiritual-weapon.json';
-import spell473 from '../../data/spells/spray-of-cards-ua.json';
-import spell474 from '../../data/spells/spray-of-cards.json';
-import spell475 from '../../data/spells/staggering-smite.json';
-import spell476 from '../../data/spells/steel-wind-strike.json';
-import spell477 from '../../data/spells/stinking-cloud.json';
-import spell478 from '../../data/spells/stone-shape.json';
-import spell479 from '../../data/spells/stoneskin.json';
-import spell480 from '../../data/spells/storm-of-vengeance.json';
-import spell481 from '../../data/spells/storm-sphere.json';
-import spell482 from '../../data/spells/sudden-awakening.json';
-import spell483 from '../../data/spells/suggestion.json';
-import spell484 from '../../data/spells/summon-aberration.json';
-import spell485 from '../../data/spells/summon-beast.json';
-import spell486 from '../../data/spells/summon-celestial.json';
-import spell487 from '../../data/spells/summon-construct.json';
-import spell488 from '../../data/spells/summon-draconic-spirit-ua.json';
-import spell489 from '../../data/spells/summon-draconic-spirit.json';
-import spell490 from '../../data/spells/summon-elemental.json';
-import spell491 from '../../data/spells/summon-fey.json';
-import spell492 from '../../data/spells/summon-fiend.json';
-import spell493 from '../../data/spells/summon-greater-demon.json';
-import spell494 from '../../data/spells/summon-lesser-demons.json';
-import spell495 from '../../data/spells/summon-shadowspawn.json';
-import spell496 from '../../data/spells/summon-undead.json';
-import spell497 from '../../data/spells/summon-warrior-spirit.json';
-import spell498 from '../../data/spells/sunbeam.json';
-import spell499 from '../../data/spells/sunburst.json';
-import spell500 from '../../data/spells/swift-quiver.json';
-import spell501 from '../../data/spells/sword-burst.json';
-import spell502 from '../../data/spells/symbol.json';
-import spell503 from '../../data/spells/synaptic-static.json';
-import spell504 from '../../data/spells/synchronicity.json';
-import spell505 from '../../data/spells/system-backdoor.json';
-import spell506 from '../../data/spells/tashas-caustic-brew.json';
-import spell507 from '../../data/spells/tashas-hideous-laughter.json';
-import spell508 from '../../data/spells/tashas-mind-whip.json';
-import spell509 from '../../data/spells/tashas-otherworldly-guise.json';
-import spell510 from '../../data/spells/telekinesis.json';
-import spell511 from '../../data/spells/telepathy.json';
-import spell512 from '../../data/spells/teleport.json';
-import spell513 from '../../data/spells/teleportation-circle.json';
-import spell514 from '../../data/spells/temple-of-the-gods.json';
-import spell515 from '../../data/spells/temporal-shunt.json';
-import spell516 from '../../data/spells/tensers-floating-disk.json';
-import spell517 from '../../data/spells/tensers-transformation.json';
-import spell518 from '../../data/spells/tether-essence.json';
-import spell519 from '../../data/spells/thaumaturgy.json';
-import spell520 from '../../data/spells/thorn-whip.json';
-import spell521 from '../../data/spells/thought-shield.json';
-import spell522 from '../../data/spells/thunder-step.json';
-import spell523 from '../../data/spells/thunderclap.json';
-import spell524 from '../../data/spells/thunderous-smite.json';
-import spell525 from '../../data/spells/thunderwave.json';
-import spell526 from '../../data/spells/tidal-wave.json';
-import spell527 from '../../data/spells/time-ravage.json';
-import spell528 from '../../data/spells/time-stop.json';
-import spell529 from '../../data/spells/tiny-servant.json';
-import spell530 from '../../data/spells/toll-the-dead.json';
-import spell531 from '../../data/spells/tongues.json';
-import spell532 from '../../data/spells/transmute-rock.json';
-import spell533 from '../../data/spells/transport-via-plants.json';
-import spell534 from '../../data/spells/tree-stride.json';
-import spell535 from '../../data/spells/true-polymorph.json';
-import spell536 from '../../data/spells/true-resurrection.json';
-import spell537 from '../../data/spells/true-seeing.json';
-import spell538 from '../../data/spells/true-strike.json';
-import spell539 from '../../data/spells/tsunami.json';
-import spell540 from '../../data/spells/unearthly-chorus.json';
-import spell541 from '../../data/spells/unseen-servant.json';
-import spell542 from '../../data/spells/vampiric-touch.json';
-import spell543 from '../../data/spells/vicious-mockery.json';
-import spell544 from '../../data/spells/virtue.json';
-import spell545 from '../../data/spells/vitriolic-sphere.json';
-import spell546 from '../../data/spells/vortex-warp.json';
-import spell547 from '../../data/spells/wall-of-fire.json';
-import spell548 from '../../data/spells/wall-of-force.json';
-import spell549 from '../../data/spells/wall-of-ice.json';
-import spell550 from '../../data/spells/wall-of-light.json';
-import spell551 from '../../data/spells/wall-of-sand.json';
-import spell552 from '../../data/spells/wall-of-stone.json';
-import spell553 from '../../data/spells/wall-of-thorns.json';
-import spell554 from '../../data/spells/wall-of-water.json';
-import spell555 from '../../data/spells/warding-bond.json';
-import spell556 from '../../data/spells/warding-wind.json';
-import spell557 from '../../data/spells/warp-sense.json';
-import spell558 from '../../data/spells/water-breathing.json';
-import spell559 from '../../data/spells/water-walk.json';
-import spell560 from '../../data/spells/watery-sphere.json';
-import spell561 from '../../data/spells/web.json';
-import spell562 from '../../data/spells/weird.json';
-import spell563 from '../../data/spells/whirlwind.json';
-import spell564 from '../../data/spells/widogast-s-transmogrification-hb.json';
-import spell565 from '../../data/spells/widogast-s-vault-of-amber-hb.json';
-import spell566 from '../../data/spells/widogast-s-web-of-fire-hb.json';
-import spell567 from '../../data/spells/wild-cunning.json';
-import spell568 from '../../data/spells/wind-walk.json';
-import spell569 from '../../data/spells/wind-wall.json';
-import spell570 from '../../data/spells/wish.json';
-import spell571 from '../../data/spells/witch-bolt.json';
-import spell572 from '../../data/spells/wither-and-bloom.json';
-import spell573 from '../../data/spells/word-of-radiance.json';
-import spell574 from '../../data/spells/word-of-recall.json';
-import spell575 from '../../data/spells/wrath-of-nature.json';
-import spell576 from '../../data/spells/wrathful-smite.json';
-import spell577 from '../../data/spells/wristpocket.json';
-import spell578 from '../../data/spells/zephyr-strike.json';
-import spell579 from '../../data/spells/zone-of-truth.json';
+import spell320 from '../../data/spells/mage-hand-legerdomain.json';
+import spell321 from '../../data/spells/mage-hand.json';
+import spell322 from '../../data/spells/magic-circle.json';
+import spell323 from '../../data/spells/magic-jar.json';
+import spell324 from '../../data/spells/magic-missile.json';
+import spell325 from '../../data/spells/magic-mouth.json';
+import spell326 from '../../data/spells/magic-stone.json';
+import spell327 from '../../data/spells/magic-weapon.json';
+import spell328 from '../../data/spells/magnify-gravity.json';
+import spell329 from '../../data/spells/major-image.json';
+import spell330 from '../../data/spells/mass-cure-wounds.json';
+import spell331 from '../../data/spells/mass-heal.json';
+import spell332 from '../../data/spells/mass-healing-word.json';
+import spell333 from '../../data/spells/mass-polymorph.json';
+import spell334 from '../../data/spells/mass-suggestion.json';
+import spell335 from '../../data/spells/maximillians-earthen-grasp.json';
+import spell336 from '../../data/spells/maze.json';
+import spell337 from '../../data/spells/meld-into-stone.json';
+import spell338 from '../../data/spells/melfs-acid-arrow.json';
+import spell339 from '../../data/spells/melfs-minute-meteors.json';
+import spell340 from '../../data/spells/mending.json';
+import spell341 from '../../data/spells/mental-barrier.json';
+import spell342 from '../../data/spells/mental-prison.json';
+import spell343 from '../../data/spells/message.json';
+import spell344 from '../../data/spells/meteor-swarm.json';
+import spell345 from '../../data/spells/mighty-fortress.json';
+import spell346 from '../../data/spells/mind-blank.json';
+import spell347 from '../../data/spells/mind-sliver.json';
+import spell348 from '../../data/spells/mind-spike.json';
+import spell349 from '../../data/spells/mind-thrust.json';
+import spell350 from '../../data/spells/minor-illusion.json';
+import spell351 from '../../data/spells/mirage-arcane.json';
+import spell352 from '../../data/spells/mirror-image.json';
+import spell353 from '../../data/spells/mislead.json';
+import spell354 from '../../data/spells/misty-step.json';
+import spell355 from '../../data/spells/modify-memory.json';
+import spell356 from '../../data/spells/mold-earth.json';
+import spell357 from '../../data/spells/moonbeam.json';
+import spell358 from '../../data/spells/mordenkainens-faithful-hound.json';
+import spell359 from '../../data/spells/mordenkainens-magnificent-mansion.json';
+import spell360 from '../../data/spells/mordenkainens-private-sanctum.json';
+import spell361 from '../../data/spells/mordenkainens-sword.json';
+import spell362 from '../../data/spells/motivational-speech.json';
+import spell363 from '../../data/spells/move-earth.json';
+import spell364 from '../../data/spells/nathairs-mischief-ua.json';
+import spell365 from '../../data/spells/nathairs-mischief.json';
+import spell366 from '../../data/spells/negative-energy-flood.json';
+import spell367 from '../../data/spells/nondetection.json';
+import spell368 from '../../data/spells/nystuls-magic-aura.json';
+import spell369 from '../../data/spells/on-off.json';
+import spell370 from '../../data/spells/otherworldly-form.json';
+import spell371 from '../../data/spells/otilukes-freezing-sphere.json';
+import spell372 from '../../data/spells/otilukes-resilient-sphere.json';
+import spell373 from '../../data/spells/ottos-irresistible-dance.json';
+import spell374 from '../../data/spells/pass-without-trace.json';
+import spell375 from '../../data/spells/passwall.json';
+import spell376 from '../../data/spells/phantasmal-force.json';
+import spell377 from '../../data/spells/phantasmal-killer.json';
+import spell378 from '../../data/spells/phantom-steed.json';
+import spell379 from '../../data/spells/planar-ally.json';
+import spell380 from '../../data/spells/planar-binding.json';
+import spell381 from '../../data/spells/plane-shift.json';
+import spell382 from '../../data/spells/plant-growth.json';
+import spell383 from '../../data/spells/poison-spray.json';
+import spell384 from '../../data/spells/polymorph.json';
+import spell385 from '../../data/spells/power-word-heal.json';
+import spell386 from '../../data/spells/power-word-kill.json';
+import spell387 from '../../data/spells/power-word-pain.json';
+import spell388 from '../../data/spells/power-word-stun.json';
+import spell389 from '../../data/spells/prayer-of-healing.json';
+import spell390 from '../../data/spells/prestidigitation.json';
+import spell391 from '../../data/spells/primal-savagery.json';
+import spell392 from '../../data/spells/primordial-ward.json';
+import spell393 from '../../data/spells/prismatic-spray.json';
+import spell394 from '../../data/spells/prismatic-wall.json';
+import spell395 from '../../data/spells/produce-flame.json';
+import spell396 from '../../data/spells/programmed-illusion.json';
+import spell397 from '../../data/spells/project-image.json';
+import spell398 from '../../data/spells/protection-from-ballistics.json';
+import spell399 from '../../data/spells/protection-from-energy.json';
+import spell400 from '../../data/spells/protection-from-evil-and-good.json';
+import spell401 from '../../data/spells/protection-from-poison.json';
+import spell402 from '../../data/spells/psionic-blast.json';
+import spell403 from '../../data/spells/psychic-crush.json';
+import spell404 from '../../data/spells/psychic-scream.json';
+import spell405 from '../../data/spells/pulse-wave.json';
+import spell406 from '../../data/spells/puppet.json';
+import spell407 from '../../data/spells/purify-food-and-drink.json';
+import spell408 from '../../data/spells/pyrotechnics.json';
+import spell409 from '../../data/spells/raise-dead.json';
+import spell410 from '../../data/spells/rarys-telepathic-bond.json';
+import spell411 from '../../data/spells/raulothims-psychic-lance-ua.json';
+import spell412 from '../../data/spells/raulothims-psychic-lance.json';
+import spell413 from '../../data/spells/ravenous-void.json';
+import spell414 from '../../data/spells/ray-of-enfeeblement.json';
+import spell415 from '../../data/spells/ray-of-frost.json';
+import spell416 from '../../data/spells/ray-of-sickness.json';
+import spell417 from '../../data/spells/reality-break.json';
+import spell418 from '../../data/spells/regenerate.json';
+import spell419 from '../../data/spells/reincarnate.json';
+import spell420 from '../../data/spells/remote-access.json';
+import spell421 from '../../data/spells/remove-curse.json';
+import spell422 from '../../data/spells/resistance.json';
+import spell423 from '../../data/spells/resurrection.json';
+import spell424 from '../../data/spells/reverse-gravity.json';
+import spell425 from '../../data/spells/revivify.json';
+import spell426 from '../../data/spells/rimes-binding-ice.json';
+import spell427 from '../../data/spells/rope-trick.json';
+import spell428 from '../../data/spells/sacred-flame.json';
+import spell429 from '../../data/spells/sanctuary.json';
+import spell430 from '../../data/spells/sapping-sting.json';
+import spell431 from '../../data/spells/scatter.json';
+import spell432 from '../../data/spells/scorching-ray.json';
+import spell433 from '../../data/spells/scrying.json';
+import spell434 from '../../data/spells/searing-smite.json';
+import spell435 from '../../data/spells/see-invisibility.json';
+import spell436 from '../../data/spells/seeming.json';
+import spell437 from '../../data/spells/sending.json';
+import spell438 from '../../data/spells/sense-emotion.json';
+import spell439 from '../../data/spells/sequester.json';
+import spell440 from '../../data/spells/shadow-blade.json';
+import spell441 from '../../data/spells/shadow-of-moil.json';
+import spell442 from '../../data/spells/shape-water.json';
+import spell443 from '../../data/spells/shapechange.json';
+import spell444 from '../../data/spells/shatter.json';
+import spell445 from '../../data/spells/shield-of-faith.json';
+import spell446 from '../../data/spells/shield.json';
+import spell447 from '../../data/spells/shillelagh.json';
+import spell448 from '../../data/spells/shocking-grasp.json';
+import spell449 from '../../data/spells/shutdown.json';
+import spell450 from '../../data/spells/sickening-radiance.json';
+import spell451 from '../../data/spells/silence.json';
+import spell452 from '../../data/spells/silent-image.json';
+import spell453 from '../../data/spells/silvery-barbs.json';
+import spell454 from '../../data/spells/simulacrum.json';
+import spell455 from '../../data/spells/skill-empowerment.json';
+import spell456 from '../../data/spells/skywrite.json';
+import spell457 from '../../data/spells/sleep.json';
+import spell458 from '../../data/spells/sleet-storm.json';
+import spell459 from '../../data/spells/slow.json';
+import spell460 from '../../data/spells/snare.json';
+import spell461 from '../../data/spells/snillocs-snowball-storm.json';
+import spell462 from '../../data/spells/soul-cage.json';
+import spell463 from '../../data/spells/spare-the-dying.json';
+import spell464 from '../../data/spells/speak-with-animals.json';
+import spell465 from '../../data/spells/speak-with-dead.json';
+import spell466 from '../../data/spells/speak-with-plants.json';
+import spell467 from '../../data/spells/spider-climb.json';
+import spell468 from '../../data/spells/spike-growth.json';
+import spell469 from '../../data/spells/spirit-guardians.json';
+import spell470 from '../../data/spells/spirit-of-death-ua.json';
+import spell471 from '../../data/spells/spirit-of-death.json';
+import spell472 from '../../data/spells/spirit-shroud.json';
+import spell473 from '../../data/spells/spiritual-weapon.json';
+import spell474 from '../../data/spells/spray-of-cards-ua.json';
+import spell475 from '../../data/spells/spray-of-cards.json';
+import spell476 from '../../data/spells/staggering-smite.json';
+import spell477 from '../../data/spells/steel-wind-strike.json';
+import spell478 from '../../data/spells/stinking-cloud.json';
+import spell479 from '../../data/spells/stone-shape.json';
+import spell480 from '../../data/spells/stoneskin.json';
+import spell481 from '../../data/spells/storm-of-vengeance.json';
+import spell482 from '../../data/spells/storm-sphere.json';
+import spell483 from '../../data/spells/sudden-awakening.json';
+import spell484 from '../../data/spells/suggestion.json';
+import spell485 from '../../data/spells/summon-aberration.json';
+import spell486 from '../../data/spells/summon-beast.json';
+import spell487 from '../../data/spells/summon-celestial.json';
+import spell488 from '../../data/spells/summon-construct.json';
+import spell489 from '../../data/spells/summon-draconic-spirit-ua.json';
+import spell490 from '../../data/spells/summon-draconic-spirit.json';
+import spell491 from '../../data/spells/summon-elemental.json';
+import spell492 from '../../data/spells/summon-fey.json';
+import spell493 from '../../data/spells/summon-fiend.json';
+import spell494 from '../../data/spells/summon-greater-demon.json';
+import spell495 from '../../data/spells/summon-lesser-demons.json';
+import spell496 from '../../data/spells/summon-shadowspawn.json';
+import spell497 from '../../data/spells/summon-undead.json';
+import spell498 from '../../data/spells/summon-warrior-spirit.json';
+import spell499 from '../../data/spells/sunbeam.json';
+import spell500 from '../../data/spells/sunburst.json';
+import spell501 from '../../data/spells/swift-quiver.json';
+import spell502 from '../../data/spells/sword-burst.json';
+import spell503 from '../../data/spells/symbol.json';
+import spell504 from '../../data/spells/synaptic-static.json';
+import spell505 from '../../data/spells/synchronicity.json';
+import spell506 from '../../data/spells/system-backdoor.json';
+import spell507 from '../../data/spells/tashas-caustic-brew.json';
+import spell508 from '../../data/spells/tashas-hideous-laughter.json';
+import spell509 from '../../data/spells/tashas-mind-whip.json';
+import spell510 from '../../data/spells/tashas-otherworldly-guise.json';
+import spell511 from '../../data/spells/telekinesis.json';
+import spell512 from '../../data/spells/telepathy.json';
+import spell513 from '../../data/spells/teleport.json';
+import spell514 from '../../data/spells/teleportation-circle.json';
+import spell515 from '../../data/spells/temple-of-the-gods.json';
+import spell516 from '../../data/spells/temporal-shunt.json';
+import spell517 from '../../data/spells/tensers-floating-disk.json';
+import spell518 from '../../data/spells/tensers-transformation.json';
+import spell519 from '../../data/spells/tether-essence.json';
+import spell520 from '../../data/spells/thaumaturgy.json';
+import spell521 from '../../data/spells/thorn-whip.json';
+import spell522 from '../../data/spells/thought-shield.json';
+import spell523 from '../../data/spells/thunder-step.json';
+import spell524 from '../../data/spells/thunderclap.json';
+import spell525 from '../../data/spells/thunderous-smite.json';
+import spell526 from '../../data/spells/thunderwave.json';
+import spell527 from '../../data/spells/tidal-wave.json';
+import spell528 from '../../data/spells/time-ravage.json';
+import spell529 from '../../data/spells/time-stop.json';
+import spell530 from '../../data/spells/tiny-servant.json';
+import spell531 from '../../data/spells/toll-the-dead.json';
+import spell532 from '../../data/spells/tongues.json';
+import spell533 from '../../data/spells/transmute-rock.json';
+import spell534 from '../../data/spells/transport-via-plants.json';
+import spell535 from '../../data/spells/tree-stride.json';
+import spell536 from '../../data/spells/true-polymorph.json';
+import spell537 from '../../data/spells/true-resurrection.json';
+import spell538 from '../../data/spells/true-seeing.json';
+import spell539 from '../../data/spells/true-strike.json';
+import spell540 from '../../data/spells/tsunami.json';
+import spell541 from '../../data/spells/unearthly-chorus.json';
+import spell542 from '../../data/spells/unseen-servant.json';
+import spell543 from '../../data/spells/vampiric-touch.json';
+import spell544 from '../../data/spells/vicious-mockery.json';
+import spell545 from '../../data/spells/virtue.json';
+import spell546 from '../../data/spells/vitriolic-sphere.json';
+import spell547 from '../../data/spells/vortex-warp.json';
+import spell548 from '../../data/spells/wall-of-fire.json';
+import spell549 from '../../data/spells/wall-of-force.json';
+import spell550 from '../../data/spells/wall-of-ice.json';
+import spell551 from '../../data/spells/wall-of-light.json';
+import spell552 from '../../data/spells/wall-of-sand.json';
+import spell553 from '../../data/spells/wall-of-stone.json';
+import spell554 from '../../data/spells/wall-of-thorns.json';
+import spell555 from '../../data/spells/wall-of-water.json';
+import spell556 from '../../data/spells/warding-bond.json';
+import spell557 from '../../data/spells/warding-wind.json';
+import spell558 from '../../data/spells/warp-sense.json';
+import spell559 from '../../data/spells/water-breathing.json';
+import spell560 from '../../data/spells/water-walk.json';
+import spell561 from '../../data/spells/watery-sphere.json';
+import spell562 from '../../data/spells/web.json';
+import spell563 from '../../data/spells/weird.json';
+import spell564 from '../../data/spells/whirlwind.json';
+import spell565 from '../../data/spells/widogast-s-transmogrification-hb.json';
+import spell566 from '../../data/spells/widogast-s-vault-of-amber-hb.json';
+import spell567 from '../../data/spells/widogast-s-web-of-fire-hb.json';
+import spell568 from '../../data/spells/wild-cunning.json';
+import spell569 from '../../data/spells/wind-walk.json';
+import spell570 from '../../data/spells/wind-wall.json';
+import spell571 from '../../data/spells/wish.json';
+import spell572 from '../../data/spells/witch-bolt.json';
+import spell573 from '../../data/spells/wither-and-bloom.json';
+import spell574 from '../../data/spells/word-of-radiance.json';
+import spell575 from '../../data/spells/word-of-recall.json';
+import spell576 from '../../data/spells/wrath-of-nature.json';
+import spell577 from '../../data/spells/wrathful-smite.json';
+import spell578 from '../../data/spells/wristpocket.json';
+import spell579 from '../../data/spells/zephyr-strike.json';
+import spell580 from '../../data/spells/zone-of-truth.json';
 
 export const spellDetails = {
   'abi-dalzims-horrid-wilting': spell0,
@@ -900,264 +901,265 @@ export const spellDetails = {
   'maddening-darkness': spell317,
   'maelstrom': spell318,
   'mage-armor': spell319,
-  'mage-hand': spell320,
-  'magic-circle': spell321,
-  'magic-jar': spell322,
-  'magic-missile': spell323,
-  'magic-mouth': spell324,
-  'magic-stone': spell325,
-  'magic-weapon': spell326,
-  'magnify-gravity': spell327,
-  'major-image': spell328,
-  'mass-cure-wounds': spell329,
-  'mass-heal': spell330,
-  'mass-healing-word': spell331,
-  'mass-polymorph': spell332,
-  'mass-suggestion': spell333,
-  'maximillians-earthen-grasp': spell334,
-  'maze': spell335,
-  'meld-into-stone': spell336,
-  'melfs-acid-arrow': spell337,
-  'melfs-minute-meteors': spell338,
-  'mending': spell339,
-  'mental-barrier': spell340,
-  'mental-prison': spell341,
-  'message': spell342,
-  'meteor-swarm': spell343,
-  'mighty-fortress': spell344,
-  'mind-blank': spell345,
-  'mind-sliver': spell346,
-  'mind-spike': spell347,
-  'mind-thrust': spell348,
-  'minor-illusion': spell349,
-  'mirage-arcane': spell350,
-  'mirror-image': spell351,
-  'mislead': spell352,
-  'misty-step': spell353,
-  'modify-memory': spell354,
-  'mold-earth': spell355,
-  'moonbeam': spell356,
-  'mordenkainens-faithful-hound': spell357,
-  'mordenkainens-magnificent-mansion': spell358,
-  'mordenkainens-private-sanctum': spell359,
-  'mordenkainens-sword': spell360,
-  'motivational-speech': spell361,
-  'move-earth': spell362,
-  'nathairs-mischief-ua': spell363,
-  'nathairs-mischief': spell364,
-  'negative-energy-flood': spell365,
-  'nondetection': spell366,
-  'nystuls-magic-aura': spell367,
-  'on-off': spell368,
-  'otherworldly-form': spell369,
-  'otilukes-freezing-sphere': spell370,
-  'otilukes-resilient-sphere': spell371,
-  'ottos-irresistible-dance': spell372,
-  'pass-without-trace': spell373,
-  'passwall': spell374,
-  'phantasmal-force': spell375,
-  'phantasmal-killer': spell376,
-  'phantom-steed': spell377,
-  'planar-ally': spell378,
-  'planar-binding': spell379,
-  'plane-shift': spell380,
-  'plant-growth': spell381,
-  'poison-spray': spell382,
-  'polymorph': spell383,
-  'power-word-heal': spell384,
-  'power-word-kill': spell385,
-  'power-word-pain': spell386,
-  'power-word-stun': spell387,
-  'prayer-of-healing': spell388,
-  'prestidigitation': spell389,
-  'primal-savagery': spell390,
-  'primordial-ward': spell391,
-  'prismatic-spray': spell392,
-  'prismatic-wall': spell393,
-  'produce-flame': spell394,
-  'programmed-illusion': spell395,
-  'project-image': spell396,
-  'protection-from-ballistics': spell397,
-  'protection-from-energy': spell398,
-  'protection-from-evil-and-good': spell399,
-  'protection-from-poison': spell400,
-  'psionic-blast': spell401,
-  'psychic-crush': spell402,
-  'psychic-scream': spell403,
-  'pulse-wave': spell404,
-  'puppet': spell405,
-  'purify-food-and-drink': spell406,
-  'pyrotechnics': spell407,
-  'raise-dead': spell408,
-  'rarys-telepathic-bond': spell409,
-  'raulothims-psychic-lance-ua': spell410,
-  'raulothims-psychic-lance': spell411,
-  'ravenous-void': spell412,
-  'ray-of-enfeeblement': spell413,
-  'ray-of-frost': spell414,
-  'ray-of-sickness': spell415,
-  'reality-break': spell416,
-  'regenerate': spell417,
-  'reincarnate': spell418,
-  'remote-access': spell419,
-  'remove-curse': spell420,
-  'resistance': spell421,
-  'resurrection': spell422,
-  'reverse-gravity': spell423,
-  'revivify': spell424,
-  'rimes-binding-ice': spell425,
-  'rope-trick': spell426,
-  'sacred-flame': spell427,
-  'sanctuary': spell428,
-  'sapping-sting': spell429,
-  'scatter': spell430,
-  'scorching-ray': spell431,
-  'scrying': spell432,
-  'searing-smite': spell433,
-  'see-invisibility': spell434,
-  'seeming': spell435,
-  'sending': spell436,
-  'sense-emotion': spell437,
-  'sequester': spell438,
-  'shadow-blade': spell439,
-  'shadow-of-moil': spell440,
-  'shape-water': spell441,
-  'shapechange': spell442,
-  'shatter': spell443,
-  'shield-of-faith': spell444,
-  'shield': spell445,
-  'shillelagh': spell446,
-  'shocking-grasp': spell447,
-  'shutdown': spell448,
-  'sickening-radiance': spell449,
-  'silence': spell450,
-  'silent-image': spell451,
-  'silvery-barbs': spell452,
-  'simulacrum': spell453,
-  'skill-empowerment': spell454,
-  'skywrite': spell455,
-  'sleep': spell456,
-  'sleet-storm': spell457,
-  'slow': spell458,
-  'snare': spell459,
-  'snillocs-snowball-storm': spell460,
-  'soul-cage': spell461,
-  'spare-the-dying': spell462,
-  'speak-with-animals': spell463,
-  'speak-with-dead': spell464,
-  'speak-with-plants': spell465,
-  'spider-climb': spell466,
-  'spike-growth': spell467,
-  'spirit-guardians': spell468,
-  'spirit-of-death-ua': spell469,
-  'spirit-of-death': spell470,
-  'spirit-shroud': spell471,
-  'spiritual-weapon': spell472,
-  'spray-of-cards-ua': spell473,
-  'spray-of-cards': spell474,
-  'staggering-smite': spell475,
-  'steel-wind-strike': spell476,
-  'stinking-cloud': spell477,
-  'stone-shape': spell478,
-  'stoneskin': spell479,
-  'storm-of-vengeance': spell480,
-  'storm-sphere': spell481,
-  'sudden-awakening': spell482,
-  'suggestion': spell483,
-  'summon-aberration': spell484,
-  'summon-beast': spell485,
-  'summon-celestial': spell486,
-  'summon-construct': spell487,
-  'summon-draconic-spirit-ua': spell488,
-  'summon-draconic-spirit': spell489,
-  'summon-elemental': spell490,
-  'summon-fey': spell491,
-  'summon-fiend': spell492,
-  'summon-greater-demon': spell493,
-  'summon-lesser-demons': spell494,
-  'summon-shadowspawn': spell495,
-  'summon-undead': spell496,
-  'summon-warrior-spirit': spell497,
-  'sunbeam': spell498,
-  'sunburst': spell499,
-  'swift-quiver': spell500,
-  'sword-burst': spell501,
-  'symbol': spell502,
-  'synaptic-static': spell503,
-  'synchronicity': spell504,
-  'system-backdoor': spell505,
-  'tashas-caustic-brew': spell506,
-  'tashas-hideous-laughter': spell507,
-  'tashas-mind-whip': spell508,
-  'tashas-otherworldly-guise': spell509,
-  'telekinesis': spell510,
-  'telepathy': spell511,
-  'teleport': spell512,
-  'teleportation-circle': spell513,
-  'temple-of-the-gods': spell514,
-  'temporal-shunt': spell515,
-  'tensers-floating-disk': spell516,
-  'tensers-transformation': spell517,
-  'tether-essence': spell518,
-  'thaumaturgy': spell519,
-  'thorn-whip': spell520,
-  'thought-shield': spell521,
-  'thunder-step': spell522,
-  'thunderclap': spell523,
-  'thunderous-smite': spell524,
-  'thunderwave': spell525,
-  'tidal-wave': spell526,
-  'time-ravage': spell527,
-  'time-stop': spell528,
-  'tiny-servant': spell529,
-  'toll-the-dead': spell530,
-  'tongues': spell531,
-  'transmute-rock': spell532,
-  'transport-via-plants': spell533,
-  'tree-stride': spell534,
-  'true-polymorph': spell535,
-  'true-resurrection': spell536,
-  'true-seeing': spell537,
-  'true-strike': spell538,
-  'tsunami': spell539,
-  'unearthly-chorus': spell540,
-  'unseen-servant': spell541,
-  'vampiric-touch': spell542,
-  'vicious-mockery': spell543,
-  'virtue': spell544,
-  'vitriolic-sphere': spell545,
-  'vortex-warp': spell546,
-  'wall-of-fire': spell547,
-  'wall-of-force': spell548,
-  'wall-of-ice': spell549,
-  'wall-of-light': spell550,
-  'wall-of-sand': spell551,
-  'wall-of-stone': spell552,
-  'wall-of-thorns': spell553,
-  'wall-of-water': spell554,
-  'warding-bond': spell555,
-  'warding-wind': spell556,
-  'warp-sense': spell557,
-  'water-breathing': spell558,
-  'water-walk': spell559,
-  'watery-sphere': spell560,
-  'web': spell561,
-  'weird': spell562,
-  'whirlwind': spell563,
-  'widogast-s-transmogrification-hb': spell564,
-  'widogast-s-vault-of-amber-hb': spell565,
-  'widogast-s-web-of-fire-hb': spell566,
-  'wild-cunning': spell567,
-  'wind-walk': spell568,
-  'wind-wall': spell569,
-  'wish': spell570,
-  'witch-bolt': spell571,
-  'wither-and-bloom': spell572,
-  'word-of-radiance': spell573,
-  'word-of-recall': spell574,
-  'wrath-of-nature': spell575,
-  'wrathful-smite': spell576,
-  'wristpocket': spell577,
-  'zephyr-strike': spell578,
-  'zone-of-truth': spell579,
+  'mage-hand-legerdomain': spell320,
+  'mage-hand': spell321,
+  'magic-circle': spell322,
+  'magic-jar': spell323,
+  'magic-missile': spell324,
+  'magic-mouth': spell325,
+  'magic-stone': spell326,
+  'magic-weapon': spell327,
+  'magnify-gravity': spell328,
+  'major-image': spell329,
+  'mass-cure-wounds': spell330,
+  'mass-heal': spell331,
+  'mass-healing-word': spell332,
+  'mass-polymorph': spell333,
+  'mass-suggestion': spell334,
+  'maximillians-earthen-grasp': spell335,
+  'maze': spell336,
+  'meld-into-stone': spell337,
+  'melfs-acid-arrow': spell338,
+  'melfs-minute-meteors': spell339,
+  'mending': spell340,
+  'mental-barrier': spell341,
+  'mental-prison': spell342,
+  'message': spell343,
+  'meteor-swarm': spell344,
+  'mighty-fortress': spell345,
+  'mind-blank': spell346,
+  'mind-sliver': spell347,
+  'mind-spike': spell348,
+  'mind-thrust': spell349,
+  'minor-illusion': spell350,
+  'mirage-arcane': spell351,
+  'mirror-image': spell352,
+  'mislead': spell353,
+  'misty-step': spell354,
+  'modify-memory': spell355,
+  'mold-earth': spell356,
+  'moonbeam': spell357,
+  'mordenkainens-faithful-hound': spell358,
+  'mordenkainens-magnificent-mansion': spell359,
+  'mordenkainens-private-sanctum': spell360,
+  'mordenkainens-sword': spell361,
+  'motivational-speech': spell362,
+  'move-earth': spell363,
+  'nathairs-mischief-ua': spell364,
+  'nathairs-mischief': spell365,
+  'negative-energy-flood': spell366,
+  'nondetection': spell367,
+  'nystuls-magic-aura': spell368,
+  'on-off': spell369,
+  'otherworldly-form': spell370,
+  'otilukes-freezing-sphere': spell371,
+  'otilukes-resilient-sphere': spell372,
+  'ottos-irresistible-dance': spell373,
+  'pass-without-trace': spell374,
+  'passwall': spell375,
+  'phantasmal-force': spell376,
+  'phantasmal-killer': spell377,
+  'phantom-steed': spell378,
+  'planar-ally': spell379,
+  'planar-binding': spell380,
+  'plane-shift': spell381,
+  'plant-growth': spell382,
+  'poison-spray': spell383,
+  'polymorph': spell384,
+  'power-word-heal': spell385,
+  'power-word-kill': spell386,
+  'power-word-pain': spell387,
+  'power-word-stun': spell388,
+  'prayer-of-healing': spell389,
+  'prestidigitation': spell390,
+  'primal-savagery': spell391,
+  'primordial-ward': spell392,
+  'prismatic-spray': spell393,
+  'prismatic-wall': spell394,
+  'produce-flame': spell395,
+  'programmed-illusion': spell396,
+  'project-image': spell397,
+  'protection-from-ballistics': spell398,
+  'protection-from-energy': spell399,
+  'protection-from-evil-and-good': spell400,
+  'protection-from-poison': spell401,
+  'psionic-blast': spell402,
+  'psychic-crush': spell403,
+  'psychic-scream': spell404,
+  'pulse-wave': spell405,
+  'puppet': spell406,
+  'purify-food-and-drink': spell407,
+  'pyrotechnics': spell408,
+  'raise-dead': spell409,
+  'rarys-telepathic-bond': spell410,
+  'raulothims-psychic-lance-ua': spell411,
+  'raulothims-psychic-lance': spell412,
+  'ravenous-void': spell413,
+  'ray-of-enfeeblement': spell414,
+  'ray-of-frost': spell415,
+  'ray-of-sickness': spell416,
+  'reality-break': spell417,
+  'regenerate': spell418,
+  'reincarnate': spell419,
+  'remote-access': spell420,
+  'remove-curse': spell421,
+  'resistance': spell422,
+  'resurrection': spell423,
+  'reverse-gravity': spell424,
+  'revivify': spell425,
+  'rimes-binding-ice': spell426,
+  'rope-trick': spell427,
+  'sacred-flame': spell428,
+  'sanctuary': spell429,
+  'sapping-sting': spell430,
+  'scatter': spell431,
+  'scorching-ray': spell432,
+  'scrying': spell433,
+  'searing-smite': spell434,
+  'see-invisibility': spell435,
+  'seeming': spell436,
+  'sending': spell437,
+  'sense-emotion': spell438,
+  'sequester': spell439,
+  'shadow-blade': spell440,
+  'shadow-of-moil': spell441,
+  'shape-water': spell442,
+  'shapechange': spell443,
+  'shatter': spell444,
+  'shield-of-faith': spell445,
+  'shield': spell446,
+  'shillelagh': spell447,
+  'shocking-grasp': spell448,
+  'shutdown': spell449,
+  'sickening-radiance': spell450,
+  'silence': spell451,
+  'silent-image': spell452,
+  'silvery-barbs': spell453,
+  'simulacrum': spell454,
+  'skill-empowerment': spell455,
+  'skywrite': spell456,
+  'sleep': spell457,
+  'sleet-storm': spell458,
+  'slow': spell459,
+  'snare': spell460,
+  'snillocs-snowball-storm': spell461,
+  'soul-cage': spell462,
+  'spare-the-dying': spell463,
+  'speak-with-animals': spell464,
+  'speak-with-dead': spell465,
+  'speak-with-plants': spell466,
+  'spider-climb': spell467,
+  'spike-growth': spell468,
+  'spirit-guardians': spell469,
+  'spirit-of-death-ua': spell470,
+  'spirit-of-death': spell471,
+  'spirit-shroud': spell472,
+  'spiritual-weapon': spell473,
+  'spray-of-cards-ua': spell474,
+  'spray-of-cards': spell475,
+  'staggering-smite': spell476,
+  'steel-wind-strike': spell477,
+  'stinking-cloud': spell478,
+  'stone-shape': spell479,
+  'stoneskin': spell480,
+  'storm-of-vengeance': spell481,
+  'storm-sphere': spell482,
+  'sudden-awakening': spell483,
+  'suggestion': spell484,
+  'summon-aberration': spell485,
+  'summon-beast': spell486,
+  'summon-celestial': spell487,
+  'summon-construct': spell488,
+  'summon-draconic-spirit-ua': spell489,
+  'summon-draconic-spirit': spell490,
+  'summon-elemental': spell491,
+  'summon-fey': spell492,
+  'summon-fiend': spell493,
+  'summon-greater-demon': spell494,
+  'summon-lesser-demons': spell495,
+  'summon-shadowspawn': spell496,
+  'summon-undead': spell497,
+  'summon-warrior-spirit': spell498,
+  'sunbeam': spell499,
+  'sunburst': spell500,
+  'swift-quiver': spell501,
+  'sword-burst': spell502,
+  'symbol': spell503,
+  'synaptic-static': spell504,
+  'synchronicity': spell505,
+  'system-backdoor': spell506,
+  'tashas-caustic-brew': spell507,
+  'tashas-hideous-laughter': spell508,
+  'tashas-mind-whip': spell509,
+  'tashas-otherworldly-guise': spell510,
+  'telekinesis': spell511,
+  'telepathy': spell512,
+  'teleport': spell513,
+  'teleportation-circle': spell514,
+  'temple-of-the-gods': spell515,
+  'temporal-shunt': spell516,
+  'tensers-floating-disk': spell517,
+  'tensers-transformation': spell518,
+  'tether-essence': spell519,
+  'thaumaturgy': spell520,
+  'thorn-whip': spell521,
+  'thought-shield': spell522,
+  'thunder-step': spell523,
+  'thunderclap': spell524,
+  'thunderous-smite': spell525,
+  'thunderwave': spell526,
+  'tidal-wave': spell527,
+  'time-ravage': spell528,
+  'time-stop': spell529,
+  'tiny-servant': spell530,
+  'toll-the-dead': spell531,
+  'tongues': spell532,
+  'transmute-rock': spell533,
+  'transport-via-plants': spell534,
+  'tree-stride': spell535,
+  'true-polymorph': spell536,
+  'true-resurrection': spell537,
+  'true-seeing': spell538,
+  'true-strike': spell539,
+  'tsunami': spell540,
+  'unearthly-chorus': spell541,
+  'unseen-servant': spell542,
+  'vampiric-touch': spell543,
+  'vicious-mockery': spell544,
+  'virtue': spell545,
+  'vitriolic-sphere': spell546,
+  'vortex-warp': spell547,
+  'wall-of-fire': spell548,
+  'wall-of-force': spell549,
+  'wall-of-ice': spell550,
+  'wall-of-light': spell551,
+  'wall-of-sand': spell552,
+  'wall-of-stone': spell553,
+  'wall-of-thorns': spell554,
+  'wall-of-water': spell555,
+  'warding-bond': spell556,
+  'warding-wind': spell557,
+  'warp-sense': spell558,
+  'water-breathing': spell559,
+  'water-walk': spell560,
+  'watery-sphere': spell561,
+  'web': spell562,
+  'weird': spell563,
+  'whirlwind': spell564,
+  'widogast-s-transmogrification-hb': spell565,
+  'widogast-s-vault-of-amber-hb': spell566,
+  'widogast-s-web-of-fire-hb': spell567,
+  'wild-cunning': spell568,
+  'wind-walk': spell569,
+  'wind-wall': spell570,
+  'wish': spell571,
+  'witch-bolt': spell572,
+  'wither-and-bloom': spell573,
+  'word-of-radiance': spell574,
+  'word-of-recall': spell575,
+  'wrath-of-nature': spell576,
+  'wrathful-smite': spell577,
+  'wristpocket': spell578,
+  'zephyr-strike': spell579,
+  'zone-of-truth': spell580,
 };

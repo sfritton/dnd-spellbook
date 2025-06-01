@@ -127,6 +127,12 @@
       "url": "http://dnd5e.wikidot.com/spell:lightning-lure"
     },
     {
+      "id": "mage-hand-legerdomain",
+      "title": "Mage Hand (Legerdomain)",
+      "level": 0,
+      "url": "http://dnd5e.wikidot.com/spell:mage-hand-legerdomain"
+    },
+    {
       "id": "mage-hand",
       "title": "Mage Hand",
       "level": 0,

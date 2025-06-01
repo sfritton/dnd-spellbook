@@ -53,16 +53,15 @@ const generateSpellLists = async () => {
 
   generateFilters(spellFileNames);
 
-  // TODO: turned off while generating filters, turn back on if need to regenerate spell lists
-  // generateSpellList('all', spellFileNames);
-  // Object.entries(SPELL_LISTS).map(([className, spells]) =>
-  //   generateSpellList(
-  //     className,
-  //     spells.map((spell) => `${spell.name}.json`),
-  //   ),
-  // );
+  generateSpellList('all', spellFileNames);
+  Object.entries(SPELL_LISTS).map(([className, spells]) =>
+    generateSpellList(
+      className,
+      spells.map((spell) => `${spell.name}.json`),
+    ),
+  );
 
-  // generateSpellTypescriptImports(spellFileNames);
+  generateSpellTypescriptImports(spellFileNames);
 };
 
 const generateFilters = async (spellFileNames: string[]) => {

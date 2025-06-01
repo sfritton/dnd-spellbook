@@ -1,0 +1,31 @@
+{
+  "title": "Mage Hand (Legerdomain)",
+  "source": "Player's Handbook",
+  "levelAndSchool": "Conjuration cantrip",
+  "level": 0,
+  "castingTime": "1 action",
+  "range": "30 feet",
+  "components": "V, S",
+  "duration": "1 minute",
+  "description": [
+    "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.",
+    "You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.",
+    "The hand can’t attack, activate magical items, or carry more than 10 pounds.",
+    "",
+    "",
+    "Arcane Trickster Rogue's Mage Hand Legerdomain ability grants the following additional abilities:",
+    "you can make the spectral hand invisible, and you can perform the following additional tasks with it:",
+    "You can stow one object the hand is holding in a container worn or carried by another creature.",
+    "You can retrieve an object in a container worn or carried by another creature.",
+    "You can use thieves' tools to pick locks and disarm traps at range.",
+    "You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.",
+    "In addition, you can use the bonus action granted by your Cunning Action to control the hand."
+  ],
+  "spellLists": [
+    "http://dnd5e.wikidot.com/spells:artificer",
+    "http://dnd5e.wikidot.com/spells:bard",
+    "http://dnd5e.wikidot.com/spells:sorcerer",
+    "http://dnd5e.wikidot.com/spells:warlock",
+    "http://dnd5e.wikidot.com/spells:wizard"
+  ]
+}
