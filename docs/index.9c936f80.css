@@ -6,6 +6,7 @@
 }
 
 .iPi3oW_header > .iPi3oW_visualHeader {
+  view-transition-name: iPi3oW_header;
   font-family: var(--sans);
   color: #fff;
   box-shadow: var(--shadow-md);
@@ -1100,4 +1101,4 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .HYU1Gq_abilityRange > input {
   cursor: ew-resize;
 }
-/*# sourceMappingURL=index.d9e0c393.css.map */
+/*# sourceMappingURL=index.9c936f80.css.map */
