@@ -1,3 +1,7 @@
+@view-transition {
+  navigation: auto;
+}
+
 :root {
   --serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
   --sans: var(--serif);
@@ -24,6 +28,7 @@ html {
 }
 
 body {
+  view-transition-name: dnd-spellbook;
   font-family: var(--serif);
   color: var(--color-text);
   background: #000;
@@ -203,4 +208,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.11f4ff35.css.map */
+/*# sourceMappingURL=index.df302c24.css.map */
