@@ -35,7 +35,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.visualHeader} ref={headerRef}>
+      <div className={styles.visualHeader} ref={headerRef} style={{ viewTransitionName: 'header' }}>
         <NavButton
           className={styles.menuButton}
           icon={<IconMenu />}

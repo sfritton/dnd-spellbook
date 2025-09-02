@@ -12290,6 +12290,9 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
             className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).visualHeader,
             ref: headerRef,
+            style: {
+                viewTransitionName: "header"
+            },
             children: [
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
                     className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).menuButton,
@@ -13130,4 +13133,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.de3e6dc5.js.map
+//# sourceMappingURL=index.f18cfbd2.js.map
