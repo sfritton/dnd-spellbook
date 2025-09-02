@@ -28,6 +28,7 @@ html {
 }
 
 body {
+  view-transition-name: dnd-spellbook;
   font-family: var(--serif);
   color: var(--color-text);
   background: #000;
@@ -35,7 +36,6 @@ body {
 }
 
 main {
-  view-transition-name: dnd-spellbook;
   min-height: calc(100vh - 134px);
   padding: 16px 20px 8px;
 }
@@ -208,4 +208,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.ba59175e.css.map */
+/*# sourceMappingURL=index.df302c24.css.map */
