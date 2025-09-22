@@ -11,28 +11,31 @@ export const FilterSummary = () => {
 
   if (areAllFiltersFalsey) return null;
 
-  const filterButtons = Object.entries(filters).flatMap(([filterName, values]) =>
-    Object.entries(values).map(([id, value]) =>
-      value ? (
-        <button
-          onClick={() =>
-            setFilters((prevFilters) => ({
-              ...prevFilters,
-              [filterName]: {
-                ...prevFilters[filterName],
-                [id]: false,
-              },
-            }))
-          }
-          className="secondary"
-          key={id}
-        >
-          {id.replace(/_/g, ' ').replace(/non /g, 'non-')}
-          <IconClose />
-        </button>
-      ) : null,
-    ),
-  );
+  const filterButtons = Object.entries(filters)
+    // Sources aren't likely to be modified often, and take up a lot of space
+    .filter(([key]) => key !== 'sources')
+    .flatMap(([filterName, values]) =>
+      Object.entries(values).map(([id, value]) =>
+        value ? (
+          <button
+            onClick={() =>
+              setFilters((prevFilters) => ({
+                ...prevFilters,
+                [filterName]: {
+                  ...prevFilters[filterName],
+                  [id]: false,
+                },
+              }))
+            }
+            className="secondary"
+            key={id}
+          >
+            {id.replace(/_/g, ' ').replace(/non /g, 'non-')}
+            <IconClose />
+          </button>
+        ) : null,
+      ),
+    );
 
   return (
     <div className={styles.filterSummary}>

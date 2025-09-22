@@ -27,6 +27,7 @@
     outline-offset: -1px;
     background: var(--color-bg-white);
     transition: background 300ms;
+    flex-shrink: 0;
 
     &:after {
       font-family: var(--serif);

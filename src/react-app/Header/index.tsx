@@ -43,7 +43,7 @@ export const Header = () => {
           onClick={() => setIsNavOpen((prev) => !prev)}
           isSmall
         />
-        <h1>DnD 5e Spellbook</h1>
+        <h1>D&amp;D 5e Spellbook</h1>
         <nav
           className={isNavOpen ? styles.open : styles.closed}
           aria-hidden={isNavOpen ? undefined : 'true'}

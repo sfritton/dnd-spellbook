@@ -1,0 +1,51 @@
+export const DEFAULT_FILTERS = {
+  casting_time: {
+    action: false,
+    bonus_action: false,
+    reaction: false,
+    other: false,
+  },
+  components: {
+    v: false,
+    s: false,
+    m: false,
+  },
+  concentration: {
+    concentration: false,
+    non_concentration: false,
+  },
+  ritual: {
+    ritual: false,
+    non_ritual: false,
+  },
+  sources: {
+    "Explorer's Guide to Wildemount": true,
+    "Fizban's Treasury of Dragons": true,
+    "Guildmaster's Guide to Ravnica": true,
+    "Player's Handbook": true,
+    "Spelljammer: Adventures in Space - Astral Adventurer's Guide": true,
+    "Tal'Dorei Campaign Setting Reborn": true,
+    "Tasha's Cauldron of Everything": true,
+    "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide": true,
+    "Xanathar's Guide to Everything": true,
+    "Xanathar's Guide to Everything/Elemental Evil Player's Companion": true,
+    'Acquisitions Inc.': true,
+    'Critical Role (Twitter)': true,
+    'Icewind Dale - Rime of the Frostmaiden': true,
+    'Lost Laboratory of Kwalish': true,
+    'Planescape - Adventures in the Multiverse': true,
+    'Strixhaven: A Curriculum of Chaos': true,
+    'The Book of Many Things': true,
+    'Unearthed Arcana 11 - That Old Black Magic': false,
+    'Unearthed Arcana 36 - Starter Spells': false,
+    'Unearthed Arcana 60 - The Artificer Returns': false,
+    'Unearthed Arcana 66 - Fighter, Rogue, and Wizard': false,
+    'Unearthed Arcana 7 - Modern Magic': false,
+    'Unearthed Arcana 70 - Spells and Magic Tattoos': false,
+    'Unearthed Arcana 71 - Psionic Options Revisited': false,
+    'Unearthed Arcana 78 - Draconic Options': false,
+    'Unearthed Arcana 85 - Wonders of the Multiverse': false,
+  },
+};
+
+export type Filters = typeof DEFAULT_FILTERS;

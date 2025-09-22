@@ -5,35 +5,15 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
 import { Spell } from '../types';
 import { spellDetails } from '../../constants/spell-details';
+import { DEFAULT_FILTERS, Filters } from './constants';
 
-export const DEFAULT_FILTERS = {
-  casting_time: {
-    action: false,
-    bonus_action: false,
-    reaction: false,
-    other: false,
-  },
-  components: {
-    v: false,
-    s: false,
-    m: false,
-  },
-  concentration: {
-    concentration: false,
-    non_concentration: false,
-  },
-  ritual: {
-    ritual: false,
-    non_ritual: false,
-  },
-};
-
-export type Filters = typeof DEFAULT_FILTERS;
+export { DEFAULT_FILTERS, Filters } from './constants';
 
 interface FilterContextValue {
   filters: Filters;
@@ -47,8 +27,16 @@ const FilterContext = createContext<FilterContextValue>({
   getShouldShowSpell: () => {},
 });
 
+const getDefaultFilters = (): Filters => {
+  const storedString = localStorage.getItem('filters');
+
+  if (!storedString) return DEFAULT_FILTERS;
+
+  return JSON.parse(storedString);
+};
+
 export const FilterContextProvider = ({ children }: PropsWithChildren) => {
-  const [filters, setFilters] = useState(DEFAULT_FILTERS);
+  const [filters, setFilters] = useState(getDefaultFilters());
   const getShouldShowSpell = useCallback(
     (spellSummary: Spell.Summary) => {
       const spell = spellDetails[spellSummary.id] as Spell.Details;
@@ -103,10 +91,19 @@ export const FilterContextProvider = ({ children }: PropsWithChildren) => {
         if (!filters.ritual.non_ritual && !isRitual) return false;
       }
 
+      // Sources
+      const areAllSourcesValid = Object.values(filters.sources).every((value) => !value);
+
+      if (!areAllSourcesValid && !filters.sources[spell.source]) return false;
+
       return true;
     },
     [filters],
   );
+
+  useEffect(() => {
+    localStorage.setItem('filters', JSON.stringify(filters));
+  }, [filters]);
 
   const value = useMemo(
     () => ({
