@@ -12084,7 +12084,7 @@ var $bwXBY = parcelRequire("bwXBY");
 
 var $bwXBY = parcelRequire("bwXBY");
 
-const $ba83cb97b7fd8383$export$42d0f19526e5d9da = {
+const $d45ed845844ef6ba$export$42d0f19526e5d9da = {
     casting_time: {
         action: false,
         bonus_action: false,
@@ -12103,15 +12103,50 @@ const $ba83cb97b7fd8383$export$42d0f19526e5d9da = {
     ritual: {
         ritual: false,
         non_ritual: false
+    },
+    sources: {
+        "Explorer's Guide to Wildemount": true,
+        "Fizban's Treasury of Dragons": true,
+        "Guildmaster's Guide to Ravnica": true,
+        "Player's Handbook": true,
+        "Spelljammer: Adventures in Space - Astral Adventurer's Guide": true,
+        "Tal'Dorei Campaign Setting Reborn": true,
+        "Tasha's Cauldron of Everything": true,
+        "Tasha's Cauldron of Everything/Sword Coast Adventurer's Guide": true,
+        "Xanathar's Guide to Everything": true,
+        "Xanathar's Guide to Everything/Elemental Evil Player's Companion": true,
+        "Acquisitions Inc.": true,
+        "Critical Role (Twitter)": true,
+        "Icewind Dale - Rime of the Frostmaiden": true,
+        "Lost Laboratory of Kwalish": true,
+        "Planescape - Adventures in the Multiverse": true,
+        "Strixhaven: A Curriculum of Chaos": true,
+        "The Book of Many Things": true,
+        "Unearthed Arcana 11 - That Old Black Magic": false,
+        "Unearthed Arcana 36 - Starter Spells": false,
+        "Unearthed Arcana 60 - The Artificer Returns": false,
+        "Unearthed Arcana 66 - Fighter, Rogue, and Wizard": false,
+        "Unearthed Arcana 7 - Modern Magic": false,
+        "Unearthed Arcana 70 - Spells and Magic Tattoos": false,
+        "Unearthed Arcana 71 - Psionic Options Revisited": false,
+        "Unearthed Arcana 78 - Draconic Options": false,
+        "Unearthed Arcana 85 - Wonders of the Multiverse": false
     }
 };
+
+
 const $ba83cb97b7fd8383$var$FilterContext = /*#__PURE__*/ (0, $bwXBY.createContext)({
-    filters: $ba83cb97b7fd8383$export$42d0f19526e5d9da,
+    filters: (0, $d45ed845844ef6ba$export$42d0f19526e5d9da),
     setFilters: ()=>{},
     getShouldShowSpell: ()=>{}
 });
+const $ba83cb97b7fd8383$var$getDefaultFilters = ()=>{
+    const storedString = localStorage.getItem("filters");
+    if (!storedString) return 0, $d45ed845844ef6ba$export$42d0f19526e5d9da;
+    return JSON.parse(storedString);
+};
 const $ba83cb97b7fd8383$export$eb71bf38f5ae0f9c = ({ children: children })=>{
-    const [filters, setFilters] = (0, $bwXBY.useState)($ba83cb97b7fd8383$export$42d0f19526e5d9da);
+    const [filters, setFilters] = (0, $bwXBY.useState)($ba83cb97b7fd8383$var$getDefaultFilters());
     const getShouldShowSpell = (0, $bwXBY.useCallback)((spellSummary)=>{
         const spell = (0, $f278a73600af97eb$export$400852b624061e8)[spellSummary.id];
         // Casting Time
@@ -12150,7 +12185,15 @@ const $ba83cb97b7fd8383$export$eb71bf38f5ae0f9c = ({ children: children })=>{
             if (!filters.ritual.ritual && isRitual) return false;
             if (!filters.ritual.non_ritual && !isRitual) return false;
         }
+        // Sources
+        const areAllSourcesValid = Object.values(filters.sources).every((value)=>!value);
+        if (!areAllSourcesValid && !filters.sources[spell.source]) return false;
         return true;
+    }, [
+        filters
+    ]);
+    (0, $bwXBY.useEffect)(()=>{
+        localStorage.setItem("filters", JSON.stringify(filters));
     }, [
         filters
     ]);
@@ -12179,15 +12222,69 @@ var $06ebbe8b9b4ea362$export$5b26fc7e638ec99f;
 $06ebbe8b9b4ea362$export$5b26fc7e638ec99f = `Vjl1AW_filterSection`;
 
 
+
+var $14dc7c3fd80c79ce$exports = {};
+
+$parcel$export($14dc7c3fd80c79ce$exports, "collapsible", function () { return $14dc7c3fd80c79ce$export$4f19aad4974d270c; }, function (v) { return $14dc7c3fd80c79ce$export$4f19aad4974d270c = v; });
+$parcel$export($14dc7c3fd80c79ce$exports, "content", function () { return $14dc7c3fd80c79ce$export$a7db06668cad9adb; }, function (v) { return $14dc7c3fd80c79ce$export$a7db06668cad9adb = v; });
+$parcel$export($14dc7c3fd80c79ce$exports, "icon", function () { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27; }, function (v) { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = v; });
+var $14dc7c3fd80c79ce$export$4f19aad4974d270c;
+var $14dc7c3fd80c79ce$export$a7db06668cad9adb;
+var $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27;
+$14dc7c3fd80c79ce$export$4f19aad4974d270c = `GXXjnG_collapsible`;
+$14dc7c3fd80c79ce$export$a7db06668cad9adb = `GXXjnG_content`;
+$14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = `GXXjnG_icon`;
+
+
+
+const $95ed042b922313c2$export$14bd1eab81cd3160 = ({ className: className = "" })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+        })
+    });
+
+
+const $7c1eac6cf4db4260$export$6eb0f7ddcda6131f = ({ children: children, title: title, defaultIsOpen: defaultIsOpen = true })=>{
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("details", {
+                open: defaultIsOpen,
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).collapsible,
+                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("summary", {
+                    children: [
+                        title,
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $95ed042b922313c2$export$14bd1eab81cd3160), {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).icon
+                        })
+                    ]
+                })
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).content,
+                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                    children: children
+                })
+            })
+        ]
+    });
+};
+
+
 const $a3c68d6d908b232d$export$4c5b17bfcbab1742 = ({ id: id, filters: filters, setFilters: setFilters })=>{
     const name = id.replace(/_/g, " ");
-    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($06ebbe8b9b4ea362$exports))).filterSection,
-        children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7c1eac6cf4db4260$export$6eb0f7ddcda6131f), {
+            title: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
                 children: name
             }),
-            Object.keys(filters[id]).map((value)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
+            defaultIsOpen: name !== "sources",
+            children: Object.keys(filters[id]).map((value)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
                     label: value.replace(/_/g, " ").replace(/non /, "non-"),
                     id: `${id}-${value}`,
                     checked: filters[id][value],
@@ -12199,7 +12296,7 @@ const $a3c68d6d908b232d$export$4c5b17bfcbab1742 = ({ id: id, filters: filters, s
                                 }
                             }))
                 }, value))
-        ]
+        })
     });
 };
 
@@ -12302,7 +12399,7 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                     isSmall: true
                 }),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h1", {
-                    children: "DnD 5e Spellbook"
+                    children: "D&D 5e Spellbook"
                 }),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
                     className: isNavOpen ? (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).open : (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).closed,
@@ -12412,7 +12509,7 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
             className: (0, (/*@__PURE__*/$parcel$interopDefault($2724695350ce1fbb$exports))).welcomeInner,
             children: [
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                    children: "Welcome to your DnD 5e Spellbook!"
+                    children: "Welcome to your D&D 5e Spellbook!"
                 }),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("p", {
                     children: "This is a simple tool to assemble your character's spells and quickly reference them during combat."
@@ -12440,58 +12537,6 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
 
 
 
-var $14dc7c3fd80c79ce$exports = {};
-
-$parcel$export($14dc7c3fd80c79ce$exports, "collapsible", function () { return $14dc7c3fd80c79ce$export$4f19aad4974d270c; }, function (v) { return $14dc7c3fd80c79ce$export$4f19aad4974d270c = v; });
-$parcel$export($14dc7c3fd80c79ce$exports, "content", function () { return $14dc7c3fd80c79ce$export$a7db06668cad9adb; }, function (v) { return $14dc7c3fd80c79ce$export$a7db06668cad9adb = v; });
-$parcel$export($14dc7c3fd80c79ce$exports, "icon", function () { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27; }, function (v) { return $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = v; });
-var $14dc7c3fd80c79ce$export$4f19aad4974d270c;
-var $14dc7c3fd80c79ce$export$a7db06668cad9adb;
-var $14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27;
-$14dc7c3fd80c79ce$export$4f19aad4974d270c = `GXXjnG_collapsible`;
-$14dc7c3fd80c79ce$export$a7db06668cad9adb = `GXXjnG_content`;
-$14dc7c3fd80c79ce$export$1ca1ec8b29a4ce27 = `GXXjnG_icon`;
-
-
-
-const $95ed042b922313c2$export$14bd1eab81cd3160 = ({ className: className = "" })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
-        className: className,
-        focusable: "false",
-        "aria-hidden": "true",
-        viewBox: "0 0 24 24",
-        tabIndex: -1,
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
-            d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
-        })
-    });
-
-
-const $7c1eac6cf4db4260$export$6eb0f7ddcda6131f = ({ children: children, title: title })=>{
-    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("details", {
-                open: true,
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).collapsible,
-                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("summary", {
-                    children: [
-                        title,
-                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $95ed042b922313c2$export$14bd1eab81cd3160), {
-                            className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).icon
-                        })
-                    ]
-                })
-            }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                className: (0, (/*@__PURE__*/$parcel$interopDefault($14dc7c3fd80c79ce$exports))).content,
-                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                    children: children
-                })
-            })
-        ]
-    });
-};
-
-
 
 
 
@@ -12506,7 +12551,8 @@ const $5ecb484c9543bfa5$export$5ead181f5de19cb1 = ()=>{
     const { filters: filters, setFilters: setFilters } = (0, $ba83cb97b7fd8383$export$396ef541d9951d45)();
     const areAllFiltersFalsey = Object.values(filters).every((filter)=>Object.values(filter).every((value)=>!value));
     if (areAllFiltersFalsey) return null;
-    const filterButtons = Object.entries(filters).flatMap(([filterName, values])=>Object.entries(values).map(([id, value])=>value ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+    const filterButtons = Object.entries(filters)// Sources aren't likely to be modified often, and take up a lot of space
+    .filter(([key])=>key !== "sources").flatMap(([filterName, values])=>Object.entries(values).map(([id, value])=>value ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
                 onClick: ()=>setFilters((prevFilters)=>({
                             ...prevFilters,
                             [filterName]: {
@@ -12529,7 +12575,7 @@ const $5ecb484c9543bfa5$export$5ead181f5de19cb1 = ()=>{
             }),
             filterButtons,
             filterButtons.filter((button)=>Boolean(button)).length > 1 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("button", {
-                onClick: ()=>setFilters((0, $ba83cb97b7fd8383$export$42d0f19526e5d9da)),
+                onClick: ()=>setFilters((0, $d45ed845844ef6ba$export$42d0f19526e5d9da)),
                 className: "secondary",
                 children: "Clear all"
             }) : null
@@ -13133,4 +13179,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.f18cfbd2.js.map
+//# sourceMappingURL=index.10bcb4ae.js.map

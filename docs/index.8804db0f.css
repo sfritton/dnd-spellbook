@@ -318,6 +318,7 @@
   background: none;
   background: var(--color-bg-white);
   border-radius: 4px;
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   transition: background .3s;
@@ -749,63 +750,7 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 }
 
 .Vjl1AW_filterSection h4 {
-  margin: 8px 0;
-}
-
-._6B68uG_spellList {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 8px;
-  padding: 0;
-  list-style: none;
-  display: grid;
-}
-
-._6B68uG_spellList > * {
-  animation: .3s ease-out _6B68uG_fadeIn;
-}
-
-@keyframes _6B68uG_fadeIn {
-  from {
-    opacity: 0;
-  }
-}
-
-.BGWDaa_spellListPlaceholder {
-  background: var(--color-bg-white);
-  border-radius: 2px;
-  justify-content: center;
-  align-items: center;
-  min-height: 58px;
-  padding: 8px 16px;
-  display: flex;
-}
-
-.BGWDaa_spellListPlaceholder .BGWDaa_placeholderIcon {
-  fill: var(--color-text);
-  vertical-align: bottom;
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-}
-
-.BGWDaa_spellListHeader {
   margin: 0;
-}
-
-.C2D9ya_welcome {
-  max-width: 420px;
-  margin: 64px auto 32px;
-}
-
-.C2D9ya_welcome h3 {
-  margin-top: 32px;
-}
-
-.C2D9ya_welcome .C2D9ya_buttons {
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-  display: flex;
 }
 
 .GXXjnG_collapsible summary {
@@ -863,6 +808,62 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 
 :is(.GXXjnG_collapsible[open] + .GXXjnG_content, .GXXjnG_content:focus-within) > div {
   overflow: visible;
+}
+
+._6B68uG_spellList {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+._6B68uG_spellList > * {
+  animation: .3s ease-out _6B68uG_fadeIn;
+}
+
+@keyframes _6B68uG_fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.BGWDaa_spellListPlaceholder {
+  background: var(--color-bg-white);
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  min-height: 58px;
+  padding: 8px 16px;
+  display: flex;
+}
+
+.BGWDaa_spellListPlaceholder .BGWDaa_placeholderIcon {
+  fill: var(--color-text);
+  vertical-align: bottom;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.BGWDaa_spellListHeader {
+  margin: 0;
+}
+
+.C2D9ya_welcome {
+  max-width: 420px;
+  margin: 64px auto 32px;
+}
+
+.C2D9ya_welcome h3 {
+  margin-top: 32px;
+}
+
+.C2D9ya_welcome .C2D9ya_buttons {
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  display: flex;
 }
 
 .cwR1FG_filterSummary {
@@ -1100,4 +1101,4 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .HYU1Gq_abilityRange > input {
   cursor: ew-resize;
 }
-/*# sourceMappingURL=index.d9e0c393.css.map */
+/*# sourceMappingURL=index.8804db0f.css.map */
