@@ -21,7 +21,6 @@
     border: none;
     background: #222;
     color: #fff;
-    /* cursor: pointer; */
 
     &::placeholder {
       color: #bbb;

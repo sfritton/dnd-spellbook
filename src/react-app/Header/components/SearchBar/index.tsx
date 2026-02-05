@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import styles from './index.module.css';
 import { SpellSummary } from '../../../SpellSummary';
-import { useSpellListContext } from '../../../SpellListContext';
 import allSpells from '../../../../constants/spells/all.json';
 import { IconSearch } from '../../../icons/IconSearch';
 
 const allSpellsFlat = allSpells.flat();
 
 export const SearchBar = () => {
-  const [value, setValue] = useState<string>('');
-  const { appendSpells, removeSpell, spellLists } = useSpellListContext();
+  const [value, setValue] = useState('');
+
+  // @ts-expect-error -- RegExp.escape exists: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/escape
+  const sanitizedValue: string = Boolean(RegExp.escape) ? RegExp.escape(value) : value;
 
   const matchingSpells = value
-    ? allSpellsFlat.filter(({ title }) => title.match(new RegExp(value, 'i'))).slice(0, 3)
+    ? allSpellsFlat.filter(({ title }) => title.match(new RegExp(sanitizedValue, 'i'))).slice(0, 3)
     : [];
 
   const showDropdown = matchingSpells.length > 0;
