@@ -11807,7 +11807,7 @@ const $b7087c10eb7daa72$export$b70265791d2079d4 = ({ isKnown: isKnown = false, i
 
 
 const $5631bf9a867042a6$var$getLabel = ({ title: title, isKnown: isKnown = false, isPrepared: isPrepared = false, isAlwaysPrepared: isAlwaysPrepared = false })=>{
-    if (isAlwaysPrepared) return `Mark "${title}" as Prepared`;
+    if (isAlwaysPrepared) return `"${title}" is Always Prepared`;
     if (isPrepared) return `Unprepare "${title}"`;
     if (isKnown) return `Prepare "${title}"`;
     return `Learn "${title}"`;
@@ -13493,4 +13493,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.2d4a6241.js.map
+//# sourceMappingURL=index.88f7a98f.js.map

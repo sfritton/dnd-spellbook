@@ -14,7 +14,7 @@ const getLabel = ({
   isPrepared = false,
   isAlwaysPrepared = false,
 }: SpellSummaryButtonProps) => {
-  if (isAlwaysPrepared) return `Mark "${title}" as Prepared`;
+  if (isAlwaysPrepared) return `"${title}" is Always Prepared`;
   if (isPrepared) return `Unprepare "${title}"`;
   if (isKnown) return `Prepare "${title}"`;
   return `Learn "${title}"`;
