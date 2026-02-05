@@ -348,8 +348,8 @@
 }
 
 ._3_6aeG_checkboxWrapper input:checked ~ ._3_6aeG_checkbox {
-  background: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 ._3_6aeG_checkboxWrapper input:checked ~ ._3_6aeG_checkbox:after {
@@ -359,6 +359,11 @@
 
 ._3_6aeG_checkboxWrapper:hover {
   background: var(--color-bg-white);
+}
+
+._3_6aeG_checkboxWrapper:hover input:checked ~ ._3_6aeG_checkbox {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 ._3_6aeG_checkboxWrapper:has(:focus-visible) {
@@ -653,6 +658,10 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton > svg {
   position: absolute;
 }
 
+button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton:hover:not(:disabled) > svg {
+  fill: var(--color-accent-hover);
+}
+
 button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_always_prepared svg:not(.RHcxFa_iconAlwaysPrepared), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_prepared svg:not(.RHcxFa_iconPrepared), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_known svg:not(.RHcxFa_iconKnown), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_new svg:not(.RHcxFa_iconNew) {
   opacity: 0;
 }
@@ -941,7 +950,7 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
 
 .omtYtG_healthAndSpellSlots {
   z-index: 3;
-  accent-color: var(--color-accent-hover);
+  accent-color: var(--color-accent);
   grid-template-rows: auto 1fr auto;
   width: 100vw;
   height: 100svh;
@@ -1027,6 +1036,10 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
 
 .omtYtG_healthAndSpellSlots .omtYtG_health label input[type="range"] {
   cursor: ew-resize;
+}
+
+.omtYtG_healthAndSpellSlots .omtYtG_health label input[type="range"]:hover {
+  accent-color: var(--color-accent-hover);
 }
 
 .omtYtG_healthAndSpellSlots .omtYtG_buttons {
@@ -1150,4 +1163,4 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
 .HYU1Gq_abilityRange > input {
   cursor: ew-resize;
 }
-/*# sourceMappingURL=index.cf63057d.css.map */
+/*# sourceMappingURL=index.2d3aeaa4.css.map */
