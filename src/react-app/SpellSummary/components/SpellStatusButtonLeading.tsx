@@ -21,15 +21,13 @@ const getLabel = ({
 };
 
 export const SpellSummaryButtonLeading = (props: SpellSummaryButtonProps) => {
-  const { makeToggleSpell, makeToggleSpellAlwaysPrepared, appendSpells } = useSpellListContext();
+  const { makeToggleSpell, appendSpells } = useSpellListContext();
   const status = getStatus(props);
   const label = getLabel(props);
   const { isKnown, disabled, ...spell } = props;
 
   const handleClick = useCallback(() => {
     switch (status) {
-      case 'always_prepared':
-        return makeToggleSpellAlwaysPrepared(spell)(false);
       case 'prepared':
         return makeToggleSpell(spell)(false);
       case 'known':
@@ -43,7 +41,7 @@ export const SpellSummaryButtonLeading = (props: SpellSummaryButtonProps) => {
     <button
       aria-label={label}
       className={`${styles.spellStatusButton} ${styles.leading} ${styles[status]} secondary`}
-      disabled={disabled}
+      disabled={disabled || status === 'always_prepared'}
       onClick={handleClick}
       title={label}
     >
