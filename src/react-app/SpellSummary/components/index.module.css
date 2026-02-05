@@ -17,22 +17,23 @@ button.spellStatusButton.spellStatusButton {
     height: 24px;
     width: 24px;
     position: absolute;
+    transition: opacity 300ms;
   }
 
   &.leading.always_prepared svg:not(.iconAlwaysPrepared) {
-    display: none;
+    opacity: 0;
   }
 
   &.leading.prepared svg:not(.iconPrepared) {
-    display: none;
+    opacity: 0;
   }
 
   &.leading.known svg:not(.iconKnown) {
-    display: none;
+    opacity: 0;
   }
 
   &.leading.new svg:not(.iconNew) {
-    display: none;
+    opacity: 0;
   }
 }
 
