@@ -20,6 +20,10 @@ button.spellStatusButton.spellStatusButton {
     transition: opacity 300ms;
   }
 
+  &:hover:not(:disabled) > svg {
+    fill: var(--color-accent-hover);
+  }
+
   &.leading.always_prepared svg:not(.iconAlwaysPrepared) {
     opacity: 0;
   }
