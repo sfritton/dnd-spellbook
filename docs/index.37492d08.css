@@ -211,12 +211,14 @@
 .Q3_1la_backdrop .Q3_1la_dialog header {
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
   display: flex;
 }
 
 .Q3_1la_backdrop .Q3_1la_dialog header button {
   border: none;
   border-radius: 50%;
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -537,7 +539,7 @@
 
 .O3yP9W_spellWrapper .O3yP9W_spellSummary {
   border-radius: 2px;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   display: grid;
   position: -webkit-sticky;
   position: sticky;
@@ -580,9 +582,13 @@
   overflow: hidden;
 }
 
-.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary:hover {
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary:hover:not(.O3yP9W_disabled) {
   background: var(--color-bg-white);
   text-decoration: underline;
+}
+
+.O3yP9W_spellWrapper .O3yP9W_spellSummary .O3yP9W_summary.O3yP9W_disabled {
+  cursor: default;
 }
 
 .O3yP9W_spellWrapper .O3yP9W_spellCard {
@@ -624,7 +630,7 @@
   font-size: 16px;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton {
+button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton {
   background: none;
   border: none;
   flex-shrink: 0;
@@ -634,37 +640,41 @@ button.X1OeaG_addButton.X1OeaG_addButton {
   position: relative;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton > svg {
+button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton:disabled:hover {
+  cursor: default;
+  background: none;
+}
+
+button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton > svg {
   fill: var(--color-accent);
   width: 24px;
   height: 24px;
-  transition: -webkit-clip-path .3s ease-out, clip-path .3s ease-out;
   position: absolute;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton > svg:first-child {
-  -webkit-clip-path: inset(0 100% 0 0);
-  clip-path: inset(0 100% 0 0);
-  transition-duration: .1s;
-  transition-delay: 0s;
+button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_always_prepared svg:not(.RHcxFa_iconAlwaysPrepared), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_prepared svg:not(.RHcxFa_iconPrepared), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_known svg:not(.RHcxFa_iconKnown), button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_new svg:not(.RHcxFa_iconNew) {
+  display: none;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton > svg:last-child, button.X1OeaG_addButton.X1OeaG_addButton.X1OeaG_checked > svg:first-child {
-  -webkit-clip-path: inset(0);
-  clip-path: inset(0);
-  transition-duration: .3s;
-  transition-delay: .1s;
+.RHcxFa_dialog {
+  width: 360px;
+  max-width: 100vw;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton.X1OeaG_checked > svg:last-child {
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  transition-duration: .1s;
-  transition-delay: 0s;
+.RHcxFa_dialog .RHcxFa_dialogBody h4 {
+  margin-top: 0;
 }
 
-button.X1OeaG_addButton.X1OeaG_addButton:hover {
-  background: var(--color-bg-white);
+.RHcxFa_dialog .RHcxFa_dialogBody button {
+  justify-content: flex-start;
+  margin: 8px 0;
+}
+
+.RHcxFa_dialog .RHcxFa_dialogBody button svg {
+  fill: var(--color-accent);
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
 }
 
 ._3djqFW_searchBar {
@@ -848,6 +858,44 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 
 .BGWDaa_spellListHeader {
   margin: 0;
+}
+
+.BGWDaa_spellListsHeader {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.BGWDaa_badgeList {
+  gap: inherit;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.BGWDaa_spellCount {
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 20px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+}
+
+.BGWDaa_spellCount:has(svg) {
+  padding-left: 4px;
+  padding-right: 16px;
+}
+
+.BGWDaa_spellCount > svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
 }
 
 .C2D9ya_welcome {
@@ -1101,4 +1149,4 @@ button.X1OeaG_addButton.X1OeaG_addButton:hover {
 .HYU1Gq_abilityRange > input {
   cursor: ew-resize;
 }
-/*# sourceMappingURL=index.8804db0f.css.map */
+/*# sourceMappingURL=index.37492d08.css.map */

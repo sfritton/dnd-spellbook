@@ -11033,9 +11033,11 @@ var $bwXBY = parcelRequire("bwXBY");
 const $624eed663fdde719$var$SpellListContext = /*#__PURE__*/ (0, $bwXBY.createContext)({
     spellLists: new Array(10).fill([]),
     preparedSpells: [],
+    alwaysPreparedSpells: [],
     appendSpells: ()=>{},
     removeSpell: ()=>{},
     makeToggleSpell: ()=>()=>{},
+    makeToggleSpellAlwaysPrepared: ()=>()=>{},
     clearSpells: ()=>{}
 });
 const $624eed663fdde719$var$getStoredSpellLists = ()=>{
@@ -11051,7 +11053,8 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                     ...leveledSpells,
                     ...spells.filter(({ id: id, level: level })=>level === currentLevel && leveledSpells.every((prevSpell)=>prevSpell.id !== id)).map((spell)=>({
                             ...spell,
-                            isPrepared: false
+                            isPrepared: false,
+                            isAlwaysPrepared: false
                         }))
                 ].sort((spellA, spellB)=>spellA.level - spellB.level)));
     }, []);
@@ -11079,25 +11082,50 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                 return newSpellLists;
             });
         }, []);
+    const makeToggleSpellAlwaysPrepared = (0, $bwXBY.useCallback)(({ id: id, level: level })=>(isAlwaysPrepared)=>{
+            setSpellLists((prevSpellLists)=>{
+                const newSpellLists = prevSpellLists.map((spells)=>[
+                        ...spells
+                    ]);
+                const selectedIndex = newSpellLists[level].findIndex((spell)=>spell.id === id);
+                if (selectedIndex < 0) return prevSpellLists;
+                const newSpell = {
+                    ...newSpellLists[level][selectedIndex],
+                    isAlwaysPrepared: isAlwaysPrepared,
+                    // A spell that gets "downgraded" from always prepared should move to prepared
+                    // For a spell that is being "upgraded" to always prepared, setting isPrepared won't matter
+                    isPrepared: true
+                };
+                newSpellLists[level][selectedIndex] = newSpell;
+                return newSpellLists;
+            });
+        }, []);
     const clearSpells = (0, $bwXBY.useCallback)(()=>{
         setSpellLists(new Array(10).fill([]));
     }, []);
-    const preparedSpells = (0, $bwXBY.useMemo)(()=>spellLists.map((spells)=>spells.filter(({ isPrepared: isPrepared })=>isPrepared)), [
+    const preparedSpells = (0, $bwXBY.useMemo)(()=>spellLists.map((spells)=>spells.filter(({ isPrepared: isPrepared, isAlwaysPrepared: isAlwaysPrepared })=>isPrepared || isAlwaysPrepared)), [
+        spellLists
+    ]);
+    const alwaysPreparedSpells = (0, $bwXBY.useMemo)(()=>spellLists.map((spells)=>spells.filter(({ isAlwaysPrepared: isAlwaysPrepared })=>isAlwaysPrepared)), [
         spellLists
     ]);
     const value = (0, $bwXBY.useMemo)(()=>({
             spellLists: spellLists,
+            preparedSpells: preparedSpells,
+            alwaysPreparedSpells: alwaysPreparedSpells,
             appendSpells: appendSpells,
             removeSpell: removeSpell,
             makeToggleSpell: makeToggleSpell,
-            preparedSpells: preparedSpells,
+            makeToggleSpellAlwaysPrepared: makeToggleSpellAlwaysPrepared,
             clearSpells: clearSpells
         }), [
         spellLists,
+        preparedSpells,
+        alwaysPreparedSpells,
         appendSpells,
         removeSpell,
         makeToggleSpell,
-        preparedSpells,
+        makeToggleSpellAlwaysPrepared,
         clearSpells
     ]);
     (0, $bwXBY.useEffect)(()=>{
@@ -11661,6 +11689,7 @@ var $c817a00ac5469ae7$exports = {};
 
 $parcel$export($c817a00ac5469ae7$exports, "checkbox", function () { return $c817a00ac5469ae7$export$b07e517d22efa1ca; }, function (v) { return $c817a00ac5469ae7$export$b07e517d22efa1ca = v; });
 $parcel$export($c817a00ac5469ae7$exports, "dialog", function () { return $c817a00ac5469ae7$export$518824cf31321346; }, function (v) { return $c817a00ac5469ae7$export$518824cf31321346 = v; });
+$parcel$export($c817a00ac5469ae7$exports, "disabled", function () { return $c817a00ac5469ae7$export$683472f6198a076e; }, function (v) { return $c817a00ac5469ae7$export$683472f6198a076e = v; });
 $parcel$export($c817a00ac5469ae7$exports, "levelAndTime", function () { return $c817a00ac5469ae7$export$abe5a6512064abec; }, function (v) { return $c817a00ac5469ae7$export$abe5a6512064abec = v; });
 $parcel$export($c817a00ac5469ae7$exports, "spellCard", function () { return $c817a00ac5469ae7$export$c943065ee198321e; }, function (v) { return $c817a00ac5469ae7$export$c943065ee198321e = v; });
 $parcel$export($c817a00ac5469ae7$exports, "spellSummary", function () { return $c817a00ac5469ae7$export$434ef77de6fd99a2; }, function (v) { return $c817a00ac5469ae7$export$434ef77de6fd99a2 = v; });
@@ -11668,6 +11697,7 @@ $parcel$export($c817a00ac5469ae7$exports, "spellWrapper", function () { return $
 $parcel$export($c817a00ac5469ae7$exports, "summary", function () { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58; }, function (v) { return $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = v; });
 var $c817a00ac5469ae7$export$b07e517d22efa1ca;
 var $c817a00ac5469ae7$export$518824cf31321346;
+var $c817a00ac5469ae7$export$683472f6198a076e;
 var $c817a00ac5469ae7$export$abe5a6512064abec;
 var $c817a00ac5469ae7$export$c943065ee198321e;
 var $c817a00ac5469ae7$export$434ef77de6fd99a2;
@@ -11675,6 +11705,7 @@ var $c817a00ac5469ae7$export$37de2bbeee209b64;
 var $c817a00ac5469ae7$export$9a2dbef7a17e2e58;
 $c817a00ac5469ae7$export$b07e517d22efa1ca = `O3yP9W_checkbox`;
 $c817a00ac5469ae7$export$518824cf31321346 = `O3yP9W_dialog`;
+$c817a00ac5469ae7$export$683472f6198a076e = `O3yP9W_disabled`;
 $c817a00ac5469ae7$export$abe5a6512064abec = `O3yP9W_levelAndTime`;
 $c817a00ac5469ae7$export$c943065ee198321e = `O3yP9W_spellCard`;
 $c817a00ac5469ae7$export$434ef77de6fd99a2 = `O3yP9W_spellSummary`;
@@ -11685,38 +11716,282 @@ $c817a00ac5469ae7$export$9a2dbef7a17e2e58 = `O3yP9W_summary`;
 
 
 
-var $401edcf88d588555$exports = {};
-
-$parcel$export($401edcf88d588555$exports, "addButton", function () { return $401edcf88d588555$export$76174c80c75f9baa; }, function (v) { return $401edcf88d588555$export$76174c80c75f9baa = v; });
-$parcel$export($401edcf88d588555$exports, "checked", function () { return $401edcf88d588555$export$b96bb35bc88d6fa; }, function (v) { return $401edcf88d588555$export$b96bb35bc88d6fa = v; });
-var $401edcf88d588555$export$76174c80c75f9baa;
-var $401edcf88d588555$export$b96bb35bc88d6fa;
-$401edcf88d588555$export$76174c80c75f9baa = `X1OeaG_addButton`;
-$401edcf88d588555$export$b96bb35bc88d6fa = `X1OeaG_checked`;
-
-
-
-
-const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+const $8c36ae5dc31bea39$export$c5585d306191014 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
         focusable: "false",
         "aria-hidden": "true",
         viewBox: "0 0 24 24",
         tabIndex: -1,
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
-            d: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
         })
     });
 
 
-const $bf10d29403c27397$export$d84c9c0292438f58 = ({ isChecked: isChecked, onChange: onChange, title: title })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
-        "aria-label": isChecked ? `Remove "${title}" from known spells` : `Add "${title}" to known spells`,
-        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($401edcf88d588555$exports))).addButton} ${isChecked ? (0, (/*@__PURE__*/$parcel$interopDefault($401edcf88d588555$exports))).checked : ""} secondary`,
-        onClick: ()=>onChange(isChecked),
+
+const $548c8b33d5b4fed0$export$bfe304c803da70de = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2m4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23z"
+        })
+    });
+
+
+
+const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+        })
+    });
+
+
+
+var $8564d0abdbc996b9$exports = {};
+
+$parcel$export($8564d0abdbc996b9$exports, "always_prepared", function () { return $8564d0abdbc996b9$export$5f6d125817125f2d; }, function (v) { return $8564d0abdbc996b9$export$5f6d125817125f2d = v; });
+$parcel$export($8564d0abdbc996b9$exports, "dialog", function () { return $8564d0abdbc996b9$export$518824cf31321346; }, function (v) { return $8564d0abdbc996b9$export$518824cf31321346 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "dialogBody", function () { return $8564d0abdbc996b9$export$1f06e634fb838f11; }, function (v) { return $8564d0abdbc996b9$export$1f06e634fb838f11 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "iconAlwaysPrepared", function () { return $8564d0abdbc996b9$export$54de95992ee0c601; }, function (v) { return $8564d0abdbc996b9$export$54de95992ee0c601 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "iconKnown", function () { return $8564d0abdbc996b9$export$15a58d8bc03e2584; }, function (v) { return $8564d0abdbc996b9$export$15a58d8bc03e2584 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "iconNew", function () { return $8564d0abdbc996b9$export$ee4702af8f50d530; }, function (v) { return $8564d0abdbc996b9$export$ee4702af8f50d530 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "iconPrepared", function () { return $8564d0abdbc996b9$export$1a223b171d16e3dd; }, function (v) { return $8564d0abdbc996b9$export$1a223b171d16e3dd = v; });
+$parcel$export($8564d0abdbc996b9$exports, "known", function () { return $8564d0abdbc996b9$export$11161f78cf9c17c4; }, function (v) { return $8564d0abdbc996b9$export$11161f78cf9c17c4 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "leading", function () { return $8564d0abdbc996b9$export$146bd4d52abbdf39; }, function (v) { return $8564d0abdbc996b9$export$146bd4d52abbdf39 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "new", function () { return $8564d0abdbc996b9$export$b8cb59497041ffe4; }, function (v) { return $8564d0abdbc996b9$export$b8cb59497041ffe4 = v; });
+$parcel$export($8564d0abdbc996b9$exports, "prepared", function () { return $8564d0abdbc996b9$export$c5c24b22b4cdc0ef; }, function (v) { return $8564d0abdbc996b9$export$c5c24b22b4cdc0ef = v; });
+$parcel$export($8564d0abdbc996b9$exports, "spellStatusButton", function () { return $8564d0abdbc996b9$export$e7f833557cb2bc03; }, function (v) { return $8564d0abdbc996b9$export$e7f833557cb2bc03 = v; });
+var $8564d0abdbc996b9$export$5f6d125817125f2d;
+var $8564d0abdbc996b9$export$518824cf31321346;
+var $8564d0abdbc996b9$export$1f06e634fb838f11;
+var $8564d0abdbc996b9$export$54de95992ee0c601;
+var $8564d0abdbc996b9$export$15a58d8bc03e2584;
+var $8564d0abdbc996b9$export$ee4702af8f50d530;
+var $8564d0abdbc996b9$export$1a223b171d16e3dd;
+var $8564d0abdbc996b9$export$11161f78cf9c17c4;
+var $8564d0abdbc996b9$export$146bd4d52abbdf39;
+var $8564d0abdbc996b9$export$b8cb59497041ffe4;
+var $8564d0abdbc996b9$export$c5c24b22b4cdc0ef;
+var $8564d0abdbc996b9$export$e7f833557cb2bc03;
+$8564d0abdbc996b9$export$5f6d125817125f2d = `RHcxFa_always_prepared`;
+$8564d0abdbc996b9$export$518824cf31321346 = `RHcxFa_dialog`;
+$8564d0abdbc996b9$export$1f06e634fb838f11 = `RHcxFa_dialogBody`;
+$8564d0abdbc996b9$export$54de95992ee0c601 = `RHcxFa_iconAlwaysPrepared`;
+$8564d0abdbc996b9$export$15a58d8bc03e2584 = `RHcxFa_iconKnown`;
+$8564d0abdbc996b9$export$ee4702af8f50d530 = `RHcxFa_iconNew`;
+$8564d0abdbc996b9$export$1a223b171d16e3dd = `RHcxFa_iconPrepared`;
+$8564d0abdbc996b9$export$11161f78cf9c17c4 = `RHcxFa_known`;
+$8564d0abdbc996b9$export$146bd4d52abbdf39 = `RHcxFa_leading`;
+$8564d0abdbc996b9$export$b8cb59497041ffe4 = `RHcxFa_new`;
+$8564d0abdbc996b9$export$c5c24b22b4cdc0ef = `RHcxFa_prepared`;
+$8564d0abdbc996b9$export$e7f833557cb2bc03 = `RHcxFa_spellStatusButton`;
+
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
+const $b7087c10eb7daa72$export$b70265791d2079d4 = ({ isKnown: isKnown = false, isPrepared: isPrepared = false, isAlwaysPrepared: isAlwaysPrepared = false })=>{
+    if (isAlwaysPrepared) return "always_prepared";
+    if (isPrepared) return "prepared";
+    if (isKnown) return "known";
+    return "new";
+};
+
+
+const $5631bf9a867042a6$var$getLabel = ({ title: title, isKnown: isKnown = false, isPrepared: isPrepared = false, isAlwaysPrepared: isAlwaysPrepared = false })=>{
+    if (isAlwaysPrepared) return `Mark "${title}" as Prepared`;
+    if (isPrepared) return `Unprepare "${title}"`;
+    if (isKnown) return `Prepare "${title}"`;
+    return `Learn "${title}"`;
+};
+const $5631bf9a867042a6$export$17fc0e24514e9ad7 = (props)=>{
+    const { makeToggleSpell: makeToggleSpell, appendSpells: appendSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const status = (0, $b7087c10eb7daa72$export$b70265791d2079d4)(props);
+    const label = $5631bf9a867042a6$var$getLabel(props);
+    const { isKnown: isKnown, disabled: disabled, ...spell } = props;
+    const handleClick = (0, $bwXBY.useCallback)(()=>{
+        switch(status){
+            case "prepared":
+                return makeToggleSpell(spell)(false);
+            case "known":
+                return makeToggleSpell(spell)(true);
+            case "new":
+                return appendSpells([
+                    spell
+                ]);
+        }
+    }, [
+        status,
+        spell
+    ]);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+        "aria-label": label,
+        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).spellStatusButton} ${(0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).leading} ${(0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports)))[status]} secondary`,
+        disabled: disabled || status === "always_prepared",
+        onClick: handleClick,
+        title: label,
         children: [
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {})
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $548c8b33d5b4fed0$export$bfe304c803da70de), {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).iconAlwaysPrepared
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).iconPrepared
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8c36ae5dc31bea39$export$c5585d306191014), {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).iconKnown
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).iconNew
+            })
         ]
     });
+};
+
+
+
+
+
+const $ceac06e133c82928$export$ca22c7385dca5756 = ({ className: className = "" })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+        })
+    });
+
+
+
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
+
+const $7cd0eeac64f16c45$export$4d4e10ce882b8153 = ({ className: className = "" })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+        })
+    });
+
+
+
+
+
+const $3e00d12f193d2871$export$30038e4306a90e66 = (props)=>{
+    const label = "More options";
+    const status = (0, $b7087c10eb7daa72$export$b70265791d2079d4)(props);
+    const { open: open, close: close } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
+    const { makeToggleSpell: makeToggleSpell, makeToggleSpellAlwaysPrepared: makeToggleSpellAlwaysPrepared, removeSpell: removeSpell } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { isKnown: isKnown, disabled: disabled, ...spell } = props;
+    const openOptionsDialog = (0, $bwXBY.useCallback)((e)=>{
+        e.preventDefault();
+        open({
+            title: `Update Spell`,
+            className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).dialog,
+            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).dialogBody,
+                children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
+                        children: spell.title
+                    }),
+                    status === "always_prepared" ? null : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+                        className: "secondary",
+                        onClick: ()=>{
+                            makeToggleSpellAlwaysPrepared(spell)(true);
+                            close();
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $548c8b33d5b4fed0$export$bfe304c803da70de), {}),
+                            " ",
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                                children: [
+                                    "Mark as ",
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
+                                        children: "Always Prepared"
+                                    })
+                                ]
+                            })
+                        ]
+                    }),
+                    status === "prepared" ? null : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+                        className: "secondary",
+                        onClick: ()=>{
+                            makeToggleSpell(spell)(true);
+                            makeToggleSpellAlwaysPrepared(spell)(false);
+                            close();
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}),
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                                children: [
+                                    "Mark as ",
+                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
+                                        children: "Prepared"
+                                    })
+                                ]
+                            })
+                        ]
+                    }),
+                    status === "known" ? null : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+                        className: "secondary",
+                        onClick: ()=>{
+                            makeToggleSpellAlwaysPrepared(spell)(false);
+                            makeToggleSpell(spell)(false);
+                            close();
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8c36ae5dc31bea39$export$c5585d306191014), {}),
+                            " Unprepare"
+                        ]
+                    }),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
+                        className: "secondary",
+                        onClick: ()=>{
+                            removeSpell(spell);
+                            close();
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
+                            " Forget"
+                        ]
+                    })
+                ]
+            })
+        });
+    }, [
+        spell,
+        status,
+        close,
+        makeToggleSpell,
+        makeToggleSpellAlwaysPrepared,
+        removeSpell
+    ]);
+    if (status === "new") return null;
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("button", {
+        "aria-label": label,
+        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($8564d0abdbc996b9$exports))).spellStatusButton} secondary`,
+        disabled: disabled,
+        onClick: openOptionsDialog,
+        title: label,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ceac06e133c82928$export$ca22c7385dca5756), {})
+    });
+};
+
 
 
 const $e96eb16661e54a09$var$getSpellHighlight = ({ castingTime: castingTime, levelAndSchool: levelAndSchool, duration: duration, range: range, components: components }, highlight)=>{
@@ -11735,12 +12010,24 @@ const $e96eb16661e54a09$var$getSpellHighlight = ({ castingTime: castingTime, lev
             return components.split(" (")[0];
     }
 };
-const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level: level, isChecked: isChecked, onChange: onChange, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix, isInSearchList: isInSearchList = false, url: url })=>{
+const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ showLevel: showLevel = false, id: id, level: level, url: url, disabled: disabled = false })=>{
     const { open: open } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
-    const spell = (0, $f278a73600af97eb$export$400852b624061e8)[id];
+    const spellWithDetails = (0, $f278a73600af97eb$export$400852b624061e8)[id];
     const { highlights: highlights, isCardMode: isCardMode } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
+    const { spellLists: spellLists } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const foundSpell = spellLists[level].find(({ id: idFromList })=>id === idFromList);
+    const isKnown = Boolean(foundSpell);
+    const spellSummaryData = isKnown ? foundSpell : {
+        ...spellWithDetails,
+        id: id,
+        isPrepared: false,
+        isAlwaysPrepared: false,
+        url: url
+    };
+    const { title: title } = spellSummaryData;
     const openSpellDialog = (0, $bwXBY.useCallback)((e)=>{
         e.preventDefault();
+        if (disabled) return;
         open({
             title: title,
             className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).dialog,
@@ -11753,7 +12040,8 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
     }, [
         open,
         title,
-        id
+        id,
+        disabled
     ]);
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("li", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellWrapper,
@@ -11761,20 +12049,13 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).spellSummary,
                 children: [
-                    isInSearchList ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $bf10d29403c27397$export$d84c9c0292438f58), {
-                        isChecked: isChecked,
-                        onChange: onChange,
-                        title: title
-                    }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $da63c334bfef3117$export$48513f6b9f8ce62d), {
-                        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).checkbox,
-                        label: isChecked ? `Remove "${title}" from prepared spells` : `Add "${title}" to prepared spells`,
-                        id: `${id}-${checkboxIdSuffix}`,
-                        checked: isChecked,
-                        onChange: onChange,
-                        hideLabel: true
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5631bf9a867042a6$export$17fc0e24514e9ad7), {
+                        isKnown: isKnown,
+                        disabled: disabled,
+                        ...spellSummaryData
                     }),
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("a", {
-                        className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).summary,
+                        className: `${(0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).summary} ${disabled ? (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).disabled : ""}`,
                         tabIndex: 0,
                         href: "#",
                         onClick: openSpellDialog,
@@ -11786,10 +12067,15 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
                                 className: (0, (/*@__PURE__*/$parcel$interopDefault($c817a00ac5469ae7$exports))).levelAndTime,
                                 children: [
                                     showLevel ? (0, $afae47e020802ade$export$89c6395f9ab5b552)(level) : false,
-                                    ...highlights.map((highlight)=>$e96eb16661e54a09$var$getSpellHighlight(spell, highlight))
+                                    ...highlights.map((highlight)=>$e96eb16661e54a09$var$getSpellHighlight(spellWithDetails, highlight))
                                 ].filter(Boolean).join(" \u2022 ")
                             })
                         ]
+                    }),
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3e00d12f193d2871$export$30038e4306a90e66), {
+                        isKnown: isKnown,
+                        disabled: disabled,
+                        ...spellSummaryData
                     })
                 ]
             }),
@@ -11806,17 +12092,6 @@ const $e96eb16661e54a09$export$b1c99707ee5b9fe7 = ({ id: id, title: title, level
 var $3a54764133d6f900$exports = {};
 $3a54764133d6f900$exports = JSON.parse('[[{"id":"acid-splash","title":"Acid Splash","level":0,"url":"http://dnd5e.wikidot.com/spell:acid-splash"},{"id":"blade-ward","title":"Blade Ward","level":0,"url":"http://dnd5e.wikidot.com/spell:blade-ward"},{"id":"booming-blade","title":"Booming Blade","level":0,"url":"http://dnd5e.wikidot.com/spell:booming-blade"},{"id":"chill-touch","title":"Chill Touch","level":0,"url":"http://dnd5e.wikidot.com/spell:chill-touch"},{"id":"control-flames","title":"Control Flames","level":0,"url":"http://dnd5e.wikidot.com/spell:control-flames"},{"id":"create-bonfire","title":"Create Bonfire","level":0,"url":"http://dnd5e.wikidot.com/spell:create-bonfire"},{"id":"dancing-lights","title":"Dancing Lights","level":0,"url":"http://dnd5e.wikidot.com/spell:dancing-lights"},{"id":"decompose","title":"Decompose (HB)","level":0,"url":"http://dnd5e.wikidot.com/spell:decompose"},{"id":"druidcraft","title":"Druidcraft","level":0,"url":"http://dnd5e.wikidot.com/spell:druidcraft"},{"id":"eldritch-blast","title":"Eldritch Blast","level":0,"url":"http://dnd5e.wikidot.com/spell:eldritch-blast"},{"id":"encode-thoughts","title":"Encode Thoughts","level":0,"url":"http://dnd5e.wikidot.com/spell:encode-thoughts"},{"id":"fire-bolt","title":"Fire Bolt","level":0,"url":"http://dnd5e.wikidot.com/spell:fire-bolt"},{"id":"friends","title":"Friends","level":0,"url":"http://dnd5e.wikidot.com/spell:friends"},{"id":"frostbite","title":"Frostbite","level":0,"url":"http://dnd5e.wikidot.com/spell:frostbite"},{"id":"green-flame-blade","title":"Green-Flame Blade","level":0,"url":"http://dnd5e.wikidot.com/spell:green-flame-blade"},{"id":"guidance","title":"Guidance","level":0,"url":"http://dnd5e.wikidot.com/spell:guidance"},{"id":"gust","title":"Gust","level":0,"url":"http://dnd5e.wikidot.com/spell:gust"},{"id":"hand-of-radiance","title":"Hand of Radiance (UA)","level":0,"url":"http://dnd5e.wikidot.com/spell:hand-of-radiance"},{"id":"infestation","title":"Infestation","level":0,"url":"http://dnd5e.wikidot.com/spell:infestation"},{"id":"light","title":"Light","level":0,"url":"http://dnd5e.wikidot.com/spell:light"},{"id":"lightning-lure","title":"Lightning Lure","level":0,"url":"http://dnd5e.wikidot.com/spell:lightning-lure"},{"id":"mage-hand-legerdomain","title":"Mage Hand (Legerdomain)","level":0,"url":"http://dnd5e.wikidot.com/spell:mage-hand-legerdomain"},{"id":"mage-hand","title":"Mage Hand","level":0,"url":"http://dnd5e.wikidot.com/spell:mage-hand"},{"id":"magic-stone","title":"Magic Stone","level":0,"url":"http://dnd5e.wikidot.com/spell:magic-stone"},{"id":"mending","title":"Mending","level":0,"url":"http://dnd5e.wikidot.com/spell:mending"},{"id":"message","title":"Message","level":0,"url":"http://dnd5e.wikidot.com/spell:message"},{"id":"mind-sliver","title":"Mind Sliver","level":0,"url":"http://dnd5e.wikidot.com/spell:mind-sliver"},{"id":"minor-illusion","title":"Minor Illusion","level":0,"url":"http://dnd5e.wikidot.com/spell:minor-illusion"},{"id":"mold-earth","title":"Mold Earth","level":0,"url":"http://dnd5e.wikidot.com/spell:mold-earth"},{"id":"on-off","title":"On/Off (UA)","level":0,"url":"http://dnd5e.wikidot.com/spell:on-off"},{"id":"poison-spray","title":"Poison Spray","level":0,"url":"http://dnd5e.wikidot.com/spell:poison-spray"},{"id":"prestidigitation","title":"Prestidigitation","level":0,"url":"http://dnd5e.wikidot.com/spell:prestidigitation"},{"id":"primal-savagery","title":"Primal Savagery","level":0,"url":"http://dnd5e.wikidot.com/spell:primal-savagery"},{"id":"produce-flame","title":"Produce Flame","level":0,"url":"http://dnd5e.wikidot.com/spell:produce-flame"},{"id":"ray-of-frost","title":"Ray of Frost","level":0,"url":"http://dnd5e.wikidot.com/spell:ray-of-frost"},{"id":"resistance","title":"Resistance","level":0,"url":"http://dnd5e.wikidot.com/spell:resistance"},{"id":"sacred-flame","title":"Sacred Flame","level":0,"url":"http://dnd5e.wikidot.com/spell:sacred-flame"},{"id":"sapping-sting","title":"Sapping Sting","level":0,"url":"http://dnd5e.wikidot.com/spell:sapping-sting"},{"id":"shape-water","title":"Shape Water","level":0,"url":"http://dnd5e.wikidot.com/spell:shape-water"},{"id":"shillelagh","title":"Shillelagh","level":0,"url":"http://dnd5e.wikidot.com/spell:shillelagh"},{"id":"shocking-grasp","title":"Shocking Grasp","level":0,"url":"http://dnd5e.wikidot.com/spell:shocking-grasp"},{"id":"spare-the-dying","title":"Spare the Dying","level":0,"url":"http://dnd5e.wikidot.com/spell:spare-the-dying"},{"id":"sword-burst","title":"Sword Burst","level":0,"url":"http://dnd5e.wikidot.com/spell:sword-burst"},{"id":"thaumaturgy","title":"Thaumaturgy","level":0,"url":"http://dnd5e.wikidot.com/spell:thaumaturgy"},{"id":"thorn-whip","title":"Thorn Whip","level":0,"url":"http://dnd5e.wikidot.com/spell:thorn-whip"},{"id":"thunderclap","title":"Thunderclap","level":0,"url":"http://dnd5e.wikidot.com/spell:thunderclap"},{"id":"toll-the-dead","title":"Toll the Dead","level":0,"url":"http://dnd5e.wikidot.com/spell:toll-the-dead"},{"id":"true-strike","title":"True Strike","level":0,"url":"http://dnd5e.wikidot.com/spell:true-strike"},{"id":"vicious-mockery","title":"Vicious Mockery","level":0,"url":"http://dnd5e.wikidot.com/spell:vicious-mockery"},{"id":"virtue","title":"Virtue (UA)","level":0,"url":"http://dnd5e.wikidot.com/spell:virtue"},{"id":"word-of-radiance","title":"Word of Radiance","level":0,"url":"http://dnd5e.wikidot.com/spell:word-of-radiance"}],[{"id":"absorb-elements","title":"Absorb Elements","level":1,"url":"http://dnd5e.wikidot.com/spell:absorb-elements"},{"id":"acid-stream","title":"Acid Stream (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:acid-stream"},{"id":"alarm","title":"Alarm","level":1,"url":"http://dnd5e.wikidot.com/spell:alarm"},{"id":"animal-friendship","title":"Animal Friendship","level":1,"url":"http://dnd5e.wikidot.com/spell:animal-friendship"},{"id":"arcane-weapon","title":"Arcane Weapon (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:arcane-weapon"},{"id":"armor-of-agathys","title":"Armor of Agathys","level":1,"url":"http://dnd5e.wikidot.com/spell:armor-of-agathys"},{"id":"arms-of-hadar","title":"Arms of Hadar","level":1,"url":"http://dnd5e.wikidot.com/spell:arms-of-hadar"},{"id":"bane","title":"Bane","level":1,"url":"http://dnd5e.wikidot.com/spell:bane"},{"id":"beast-bond","title":"Beast Bond","level":1,"url":"http://dnd5e.wikidot.com/spell:beast-bond"},{"id":"bless","title":"Bless","level":1,"url":"http://dnd5e.wikidot.com/spell:bless"},{"id":"burning-hands","title":"Burning Hands","level":1,"url":"http://dnd5e.wikidot.com/spell:burning-hands"},{"id":"catapult","title":"Catapult","level":1,"url":"http://dnd5e.wikidot.com/spell:catapult"},{"id":"cause-fear","title":"Cause Fear","level":1,"url":"http://dnd5e.wikidot.com/spell:cause-fear"},{"id":"ceremony","title":"Ceremony","level":1,"url":"http://dnd5e.wikidot.com/spell:ceremony"},{"id":"chaos-bolt","title":"Chaos Bolt","level":1,"url":"http://dnd5e.wikidot.com/spell:chaos-bolt"},{"id":"charm-person","title":"Charm Person","level":1,"url":"http://dnd5e.wikidot.com/spell:charm-person"},{"id":"chromatic-orb","title":"Chromatic Orb","level":1,"url":"http://dnd5e.wikidot.com/spell:chromatic-orb"},{"id":"color-spray","title":"Color Spray","level":1,"url":"http://dnd5e.wikidot.com/spell:color-spray"},{"id":"command","title":"Command","level":1,"url":"http://dnd5e.wikidot.com/spell:command"},{"id":"compelled-duel","title":"Compelled Duel","level":1,"url":"http://dnd5e.wikidot.com/spell:compelled-duel"},{"id":"comprehend-languages","title":"Comprehend Languages","level":1,"url":"http://dnd5e.wikidot.com/spell:comprehend-languages"},{"id":"create-or-destroy-water","title":"Create or Destroy Water","level":1,"url":"http://dnd5e.wikidot.com/spell:create-or-destroy-water"},{"id":"cure-wounds","title":"Cure Wounds","level":1,"url":"http://dnd5e.wikidot.com/spell:cure-wounds"},{"id":"detect-evil-and-good","title":"Detect Evil and Good","level":1,"url":"http://dnd5e.wikidot.com/spell:detect-evil-and-good"},{"id":"detect-magic","title":"Detect Magic","level":1,"url":"http://dnd5e.wikidot.com/spell:detect-magic"},{"id":"detect-poison-and-disease","title":"Detect Poison and Disease","level":1,"url":"http://dnd5e.wikidot.com/spell:detect-poison-and-disease"},{"id":"disguise-self","title":"Disguise Self","level":1,"url":"http://dnd5e.wikidot.com/spell:disguise-self"},{"id":"dissonant-whispers","title":"Dissonant Whispers","level":1,"url":"http://dnd5e.wikidot.com/spell:dissonant-whispers"},{"id":"distort-value","title":"Distort Value","level":1,"url":"http://dnd5e.wikidot.com/spell:distort-value"},{"id":"divine-favor","title":"Divine Favor","level":1,"url":"http://dnd5e.wikidot.com/spell:divine-favor"},{"id":"earth-tremor","title":"Earth Tremor","level":1,"url":"http://dnd5e.wikidot.com/spell:earth-tremor"},{"id":"ensnaring-strike","title":"Ensnaring Strike","level":1,"url":"http://dnd5e.wikidot.com/spell:ensnaring-strike"},{"id":"entangle","title":"Entangle","level":1,"url":"http://dnd5e.wikidot.com/spell:entangle"},{"id":"expeditious-retreat","title":"Expeditious Retreat","level":1,"url":"http://dnd5e.wikidot.com/spell:expeditious-retreat"},{"id":"faerie-fire","title":"Faerie Fire","level":1,"url":"http://dnd5e.wikidot.com/spell:faerie-fire"},{"id":"false-life","title":"False Life","level":1,"url":"http://dnd5e.wikidot.com/spell:false-life"},{"id":"feather-fall","title":"Feather Fall","level":1,"url":"http://dnd5e.wikidot.com/spell:feather-fall"},{"id":"find-familiar","title":"Find Familiar","level":1,"url":"http://dnd5e.wikidot.com/spell:find-familiar"},{"id":"fog-cloud","title":"Fog Cloud","level":1,"url":"http://dnd5e.wikidot.com/spell:fog-cloud"},{"id":"frost-fingers","title":"Frost Fingers","level":1,"url":"http://dnd5e.wikidot.com/spell:frost-fingers"},{"id":"gift-of-alacrity","title":"Gift of Alacrity","level":1,"url":"http://dnd5e.wikidot.com/spell:gift-of-alacrity"},{"id":"goodberry","title":"Goodberry","level":1,"url":"http://dnd5e.wikidot.com/spell:goodberry"},{"id":"grease","title":"Grease","level":1,"url":"http://dnd5e.wikidot.com/spell:grease"},{"id":"guiding-bolt","title":"Guiding Bolt","level":1,"url":"http://dnd5e.wikidot.com/spell:guiding-bolt"},{"id":"guiding-hand-ua","title":"Guiding Hand (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:guiding-hand-ua"},{"id":"hail-of-thorns","title":"Hail of Thorns","level":1,"url":"http://dnd5e.wikidot.com/spell:hail-of-thorns"},{"id":"healing-elixir-ua","title":"Healing Elixir (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:healing-elixir-ua"},{"id":"healing-word","title":"Healing Word","level":1,"url":"http://dnd5e.wikidot.com/spell:healing-word"},{"id":"hellish-rebuke","title":"Hellish Rebuke","level":1,"url":"http://dnd5e.wikidot.com/spell:hellish-rebuke"},{"id":"heroism","title":"Heroism","level":1,"url":"http://dnd5e.wikidot.com/spell:heroism"},{"id":"hex","title":"Hex","level":1,"url":"http://dnd5e.wikidot.com/spell:hex"},{"id":"hunters-mark","title":"Hunter\'s Mark","level":1,"url":"http://dnd5e.wikidot.com/spell:hunters-mark"},{"id":"ice-knife","title":"Ice Knife","level":1,"url":"http://dnd5e.wikidot.com/spell:ice-knife"},{"id":"id-insinuation","title":"Id Insinuation (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:id-insinuation"},{"id":"identify","title":"Identify","level":1,"url":"http://dnd5e.wikidot.com/spell:identify"},{"id":"illusory-script","title":"Illusory Script","level":1,"url":"http://dnd5e.wikidot.com/spell:illusory-script"},{"id":"infallible-relay","title":"Infallible Relay (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:infallible-relay"},{"id":"inflict-wounds","title":"Inflict Wounds","level":1,"url":"http://dnd5e.wikidot.com/spell:inflict-wounds"},{"id":"jims-magic-missile","title":"Jim\'s Magic Missile","level":1,"url":"http://dnd5e.wikidot.com/spell:jims-magic-missile"},{"id":"jump","title":"Jump","level":1,"url":"http://dnd5e.wikidot.com/spell:jump"},{"id":"longstrider","title":"Longstrider","level":1,"url":"http://dnd5e.wikidot.com/spell:longstrider"},{"id":"mage-armor","title":"Mage Armor","level":1,"url":"http://dnd5e.wikidot.com/spell:mage-armor"},{"id":"magic-missile","title":"Magic Missile","level":1,"url":"http://dnd5e.wikidot.com/spell:magic-missile"},{"id":"magnify-gravity","title":"Magnify Gravity","level":1,"url":"http://dnd5e.wikidot.com/spell:magnify-gravity"},{"id":"protection-from-evil-and-good","title":"Protection from Evil and Good","level":1,"url":"http://dnd5e.wikidot.com/spell:protection-from-evil-and-good"},{"id":"puppet","title":"Puppet (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:puppet"},{"id":"purify-food-and-drink","title":"Purify Food and Drink","level":1,"url":"http://dnd5e.wikidot.com/spell:purify-food-and-drink"},{"id":"ray-of-sickness","title":"Ray of Sickness","level":1,"url":"http://dnd5e.wikidot.com/spell:ray-of-sickness"},{"id":"remote-access","title":"Remote Access (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:remote-access"},{"id":"sanctuary","title":"Sanctuary","level":1,"url":"http://dnd5e.wikidot.com/spell:sanctuary"},{"id":"searing-smite","title":"Searing Smite","level":1,"url":"http://dnd5e.wikidot.com/spell:searing-smite"},{"id":"sense-emotion","title":"Sense Emotion (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:sense-emotion"},{"id":"shield-of-faith","title":"Shield of Faith","level":1,"url":"http://dnd5e.wikidot.com/spell:shield-of-faith"},{"id":"shield","title":"Shield","level":1,"url":"http://dnd5e.wikidot.com/spell:shield"},{"id":"silent-image","title":"Silent Image","level":1,"url":"http://dnd5e.wikidot.com/spell:silent-image"},{"id":"silvery-barbs","title":"Silvery Barbs","level":1,"url":"http://dnd5e.wikidot.com/spell:silvery-barbs"},{"id":"sleep","title":"Sleep","level":1,"url":"http://dnd5e.wikidot.com/spell:sleep"},{"id":"snare","title":"Snare","level":1,"url":"http://dnd5e.wikidot.com/spell:snare"},{"id":"speak-with-animals","title":"Speak with Animals","level":1,"url":"http://dnd5e.wikidot.com/spell:speak-with-animals"},{"id":"sudden-awakening","title":"Sudden Awakening (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:sudden-awakening"},{"id":"tashas-caustic-brew","title":"Tasha\'s Caustic Brew","level":1,"url":"http://dnd5e.wikidot.com/spell:tashas-caustic-brew"},{"id":"tashas-hideous-laughter","title":"Tasha\'s Hideous Laughter","level":1,"url":"http://dnd5e.wikidot.com/spell:tashas-hideous-laughter"},{"id":"tensers-floating-disk","title":"Tenser\'s Floating Disk","level":1,"url":"http://dnd5e.wikidot.com/spell:tensers-floating-disk"},{"id":"thunderous-smite","title":"Thunderous Smite","level":1,"url":"http://dnd5e.wikidot.com/spell:thunderous-smite"},{"id":"thunderwave","title":"Thunderwave","level":1,"url":"http://dnd5e.wikidot.com/spell:thunderwave"},{"id":"unearthly-chorus","title":"Unearthly Chorus (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:unearthly-chorus"},{"id":"unseen-servant","title":"Unseen Servant","level":1,"url":"http://dnd5e.wikidot.com/spell:unseen-servant"},{"id":"wild-cunning","title":"Wild Cunning (UA)","level":1,"url":"http://dnd5e.wikidot.com/spell:wild-cunning"},{"id":"witch-bolt","title":"Witch Bolt","level":1,"url":"http://dnd5e.wikidot.com/spell:witch-bolt"},{"id":"wrathful-smite","title":"Wrathful Smite","level":1,"url":"http://dnd5e.wikidot.com/spell:wrathful-smite"},{"id":"zephyr-strike","title":"Zephyr Strike","level":1,"url":"http://dnd5e.wikidot.com/spell:zephyr-strike"}],[{"id":"aganazzars-scorcher","title":"Aganazzar\'s Scorcher","level":2,"url":"http://dnd5e.wikidot.com/spell:aganazzars-scorcher"},{"id":"aid","title":"Aid","level":2,"url":"http://dnd5e.wikidot.com/spell:aid"},{"id":"air-bubble","title":"Air Bubble","level":2,"url":"http://dnd5e.wikidot.com/spell:air-bubble"},{"id":"alter-self","title":"Alter Self","level":2,"url":"http://dnd5e.wikidot.com/spell:alter-self"},{"id":"animal-messenger","title":"Animal Messenger","level":2,"url":"http://dnd5e.wikidot.com/spell:animal-messenger"},{"id":"arcane-hacking","title":"Arcane Hacking (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:arcane-hacking"},{"id":"arcane-lock","title":"Arcane Lock","level":2,"url":"http://dnd5e.wikidot.com/spell:arcane-lock"},{"id":"augury","title":"Augury","level":2,"url":"http://dnd5e.wikidot.com/spell:augury"},{"id":"barkskin","title":"Barkskin","level":2,"url":"http://dnd5e.wikidot.com/spell:barkskin"},{"id":"beast-sense","title":"Beast Sense","level":2,"url":"http://dnd5e.wikidot.com/spell:beast-sense"},{"id":"blindness-deafness","title":"Blindness/Deafness","level":2,"url":"http://dnd5e.wikidot.com/spell:blindness-deafness"},{"id":"blur","title":"Blur","level":2,"url":"http://dnd5e.wikidot.com/spell:blur"},{"id":"borrowed-knowledge","title":"Borrowed Knowledge","level":2,"url":"http://dnd5e.wikidot.com/spell:borrowed-knowledge"},{"id":"branding-smite","title":"Branding Smite","level":2,"url":"http://dnd5e.wikidot.com/spell:branding-smite"},{"id":"calm-emotions","title":"Calm Emotions","level":2,"url":"http://dnd5e.wikidot.com/spell:calm-emotions"},{"id":"cloud-of-daggers","title":"Cloud of Daggers","level":2,"url":"http://dnd5e.wikidot.com/spell:cloud-of-daggers"},{"id":"continual-flame","title":"Continual Flame","level":2,"url":"http://dnd5e.wikidot.com/spell:continual-flame"},{"id":"cordon-of-arrows","title":"Cordon of Arrows","level":2,"url":"http://dnd5e.wikidot.com/spell:cordon-of-arrows"},{"id":"crown-of-madness","title":"Crown of Madness","level":2,"url":"http://dnd5e.wikidot.com/spell:crown-of-madness"},{"id":"darkness","title":"Darkness","level":2,"url":"http://dnd5e.wikidot.com/spell:darkness"},{"id":"darkvision","title":"Darkvision","level":2,"url":"http://dnd5e.wikidot.com/spell:darkvision"},{"id":"detect-thoughts","title":"Detect Thoughts","level":2,"url":"http://dnd5e.wikidot.com/spell:detect-thoughts"},{"id":"digital-phantom","title":"Digital Phantom (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:digital-phantom"},{"id":"dragons-breath","title":"Dragon\'s Breath","level":2,"url":"http://dnd5e.wikidot.com/spell:dragons-breath"},{"id":"dust-devil","title":"Dust Devil","level":2,"url":"http://dnd5e.wikidot.com/spell:dust-devil"},{"id":"earthbind","title":"Earthbind","level":2,"url":"http://dnd5e.wikidot.com/spell:earthbind"},{"id":"enhance-ability","title":"Enhance Ability","level":2,"url":"http://dnd5e.wikidot.com/spell:enhance-ability"},{"id":"enlarge-reduce","title":"Enlarge/Reduce","level":2,"url":"http://dnd5e.wikidot.com/spell:enlarge-reduce"},{"id":"enthrall","title":"Enthrall","level":2,"url":"http://dnd5e.wikidot.com/spell:enthrall"},{"id":"find-steed","title":"Find Steed","level":2,"url":"http://dnd5e.wikidot.com/spell:find-steed"},{"id":"find-traps","title":"Find Traps","level":2,"url":"http://dnd5e.wikidot.com/spell:find-traps"},{"id":"find-vehicle","title":"Find Vehicle (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:find-vehicle"},{"id":"flame-blade","title":"Flame Blade","level":2,"url":"http://dnd5e.wikidot.com/spell:flame-blade"},{"id":"flaming-sphere","title":"Flaming Sphere","level":2,"url":"http://dnd5e.wikidot.com/spell:flaming-sphere"},{"id":"flock-of-familiars","title":"Flock of Familiars","level":2,"url":"http://dnd5e.wikidot.com/spell:flock-of-familiars"},{"id":"fortunes-favor","title":"Fortune\'s Favor","level":2,"url":"http://dnd5e.wikidot.com/spell:fortunes-favor"},{"id":"gentle-repose","title":"Gentle Repose","level":2,"url":"http://dnd5e.wikidot.com/spell:gentle-repose"},{"id":"gift-of-gab","title":"Gift of Gab","level":2,"url":"http://dnd5e.wikidot.com/spell:gift-of-gab"},{"id":"gust-of-wind","title":"Gust of Wind","level":2,"url":"http://dnd5e.wikidot.com/spell:gust-of-wind"},{"id":"healing-spirit","title":"Healing Spirit","level":2,"url":"http://dnd5e.wikidot.com/spell:healing-spirit"},{"id":"heat-metal","title":"Heat Metal","level":2,"url":"http://dnd5e.wikidot.com/spell:heat-metal"},{"id":"hold-person","title":"Hold Person","level":2,"url":"http://dnd5e.wikidot.com/spell:hold-person"},{"id":"icingdeath-s-frost","title":"Icingdeath\'s Frost (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:icingdeath-s-frost"},{"id":"immovable-object","title":"Immovable Object","level":2,"url":"http://dnd5e.wikidot.com/spell:immovable-object"},{"id":"invisibility","title":"Invisibility","level":2,"url":"http://dnd5e.wikidot.com/spell:invisibility"},{"id":"jims-glowing-coin","title":"Jim\'s Glowing Coin","level":2,"url":"http://dnd5e.wikidot.com/spell:jims-glowing-coin"},{"id":"kinetic-jaunt","title":"Kinetic Jaunt","level":2,"url":"http://dnd5e.wikidot.com/spell:kinetic-jaunt"},{"id":"knock","title":"Knock","level":2,"url":"http://dnd5e.wikidot.com/spell:knock"},{"id":"lesser-restoration","title":"Lesser Restoration","level":2,"url":"http://dnd5e.wikidot.com/spell:lesser-restoration"},{"id":"levitate","title":"Levitate","level":2,"url":"http://dnd5e.wikidot.com/spell:levitate"},{"id":"locate-animals-or-plants","title":"Locate Animals or Plants","level":2,"url":"http://dnd5e.wikidot.com/spell:locate-animals-or-plants"},{"id":"locate-object","title":"Locate Object","level":2,"url":"http://dnd5e.wikidot.com/spell:locate-object"},{"id":"magic-mouth","title":"Magic Mouth","level":2,"url":"http://dnd5e.wikidot.com/spell:magic-mouth"},{"id":"magic-weapon","title":"Magic Weapon","level":2,"url":"http://dnd5e.wikidot.com/spell:magic-weapon"},{"id":"maximillians-earthen-grasp","title":"Maximillian\'s Earthen Grasp","level":2,"url":"http://dnd5e.wikidot.com/spell:maximillians-earthen-grasp"},{"id":"melfs-acid-arrow","title":"Melf\'s Acid Arrow","level":2,"url":"http://dnd5e.wikidot.com/spell:melfs-acid-arrow"},{"id":"mental-barrier","title":"Mental Barrier (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:mental-barrier"},{"id":"mind-spike","title":"Mind Spike","level":2,"url":"http://dnd5e.wikidot.com/spell:mind-spike"},{"id":"mind-thrust","title":"Mind Thrust (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:mind-thrust"},{"id":"mirror-image","title":"Mirror Image","level":2,"url":"http://dnd5e.wikidot.com/spell:mirror-image"},{"id":"misty-step","title":"Misty Step","level":2,"url":"http://dnd5e.wikidot.com/spell:misty-step"},{"id":"moonbeam","title":"Moonbeam","level":2,"url":"http://dnd5e.wikidot.com/spell:moonbeam"},{"id":"nathairs-mischief-ua","title":"Nathair\'s Mischief (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:nathairs-mischief-ua"},{"id":"nathairs-mischief","title":"Nathair\'s Mischief","level":2,"url":"http://dnd5e.wikidot.com/spell:nathairs-mischief"},{"id":"nystuls-magic-aura","title":"Nystul\'s Magic Aura","level":2,"url":"http://dnd5e.wikidot.com/spell:nystuls-magic-aura"},{"id":"pass-without-trace","title":"Pass Without Trace","level":2,"url":"http://dnd5e.wikidot.com/spell:pass-without-trace"},{"id":"phantasmal-force","title":"Phantasmal Force","level":2,"url":"http://dnd5e.wikidot.com/spell:phantasmal-force"},{"id":"prayer-of-healing","title":"Prayer of Healing","level":2,"url":"http://dnd5e.wikidot.com/spell:prayer-of-healing"},{"id":"protection-from-poison","title":"Protection from Poison","level":2,"url":"http://dnd5e.wikidot.com/spell:protection-from-poison"},{"id":"pyrotechnics","title":"Pyrotechnics","level":2,"url":"http://dnd5e.wikidot.com/spell:pyrotechnics"},{"id":"ray-of-enfeeblement","title":"Ray of Enfeeblement","level":2,"url":"http://dnd5e.wikidot.com/spell:ray-of-enfeeblement"},{"id":"rimes-binding-ice","title":"Rime\'s Binding Ice","level":2,"url":"http://dnd5e.wikidot.com/spell:rimes-binding-ice"},{"id":"rope-trick","title":"Rope Trick","level":2,"url":"http://dnd5e.wikidot.com/spell:rope-trick"},{"id":"scorching-ray","title":"Scorching Ray","level":2,"url":"http://dnd5e.wikidot.com/spell:scorching-ray"},{"id":"see-invisibility","title":"See Invisibility","level":2,"url":"http://dnd5e.wikidot.com/spell:see-invisibility"},{"id":"shadow-blade","title":"Shadow Blade","level":2,"url":"http://dnd5e.wikidot.com/spell:shadow-blade"},{"id":"shatter","title":"Shatter","level":2,"url":"http://dnd5e.wikidot.com/spell:shatter"},{"id":"silence","title":"Silence","level":2,"url":"http://dnd5e.wikidot.com/spell:silence"},{"id":"skywrite","title":"Skywrite","level":2,"url":"http://dnd5e.wikidot.com/spell:skywrite"},{"id":"snillocs-snowball-storm","title":"Snilloc\'s Snowball Storm","level":2,"url":"http://dnd5e.wikidot.com/spell:snillocs-snowball-storm"},{"id":"spider-climb","title":"Spider Climb","level":2,"url":"http://dnd5e.wikidot.com/spell:spider-climb"},{"id":"spike-growth","title":"Spike Growth","level":2,"url":"http://dnd5e.wikidot.com/spell:spike-growth"},{"id":"spiritual-weapon","title":"Spiritual Weapon","level":2,"url":"http://dnd5e.wikidot.com/spell:spiritual-weapon"},{"id":"spray-of-cards-ua","title":"Spray of Cards (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:spray-of-cards-ua"},{"id":"spray-of-cards","title":"Spray Of Cards","level":2,"url":"http://dnd5e.wikidot.com/spell:spray-of-cards"},{"id":"suggestion","title":"Suggestion","level":2,"url":"http://dnd5e.wikidot.com/spell:suggestion"},{"id":"summon-beast","title":"Summon Beast","level":2,"url":"http://dnd5e.wikidot.com/spell:summon-beast"},{"id":"tashas-mind-whip","title":"Tasha\'s Mind Whip","level":2,"url":"http://dnd5e.wikidot.com/spell:tashas-mind-whip"},{"id":"thought-shield","title":"Thought Shield (UA)","level":2,"url":"http://dnd5e.wikidot.com/spell:thought-shield"},{"id":"vortex-warp","title":"Vortex Warp","level":2,"url":"http://dnd5e.wikidot.com/spell:vortex-warp"},{"id":"warding-bond","title":"Warding Bond","level":2,"url":"http://dnd5e.wikidot.com/spell:warding-bond"},{"id":"warding-wind","title":"Warding Wind","level":2,"url":"http://dnd5e.wikidot.com/spell:warding-wind"},{"id":"warp-sense","title":"Warp Sense","level":2,"url":"http://dnd5e.wikidot.com/spell:warp-sense"},{"id":"web","title":"Web","level":2,"url":"http://dnd5e.wikidot.com/spell:web"},{"id":"wither-and-bloom","title":"Wither and Bloom","level":2,"url":"http://dnd5e.wikidot.com/spell:wither-and-bloom"},{"id":"wristpocket","title":"Wristpocket","level":2,"url":"http://dnd5e.wikidot.com/spell:wristpocket"},{"id":"zone-of-truth","title":"Zone of Truth","level":2,"url":"http://dnd5e.wikidot.com/spell:zone-of-truth"}],[{"id":"animate-dead","title":"Animate Dead","level":3,"url":"http://dnd5e.wikidot.com/spell:animate-dead"},{"id":"antagonize-ua","title":"Antagonize (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:antagonize-ua"},{"id":"antagonize","title":"Antagonize","level":3,"url":"http://dnd5e.wikidot.com/spell:antagonize"},{"id":"ashardalons-stride","title":"Ashardalon\'s Stride","level":3,"url":"http://dnd5e.wikidot.com/spell:ashardalons-stride"},{"id":"aura-of-vitality","title":"Aura of Vitality","level":3,"url":"http://dnd5e.wikidot.com/spell:aura-of-vitality"},{"id":"beacon-of-hope","title":"Beacon of Hope","level":3,"url":"http://dnd5e.wikidot.com/spell:beacon-of-hope"},{"id":"bestow-curse","title":"Bestow Curse","level":3,"url":"http://dnd5e.wikidot.com/spell:bestow-curse"},{"id":"blinding-smite","title":"Blinding Smite","level":3,"url":"http://dnd5e.wikidot.com/spell:blinding-smite"},{"id":"blink","title":"Blink","level":3,"url":"http://dnd5e.wikidot.com/spell:blink"},{"id":"call-lightning","title":"Call Lightning","level":3,"url":"http://dnd5e.wikidot.com/spell:call-lightning"},{"id":"catnap","title":"Catnap","level":3,"url":"http://dnd5e.wikidot.com/spell:catnap"},{"id":"clairvoyance","title":"Clairvoyance","level":3,"url":"http://dnd5e.wikidot.com/spell:clairvoyance"},{"id":"conjure-animals","title":"Conjure Animals","level":3,"url":"http://dnd5e.wikidot.com/spell:conjure-animals"},{"id":"conjure-barrage","title":"Conjure Barrage","level":3,"url":"http://dnd5e.wikidot.com/spell:conjure-barrage"},{"id":"conjure-lesser-demon","title":"Conjure Lesser Demon (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:conjure-lesser-demon"},{"id":"counterspell","title":"Counterspell","level":3,"url":"http://dnd5e.wikidot.com/spell:counterspell"},{"id":"create-food-and-water","title":"Create Food and Water","level":3,"url":"http://dnd5e.wikidot.com/spell:create-food-and-water"},{"id":"crusaders-mantle","title":"Crusader\'s Mantle","level":3,"url":"http://dnd5e.wikidot.com/spell:crusaders-mantle"},{"id":"daylight","title":"Daylight","level":3,"url":"http://dnd5e.wikidot.com/spell:daylight"},{"id":"dispel-magic","title":"Dispel Magic","level":3,"url":"http://dnd5e.wikidot.com/spell:dispel-magic"},{"id":"elemental-weapon","title":"Elemental Weapon","level":3,"url":"http://dnd5e.wikidot.com/spell:elemental-weapon"},{"id":"enemies-abound","title":"Enemies Abound","level":3,"url":"http://dnd5e.wikidot.com/spell:enemies-abound"},{"id":"erupting-earth","title":"Erupting Earth","level":3,"url":"http://dnd5e.wikidot.com/spell:erupting-earth"},{"id":"fast-friends","title":"Fast Friends","level":3,"url":"http://dnd5e.wikidot.com/spell:fast-friends"},{"id":"fear","title":"Fear","level":3,"url":"http://dnd5e.wikidot.com/spell:fear"},{"id":"feign-death","title":"Feign Death","level":3,"url":"http://dnd5e.wikidot.com/spell:feign-death"},{"id":"fireball","title":"Fireball","level":3,"url":"http://dnd5e.wikidot.com/spell:fireball"},{"id":"flame-arrows","title":"Flame Arrows","level":3,"url":"http://dnd5e.wikidot.com/spell:flame-arrows"},{"id":"flame-stride","title":"Flame Stride (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:flame-stride"},{"id":"fly","title":"Fly","level":3,"url":"http://dnd5e.wikidot.com/spell:fly"},{"id":"freedom-of-the-waves","title":"Freedom of the Waves (HB)","level":3,"url":"http://dnd5e.wikidot.com/spell:freedom-of-the-waves"},{"id":"galders-tower","title":"Galder\'s Tower","level":3,"url":"http://dnd5e.wikidot.com/spell:galders-tower"},{"id":"gaseous-form","title":"Gaseous Form","level":3,"url":"http://dnd5e.wikidot.com/spell:gaseous-form"},{"id":"glyph-of-warding","title":"Glyph of Warding","level":3,"url":"http://dnd5e.wikidot.com/spell:glyph-of-warding"},{"id":"haste","title":"Haste","level":3,"url":"http://dnd5e.wikidot.com/spell:haste"},{"id":"haywire","title":"Haywire (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:haywire"},{"id":"house-of-cards-ua","title":"House of Cards (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:house-of-cards-ua"},{"id":"hunger-of-hadar","title":"Hunger Of Hadar","level":3,"url":"http://dnd5e.wikidot.com/spell:hunger-of-hadar"},{"id":"hypnotic-pattern","title":"Hypnotic Pattern","level":3,"url":"http://dnd5e.wikidot.com/spell:hypnotic-pattern"},{"id":"incite-greed","title":"Incite Greed","level":3,"url":"http://dnd5e.wikidot.com/spell:incite-greed"},{"id":"intellect-fortress","title":"Intellect Fortress","level":3,"url":"http://dnd5e.wikidot.com/spell:intellect-fortress"},{"id":"invisibility-to-cameras","title":"Invisibility To Cameras (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:invisibility-to-cameras"},{"id":"leomunds-tiny-hut","title":"Leomund\'s Tiny Hut","level":3,"url":"http://dnd5e.wikidot.com/spell:leomunds-tiny-hut"},{"id":"life-transference","title":"Life Transference","level":3,"url":"http://dnd5e.wikidot.com/spell:life-transference"},{"id":"lightning-arrow","title":"Lightning Arrow","level":3,"url":"http://dnd5e.wikidot.com/spell:lightning-arrow"},{"id":"lightning-bolt","title":"Lightning Bolt","level":3,"url":"http://dnd5e.wikidot.com/spell:lightning-bolt"},{"id":"magic-circle","title":"Magic Circle","level":3,"url":"http://dnd5e.wikidot.com/spell:magic-circle"},{"id":"major-image","title":"Major Image","level":3,"url":"http://dnd5e.wikidot.com/spell:major-image"},{"id":"mass-healing-word","title":"Mass Healing Word","level":3,"url":"http://dnd5e.wikidot.com/spell:mass-healing-word"},{"id":"meld-into-stone","title":"Meld into Stone","level":3,"url":"http://dnd5e.wikidot.com/spell:meld-into-stone"},{"id":"melfs-minute-meteors","title":"Melf\'s Minute Meteors","level":3,"url":"http://dnd5e.wikidot.com/spell:melfs-minute-meteors"},{"id":"motivational-speech","title":"Motivational Speech","level":3,"url":"http://dnd5e.wikidot.com/spell:motivational-speech"},{"id":"nondetection","title":"Nondetection","level":3,"url":"http://dnd5e.wikidot.com/spell:nondetection"},{"id":"phantom-steed","title":"Phantom Steed","level":3,"url":"http://dnd5e.wikidot.com/spell:phantom-steed"},{"id":"plant-growth","title":"Plant Growth","level":3,"url":"http://dnd5e.wikidot.com/spell:plant-growth"},{"id":"protection-from-ballistics","title":"Protection from Ballistics (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:protection-from-ballistics"},{"id":"protection-from-energy","title":"Protection from Energy","level":3,"url":"http://dnd5e.wikidot.com/spell:protection-from-energy"},{"id":"psionic-blast","title":"Psionic Blast (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:psionic-blast"},{"id":"pulse-wave","title":"Pulse Wave","level":3,"url":"http://dnd5e.wikidot.com/spell:pulse-wave"},{"id":"remove-curse","title":"Remove Curse","level":3,"url":"http://dnd5e.wikidot.com/spell:remove-curse"},{"id":"revivify","title":"Revivify","level":3,"url":"http://dnd5e.wikidot.com/spell:revivify"},{"id":"sending","title":"Sending","level":3,"url":"http://dnd5e.wikidot.com/spell:sending"},{"id":"sleet-storm","title":"Sleet Storm","level":3,"url":"http://dnd5e.wikidot.com/spell:sleet-storm"},{"id":"slow","title":"Slow","level":3,"url":"http://dnd5e.wikidot.com/spell:slow"},{"id":"speak-with-dead","title":"Speak with Dead","level":3,"url":"http://dnd5e.wikidot.com/spell:speak-with-dead"},{"id":"speak-with-plants","title":"Speak with Plants","level":3,"url":"http://dnd5e.wikidot.com/spell:speak-with-plants"},{"id":"spirit-guardians","title":"Spirit Guardians","level":3,"url":"http://dnd5e.wikidot.com/spell:spirit-guardians"},{"id":"spirit-shroud","title":"Spirit Shroud","level":3,"url":"http://dnd5e.wikidot.com/spell:spirit-shroud"},{"id":"stinking-cloud","title":"Stinking Cloud","level":3,"url":"http://dnd5e.wikidot.com/spell:stinking-cloud"},{"id":"summon-fey","title":"Summon Fey","level":3,"url":"http://dnd5e.wikidot.com/spell:summon-fey"},{"id":"summon-lesser-demons","title":"Summon Lesser Demons","level":3,"url":"http://dnd5e.wikidot.com/spell:summon-lesser-demons"},{"id":"summon-shadowspawn","title":"Summon Shadowspawn","level":3,"url":"http://dnd5e.wikidot.com/spell:summon-shadowspawn"},{"id":"summon-undead","title":"Summon Undead","level":3,"url":"http://dnd5e.wikidot.com/spell:summon-undead"},{"id":"summon-warrior-spirit","title":"Summon Warrior Spirit (UA)","level":3,"url":"http://dnd5e.wikidot.com/spell:summon-warrior-spirit"},{"id":"thunder-step","title":"Thunder Step","level":3,"url":"http://dnd5e.wikidot.com/spell:thunder-step"},{"id":"tidal-wave","title":"Tidal Wave","level":3,"url":"http://dnd5e.wikidot.com/spell:tidal-wave"},{"id":"tiny-servant","title":"Tiny Servant","level":3,"url":"http://dnd5e.wikidot.com/spell:tiny-servant"},{"id":"tongues","title":"Tongues","level":3,"url":"http://dnd5e.wikidot.com/spell:tongues"},{"id":"vampiric-touch","title":"Vampiric Touch","level":3,"url":"http://dnd5e.wikidot.com/spell:vampiric-touch"},{"id":"wall-of-sand","title":"Wall of Sand","level":3,"url":"http://dnd5e.wikidot.com/spell:wall-of-sand"},{"id":"wall-of-water","title":"Wall of Water","level":3,"url":"http://dnd5e.wikidot.com/spell:wall-of-water"},{"id":"water-breathing","title":"Water Breathing","level":3,"url":"http://dnd5e.wikidot.com/spell:water-breathing"},{"id":"water-walk","title":"Water Walk","level":3,"url":"http://dnd5e.wikidot.com/spell:water-walk"},{"id":"wind-wall","title":"Wind Wall","level":3,"url":"http://dnd5e.wikidot.com/spell:wind-wall"}],[{"id":"arcane-eye","title":"Arcane Eye","level":4,"url":"http://dnd5e.wikidot.com/spell:arcane-eye"},{"id":"aura-of-life","title":"Aura of Life","level":4,"url":"http://dnd5e.wikidot.com/spell:aura-of-life"},{"id":"aura-of-purity","title":"Aura of Purity","level":4,"url":"http://dnd5e.wikidot.com/spell:aura-of-purity"},{"id":"banishment","title":"Banishment","level":4,"url":"http://dnd5e.wikidot.com/spell:banishment"},{"id":"blight","title":"Blight","level":4,"url":"http://dnd5e.wikidot.com/spell:blight"},{"id":"charm-monster","title":"Charm Monster","level":4,"url":"http://dnd5e.wikidot.com/spell:charm-monster"},{"id":"compulsion","title":"Compulsion","level":4,"url":"http://dnd5e.wikidot.com/spell:compulsion"},{"id":"confusion","title":"Confusion","level":4,"url":"http://dnd5e.wikidot.com/spell:confusion"},{"id":"conjure-barlgura","title":"Conjure Barlgura (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:conjure-barlgura"},{"id":"conjure-knowbot","title":"Conjure Knowbot (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:conjure-knowbot"},{"id":"conjure-minor-elementals","title":"Conjure Minor Elementals","level":4,"url":"http://dnd5e.wikidot.com/spell:conjure-minor-elementals"},{"id":"conjure-shadow-demon","title":"Conjure Shadow Demon (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:conjure-shadow-demon"},{"id":"conjure-woodland-beings","title":"Conjure Woodland Beings","level":4,"url":"http://dnd5e.wikidot.com/spell:conjure-woodland-beings"},{"id":"control-water","title":"Control Water","level":4,"url":"http://dnd5e.wikidot.com/spell:control-water"},{"id":"death-ward","title":"Death Ward","level":4,"url":"http://dnd5e.wikidot.com/spell:death-ward"},{"id":"dimension-door","title":"Dimension Door","level":4,"url":"http://dnd5e.wikidot.com/spell:dimension-door"},{"id":"divination","title":"Divination","level":4,"url":"http://dnd5e.wikidot.com/spell:divination"},{"id":"dominate-beast","title":"Dominate Beast","level":4,"url":"http://dnd5e.wikidot.com/spell:dominate-beast"},{"id":"ego-whip","title":"Ego Whip (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:ego-whip"},{"id":"elemental-bane","title":"Elemental Bane","level":4,"url":"http://dnd5e.wikidot.com/spell:elemental-bane"},{"id":"evards-black-tentacles","title":"Evard\'s Black Tentacles","level":4,"url":"http://dnd5e.wikidot.com/spell:evards-black-tentacles"},{"id":"fabricate","title":"Fabricate","level":4,"url":"http://dnd5e.wikidot.com/spell:fabricate"},{"id":"find-greater-steed","title":"Find Greater Steed","level":4,"url":"http://dnd5e.wikidot.com/spell:find-greater-steed"},{"id":"fire-shield","title":"Fire Shield","level":4,"url":"http://dnd5e.wikidot.com/spell:fire-shield"},{"id":"freedom-of-movement","title":"Freedom of Movement","level":4,"url":"http://dnd5e.wikidot.com/spell:freedom-of-movement"},{"id":"galders-speedy-courier","title":"Galder\'s Speedy Courier","level":4,"url":"http://dnd5e.wikidot.com/spell:galders-speedy-courier"},{"id":"gate-seal","title":"Gate Seal","level":4,"url":"http://dnd5e.wikidot.com/spell:gate-seal"},{"id":"giant-insect","title":"Giant Insect","level":4,"url":"http://dnd5e.wikidot.com/spell:giant-insect"},{"id":"grasping-vine","title":"Grasping Vine","level":4,"url":"http://dnd5e.wikidot.com/spell:grasping-vine"},{"id":"gravity-sinkhole","title":"Gravity Sinkhole","level":4,"url":"http://dnd5e.wikidot.com/spell:gravity-sinkhole"},{"id":"greater-invisibility","title":"Greater Invisibility","level":4,"url":"http://dnd5e.wikidot.com/spell:greater-invisibility"},{"id":"guardian-of-faith","title":"Guardian of Faith","level":4,"url":"http://dnd5e.wikidot.com/spell:guardian-of-faith"},{"id":"guardian-of-nature","title":"Guardian of Nature","level":4,"url":"http://dnd5e.wikidot.com/spell:guardian-of-nature"},{"id":"hallucinatory-terrain","title":"Hallucinatory Terrain","level":4,"url":"http://dnd5e.wikidot.com/spell:hallucinatory-terrain"},{"id":"ice-storm","title":"Ice Storm","level":4,"url":"http://dnd5e.wikidot.com/spell:ice-storm"},{"id":"leomunds-secret-chest","title":"Leomund\'s Secret Chest","level":4,"url":"http://dnd5e.wikidot.com/spell:leomunds-secret-chest"},{"id":"locate-creature","title":"Locate Creature","level":4,"url":"http://dnd5e.wikidot.com/spell:locate-creature"},{"id":"mordenkainens-faithful-hound","title":"Mordenkainen\'s Faithful Hound","level":4,"url":"http://dnd5e.wikidot.com/spell:mordenkainens-faithful-hound"},{"id":"mordenkainens-private-sanctum","title":"Mordenkainen\'s Private Sanctum","level":4,"url":"http://dnd5e.wikidot.com/spell:mordenkainens-private-sanctum"},{"id":"otilukes-resilient-sphere","title":"Otiluke\'s Resilient Sphere","level":4,"url":"http://dnd5e.wikidot.com/spell:otilukes-resilient-sphere"},{"id":"phantasmal-killer","title":"Phantasmal Killer","level":4,"url":"http://dnd5e.wikidot.com/spell:phantasmal-killer"},{"id":"polymorph","title":"Polymorph","level":4,"url":"http://dnd5e.wikidot.com/spell:polymorph"},{"id":"raulothims-psychic-lance-ua","title":"Raulothim\'s Psychic Lance (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:raulothims-psychic-lance-ua"},{"id":"raulothims-psychic-lance","title":"Raulothim\'s Psychic Lance","level":4,"url":"http://dnd5e.wikidot.com/spell:raulothims-psychic-lance"},{"id":"shadow-of-moil","title":"Shadow Of Moil","level":4,"url":"http://dnd5e.wikidot.com/spell:shadow-of-moil"},{"id":"sickening-radiance","title":"Sickening Radiance","level":4,"url":"http://dnd5e.wikidot.com/spell:sickening-radiance"},{"id":"spirit-of-death-ua","title":"Spirit of Death (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:spirit-of-death-ua"},{"id":"spirit-of-death","title":"Spirit Of Death","level":4,"url":"http://dnd5e.wikidot.com/spell:spirit-of-death"},{"id":"staggering-smite","title":"Staggering Smite","level":4,"url":"http://dnd5e.wikidot.com/spell:staggering-smite"},{"id":"stone-shape","title":"Stone Shape","level":4,"url":"http://dnd5e.wikidot.com/spell:stone-shape"},{"id":"stoneskin","title":"Stoneskin","level":4,"url":"http://dnd5e.wikidot.com/spell:stoneskin"},{"id":"storm-sphere","title":"Storm Sphere","level":4,"url":"http://dnd5e.wikidot.com/spell:storm-sphere"},{"id":"summon-aberration","title":"Summon Aberration","level":4,"url":"http://dnd5e.wikidot.com/spell:summon-aberration"},{"id":"summon-construct","title":"Summon Construct","level":4,"url":"http://dnd5e.wikidot.com/spell:summon-construct"},{"id":"summon-elemental","title":"Summon Elemental","level":4,"url":"http://dnd5e.wikidot.com/spell:summon-elemental"},{"id":"summon-greater-demon","title":"Summon Greater Demon","level":4,"url":"http://dnd5e.wikidot.com/spell:summon-greater-demon"},{"id":"synchronicity","title":"Synchronicity (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:synchronicity"},{"id":"system-backdoor","title":"System Backdoor (UA)","level":4,"url":"http://dnd5e.wikidot.com/spell:system-backdoor"},{"id":"vitriolic-sphere","title":"Vitriolic Sphere","level":4,"url":"http://dnd5e.wikidot.com/spell:vitriolic-sphere"},{"id":"wall-of-fire","title":"Wall of Fire","level":4,"url":"http://dnd5e.wikidot.com/spell:wall-of-fire"},{"id":"watery-sphere","title":"Watery Sphere","level":4,"url":"http://dnd5e.wikidot.com/spell:watery-sphere"},{"id":"widogast-s-vault-of-amber-hb","title":"Widogast\'s Vault of Amber (HB)","level":4,"url":"http://dnd5e.wikidot.com/spell:widogast-s-vault-of-amber-hb"},{"id":"widogast-s-web-of-fire-hb","title":"Widogast\'s Web of Fire (HB)","level":4,"url":"http://dnd5e.wikidot.com/spell:widogast-s-web-of-fire-hb"}],[{"id":"animate-objects","title":"Animate Objects","level":5,"url":"http://dnd5e.wikidot.com/spell:animate-objects"},{"id":"antilife-shell","title":"Antilife Shell","level":5,"url":"http://dnd5e.wikidot.com/spell:antilife-shell"},{"id":"awaken","title":"Awaken","level":5,"url":"http://dnd5e.wikidot.com/spell:awaken"},{"id":"banishing-smite","title":"Banishing Smite","level":5,"url":"http://dnd5e.wikidot.com/spell:banishing-smite"},{"id":"bigbys-hand","title":"Bigby\'s Hand","level":5,"url":"http://dnd5e.wikidot.com/spell:bigbys-hand"},{"id":"circle-of-power","title":"Circle of Power","level":5,"url":"http://dnd5e.wikidot.com/spell:circle-of-power"},{"id":"cloudkill","title":"Cloudkill","level":5,"url":"http://dnd5e.wikidot.com/spell:cloudkill"},{"id":"commune-with-city","title":"Commune with City (UA)","level":5,"url":"http://dnd5e.wikidot.com/spell:commune-with-city"},{"id":"commune-with-nature","title":"Commune with Nature","level":5,"url":"http://dnd5e.wikidot.com/spell:commune-with-nature"},{"id":"commune","title":"Commune","level":5,"url":"http://dnd5e.wikidot.com/spell:commune"},{"id":"cone-of-cold","title":"Cone of Cold","level":5,"url":"http://dnd5e.wikidot.com/spell:cone-of-cold"},{"id":"conjure-elemental","title":"Conjure Elemental","level":5,"url":"http://dnd5e.wikidot.com/spell:conjure-elemental"},{"id":"conjure-volley","title":"Conjure Volley","level":5,"url":"http://dnd5e.wikidot.com/spell:conjure-volley"},{"id":"conjure-vrock","title":"Conjure Vrock (UA)","level":5,"url":"http://dnd5e.wikidot.com/spell:conjure-vrock"},{"id":"contact-other-plane","title":"Contact Other Plane","level":5,"url":"http://dnd5e.wikidot.com/spell:contact-other-plane"},{"id":"contagion","title":"Contagion","level":5,"url":"http://dnd5e.wikidot.com/spell:contagion"},{"id":"control-winds","title":"Control Winds","level":5,"url":"http://dnd5e.wikidot.com/spell:control-winds"},{"id":"create-spelljamming-helm","title":"Create Spelljamming Helm","level":5,"url":"http://dnd5e.wikidot.com/spell:create-spelljamming-helm"},{"id":"creation","title":"Creation","level":5,"url":"http://dnd5e.wikidot.com/spell:creation"},{"id":"danse-macabre","title":"Danse Macabre","level":5,"url":"http://dnd5e.wikidot.com/spell:danse-macabre"},{"id":"dawn","title":"Dawn","level":5,"url":"http://dnd5e.wikidot.com/spell:dawn"},{"id":"destructive-wave","title":"Destructive Wave","level":5,"url":"http://dnd5e.wikidot.com/spell:destructive-wave"},{"id":"dispel-evil-and-good","title":"Dispel Evil and Good","level":5,"url":"http://dnd5e.wikidot.com/spell:dispel-evil-and-good"},{"id":"dominate-person","title":"Dominate Person","level":5,"url":"http://dnd5e.wikidot.com/spell:dominate-person"},{"id":"dream","title":"Dream","level":5,"url":"http://dnd5e.wikidot.com/spell:dream"},{"id":"enervation","title":"Enervation","level":5,"url":"http://dnd5e.wikidot.com/spell:enervation"},{"id":"far-step","title":"Far Step","level":5,"url":"http://dnd5e.wikidot.com/spell:far-step"},{"id":"flame-strike","title":"Flame Strike","level":5,"url":"http://dnd5e.wikidot.com/spell:flame-strike"},{"id":"freedom-of-the-winds","title":"Freedom of the Winds (HB)","level":5,"url":"http://dnd5e.wikidot.com/spell:freedom-of-the-winds"},{"id":"geas","title":"Geas","level":5,"url":"http://dnd5e.wikidot.com/spell:geas"},{"id":"greater-restoration","title":"Greater Restoration","level":5,"url":"http://dnd5e.wikidot.com/spell:greater-restoration"},{"id":"hallow","title":"Hallow","level":5,"url":"http://dnd5e.wikidot.com/spell:hallow"},{"id":"hold-monster","title":"Hold Monster","level":5,"url":"http://dnd5e.wikidot.com/spell:hold-monster"},{"id":"holy-weapon","title":"Holy Weapon","level":5,"url":"http://dnd5e.wikidot.com/spell:holy-weapon"},{"id":"immolation","title":"Immolation","level":5,"url":"http://dnd5e.wikidot.com/spell:immolation"},{"id":"infernal-calling","title":"Infernal Calling","level":5,"url":"http://dnd5e.wikidot.com/spell:infernal-calling"},{"id":"insect-plague","title":"Insect Plague","level":5,"url":"http://dnd5e.wikidot.com/spell:insect-plague"},{"id":"legend-lore","title":"Legend Lore","level":5,"url":"http://dnd5e.wikidot.com/spell:legend-lore"},{"id":"maelstrom","title":"Maelstrom","level":5,"url":"http://dnd5e.wikidot.com/spell:maelstrom"},{"id":"mass-cure-wounds","title":"Mass Cure Wounds","level":5,"url":"http://dnd5e.wikidot.com/spell:mass-cure-wounds"},{"id":"mislead","title":"Mislead","level":5,"url":"http://dnd5e.wikidot.com/spell:mislead"},{"id":"modify-memory","title":"Modify Memory","level":5,"url":"http://dnd5e.wikidot.com/spell:modify-memory"},{"id":"negative-energy-flood","title":"Negative Energy Flood","level":5,"url":"http://dnd5e.wikidot.com/spell:negative-energy-flood"},{"id":"passwall","title":"Passwall","level":5,"url":"http://dnd5e.wikidot.com/spell:passwall"},{"id":"planar-binding","title":"Planar Binding","level":5,"url":"http://dnd5e.wikidot.com/spell:planar-binding"},{"id":"raise-dead","title":"Raise Dead","level":5,"url":"http://dnd5e.wikidot.com/spell:raise-dead"},{"id":"rarys-telepathic-bond","title":"Rary\'s Telepathic Bond","level":5,"url":"http://dnd5e.wikidot.com/spell:rarys-telepathic-bond"},{"id":"reincarnate","title":"Reincarnate","level":5,"url":"http://dnd5e.wikidot.com/spell:reincarnate"},{"id":"scrying","title":"Scrying","level":5,"url":"http://dnd5e.wikidot.com/spell:scrying"},{"id":"seeming","title":"Seeming","level":5,"url":"http://dnd5e.wikidot.com/spell:seeming"},{"id":"shutdown","title":"Shutdown (UA)","level":5,"url":"http://dnd5e.wikidot.com/spell:shutdown"},{"id":"skill-empowerment","title":"Skill Empowerment","level":5,"url":"http://dnd5e.wikidot.com/spell:skill-empowerment"},{"id":"steel-wind-strike","title":"Steel Wind Strike","level":5,"url":"http://dnd5e.wikidot.com/spell:steel-wind-strike"},{"id":"summon-celestial","title":"Summon Celestial","level":5,"url":"http://dnd5e.wikidot.com/spell:summon-celestial"},{"id":"summon-draconic-spirit-ua","title":"Summon Draconic Spirit (UA)","level":5,"url":"http://dnd5e.wikidot.com/spell:summon-draconic-spirit-ua"},{"id":"summon-draconic-spirit","title":"Summon Draconic Spirit","level":5,"url":"http://dnd5e.wikidot.com/spell:summon-draconic-spirit"},{"id":"swift-quiver","title":"Swift Quiver","level":5,"url":"http://dnd5e.wikidot.com/spell:swift-quiver"},{"id":"synaptic-static","title":"Synaptic Static","level":5,"url":"http://dnd5e.wikidot.com/spell:synaptic-static"},{"id":"telekinesis","title":"Telekinesis","level":5,"url":"http://dnd5e.wikidot.com/spell:telekinesis"},{"id":"teleportation-circle","title":"Teleportation Circle","level":5,"url":"http://dnd5e.wikidot.com/spell:teleportation-circle"},{"id":"temporal-shunt","title":"Temporal Shunt","level":5,"url":"http://dnd5e.wikidot.com/spell:temporal-shunt"},{"id":"transmute-rock","title":"Transmute Rock","level":5,"url":"http://dnd5e.wikidot.com/spell:transmute-rock"},{"id":"tree-stride","title":"Tree Stride","level":5,"url":"http://dnd5e.wikidot.com/spell:tree-stride"},{"id":"wall-of-force","title":"Wall of Force","level":5,"url":"http://dnd5e.wikidot.com/spell:wall-of-force"},{"id":"wall-of-light","title":"Wall of Light","level":5,"url":"http://dnd5e.wikidot.com/spell:wall-of-light"},{"id":"wall-of-stone","title":"Wall of Stone","level":5,"url":"http://dnd5e.wikidot.com/spell:wall-of-stone"},{"id":"wrath-of-nature","title":"Wrath Of Nature","level":5,"url":"http://dnd5e.wikidot.com/spell:wrath-of-nature"}],[{"id":"arcane-gate","title":"Arcane Gate","level":6,"url":"http://dnd5e.wikidot.com/spell:arcane-gate"},{"id":"blade-barrier","title":"Blade Barrier","level":6,"url":"http://dnd5e.wikidot.com/spell:blade-barrier"},{"id":"bones-of-the-earth","title":"Bones of the Earth","level":6,"url":"http://dnd5e.wikidot.com/spell:bones-of-the-earth"},{"id":"chain-lightning","title":"Chain Lightning","level":6,"url":"http://dnd5e.wikidot.com/spell:chain-lightning"},{"id":"circle-of-death","title":"Circle of Death","level":6,"url":"http://dnd5e.wikidot.com/spell:circle-of-death"},{"id":"conjure-fey","title":"Conjure Fey","level":6,"url":"http://dnd5e.wikidot.com/spell:conjure-fey"},{"id":"contingency","title":"Contingency","level":6,"url":"http://dnd5e.wikidot.com/spell:contingency"},{"id":"create-homunculus","title":"Create Homunculus","level":6,"url":"http://dnd5e.wikidot.com/spell:create-homunculus"},{"id":"create-undead","title":"Create Undead","level":6,"url":"http://dnd5e.wikidot.com/spell:create-undead"},{"id":"disintegrate","title":"Disintegrate","level":6,"url":"http://dnd5e.wikidot.com/spell:disintegrate"},{"id":"drawmijs-instant-summons","title":"Drawmij\'s Instant Summons","level":6,"url":"http://dnd5e.wikidot.com/spell:drawmijs-instant-summons"},{"id":"druid-grove","title":"Druid Grove","level":6,"url":"http://dnd5e.wikidot.com/spell:druid-grove"},{"id":"eyebite","title":"Eyebite","level":6,"url":"http://dnd5e.wikidot.com/spell:eyebite"},{"id":"find-the-path","title":"Find the Path","level":6,"url":"http://dnd5e.wikidot.com/spell:find-the-path"},{"id":"fizban-s-platinum-shield-ua","title":"Fizban\'s Platinum Shield (UA)","level":6,"url":"http://dnd5e.wikidot.com/spell:fizban-s-platinum-shield-ua"},{"id":"fizbans-platinum-shield","title":"Fizban\'s Platinum Shield","level":6,"url":"http://dnd5e.wikidot.com/spell:fizbans-platinum-shield"},{"id":"flesh-to-stone","title":"Flesh to Stone","level":6,"url":"http://dnd5e.wikidot.com/spell:flesh-to-stone"},{"id":"forbiddance","title":"Forbiddance","level":6,"url":"http://dnd5e.wikidot.com/spell:forbiddance"},{"id":"globe-of-invulnerability","title":"Globe of Invulnerability","level":6,"url":"http://dnd5e.wikidot.com/spell:globe-of-invulnerability"},{"id":"gravity-fissure","title":"Gravity Fissure","level":6,"url":"http://dnd5e.wikidot.com/spell:gravity-fissure"},{"id":"guards-and-wards","title":"Guards and Wards","level":6,"url":"http://dnd5e.wikidot.com/spell:guards-and-wards"},{"id":"harm","title":"Harm","level":6,"url":"http://dnd5e.wikidot.com/spell:harm"},{"id":"heal","title":"Heal","level":6,"url":"http://dnd5e.wikidot.com/spell:heal"},{"id":"heroes-feast","title":"Heroes\' Feast","level":6,"url":"http://dnd5e.wikidot.com/spell:heroes-feast"},{"id":"investiture-of-flame","title":"Investiture of Flame","level":6,"url":"http://dnd5e.wikidot.com/spell:investiture-of-flame"},{"id":"investiture-of-ice","title":"Investiture of Ice","level":6,"url":"http://dnd5e.wikidot.com/spell:investiture-of-ice"},{"id":"investiture-of-stone","title":"Investiture of Stone","level":6,"url":"http://dnd5e.wikidot.com/spell:investiture-of-stone"},{"id":"investiture-of-wind","title":"Investiture of Wind","level":6,"url":"http://dnd5e.wikidot.com/spell:investiture-of-wind"},{"id":"magic-jar","title":"Magic Jar","level":6,"url":"http://dnd5e.wikidot.com/spell:magic-jar"},{"id":"mass-suggestion","title":"Mass Suggestion","level":6,"url":"http://dnd5e.wikidot.com/spell:mass-suggestion"},{"id":"mental-prison","title":"Mental Prison","level":6,"url":"http://dnd5e.wikidot.com/spell:mental-prison"},{"id":"move-earth","title":"Move Earth","level":6,"url":"http://dnd5e.wikidot.com/spell:move-earth"},{"id":"otherworldly-form","title":"Otherworldly Form (UA)","level":6,"url":"http://dnd5e.wikidot.com/spell:otherworldly-form"},{"id":"otilukes-freezing-sphere","title":"Otiluke\'s Freezing Sphere","level":6,"url":"http://dnd5e.wikidot.com/spell:otilukes-freezing-sphere"},{"id":"ottos-irresistible-dance","title":"Otto\'s Irresistible Dance","level":6,"url":"http://dnd5e.wikidot.com/spell:ottos-irresistible-dance"},{"id":"planar-ally","title":"Planar Ally","level":6,"url":"http://dnd5e.wikidot.com/spell:planar-ally"},{"id":"primordial-ward","title":"Primordial Ward","level":6,"url":"http://dnd5e.wikidot.com/spell:primordial-ward"},{"id":"programmed-illusion","title":"Programmed Illusion","level":6,"url":"http://dnd5e.wikidot.com/spell:programmed-illusion"},{"id":"psychic-crush","title":"Psychic Crush (UA)","level":6,"url":"http://dnd5e.wikidot.com/spell:psychic-crush"},{"id":"scatter","title":"Scatter","level":6,"url":"http://dnd5e.wikidot.com/spell:scatter"},{"id":"soul-cage","title":"Soul Cage","level":6,"url":"http://dnd5e.wikidot.com/spell:soul-cage"},{"id":"summon-fiend","title":"Summon Fiend","level":6,"url":"http://dnd5e.wikidot.com/spell:summon-fiend"},{"id":"sunbeam","title":"Sunbeam","level":6,"url":"http://dnd5e.wikidot.com/spell:sunbeam"},{"id":"tashas-otherworldly-guise","title":"Tasha\'s Otherworldly Guise","level":6,"url":"http://dnd5e.wikidot.com/spell:tashas-otherworldly-guise"},{"id":"tensers-transformation","title":"Tenser\'s Transformation","level":6,"url":"http://dnd5e.wikidot.com/spell:tensers-transformation"},{"id":"transport-via-plants","title":"Transport via Plants","level":6,"url":"http://dnd5e.wikidot.com/spell:transport-via-plants"},{"id":"true-seeing","title":"True Seeing","level":6,"url":"http://dnd5e.wikidot.com/spell:true-seeing"},{"id":"wall-of-ice","title":"Wall of Ice","level":6,"url":"http://dnd5e.wikidot.com/spell:wall-of-ice"},{"id":"wall-of-thorns","title":"Wall of Thorns","level":6,"url":"http://dnd5e.wikidot.com/spell:wall-of-thorns"},{"id":"widogast-s-transmogrification-hb","title":"Widogast\'s Transmogrification (HB)","level":6,"url":"http://dnd5e.wikidot.com/spell:widogast-s-transmogrification-hb"},{"id":"wind-walk","title":"Wind Walk","level":6,"url":"http://dnd5e.wikidot.com/spell:wind-walk"},{"id":"word-of-recall","title":"Word of Recall","level":6,"url":"http://dnd5e.wikidot.com/spell:word-of-recall"}],[{"id":"conjure-celestial","title":"Conjure Celestial","level":7,"url":"http://dnd5e.wikidot.com/spell:conjure-celestial"},{"id":"conjure-hezrou","title":"Conjure Hezrou (UA)","level":7,"url":"http://dnd5e.wikidot.com/spell:conjure-hezrou"},{"id":"create-magen","title":"Create Magen","level":7,"url":"http://dnd5e.wikidot.com/spell:create-magen"},{"id":"crown-of-stars","title":"Crown of Stars","level":7,"url":"http://dnd5e.wikidot.com/spell:crown-of-stars"},{"id":"delayed-blast-fireball","title":"Delayed Blast Fireball","level":7,"url":"http://dnd5e.wikidot.com/spell:delayed-blast-fireball"},{"id":"divine-word","title":"Divine Word","level":7,"url":"http://dnd5e.wikidot.com/spell:divine-word"},{"id":"draconic-transformation-ua","title":"Draconic Transformation (UA)","level":7,"url":"http://dnd5e.wikidot.com/spell:draconic-transformation-ua"},{"id":"draconic-transformation","title":"Draconic Transformation","level":7,"url":"http://dnd5e.wikidot.com/spell:draconic-transformation"},{"id":"dream-of-the-blue-veil","title":"Dream of the Blue Veil","level":7,"url":"http://dnd5e.wikidot.com/spell:dream-of-the-blue-veil"},{"id":"etherealness","title":"Etherealness","level":7,"url":"http://dnd5e.wikidot.com/spell:etherealness"},{"id":"finger-of-death","title":"Finger of Death","level":7,"url":"http://dnd5e.wikidot.com/spell:finger-of-death"},{"id":"fire-storm","title":"Fire Storm","level":7,"url":"http://dnd5e.wikidot.com/spell:fire-storm"},{"id":"forcecage","title":"Forcecage","level":7,"url":"http://dnd5e.wikidot.com/spell:forcecage"},{"id":"mirage-arcane","title":"Mirage Arcane","level":7,"url":"http://dnd5e.wikidot.com/spell:mirage-arcane"},{"id":"mordenkainens-magnificent-mansion","title":"Mordenkainen\'s Magnificent Mansion","level":7,"url":"http://dnd5e.wikidot.com/spell:mordenkainens-magnificent-mansion"},{"id":"mordenkainens-sword","title":"Mordenkainen\'s Sword","level":7,"url":"http://dnd5e.wikidot.com/spell:mordenkainens-sword"},{"id":"plane-shift","title":"Plane Shift","level":7,"url":"http://dnd5e.wikidot.com/spell:plane-shift"},{"id":"power-word-pain","title":"Power Word: Pain","level":7,"url":"http://dnd5e.wikidot.com/spell:power-word-pain"},{"id":"prismatic-spray","title":"Prismatic Spray","level":7,"url":"http://dnd5e.wikidot.com/spell:prismatic-spray"},{"id":"project-image","title":"Project Image","level":7,"url":"http://dnd5e.wikidot.com/spell:project-image"},{"id":"regenerate","title":"Regenerate","level":7,"url":"http://dnd5e.wikidot.com/spell:regenerate"},{"id":"resurrection","title":"Resurrection","level":7,"url":"http://dnd5e.wikidot.com/spell:resurrection"},{"id":"reverse-gravity","title":"Reverse Gravity","level":7,"url":"http://dnd5e.wikidot.com/spell:reverse-gravity"},{"id":"sequester","title":"Sequester","level":7,"url":"http://dnd5e.wikidot.com/spell:sequester"},{"id":"simulacrum","title":"Simulacrum","level":7,"url":"http://dnd5e.wikidot.com/spell:simulacrum"},{"id":"symbol","title":"Symbol","level":7,"url":"http://dnd5e.wikidot.com/spell:symbol"},{"id":"teleport","title":"Teleport","level":7,"url":"http://dnd5e.wikidot.com/spell:teleport"},{"id":"temple-of-the-gods","title":"Temple of the Gods","level":7,"url":"http://dnd5e.wikidot.com/spell:temple-of-the-gods"},{"id":"tether-essence","title":"Tether Essence","level":7,"url":"http://dnd5e.wikidot.com/spell:tether-essence"},{"id":"whirlwind","title":"Whirlwind","level":7,"url":"http://dnd5e.wikidot.com/spell:whirlwind"}],[{"id":"abi-dalzims-horrid-wilting","title":"Abi-Dalzim\'s Horrid Wilting","level":8,"url":"http://dnd5e.wikidot.com/spell:abi-dalzims-horrid-wilting"},{"id":"animal-shapes","title":"Animal Shapes","level":8,"url":"http://dnd5e.wikidot.com/spell:animal-shapes"},{"id":"antimagic-field","title":"Antimagic Field","level":8,"url":"http://dnd5e.wikidot.com/spell:antimagic-field"},{"id":"antipathy-sympathy","title":"Antipathy/Sympathy","level":8,"url":"http://dnd5e.wikidot.com/spell:antipathy-sympathy"},{"id":"clone","title":"Clone","level":8,"url":"http://dnd5e.wikidot.com/spell:clone"},{"id":"control-weather","title":"Control Weather","level":8,"url":"http://dnd5e.wikidot.com/spell:control-weather"},{"id":"dark-star","title":"Dark Star","level":8,"url":"http://dnd5e.wikidot.com/spell:dark-star"},{"id":"demiplane","title":"Demiplane","level":8,"url":"http://dnd5e.wikidot.com/spell:demiplane"},{"id":"dominate-monster","title":"Dominate Monster","level":8,"url":"http://dnd5e.wikidot.com/spell:dominate-monster"},{"id":"earthquake","title":"Earthquake","level":8,"url":"http://dnd5e.wikidot.com/spell:earthquake"},{"id":"feeblemind","title":"Feeblemind","level":8,"url":"http://dnd5e.wikidot.com/spell:feeblemind"},{"id":"glibness","title":"Glibness","level":8,"url":"http://dnd5e.wikidot.com/spell:glibness"},{"id":"holy-aura","title":"Holy Aura","level":8,"url":"http://dnd5e.wikidot.com/spell:holy-aura"},{"id":"illusory-dragon","title":"Illusory Dragon","level":8,"url":"http://dnd5e.wikidot.com/spell:illusory-dragon"},{"id":"incendiary-cloud","title":"Incendiary Cloud","level":8,"url":"http://dnd5e.wikidot.com/spell:incendiary-cloud"},{"id":"maddening-darkness","title":"Maddening Darkness","level":8,"url":"http://dnd5e.wikidot.com/spell:maddening-darkness"},{"id":"maze","title":"Maze","level":8,"url":"http://dnd5e.wikidot.com/spell:maze"},{"id":"mighty-fortress","title":"Mighty Fortress","level":8,"url":"http://dnd5e.wikidot.com/spell:mighty-fortress"},{"id":"mind-blank","title":"Mind Blank","level":8,"url":"http://dnd5e.wikidot.com/spell:mind-blank"},{"id":"power-word-stun","title":"Power Word: Stun","level":8,"url":"http://dnd5e.wikidot.com/spell:power-word-stun"},{"id":"reality-break","title":"Reality Break","level":8,"url":"http://dnd5e.wikidot.com/spell:reality-break"},{"id":"sunburst","title":"Sunburst","level":8,"url":"http://dnd5e.wikidot.com/spell:sunburst"},{"id":"telepathy","title":"Telepathy","level":8,"url":"http://dnd5e.wikidot.com/spell:telepathy"},{"id":"tsunami","title":"Tsunami","level":8,"url":"http://dnd5e.wikidot.com/spell:tsunami"}],[{"id":"astral-projection","title":"Astral Projection","level":9,"url":"http://dnd5e.wikidot.com/spell:astral-projection"},{"id":"blade-of-disaster","title":"Blade of Disaster","level":9,"url":"http://dnd5e.wikidot.com/spell:blade-of-disaster"},{"id":"foresight","title":"Foresight","level":9,"url":"http://dnd5e.wikidot.com/spell:foresight"},{"id":"gate","title":"Gate","level":9,"url":"http://dnd5e.wikidot.com/spell:gate"},{"id":"imprisonment","title":"Imprisonment","level":9,"url":"http://dnd5e.wikidot.com/spell:imprisonment"},{"id":"invulnerability","title":"Invulnerability","level":9,"url":"http://dnd5e.wikidot.com/spell:invulnerability"},{"id":"mass-heal","title":"Mass Heal","level":9,"url":"http://dnd5e.wikidot.com/spell:mass-heal"},{"id":"mass-polymorph","title":"Mass Polymorph","level":9,"url":"http://dnd5e.wikidot.com/spell:mass-polymorph"},{"id":"meteor-swarm","title":"Meteor Swarm","level":9,"url":"http://dnd5e.wikidot.com/spell:meteor-swarm"},{"id":"power-word-heal","title":"Power Word: Heal","level":9,"url":"http://dnd5e.wikidot.com/spell:power-word-heal"},{"id":"power-word-kill","title":"Power Word: Kill","level":9,"url":"http://dnd5e.wikidot.com/spell:power-word-kill"},{"id":"prismatic-wall","title":"Prismatic Wall","level":9,"url":"http://dnd5e.wikidot.com/spell:prismatic-wall"},{"id":"psychic-scream","title":"Psychic Scream","level":9,"url":"http://dnd5e.wikidot.com/spell:psychic-scream"},{"id":"ravenous-void","title":"Ravenous Void","level":9,"url":"http://dnd5e.wikidot.com/spell:ravenous-void"},{"id":"shapechange","title":"Shapechange","level":9,"url":"http://dnd5e.wikidot.com/spell:shapechange"},{"id":"storm-of-vengeance","title":"Storm of Vengeance","level":9,"url":"http://dnd5e.wikidot.com/spell:storm-of-vengeance"},{"id":"time-ravage","title":"Time Ravage","level":9,"url":"http://dnd5e.wikidot.com/spell:time-ravage"},{"id":"time-stop","title":"Time Stop","level":9,"url":"http://dnd5e.wikidot.com/spell:time-stop"},{"id":"true-polymorph","title":"True Polymorph","level":9,"url":"http://dnd5e.wikidot.com/spell:true-polymorph"},{"id":"true-resurrection","title":"True Resurrection","level":9,"url":"http://dnd5e.wikidot.com/spell:true-resurrection"},{"id":"weird","title":"Weird","level":9,"url":"http://dnd5e.wikidot.com/spell:weird"},{"id":"wish","title":"Wish","level":9,"url":"http://dnd5e.wikidot.com/spell:wish"}]]');
 
-
-
-const $7cd0eeac64f16c45$export$4d4e10ce882b8153 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
-        focusable: "false",
-        "aria-hidden": "true",
-        viewBox: "0 0 24 24",
-        tabIndex: -1,
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
-            d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
-        })
-    });
 
 
 const $a9a1e86cd248f07a$var$SAMPLE_SPELL = (0, (/*@__PURE__*/$parcel$interopDefault($3a54764133d6f900$exports)))[1].find(({ id: id })=>id === "detect-magic");
@@ -11902,7 +12177,7 @@ const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClick
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("ul", {
                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
                     ...$a9a1e86cd248f07a$var$SAMPLE_SPELL,
-                    checkboxIdSuffix: "sample"
+                    disabled: true
                 })
             })
         ]
@@ -12015,7 +12290,6 @@ $4c9b586e750d488f$export$33fcfcc28f93a08d = `_3djqFW_searchWrapper`;
 
 
 
-
 const $51681b8ab1dcebc0$export$2be804e19c04baed = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
         focusable: "false",
         "aria-hidden": "true",
@@ -12030,8 +12304,9 @@ const $51681b8ab1dcebc0$export$2be804e19c04baed = ()=>/*#__PURE__*/ (0, $086df4e
 const $6ceefef6d1a49563$var$allSpellsFlat = (0, (/*@__PURE__*/$parcel$interopDefault($3a54764133d6f900$exports))).flat();
 const $6ceefef6d1a49563$export$79d13b60110f33be = ()=>{
     const [value, setValue] = (0, $bwXBY.useState)("");
-    const { appendSpells: appendSpells, removeSpell: removeSpell, spellLists: spellLists } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
-    const matchingSpells = value ? $6ceefef6d1a49563$var$allSpellsFlat.filter(({ title: title })=>title.match(new RegExp(value, "i"))).slice(0, 3) : [];
+    // @ts-expect-error -- RegExp.escape exists: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/escape
+    const sanitizedValue = Boolean(RegExp.escape) ? RegExp.escape(value) : value;
+    const matchingSpells = value ? $6ceefef6d1a49563$var$allSpellsFlat.filter(({ title: title })=>title.match(new RegExp(sanitizedValue, "i"))).slice(0, 3) : [];
     const showDropdown = matchingSpells.length > 0;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($4c9b586e750d488f$exports))).searchBar,
@@ -12058,12 +12333,6 @@ const $6ceefef6d1a49563$export$79d13b60110f33be = ()=>{
                 className: `${(0, (/*@__PURE__*/$parcel$interopDefault($4c9b586e750d488f$exports))).dropdown} parchment overlay ${showDropdown ? (0, (/*@__PURE__*/$parcel$interopDefault($4c9b586e750d488f$exports))).open : ""}`,
                 children: showDropdown ? matchingSpells.map((spell)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
                         ...spell,
-                        isInSearchList: true,
-                        onChange: (isChecked)=>isChecked ? removeSpell(spell) : appendSpells([
-                                spell
-                            ]),
-                        isChecked: spellLists[spell.level].some(({ id: id })=>id === spell.id),
-                        checkboxIdSuffix: "search",
                         showLevel: true
                     }, spell.id)) : null
             })
@@ -12443,7 +12712,6 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
 
 
 
-
 var $e4856f61199e68c5$exports = {};
 
 $parcel$export($e4856f61199e68c5$exports, "fadeIn", function () { return $e4856f61199e68c5$export$82e6205b15e6c637; }, function (v) { return $e4856f61199e68c5$export$82e6205b15e6c637 = v; });
@@ -12455,20 +12723,13 @@ $e4856f61199e68c5$export$82e6205b15e6c637;
 $e4856f61199e68c5$export$749abddb1d4b6b5a = `_6B68uG_spellList`;
 
 
-const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: showLevel = false, checkboxIdSuffix: checkboxIdSuffix })=>{
-    const { makeToggleSpell: makeToggleSpell } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: showLevel = false })=>{
     const { getShouldShowSpell: getShouldShowSpell } = (0, $ba83cb97b7fd8383$export$396ef541d9951d45)();
     if (spells.length < 1) return null;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("ul", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($e4856f61199e68c5$exports))).spellList,
         children: spells.filter((spell)=>getShouldShowSpell(spell)).map((spell)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $e96eb16661e54a09$export$b1c99707ee5b9fe7), {
-                isChecked: spell.isPrepared,
-                onChange: makeToggleSpell({
-                    id: spell.id,
-                    level: spell.level
-                }),
                 showLevel: showLevel,
-                checkboxIdSuffix: checkboxIdSuffix,
                 ...spell
             }, spell.id))
     });
@@ -12477,15 +12738,25 @@ const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: 
 
 var $be3d386fe1bd10b8$exports = {};
 
+$parcel$export($be3d386fe1bd10b8$exports, "badgeList", function () { return $be3d386fe1bd10b8$export$eb60ae05ff6a17c6; }, function (v) { return $be3d386fe1bd10b8$export$eb60ae05ff6a17c6 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "placeholderIcon", function () { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4; }, function (v) { return $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = v; });
+$parcel$export($be3d386fe1bd10b8$exports, "spellCount", function () { return $be3d386fe1bd10b8$export$6e5fcc43f191b6a7; }, function (v) { return $be3d386fe1bd10b8$export$6e5fcc43f191b6a7 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListHeader", function () { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202; }, function (v) { return $be3d386fe1bd10b8$export$e1e7aee3ce61d202 = v; });
 $parcel$export($be3d386fe1bd10b8$exports, "spellListPlaceholder", function () { return $be3d386fe1bd10b8$export$e1a569003bc35eb5; }, function (v) { return $be3d386fe1bd10b8$export$e1a569003bc35eb5 = v; });
+$parcel$export($be3d386fe1bd10b8$exports, "spellListsHeader", function () { return $be3d386fe1bd10b8$export$dc5d57b72debe59c; }, function (v) { return $be3d386fe1bd10b8$export$dc5d57b72debe59c = v; });
+var $be3d386fe1bd10b8$export$eb60ae05ff6a17c6;
 var $be3d386fe1bd10b8$export$29d4bf464ef1d8a4;
+var $be3d386fe1bd10b8$export$6e5fcc43f191b6a7;
 var $be3d386fe1bd10b8$export$e1e7aee3ce61d202;
 var $be3d386fe1bd10b8$export$e1a569003bc35eb5;
+var $be3d386fe1bd10b8$export$dc5d57b72debe59c;
+$be3d386fe1bd10b8$export$eb60ae05ff6a17c6 = `BGWDaa_badgeList`;
 $be3d386fe1bd10b8$export$29d4bf464ef1d8a4 = `BGWDaa_placeholderIcon`;
+$be3d386fe1bd10b8$export$6e5fcc43f191b6a7 = `BGWDaa_spellCount`;
 $be3d386fe1bd10b8$export$e1e7aee3ce61d202 = `BGWDaa_spellListHeader`;
 $be3d386fe1bd10b8$export$e1a569003bc35eb5 = `BGWDaa_spellListPlaceholder`;
+$be3d386fe1bd10b8$export$dc5d57b72debe59c = `BGWDaa_spellListsHeader`;
+
 
 
 
@@ -12584,16 +12855,54 @@ const $5ecb484c9543bfa5$export$5ead181f5de19cb1 = ()=>{
 };
 
 
+
+
 const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
-    const { spellLists: spellLists, preparedSpells: preparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
-    const hasSpells = spellLists.some((spells)=>spells.length > 0);
-    const hasPreparedSpells = preparedSpells.some((spells)=>spells.length > 0);
+    const { spellLists: spellLists, preparedSpells: preparedSpells, alwaysPreparedSpells: alwaysPreparedSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { getShouldShowSpell: getShouldShowSpell } = (0, $ba83cb97b7fd8383$export$396ef541d9951d45)();
+    const knownSpellCount = spellLists.reduce((sum, list)=>sum + list.filter((spell)=>getShouldShowSpell(spell)).length, 0);
+    const hasSpells = knownSpellCount > 0;
+    const preparedSpellCount = preparedSpells.reduce((sum, list)=>sum + list.filter((spell)=>getShouldShowSpell(spell)).length, 0);
+    const hasPreparedSpells = preparedSpellCount > 0;
+    const alwaysPreparedSpellCount = alwaysPreparedSpells.reduce((sum, list)=>sum + list.filter((spell)=>getShouldShowSpell(spell)).length, 0);
+    const hasAlwaysPreparedSpells = alwaysPreparedSpellCount > 0;
     if (!hasSpells) return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $f38424f14b50a993$export$630ad10f0e1a953d), {});
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
         children: [
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5ecb484c9543bfa5$export$5ead181f5de19cb1), {}),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                children: "Prepared Spells"
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("h2", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListsHeader,
+                children: [
+                    "Prepared Spells",
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).badgeList,
+                        children: hasAlwaysPreparedSpells ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
+                            children: [
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                                    className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellCount,
+                                    children: [
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}),
+                                        " ",
+                                        preparedSpellCount - alwaysPreparedSpellCount,
+                                        " prepared"
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                                    className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellCount,
+                                    children: [
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $548c8b33d5b4fed0$export$bfe304c803da70de), {}),
+                                        " ",
+                                        alwaysPreparedSpellCount,
+                                        " always prepared"
+                                    ]
+                                })
+                            ]
+                        }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellCount,
+                            children: preparedSpellCount
+                        })
+                    })
+                ]
             }),
             hasPreparedSpells ? preparedSpells.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("section", {
                     children: [
@@ -12601,16 +12910,22 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
                             children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
                         }),
                         /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                            spells: spells,
-                            checkboxIdSuffix: "prepared"
+                            spells: spells
                         })
                     ]
                 }, index) : null) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListPlaceholder,
                 children: "Check the box next to a spell to add it to your prepared spells."
             }),
-            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h2", {
-                children: "Known Spells"
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("h2", {
+                className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellListsHeader,
+                children: [
+                    "Known Spells",
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
+                        className: (0, (/*@__PURE__*/$parcel$interopDefault($be3d386fe1bd10b8$exports))).spellCount,
+                        children: knownSpellCount
+                    })
+                ]
             }),
             spellLists.map((spells, index)=>spells.length > 0 ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
                     children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7c1eac6cf4db4260$export$6eb0f7ddcda6131f), {
@@ -12619,8 +12934,7 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
                             children: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index, true)
                         }),
                         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ecc4f5810c88e7af$export$84ccc72e121d6e1e), {
-                            spells: spells,
-                            checkboxIdSuffix: "known"
+                            spells: spells
                         })
                     })
                 }, index) : null)
@@ -13179,4 +13493,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=index.10bcb4ae.js.map
+//# sourceMappingURL=index.2d4a6241.js.map
