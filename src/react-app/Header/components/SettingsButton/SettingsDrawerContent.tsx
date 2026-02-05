@@ -77,7 +77,8 @@ export const SettingsDrawerContent = ({
       </select>
       <h5>Preview</h5>
       <ul>
-        <SpellSummary {...SAMPLE_SPELL} checkboxIdSuffix="sample" />
+        {/* TODO: prevent this from being editable, maybe a disabled prop on SpellSummary? */}
+        <SpellSummary {...SAMPLE_SPELL} />
       </ul>
     </div>
   );

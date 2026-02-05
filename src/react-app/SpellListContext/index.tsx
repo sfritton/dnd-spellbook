@@ -16,23 +16,28 @@ type MakeToggleSpell = ({
 
 export interface SpellSummaryData extends Spell.Summary {
   isPrepared: boolean;
+  isAlwaysPrepared: boolean;
 }
 
 interface SpellListContextValue {
   spellLists: SpellSummaryData[][];
   preparedSpells: SpellSummaryData[][];
+  alwaysPreparedSpells: SpellSummaryData[][];
   appendSpells: (spells: Spell.Summary[]) => void;
   removeSpell: (spell: Spell.Summary) => void;
   makeToggleSpell: MakeToggleSpell;
+  makeToggleSpellAlwaysPrepared: MakeToggleSpell;
   clearSpells: () => void;
 }
 
 const SpellListContext = createContext<SpellListContextValue>({
   spellLists: new Array(10).fill([]),
   preparedSpells: [],
+  alwaysPreparedSpells: [],
   appendSpells: () => {},
   removeSpell: () => {},
   makeToggleSpell: () => () => {},
+  makeToggleSpellAlwaysPrepared: () => () => {},
   clearSpells: () => {},
 });
 
@@ -59,7 +64,7 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
               ({ id, level }) =>
                 level === currentLevel && leveledSpells.every((prevSpell) => prevSpell.id !== id),
             )
-            .map((spell) => ({ ...spell, isPrepared: false })),
+            .map((spell) => ({ ...spell, isPrepared: false, isAlwaysPrepared: false })),
         ].sort((spellA, spellB) => spellA.level - spellB.level),
       ),
     );
@@ -97,18 +102,69 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
     [],
   );
 
+  const makeToggleSpellAlwaysPrepared = useCallback<MakeToggleSpell>(
+    ({ id, level }) =>
+      (isAlwaysPrepared) => {
+        setSpellLists((prevSpellLists) => {
+          const newSpellLists = prevSpellLists.map((spells) => [...spells]);
+
+          const selectedIndex = newSpellLists[level].findIndex((spell) => spell.id === id);
+
+          if (selectedIndex < 0) return prevSpellLists;
+
+          const newSpell = {
+            ...newSpellLists[level][selectedIndex],
+            isAlwaysPrepared,
+            // A spell that gets "downgraded" from always prepared should move to prepared
+            // For a spell that is being "upgraded" to always prepared, setting isPrepared won't matter
+            isPrepared: true,
+          };
+          newSpellLists[level][selectedIndex] = newSpell;
+
+          return newSpellLists;
+        });
+      },
+    [],
+  );
+
   const clearSpells = useCallback(() => {
     setSpellLists(new Array(10).fill([]));
   }, []);
 
   const preparedSpells = useMemo(
-    () => spellLists.map((spells) => spells.filter(({ isPrepared }) => isPrepared)),
+    () =>
+      spellLists.map((spells) =>
+        spells.filter(({ isPrepared, isAlwaysPrepared }) => isPrepared || isAlwaysPrepared),
+      ),
+    [spellLists],
+  );
+
+  const alwaysPreparedSpells = useMemo(
+    () => spellLists.map((spells) => spells.filter(({ isAlwaysPrepared }) => isAlwaysPrepared)),
     [spellLists],
   );
 
   const value = useMemo(
-    () => ({ spellLists, appendSpells, removeSpell, makeToggleSpell, preparedSpells, clearSpells }),
-    [spellLists, appendSpells, removeSpell, makeToggleSpell, preparedSpells, clearSpells],
+    () => ({
+      spellLists,
+      preparedSpells,
+      alwaysPreparedSpells,
+      appendSpells,
+      removeSpell,
+      makeToggleSpell,
+      makeToggleSpellAlwaysPrepared,
+      clearSpells,
+    }),
+    [
+      spellLists,
+      preparedSpells,
+      alwaysPreparedSpells,
+      appendSpells,
+      removeSpell,
+      makeToggleSpell,
+      makeToggleSpellAlwaysPrepared,
+      clearSpells,
+    ],
   );
 
   useEffect(() => {

@@ -34,17 +34,7 @@ export const SearchBar = () => {
       </div>
       <ul className={`${styles.dropdown} parchment overlay ${showDropdown ? styles.open : ''}`}>
         {showDropdown
-          ? matchingSpells.map((spell) => (
-              <SpellSummary
-                key={spell.id}
-                {...spell}
-                isInSearchList
-                onChange={(isChecked) => (isChecked ? removeSpell(spell) : appendSpells([spell]))}
-                isChecked={spellLists[spell.level].some(({ id }) => id === spell.id)}
-                checkboxIdSuffix="search"
-                showLevel
-              />
-            ))
+          ? matchingSpells.map((spell) => <SpellSummary key={spell.id} {...spell} showLevel />)
           : null}
       </ul>
     </div>

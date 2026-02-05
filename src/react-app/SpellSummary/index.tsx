@@ -5,9 +5,10 @@ import { SpellCard } from '../SpellCard';
 import { Spell } from '../types';
 import { formatSpellLevel } from '../util';
 import styles from './index.module.css';
-import { Checkbox } from '../Checkbox';
 import { HighlightKey, useSettingsContext } from '../SettingsContext';
-import { AddRemoveButton } from './AddRemoveButton';
+import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
+import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
+import { SpellSummaryData, useSpellListContext } from '../SpellListContext';
 
 const getSpellHighlight = (
   { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
@@ -29,28 +30,22 @@ const getSpellHighlight = (
   }
 };
 
-interface SpellSummaryProps extends Spell.Summary {
-  isChecked?: boolean;
-  onChange?: (isChecked: boolean) => void;
+interface SpellSummaryProps extends Pick<SpellSummaryData, 'id' | 'level' | 'url'> {
   showLevel?: boolean;
-  checkboxIdSuffix: string;
-  isInSearchList?: boolean;
 }
 
-export const SpellSummary = ({
-  id,
-  title,
-  level,
-  isChecked,
-  onChange,
-  showLevel = false,
-  checkboxIdSuffix,
-  isInSearchList = false,
-  url,
-}: SpellSummaryProps) => {
+export const SpellSummary = ({ showLevel = false, id, level, url }: SpellSummaryProps) => {
   const { open } = useSingleDialog();
-  const spell: Spell.Details = spellDetails[id];
+  const spellWithDetails: Spell.Details = spellDetails[id];
   const { highlights, isCardMode } = useSettingsContext();
+  const { spellLists } = useSpellListContext();
+  const foundSpell = spellLists[level].find(({ id: idFromList }) => id === idFromList);
+  const isKnown = Boolean(foundSpell);
+  const spellSummaryData: SpellSummaryData = isKnown
+    ? foundSpell
+    : { ...spellWithDetails, id, isPrepared: false, isAlwaysPrepared: false, url };
+
+  const { title } = spellSummaryData;
 
   const openSpellDialog = useCallback<MouseEventHandler>(
     (e) => {
@@ -67,33 +62,19 @@ export const SpellSummary = ({
   return (
     <li className={styles.spellWrapper}>
       <div className={styles.spellSummary}>
-        {isInSearchList ? (
-          <AddRemoveButton isChecked={isChecked} onChange={onChange} title={title} />
-        ) : (
-          <Checkbox
-            className={styles.checkbox}
-            label={
-              isChecked
-                ? `Remove "${title}" from prepared spells`
-                : `Add "${title}" to prepared spells`
-            }
-            id={`${id}-${checkboxIdSuffix}`}
-            checked={isChecked}
-            onChange={onChange}
-            hideLabel
-          />
-        )}
+        <SpellSummaryButtonLeading isKnown={isKnown} {...spellSummaryData} />
         <a className={styles.summary} tabIndex={0} href="#" onClick={openSpellDialog}>
           <h4>{title}</h4>
           <div className={styles.levelAndTime}>
             {[
               showLevel ? formatSpellLevel(level) : false,
-              ...highlights.map((highlight) => getSpellHighlight(spell, highlight)),
+              ...highlights.map((highlight) => getSpellHighlight(spellWithDetails, highlight)),
             ]
               .filter(Boolean)
               .join(' • ')}
           </div>
         </a>
+        <SpellSummaryButtonTrailing isKnown={isKnown} {...spellSummaryData} />
       </div>
       {isCardMode ? <SpellCard className={styles.spellCard} id={id} url={url} /> : null}
     </li>

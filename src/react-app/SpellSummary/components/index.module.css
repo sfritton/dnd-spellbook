@@ -1,0 +1,55 @@
+button.spellStatusButton.spellStatusButton {
+  border: none;
+  width: 48px;
+  padding: 0;
+  height: 100%;
+  background: transparent;
+  flex-shrink: 0;
+  position: relative;
+
+  > svg {
+    fill: var(--color-accent);
+    height: 24px;
+    width: 24px;
+    position: absolute;
+  }
+
+  &.leading.always_prepared svg:not(.iconAlwaysPrepared) {
+    display: none;
+  }
+
+  &.leading.prepared svg:not(.iconPrepared) {
+    display: none;
+  }
+
+  &.leading.known svg:not(.iconKnown) {
+    display: none;
+  }
+
+  &.leading.new svg:not(.iconNew) {
+    display: none;
+  }
+}
+
+.dialog {
+  max-width: 100vw;
+  width: 360px;
+
+  .dialogBody {
+    h4 {
+      margin-top: 0;
+    }
+
+    button {
+      justify-content: flex-start;
+      margin: 8px 0;
+
+      svg {
+        margin-right: 8px;
+        fill: var(--color-accent);
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

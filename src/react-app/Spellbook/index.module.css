@@ -19,3 +19,41 @@
 .spellListHeader {
   margin: 0;
 }
+
+.spellListsHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.badgeList {
+  display: flex;
+  gap: inherit;
+  flex-wrap: wrap;
+}
+
+.spellCount {
+  font-family: sans-serif;
+  background: var(--color-accent);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 4px;
+
+  &:has(svg) {
+    padding-left: 4px;
+    padding-right: 16px;
+  }
+
+  > svg {
+    display: inline-block;
+    fill: #fff;
+    height: 20px;
+    width: 20px;
+  }
+}
