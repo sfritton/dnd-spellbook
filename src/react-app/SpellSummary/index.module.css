@@ -49,9 +49,13 @@
         text-overflow: ellipsis;
       }
 
-      &:hover {
+      &:hover:not(.disabled) {
         text-decoration: underline;
         background: var(--color-bg-white);
+      }
+
+      &.disabled {
+        cursor: default;
       }
     }
   }

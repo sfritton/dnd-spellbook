@@ -32,9 +32,16 @@ const getSpellHighlight = (
 
 interface SpellSummaryProps extends Pick<SpellSummaryData, 'id' | 'level' | 'url'> {
   showLevel?: boolean;
+  disabled?: boolean;
 }
 
-export const SpellSummary = ({ showLevel = false, id, level, url }: SpellSummaryProps) => {
+export const SpellSummary = ({
+  showLevel = false,
+  id,
+  level,
+  url,
+  disabled = false,
+}: SpellSummaryProps) => {
   const { open } = useSingleDialog();
   const spellWithDetails: Spell.Details = spellDetails[id];
   const { highlights, isCardMode } = useSettingsContext();
@@ -50,20 +57,28 @@ export const SpellSummary = ({ showLevel = false, id, level, url }: SpellSummary
   const openSpellDialog = useCallback<MouseEventHandler>(
     (e) => {
       e.preventDefault();
+
+      if (disabled) return;
+
       open({
         title,
         className: styles.dialog,
         children: <SpellCard className={styles.spellCard} id={id} url={url} />,
       });
     },
-    [open, title, id],
+    [open, title, id, disabled],
   );
 
   return (
     <li className={styles.spellWrapper}>
       <div className={styles.spellSummary}>
-        <SpellSummaryButtonLeading isKnown={isKnown} {...spellSummaryData} />
-        <a className={styles.summary} tabIndex={0} href="#" onClick={openSpellDialog}>
+        <SpellSummaryButtonLeading isKnown={isKnown} disabled={disabled} {...spellSummaryData} />
+        <a
+          className={`${styles.summary} ${disabled ? styles.disabled : ''}`}
+          tabIndex={0}
+          href="#"
+          onClick={openSpellDialog}
+        >
           <h4>{title}</h4>
           <div className={styles.levelAndTime}>
             {[
@@ -74,7 +89,7 @@ export const SpellSummary = ({ showLevel = false, id, level, url }: SpellSummary
               .join(' • ')}
           </div>
         </a>
-        <SpellSummaryButtonTrailing isKnown={isKnown} {...spellSummaryData} />
+        <SpellSummaryButtonTrailing isKnown={isKnown} disabled={disabled} {...spellSummaryData} />
       </div>
       {isCardMode ? <SpellCard className={styles.spellCard} id={id} url={url} /> : null}
     </li>

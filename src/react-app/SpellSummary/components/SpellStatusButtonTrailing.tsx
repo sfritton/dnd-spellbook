@@ -15,7 +15,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
   const status = getStatus(props);
   const { open, close } = useSingleDialog();
   const { makeToggleSpell, makeToggleSpellAlwaysPrepared, removeSpell } = useSpellListContext();
-  const { isKnown, ...spell } = props;
+  const { isKnown, disabled, ...spell } = props;
 
   const openOptionsDialog = useCallback<MouseEventHandler>(
     (e) => {
@@ -89,6 +89,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
     <button
       aria-label={label}
       className={`${styles.spellStatusButton} secondary`}
+      disabled={disabled}
       onClick={openOptionsDialog}
       title={label}
     >
