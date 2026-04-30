@@ -12,6 +12,7 @@
   "author": "Sam Fritton",
   "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "2.4.13",
     "@parcel/transformer-inline-string": "^2.9.3",
     "@tanstack/eslint-plugin-query": "^5.28.6",
     "@types/debounce": "^1.2.1",
