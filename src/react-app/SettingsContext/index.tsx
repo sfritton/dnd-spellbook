@@ -1,6 +1,6 @@
 import {
-  PropsWithChildren,
   createContext,
+  type PropsWithChildren,
   useCallback,
   useContext,
   useMemo,
@@ -63,14 +63,7 @@ export const SettingsContextProvider = ({ children }: PropsWithChildren) => {
       highlights,
       makeUpdateHighlight,
     }),
-    [
-      isCardMode,
-      setIsCardMode,
-      isCharacterOpen,
-      setIsCharacterOpen,
-      highlights,
-      makeUpdateHighlight,
-    ],
+    [isCardMode, isCharacterOpen, highlights, makeUpdateHighlight],
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;

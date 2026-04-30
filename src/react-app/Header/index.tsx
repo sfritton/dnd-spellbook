@@ -1,13 +1,14 @@
-import styles from './index.module.css';
-import { NavButton } from './components/NavButton';
-import { ClassSpellsButton } from './components/ClassSpellsButton';
 import { useEffect, useRef, useState } from 'react';
-import { SettingsButton } from './components/SettingsButton';
+
 import { IconCharacter } from '../icons/IconCharacter';
-import { useSettingsContext } from '../SettingsContext';
 import { IconMenu } from '../icons/IconMenu';
-import { SearchBar } from './components/SearchBar';
+import { useSettingsContext } from '../SettingsContext';
+import { ClassSpellsButton } from './components/ClassSpellsButton';
 import { FilterButton } from './components/FilterButton';
+import { NavButton } from './components/NavButton';
+import { SearchBar } from './components/SearchBar';
+import { SettingsButton } from './components/SettingsButton';
+import styles from './index.module.css';
 
 export const Header = () => {
   const { setIsCharacterOpen, isCharacterOpen } = useSettingsContext();

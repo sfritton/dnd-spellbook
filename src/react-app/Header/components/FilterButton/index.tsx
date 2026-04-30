@@ -1,8 +1,9 @@
-import { NavButton } from '../NavButton';
-import { useSingleDialog } from '../../../Dialog';
 import { useCallback } from 'react';
-import { FilterDrawerContent } from './FilterDrawerContent';
+
+import { useSingleDialog } from '../../../Dialog';
 import { IconFilter } from '../../../icons/IconFilter';
+import { NavButton } from '../NavButton';
+import { FilterDrawerContent } from './FilterDrawerContent';
 
 export const FilterButton = () => {
   const { open: openFilterDrawer, close: closeFilterDrawer } = useSingleDialog();

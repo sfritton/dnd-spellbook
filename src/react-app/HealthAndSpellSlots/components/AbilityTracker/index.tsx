@@ -1,8 +1,9 @@
-import { ChangeEvent, useCallback } from 'react';
+import { type ChangeEvent, useCallback } from 'react';
+
 import { Checkbox } from '../../../Checkbox';
-import { Ability } from '../../types';
-import styles from './index.module.css';
+import type { Ability } from '../../types';
 import { getAbilityNumber, validateAbilityInput } from '../../util';
+import styles from './index.module.css';
 
 interface AbilityTrackerProps extends Ability {
   onChangeCurrent: (value: number) => void;
@@ -60,13 +61,15 @@ export const AbilityTracker = ({
   if (isEditing)
     return (
       <div className={styles.editAbility}>
+        {/** biome-ignore lint/a11y/noLabelWithoutControl: TODO: fix */}
         <label>Name</label>
         <input type="text" value={name} onChange={(e) => onChangeName?.(e.target.value)} />
+        {/** biome-ignore lint/a11y/noLabelWithoutControl: TODO: fix */}
         <label>Maximum</label>
         <input
           type="number"
           value={maximum}
-          onChange={(e) => onChangeMaximum(validateAbilityInput(e.target.value))}
+          onChange={(e) => onChangeMaximum?.(validateAbilityInput(e.target.value))}
         />
       </div>
     );
@@ -101,6 +104,7 @@ export const AbilityTracker = ({
         <legend>{name}</legend>
         {[...new Array(maximum)].map((_, index) => (
           <Checkbox
+            // biome-ignore lint/suspicious/noArrayIndexKey: Index is the best we have here
             key={index}
             hideLabel
             id={`${name} - ${index + 1} of ${maximum}`}

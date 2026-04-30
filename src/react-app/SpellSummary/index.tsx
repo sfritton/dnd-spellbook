@@ -1,14 +1,15 @@
-import { MouseEventHandler, useCallback } from 'react';
+import { type MouseEventHandler, useCallback } from 'react';
+
 import { spellDetails } from '../../constants/spell-details';
 import { useSingleDialog } from '../Dialog';
+import { type HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellCard } from '../SpellCard';
-import { Spell } from '../types';
+import { type SpellSummaryData, useSpellListContext } from '../SpellListContext';
+import type { Spell } from '../types';
 import { formatSpellLevel } from '../util';
-import styles from './index.module.css';
-import { HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
-import { SpellSummaryData, useSpellListContext } from '../SpellListContext';
+import styles from './index.module.css';
 
 const getSpellHighlight = (
   { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
@@ -48,9 +49,13 @@ export const SpellSummary = ({
   const { spellLists } = useSpellListContext();
   const foundSpell = spellLists[level].find(({ id: idFromList }) => id === idFromList);
   const isKnown = Boolean(foundSpell);
-  const spellSummaryData: SpellSummaryData = isKnown
-    ? foundSpell
-    : { ...spellWithDetails, id, isPrepared: false, isAlwaysPrepared: false, url };
+  const spellSummaryData = foundSpell ?? {
+    ...spellWithDetails,
+    id,
+    isPrepared: false,
+    isAlwaysPrepared: false,
+    url,
+  };
 
   const { title } = spellSummaryData;
 
@@ -66,13 +71,14 @@ export const SpellSummary = ({
         children: <SpellCard className={styles.spellCard} id={id} url={url} />,
       });
     },
-    [open, title, id, disabled],
+    [open, title, id, disabled, url],
   );
 
   return (
     <li className={styles.spellWrapper}>
       <div className={styles.spellSummary}>
         <SpellSummaryButtonLeading isKnown={isKnown} disabled={disabled} {...spellSummaryData} />
+        {/** biome-ignore lint/a11y/useValidAnchor: TODO: fix */}
         <a
           className={`${styles.summary} ${disabled ? styles.disabled : ''}`}
           tabIndex={0}

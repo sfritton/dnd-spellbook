@@ -4,6 +4,7 @@
   "source": "src/index.html",
   "scripts": {
     "fetch-spells": "npx tsc && node dist/src/fetch-spells/index.js",
+    "format": "npx @biomejs/biome check --write",
     "link-spells": "npx tsc && node dist/src/link-spells/index.js",
     "start": "parcel",
     "build": "parcel build",

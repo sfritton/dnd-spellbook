@@ -39,8 +39,5 @@
     "Multiattack. The beast makes a number of attacks equal to half this spell’s level (rounded down).",
     "Maul. Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 4 + the spell’s level piercing damage."
   ],
-  "spellLists": [
-    "/spells:druid",
-    "/spells:ranger"
-  ]
+  "spellLists": ["/spells:druid", "/spells:ranger"]
 }

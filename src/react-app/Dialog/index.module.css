@@ -11,6 +11,7 @@
   border: none;
   width: 100vw;
   height: 100vh;
+  /* biome-ignore lint/suspicious/noDuplicateProperties: Including 100vh as a fallback for browsers that don't support dvh */
   height: 100dvh;
   align-items: center;
   z-index: 1;
@@ -32,7 +33,7 @@
     .dialog {
       animation: slideDown 300ms ease forwards;
     }
-  
+
     &[open] .dialog {
       animation: slideUp 300ms ease forwards;
     }
@@ -42,7 +43,7 @@
     .dialog {
       animation: shrink 300ms ease forwards;
     }
-  
+
     &[open] .dialog {
       animation: grow 300ms ease forwards;
     }
@@ -50,7 +51,7 @@
     .drawer {
       animation: slideLeft 300ms ease forwards;
     }
-  
+
     &[open] .drawer {
       animation: slideRight 300ms ease forwards;
     }

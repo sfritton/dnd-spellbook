@@ -3,7 +3,7 @@ export const validateAbilityInput = (valueStr: string) => {
 
   const valueNumber = Number(valueStr);
 
-  if (isNaN(valueNumber) || valueNumber < 0) return 0;
+  if (Number.isNaN(valueNumber) || valueNumber < 0) return 0;
 
   return valueNumber;
 };

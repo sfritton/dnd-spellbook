@@ -40,9 +40,5 @@
     "Multiattack. The elemental makes a number of attacks equal to half this spell’s level (rounded down).",
     "Slam. Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d10 + 4 + the spell’s level bludgeoning damage (Air, Earth, and Water only) or fire damage (Fire only)."
   ],
-  "spellLists": [
-    "/spells:druid",
-    "/spells:ranger",
-    "/spells:wizard"
-  ]
+  "spellLists": ["/spells:druid", "/spells:ranger", "/spells:wizard"]
 }

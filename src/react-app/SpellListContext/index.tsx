@@ -1,13 +1,14 @@
 import {
-  PropsWithChildren,
   createContext,
+  type PropsWithChildren,
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { Spell } from '../types';
+
+import type { Spell } from '../types';
 
 type MakeToggleSpell = ({
   id,
@@ -64,7 +65,11 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
               ({ id, level }) =>
                 level === currentLevel && leveledSpells.every((prevSpell) => prevSpell.id !== id),
             )
-            .map((spell) => ({ ...spell, isPrepared: false, isAlwaysPrepared: false })),
+            .map((spell) => ({
+              ...spell,
+              isPrepared: false,
+              isAlwaysPrepared: false,
+            })),
         ].sort((spellA, spellB) => spellA.level - spellB.level),
       ),
     );

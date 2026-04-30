@@ -12,7 +12,7 @@ export const WelcomePage = () => {
         </p>
         <h3>Start adding spells</h3>
         <div className={styles.buttons}>
-          <button onClick={() => document.getElementById('search-bar')?.focus()}>
+          <button type="button" onClick={() => document.getElementById('search-bar')?.focus()}>
             Add by name
           </button>
           <ClassSpellsButton />

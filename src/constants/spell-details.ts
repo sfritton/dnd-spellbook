@@ -12,8 +12,8 @@ import spell10 from '../../data/spells/animal-messenger.json';
 import spell11 from '../../data/spells/animal-shapes.json';
 import spell12 from '../../data/spells/animate-dead.json';
 import spell13 from '../../data/spells/animate-objects.json';
-import spell14 from '../../data/spells/antagonize-ua.json';
 import spell15 from '../../data/spells/antagonize.json';
+import spell14 from '../../data/spells/antagonize-ua.json';
 import spell16 from '../../data/spells/antilife-shell.json';
 import spell17 from '../../data/spells/antimagic-field.json';
 import spell18 from '../../data/spells/antipathy-sympathy.json';
@@ -74,9 +74,9 @@ import spell72 from '../../data/spells/cloud-of-daggers.json';
 import spell73 from '../../data/spells/cloudkill.json';
 import spell74 from '../../data/spells/color-spray.json';
 import spell75 from '../../data/spells/command.json';
+import spell78 from '../../data/spells/commune.json';
 import spell76 from '../../data/spells/commune-with-city.json';
 import spell77 from '../../data/spells/commune-with-nature.json';
-import spell78 from '../../data/spells/commune.json';
 import spell79 from '../../data/spells/compelled-duel.json';
 import spell80 from '../../data/spells/comprehend-languages.json';
 import spell81 from '../../data/spells/compulsion.json';
@@ -148,12 +148,12 @@ import spell146 from '../../data/spells/divine-word.json';
 import spell147 from '../../data/spells/dominate-beast.json';
 import spell148 from '../../data/spells/dominate-monster.json';
 import spell149 from '../../data/spells/dominate-person.json';
-import spell150 from '../../data/spells/draconic-transformation-ua.json';
 import spell151 from '../../data/spells/draconic-transformation.json';
+import spell150 from '../../data/spells/draconic-transformation-ua.json';
 import spell152 from '../../data/spells/dragons-breath.json';
 import spell153 from '../../data/spells/drawmijs-instant-summons.json';
-import spell154 from '../../data/spells/dream-of-the-blue-veil.json';
 import spell155 from '../../data/spells/dream.json';
+import spell154 from '../../data/spells/dream-of-the-blue-veil.json';
 import spell156 from '../../data/spells/druid-grove.json';
 import spell157 from '../../data/spells/druidcraft.json';
 import spell158 from '../../data/spells/dust-devil.json';
@@ -221,8 +221,8 @@ import spell219 from '../../data/spells/frostbite.json';
 import spell220 from '../../data/spells/galders-speedy-courier.json';
 import spell221 from '../../data/spells/galders-tower.json';
 import spell222 from '../../data/spells/gaseous-form.json';
-import spell223 from '../../data/spells/gate-seal.json';
 import spell224 from '../../data/spells/gate.json';
+import spell223 from '../../data/spells/gate-seal.json';
 import spell225 from '../../data/spells/geas.json';
 import spell226 from '../../data/spells/gentle-repose.json';
 import spell227 from '../../data/spells/giant-insect.json';
@@ -245,8 +245,8 @@ import spell243 from '../../data/spells/guards-and-wards.json';
 import spell244 from '../../data/spells/guidance.json';
 import spell245 from '../../data/spells/guiding-bolt.json';
 import spell246 from '../../data/spells/guiding-hand-ua.json';
-import spell247 from '../../data/spells/gust-of-wind.json';
 import spell248 from '../../data/spells/gust.json';
+import spell247 from '../../data/spells/gust-of-wind.json';
 import spell249 from '../../data/spells/hail-of-thorns.json';
 import spell250 from '../../data/spells/hallow.json';
 import spell251 from '../../data/spells/hallucinatory-terrain.json';
@@ -293,8 +293,8 @@ import spell291 from '../../data/spells/investiture-of-flame.json';
 import spell292 from '../../data/spells/investiture-of-ice.json';
 import spell293 from '../../data/spells/investiture-of-stone.json';
 import spell294 from '../../data/spells/investiture-of-wind.json';
-import spell295 from '../../data/spells/invisibility-to-cameras.json';
 import spell296 from '../../data/spells/invisibility.json';
+import spell295 from '../../data/spells/invisibility-to-cameras.json';
 import spell297 from '../../data/spells/invulnerability.json';
 import spell298 from '../../data/spells/jims-glowing-coin.json';
 import spell299 from '../../data/spells/jims-magic-missile.json';
@@ -318,8 +318,8 @@ import spell316 from '../../data/spells/longstrider.json';
 import spell317 from '../../data/spells/maddening-darkness.json';
 import spell318 from '../../data/spells/maelstrom.json';
 import spell319 from '../../data/spells/mage-armor.json';
-import spell320 from '../../data/spells/mage-hand-legerdomain.json';
 import spell321 from '../../data/spells/mage-hand.json';
+import spell320 from '../../data/spells/mage-hand-legerdomain.json';
 import spell322 from '../../data/spells/magic-circle.json';
 import spell323 from '../../data/spells/magic-jar.json';
 import spell324 from '../../data/spells/magic-missile.json';
@@ -362,8 +362,8 @@ import spell360 from '../../data/spells/mordenkainens-private-sanctum.json';
 import spell361 from '../../data/spells/mordenkainens-sword.json';
 import spell362 from '../../data/spells/motivational-speech.json';
 import spell363 from '../../data/spells/move-earth.json';
-import spell364 from '../../data/spells/nathairs-mischief-ua.json';
 import spell365 from '../../data/spells/nathairs-mischief.json';
+import spell364 from '../../data/spells/nathairs-mischief-ua.json';
 import spell366 from '../../data/spells/negative-energy-flood.json';
 import spell367 from '../../data/spells/nondetection.json';
 import spell368 from '../../data/spells/nystuls-magic-aura.json';
@@ -409,8 +409,8 @@ import spell407 from '../../data/spells/purify-food-and-drink.json';
 import spell408 from '../../data/spells/pyrotechnics.json';
 import spell409 from '../../data/spells/raise-dead.json';
 import spell410 from '../../data/spells/rarys-telepathic-bond.json';
-import spell411 from '../../data/spells/raulothims-psychic-lance-ua.json';
 import spell412 from '../../data/spells/raulothims-psychic-lance.json';
+import spell411 from '../../data/spells/raulothims-psychic-lance-ua.json';
 import spell413 from '../../data/spells/ravenous-void.json';
 import spell414 from '../../data/spells/ray-of-enfeeblement.json';
 import spell415 from '../../data/spells/ray-of-frost.json';
@@ -443,8 +443,8 @@ import spell441 from '../../data/spells/shadow-of-moil.json';
 import spell442 from '../../data/spells/shape-water.json';
 import spell443 from '../../data/spells/shapechange.json';
 import spell444 from '../../data/spells/shatter.json';
-import spell445 from '../../data/spells/shield-of-faith.json';
 import spell446 from '../../data/spells/shield.json';
+import spell445 from '../../data/spells/shield-of-faith.json';
 import spell447 from '../../data/spells/shillelagh.json';
 import spell448 from '../../data/spells/shocking-grasp.json';
 import spell449 from '../../data/spells/shutdown.json';
@@ -468,12 +468,12 @@ import spell466 from '../../data/spells/speak-with-plants.json';
 import spell467 from '../../data/spells/spider-climb.json';
 import spell468 from '../../data/spells/spike-growth.json';
 import spell469 from '../../data/spells/spirit-guardians.json';
-import spell470 from '../../data/spells/spirit-of-death-ua.json';
 import spell471 from '../../data/spells/spirit-of-death.json';
+import spell470 from '../../data/spells/spirit-of-death-ua.json';
 import spell472 from '../../data/spells/spirit-shroud.json';
 import spell473 from '../../data/spells/spiritual-weapon.json';
-import spell474 from '../../data/spells/spray-of-cards-ua.json';
 import spell475 from '../../data/spells/spray-of-cards.json';
+import spell474 from '../../data/spells/spray-of-cards-ua.json';
 import spell476 from '../../data/spells/staggering-smite.json';
 import spell477 from '../../data/spells/steel-wind-strike.json';
 import spell478 from '../../data/spells/stinking-cloud.json';
@@ -487,8 +487,8 @@ import spell485 from '../../data/spells/summon-aberration.json';
 import spell486 from '../../data/spells/summon-beast.json';
 import spell487 from '../../data/spells/summon-celestial.json';
 import spell488 from '../../data/spells/summon-construct.json';
-import spell489 from '../../data/spells/summon-draconic-spirit-ua.json';
 import spell490 from '../../data/spells/summon-draconic-spirit.json';
+import spell489 from '../../data/spells/summon-draconic-spirit-ua.json';
 import spell491 from '../../data/spells/summon-elemental.json';
 import spell492 from '../../data/spells/summon-fey.json';
 import spell493 from '../../data/spells/summon-fiend.json';
@@ -579,16 +579,17 @@ import spell577 from '../../data/spells/wrathful-smite.json';
 import spell578 from '../../data/spells/wristpocket.json';
 import spell579 from '../../data/spells/zephyr-strike.json';
 import spell580 from '../../data/spells/zone-of-truth.json';
+import type { Spell } from '../react-app/types';
 
-export const spellDetails = {
+export const spellDetails: Record<string, Spell.Details> = {
   'abi-dalzims-horrid-wilting': spell0,
   'absorb-elements': spell1,
   'acid-splash': spell2,
   'acid-stream': spell3,
   'aganazzars-scorcher': spell4,
-  'aid': spell5,
+  aid: spell5,
   'air-bubble': spell6,
-  'alarm': spell7,
+  alarm: spell7,
   'alter-self': spell8,
   'animal-friendship': spell9,
   'animal-messenger': spell10,
@@ -596,7 +597,7 @@ export const spellDetails = {
   'animate-dead': spell12,
   'animate-objects': spell13,
   'antagonize-ua': spell14,
-  'antagonize': spell15,
+  antagonize: spell15,
   'antilife-shell': spell16,
   'antimagic-field': spell17,
   'antipathy-sympathy': spell18,
@@ -609,15 +610,15 @@ export const spellDetails = {
   'arms-of-hadar': spell25,
   'ashardalons-stride': spell26,
   'astral-projection': spell27,
-  'augury': spell28,
+  augury: spell28,
   'aura-of-life': spell29,
   'aura-of-purity': spell30,
   'aura-of-vitality': spell31,
-  'awaken': spell32,
-  'bane': spell33,
+  awaken: spell32,
+  bane: spell33,
   'banishing-smite': spell34,
-  'banishment': spell35,
-  'barkskin': spell36,
+  banishment: spell35,
+  barkskin: spell36,
   'beacon-of-hope': spell37,
   'beast-bond': spell38,
   'beast-sense': spell39,
@@ -626,12 +627,12 @@ export const spellDetails = {
   'blade-barrier': spell42,
   'blade-of-disaster': spell43,
   'blade-ward': spell44,
-  'bless': spell45,
-  'blight': spell46,
+  bless: spell45,
+  blight: spell46,
   'blinding-smite': spell47,
   'blindness-deafness': spell48,
-  'blink': spell49,
-  'blur': spell50,
+  blink: spell49,
+  blur: spell50,
   'bones-of-the-earth': spell51,
   'booming-blade': spell52,
   'borrowed-knowledge': spell53,
@@ -639,10 +640,10 @@ export const spellDetails = {
   'burning-hands': spell55,
   'call-lightning': spell56,
   'calm-emotions': spell57,
-  'catapult': spell58,
-  'catnap': spell59,
+  catapult: spell58,
+  catnap: spell59,
   'cause-fear': spell60,
-  'ceremony': spell61,
+  ceremony: spell61,
   'chain-lightning': spell62,
   'chaos-bolt': spell63,
   'charm-monster': spell64,
@@ -651,20 +652,20 @@ export const spellDetails = {
   'chromatic-orb': spell67,
   'circle-of-death': spell68,
   'circle-of-power': spell69,
-  'clairvoyance': spell70,
-  'clone': spell71,
+  clairvoyance: spell70,
+  clone: spell71,
   'cloud-of-daggers': spell72,
-  'cloudkill': spell73,
+  cloudkill: spell73,
   'color-spray': spell74,
-  'command': spell75,
+  command: spell75,
   'commune-with-city': spell76,
   'commune-with-nature': spell77,
-  'commune': spell78,
+  commune: spell78,
   'compelled-duel': spell79,
   'comprehend-languages': spell80,
-  'compulsion': spell81,
+  compulsion: spell81,
   'cone-of-cold': spell82,
-  'confusion': spell83,
+  confusion: spell83,
   'conjure-animals': spell84,
   'conjure-barlgura': spell85,
   'conjure-barrage': spell86,
@@ -680,15 +681,15 @@ export const spellDetails = {
   'conjure-vrock': spell96,
   'conjure-woodland-beings': spell97,
   'contact-other-plane': spell98,
-  'contagion': spell99,
-  'contingency': spell100,
+  contagion: spell99,
+  contingency: spell100,
   'continual-flame': spell101,
   'control-flames': spell102,
   'control-water': spell103,
   'control-weather': spell104,
   'control-winds': spell105,
   'cordon-of-arrows': spell106,
-  'counterspell': spell107,
+  counterspell: spell107,
   'create-bonfire': spell108,
   'create-food-and-water': spell109,
   'create-homunculus': spell110,
@@ -696,7 +697,7 @@ export const spellDetails = {
   'create-or-destroy-water': spell112,
   'create-spelljamming-helm': spell113,
   'create-undead': spell114,
-  'creation': spell115,
+  creation: spell115,
   'crown-of-madness': spell116,
   'crown-of-stars': spell117,
   'crusaders-mantle': spell118,
@@ -704,14 +705,14 @@ export const spellDetails = {
   'dancing-lights': spell120,
   'danse-macabre': spell121,
   'dark-star': spell122,
-  'darkness': spell123,
-  'darkvision': spell124,
-  'dawn': spell125,
-  'daylight': spell126,
+  darkness: spell123,
+  darkvision: spell124,
+  dawn: spell125,
+  daylight: spell126,
   'death-ward': spell127,
-  'decompose': spell128,
+  decompose: spell128,
   'delayed-blast-fireball': spell129,
-  'demiplane': spell130,
+  demiplane: spell130,
   'destructive-wave': spell131,
   'detect-evil-and-good': spell132,
   'detect-magic': spell133,
@@ -720,12 +721,12 @@ export const spellDetails = {
   'digital-phantom': spell136,
   'dimension-door': spell137,
   'disguise-self': spell138,
-  'disintegrate': spell139,
+  disintegrate: spell139,
   'dispel-evil-and-good': spell140,
   'dispel-magic': spell141,
   'dissonant-whispers': spell142,
   'distort-value': spell143,
-  'divination': spell144,
+  divination: spell144,
   'divine-favor': spell145,
   'divine-word': spell146,
   'dominate-beast': spell147,
@@ -736,38 +737,38 @@ export const spellDetails = {
   'dragons-breath': spell152,
   'drawmijs-instant-summons': spell153,
   'dream-of-the-blue-veil': spell154,
-  'dream': spell155,
+  dream: spell155,
   'druid-grove': spell156,
-  'druidcraft': spell157,
+  druidcraft: spell157,
   'dust-devil': spell158,
   'earth-tremor': spell159,
-  'earthbind': spell160,
-  'earthquake': spell161,
+  earthbind: spell160,
+  earthquake: spell161,
   'ego-whip': spell162,
   'eldritch-blast': spell163,
   'elemental-bane': spell164,
   'elemental-weapon': spell165,
   'encode-thoughts': spell166,
   'enemies-abound': spell167,
-  'enervation': spell168,
+  enervation: spell168,
   'enhance-ability': spell169,
   'enlarge-reduce': spell170,
   'ensnaring-strike': spell171,
-  'entangle': spell172,
-  'enthrall': spell173,
+  entangle: spell172,
+  enthrall: spell173,
   'erupting-earth': spell174,
-  'etherealness': spell175,
+  etherealness: spell175,
   'evards-black-tentacles': spell176,
   'expeditious-retreat': spell177,
-  'eyebite': spell178,
-  'fabricate': spell179,
+  eyebite: spell178,
+  fabricate: spell179,
   'faerie-fire': spell180,
   'false-life': spell181,
   'far-step': spell182,
   'fast-friends': spell183,
-  'fear': spell184,
+  fear: spell184,
   'feather-fall': spell185,
-  'feeblemind': spell186,
+  feeblemind: spell186,
   'feign-death': spell187,
   'find-familiar': spell188,
   'find-greater-steed': spell189,
@@ -779,7 +780,7 @@ export const spellDetails = {
   'fire-bolt': spell195,
   'fire-shield': spell196,
   'fire-storm': spell197,
-  'fireball': spell198,
+  fireball: spell198,
   'fizban-s-platinum-shield-ua': spell199,
   'fizbans-platinum-shield': spell200,
   'flame-arrows': spell201,
@@ -789,63 +790,63 @@ export const spellDetails = {
   'flaming-sphere': spell205,
   'flesh-to-stone': spell206,
   'flock-of-familiars': spell207,
-  'fly': spell208,
+  fly: spell208,
   'fog-cloud': spell209,
-  'forbiddance': spell210,
-  'forcecage': spell211,
-  'foresight': spell212,
+  forbiddance: spell210,
+  forcecage: spell211,
+  foresight: spell212,
   'fortunes-favor': spell213,
   'freedom-of-movement': spell214,
   'freedom-of-the-waves': spell215,
   'freedom-of-the-winds': spell216,
-  'friends': spell217,
+  friends: spell217,
   'frost-fingers': spell218,
-  'frostbite': spell219,
+  frostbite: spell219,
   'galders-speedy-courier': spell220,
   'galders-tower': spell221,
   'gaseous-form': spell222,
   'gate-seal': spell223,
-  'gate': spell224,
-  'geas': spell225,
+  gate: spell224,
+  geas: spell225,
   'gentle-repose': spell226,
   'giant-insect': spell227,
   'gift-of-alacrity': spell228,
   'gift-of-gab': spell229,
-  'glibness': spell230,
+  glibness: spell230,
   'globe-of-invulnerability': spell231,
   'glyph-of-warding': spell232,
-  'goodberry': spell233,
+  goodberry: spell233,
   'grasping-vine': spell234,
   'gravity-fissure': spell235,
   'gravity-sinkhole': spell236,
-  'grease': spell237,
+  grease: spell237,
   'greater-invisibility': spell238,
   'greater-restoration': spell239,
   'green-flame-blade': spell240,
   'guardian-of-faith': spell241,
   'guardian-of-nature': spell242,
   'guards-and-wards': spell243,
-  'guidance': spell244,
+  guidance: spell244,
   'guiding-bolt': spell245,
   'guiding-hand-ua': spell246,
   'gust-of-wind': spell247,
-  'gust': spell248,
+  gust: spell248,
   'hail-of-thorns': spell249,
-  'hallow': spell250,
+  hallow: spell250,
   'hallucinatory-terrain': spell251,
   'hand-of-radiance': spell252,
-  'harm': spell253,
-  'haste': spell254,
-  'haywire': spell255,
-  'heal': spell256,
+  harm: spell253,
+  haste: spell254,
+  haywire: spell255,
+  heal: spell256,
   'healing-elixir-ua': spell257,
   'healing-spirit': spell258,
   'healing-word': spell259,
   'heat-metal': spell260,
   'hellish-rebuke': spell261,
   'heroes-feast': spell262,
-  'heroism': spell263,
-  'hex': spell264,
+  heroism: spell263,
+  hex: spell264,
   'hold-monster': spell265,
   'hold-person': spell266,
   'holy-aura': spell267,
@@ -858,17 +859,17 @@ export const spellDetails = {
   'ice-storm': spell274,
   'icingdeath-s-frost': spell275,
   'id-insinuation': spell276,
-  'identify': spell277,
+  identify: spell277,
   'illusory-dragon': spell278,
   'illusory-script': spell279,
-  'immolation': spell280,
+  immolation: spell280,
   'immovable-object': spell281,
-  'imprisonment': spell282,
+  imprisonment: spell282,
   'incendiary-cloud': spell283,
   'incite-greed': spell284,
   'infallible-relay': spell285,
   'infernal-calling': spell286,
-  'infestation': spell287,
+  infestation: spell287,
   'inflict-wounds': spell288,
   'insect-plague': spell289,
   'intellect-fortress': spell290,
@@ -877,29 +878,29 @@ export const spellDetails = {
   'investiture-of-stone': spell293,
   'investiture-of-wind': spell294,
   'invisibility-to-cameras': spell295,
-  'invisibility': spell296,
-  'invulnerability': spell297,
+  invisibility: spell296,
+  invulnerability: spell297,
   'jims-glowing-coin': spell298,
   'jims-magic-missile': spell299,
-  'jump': spell300,
+  jump: spell300,
   'kinetic-jaunt': spell301,
-  'knock': spell302,
+  knock: spell302,
   'legend-lore': spell303,
   'leomunds-secret-chest': spell304,
   'leomunds-tiny-hut': spell305,
   'lesser-restoration': spell306,
-  'levitate': spell307,
+  levitate: spell307,
   'life-transference': spell308,
-  'light': spell309,
+  light: spell309,
   'lightning-arrow': spell310,
   'lightning-bolt': spell311,
   'lightning-lure': spell312,
   'locate-animals-or-plants': spell313,
   'locate-creature': spell314,
   'locate-object': spell315,
-  'longstrider': spell316,
+  longstrider: spell316,
   'maddening-darkness': spell317,
-  'maelstrom': spell318,
+  maelstrom: spell318,
   'mage-armor': spell319,
   'mage-hand-legerdomain': spell320,
   'mage-hand': spell321,
@@ -917,14 +918,14 @@ export const spellDetails = {
   'mass-polymorph': spell333,
   'mass-suggestion': spell334,
   'maximillians-earthen-grasp': spell335,
-  'maze': spell336,
+  maze: spell336,
   'meld-into-stone': spell337,
   'melfs-acid-arrow': spell338,
   'melfs-minute-meteors': spell339,
-  'mending': spell340,
+  mending: spell340,
   'mental-barrier': spell341,
   'mental-prison': spell342,
-  'message': spell343,
+  message: spell343,
   'meteor-swarm': spell344,
   'mighty-fortress': spell345,
   'mind-blank': spell346,
@@ -934,11 +935,11 @@ export const spellDetails = {
   'minor-illusion': spell350,
   'mirage-arcane': spell351,
   'mirror-image': spell352,
-  'mislead': spell353,
+  mislead: spell353,
   'misty-step': spell354,
   'modify-memory': spell355,
   'mold-earth': spell356,
-  'moonbeam': spell357,
+  moonbeam: spell357,
   'mordenkainens-faithful-hound': spell358,
   'mordenkainens-magnificent-mansion': spell359,
   'mordenkainens-private-sanctum': spell360,
@@ -948,7 +949,7 @@ export const spellDetails = {
   'nathairs-mischief-ua': spell364,
   'nathairs-mischief': spell365,
   'negative-energy-flood': spell366,
-  'nondetection': spell367,
+  nondetection: spell367,
   'nystuls-magic-aura': spell368,
   'on-off': spell369,
   'otherworldly-form': spell370,
@@ -956,7 +957,7 @@ export const spellDetails = {
   'otilukes-resilient-sphere': spell372,
   'ottos-irresistible-dance': spell373,
   'pass-without-trace': spell374,
-  'passwall': spell375,
+  passwall: spell375,
   'phantasmal-force': spell376,
   'phantasmal-killer': spell377,
   'phantom-steed': spell378,
@@ -965,13 +966,13 @@ export const spellDetails = {
   'plane-shift': spell381,
   'plant-growth': spell382,
   'poison-spray': spell383,
-  'polymorph': spell384,
+  polymorph: spell384,
   'power-word-heal': spell385,
   'power-word-kill': spell386,
   'power-word-pain': spell387,
   'power-word-stun': spell388,
   'prayer-of-healing': spell389,
-  'prestidigitation': spell390,
+  prestidigitation: spell390,
   'primal-savagery': spell391,
   'primordial-ward': spell392,
   'prismatic-spray': spell393,
@@ -987,9 +988,9 @@ export const spellDetails = {
   'psychic-crush': spell403,
   'psychic-scream': spell404,
   'pulse-wave': spell405,
-  'puppet': spell406,
+  puppet: spell406,
   'purify-food-and-drink': spell407,
-  'pyrotechnics': spell408,
+  pyrotechnics: spell408,
   'raise-dead': spell409,
   'rarys-telepathic-bond': spell410,
   'raulothims-psychic-lance-ua': spell411,
@@ -999,49 +1000,49 @@ export const spellDetails = {
   'ray-of-frost': spell415,
   'ray-of-sickness': spell416,
   'reality-break': spell417,
-  'regenerate': spell418,
-  'reincarnate': spell419,
+  regenerate: spell418,
+  reincarnate: spell419,
   'remote-access': spell420,
   'remove-curse': spell421,
-  'resistance': spell422,
-  'resurrection': spell423,
+  resistance: spell422,
+  resurrection: spell423,
   'reverse-gravity': spell424,
-  'revivify': spell425,
+  revivify: spell425,
   'rimes-binding-ice': spell426,
   'rope-trick': spell427,
   'sacred-flame': spell428,
-  'sanctuary': spell429,
+  sanctuary: spell429,
   'sapping-sting': spell430,
-  'scatter': spell431,
+  scatter: spell431,
   'scorching-ray': spell432,
-  'scrying': spell433,
+  scrying: spell433,
   'searing-smite': spell434,
   'see-invisibility': spell435,
-  'seeming': spell436,
-  'sending': spell437,
+  seeming: spell436,
+  sending: spell437,
   'sense-emotion': spell438,
-  'sequester': spell439,
+  sequester: spell439,
   'shadow-blade': spell440,
   'shadow-of-moil': spell441,
   'shape-water': spell442,
-  'shapechange': spell443,
-  'shatter': spell444,
+  shapechange: spell443,
+  shatter: spell444,
   'shield-of-faith': spell445,
-  'shield': spell446,
-  'shillelagh': spell447,
+  shield: spell446,
+  shillelagh: spell447,
   'shocking-grasp': spell448,
-  'shutdown': spell449,
+  shutdown: spell449,
   'sickening-radiance': spell450,
-  'silence': spell451,
+  silence: spell451,
   'silent-image': spell452,
   'silvery-barbs': spell453,
-  'simulacrum': spell454,
+  simulacrum: spell454,
   'skill-empowerment': spell455,
-  'skywrite': spell456,
-  'sleep': spell457,
+  skywrite: spell456,
+  sleep: spell457,
   'sleet-storm': spell458,
-  'slow': spell459,
-  'snare': spell460,
+  slow: spell459,
+  snare: spell460,
   'snillocs-snowball-storm': spell461,
   'soul-cage': spell462,
   'spare-the-dying': spell463,
@@ -1061,11 +1062,11 @@ export const spellDetails = {
   'steel-wind-strike': spell477,
   'stinking-cloud': spell478,
   'stone-shape': spell479,
-  'stoneskin': spell480,
+  stoneskin: spell480,
   'storm-of-vengeance': spell481,
   'storm-sphere': spell482,
   'sudden-awakening': spell483,
-  'suggestion': spell484,
+  suggestion: spell484,
   'summon-aberration': spell485,
   'summon-beast': spell486,
   'summon-celestial': spell487,
@@ -1080,40 +1081,40 @@ export const spellDetails = {
   'summon-shadowspawn': spell496,
   'summon-undead': spell497,
   'summon-warrior-spirit': spell498,
-  'sunbeam': spell499,
-  'sunburst': spell500,
+  sunbeam: spell499,
+  sunburst: spell500,
   'swift-quiver': spell501,
   'sword-burst': spell502,
-  'symbol': spell503,
+  symbol: spell503,
   'synaptic-static': spell504,
-  'synchronicity': spell505,
+  synchronicity: spell505,
   'system-backdoor': spell506,
   'tashas-caustic-brew': spell507,
   'tashas-hideous-laughter': spell508,
   'tashas-mind-whip': spell509,
   'tashas-otherworldly-guise': spell510,
-  'telekinesis': spell511,
-  'telepathy': spell512,
-  'teleport': spell513,
+  telekinesis: spell511,
+  telepathy: spell512,
+  teleport: spell513,
   'teleportation-circle': spell514,
   'temple-of-the-gods': spell515,
   'temporal-shunt': spell516,
   'tensers-floating-disk': spell517,
   'tensers-transformation': spell518,
   'tether-essence': spell519,
-  'thaumaturgy': spell520,
+  thaumaturgy: spell520,
   'thorn-whip': spell521,
   'thought-shield': spell522,
   'thunder-step': spell523,
-  'thunderclap': spell524,
+  thunderclap: spell524,
   'thunderous-smite': spell525,
-  'thunderwave': spell526,
+  thunderwave: spell526,
   'tidal-wave': spell527,
   'time-ravage': spell528,
   'time-stop': spell529,
   'tiny-servant': spell530,
   'toll-the-dead': spell531,
-  'tongues': spell532,
+  tongues: spell532,
   'transmute-rock': spell533,
   'transport-via-plants': spell534,
   'tree-stride': spell535,
@@ -1121,12 +1122,12 @@ export const spellDetails = {
   'true-resurrection': spell537,
   'true-seeing': spell538,
   'true-strike': spell539,
-  'tsunami': spell540,
+  tsunami: spell540,
   'unearthly-chorus': spell541,
   'unseen-servant': spell542,
   'vampiric-touch': spell543,
   'vicious-mockery': spell544,
-  'virtue': spell545,
+  virtue: spell545,
   'vitriolic-sphere': spell546,
   'vortex-warp': spell547,
   'wall-of-fire': spell548,
@@ -1143,23 +1144,23 @@ export const spellDetails = {
   'water-breathing': spell559,
   'water-walk': spell560,
   'watery-sphere': spell561,
-  'web': spell562,
-  'weird': spell563,
-  'whirlwind': spell564,
+  web: spell562,
+  weird: spell563,
+  whirlwind: spell564,
   'widogast-s-transmogrification-hb': spell565,
   'widogast-s-vault-of-amber-hb': spell566,
   'widogast-s-web-of-fire-hb': spell567,
   'wild-cunning': spell568,
   'wind-walk': spell569,
   'wind-wall': spell570,
-  'wish': spell571,
+  wish: spell571,
   'witch-bolt': spell572,
   'wither-and-bloom': spell573,
   'word-of-radiance': spell574,
   'word-of-recall': spell575,
   'wrath-of-nature': spell576,
   'wrathful-smite': spell577,
-  'wristpocket': spell578,
+  wristpocket: spell578,
   'zephyr-strike': spell579,
   'zone-of-truth': spell580,
 };

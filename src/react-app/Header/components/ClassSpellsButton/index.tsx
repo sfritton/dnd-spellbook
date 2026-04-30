@@ -1,13 +1,14 @@
-import { useCallback, FormEvent } from 'react';
-import { formatSpellLevel } from '../../../util';
+import { type FormEvent, useCallback } from 'react';
+
 import { CLASSES } from '../../../../constants/classes';
-import * as spellLists from '../../../spells';
-import styles from './index.module.css';
-import { useSpellListContext } from '../../../SpellListContext';
-import { useSingleDialog } from '../../../Dialog';
 import { Checkbox } from '../../../Checkbox';
-import { NavButton } from '../NavButton';
+import { useSingleDialog } from '../../../Dialog';
 import { IconAdd } from '../../../icons/IconAdd';
+import { useSpellListContext } from '../../../SpellListContext';
+import { spellLists } from '../../../spells';
+import { formatSpellLevel } from '../../../util';
+import { NavButton } from '../NavButton';
+import styles from './index.module.css';
 
 const LEVEL_OPTIONS = [...new Array(10)].map((_, i) => ({
   value: i,
@@ -25,12 +26,10 @@ export const ClassSpellsButton = ({ isNav = false }: { isNav?: boolean }) => {
 
       const className = (select as HTMLSelectElement).value;
       const levels = [...fieldset.querySelectorAll('input[type="checkbox"]:checked')].map((input) =>
-        Number.parseInt(input.getAttribute('id').replace('level-', ''), 10),
+        Number.parseInt(input.getAttribute('id')?.replace?.('level-', '') ?? '', 10),
       );
 
-      appendSpells(
-        levels.flatMap((level) => spellLists[className as keyof typeof spellLists][level]),
-      );
+      appendSpells(levels.flatMap((level) => spellLists[className][level]));
       close();
     },
     [appendSpells, close],
@@ -70,5 +69,9 @@ export const ClassSpellsButton = ({ isNav = false }: { isNav?: boolean }) => {
     return <NavButton icon={<IconAdd />} label="Add spells" onClick={openDialog} />;
   }
 
-  return <button onClick={openDialog}>Add from class list</button>;
+  return (
+    <button type="button" onClick={openDialog}>
+      Add from class list
+    </button>
+  );
 };

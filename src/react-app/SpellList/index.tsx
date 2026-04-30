@@ -1,5 +1,5 @@
 import { useFilterContext } from '../FilterContext';
-import { SpellSummaryData } from '../SpellListContext';
+import type { SpellSummaryData } from '../SpellListContext';
 import { SpellSummary } from '../SpellSummary';
 import styles from './index.module.css';
 

@@ -1,6 +1,6 @@
-import { Spell } from '../types';
-import styles from './index.module.css';
 import { spellDetails } from '../../constants/spell-details';
+import type { Spell } from '../types';
+import styles from './index.module.css';
 
 export const SpellCard = ({
   id,
@@ -53,6 +53,7 @@ export const SpellCard = ({
       </div>
       <div className={styles.description}>
         {description.map((line, index) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: Index is the best we have here
           <div key={`${index}-${line}`}>
             {line.match(/^at higher levels\./i) ? (
               <>
@@ -67,8 +68,8 @@ export const SpellCard = ({
           <b>Class lists:</b>{' '}
           {spellLists
             .map((spellList) => {
-              const listName = spellList.split(':').at(-1).replace(/\//g, '').replace(/-/g, ' ');
-              return listName.charAt(0).toUpperCase() + listName.slice(1);
+              const listName = spellList.split(':').at(-1)?.replace(/\//g, '').replace(/-/g, ' ');
+              return `${listName?.charAt(0).toUpperCase() ?? ''}${listName?.slice(1) ?? ''}`;
             })
             .join(', ')}
         </div>

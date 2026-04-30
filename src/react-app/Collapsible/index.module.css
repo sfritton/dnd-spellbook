@@ -13,7 +13,8 @@
       background: var(--color-bg-white);
     }
 
-    &::marker, &::-webkit-details-marker {
+    &::marker,
+    &::-webkit-details-marker {
       display: none;
     }
 
@@ -24,7 +25,6 @@
       transition: transform 300ms;
     }
   }
-
 
   &[open] {
     .icon {
@@ -38,7 +38,10 @@
   grid-template-rows: 0fr;
   opacity: 0;
   transform: scaleY(0.5);
-  transition: grid-template-rows 300ms, opacity 300ms, transform 300ms;
+  transition:
+    grid-template-rows 300ms,
+    opacity 300ms,
+    transform 300ms;
   transform-origin: top;
 
   > div {

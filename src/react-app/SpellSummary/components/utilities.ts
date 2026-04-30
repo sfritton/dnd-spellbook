@@ -1,4 +1,4 @@
-import { SpellSummaryButtonProps } from './types';
+import type { SpellSummaryButtonProps } from './types';
 
 export const getStatus = ({
   isKnown = false,

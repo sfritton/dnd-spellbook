@@ -1,10 +1,10 @@
-
 .healthAndSpellSlots {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh used as fallback for browsers that don't support svh */
   height: 100svh;
   padding: 16px 0;
   z-index: 3;
@@ -108,17 +108,18 @@
   }
 
   .healthAndSpellSlots {
-      left: auto;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      top: 48px;
-      width: 375px;
-      height: auto;
-      max-height: calc(100vh - 48px);
-      max-height: calc(100svh - 48px);
-      border: 1px solid var(--color-parchment-dark);
-      animation: slideLeft 300ms;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    top: 48px;
+    width: 375px;
+    height: auto;
+    max-height: calc(100vh - 48px);
+    /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh used as fallback for browsers that don't support svh */
+    max-height: calc(100svh - 48px);
+    border: 1px solid var(--color-parchment-dark);
+    animation: slideLeft 300ms;
   }
 }
 

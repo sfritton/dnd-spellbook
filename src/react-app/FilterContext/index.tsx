@@ -1,17 +1,18 @@
 import {
-  Dispatch,
-  PropsWithChildren,
-  SetStateAction,
   createContext,
+  type Dispatch,
+  type PropsWithChildren,
+  type SetStateAction,
   useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { Spell } from '../types';
+
 import { spellDetails } from '../../constants/spell-details';
-import { DEFAULT_FILTERS, Filters } from './constants';
+import type { Spell } from '../types';
+import { DEFAULT_FILTERS, type Filters } from './constants';
 
 export { DEFAULT_FILTERS, Filters } from './constants';
 

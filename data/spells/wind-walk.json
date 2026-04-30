@@ -12,7 +12,5 @@
     "Reverting takes 1 minute, during which time a creature is incapacitated and can’t move. Until the spell ends, a creature can revert to cloud form, which also requires the 1-minute transformation.",
     "If a creature is in cloud form and flying when the effect ends, the creature descends 60 feet per round for 1 minute until it lands, which it does safely. If it can’t land after 1 minute, the creature falls the remaining distance."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:druid"
-  ]
+  "spellLists": ["http://dnd5e.wikidot.com/spells:druid"]
 }

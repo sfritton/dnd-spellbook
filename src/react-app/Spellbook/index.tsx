@@ -1,13 +1,13 @@
-import { SpellList } from '../SpellList';
-import styles from './index.module.css';
-import { formatSpellLevel } from '../util';
-import { useSpellListContext } from '../SpellListContext';
-import { useFilterContext } from '../FilterContext';
-import { WelcomePage } from '../WelcomePage';
 import { Collapsible } from '../Collapsible';
+import { useFilterContext } from '../FilterContext';
 import { FilterSummary } from '../FilterSummary';
 import { IconCheckmark } from '../icons/IconCheckmark';
 import { IconStar } from '../icons/IconStar';
+import { SpellList } from '../SpellList';
+import { useSpellListContext } from '../SpellListContext';
+import { formatSpellLevel } from '../util';
+import { WelcomePage } from '../WelcomePage';
+import styles from './index.module.css';
 
 export const Spellbook = () => {
   const { spellLists, preparedSpells, alwaysPreparedSpells } = useSpellListContext();
@@ -56,6 +56,7 @@ export const Spellbook = () => {
       {hasPreparedSpells ? (
         preparedSpells.map((spells, index) =>
           spells.length > 0 ? (
+            // biome-ignore lint/suspicious/noArrayIndexKey: Index is the best we have here
             <section key={index}>
               <h3>{formatSpellLevel(index, true)}</h3>
               <SpellList spells={spells} />
@@ -73,6 +74,7 @@ export const Spellbook = () => {
       </h2>
       {spellLists.map((spells, index) =>
         spells.length > 0 ? (
+          // biome-ignore lint/suspicious/noArrayIndexKey: Index is the best we have here
           <section key={index}>
             <Collapsible
               title={<h3 className={styles.spellListHeader}>{formatSpellLevel(index, true)}</h3>}

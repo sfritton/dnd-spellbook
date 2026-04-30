@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Ability } from './types';
+
 import { formatSpellLevel } from '../util';
+import type { Ability } from './types';
 import { getAbilityNumber } from './util';
 
 interface CharacterStatus {
@@ -90,7 +91,12 @@ export const useAbilities = () => {
   }, []);
 
   useEffect(() => {
-    const characterStatus: CharacterStatus = { hp, tempHp, spellSlots, abilities };
+    const characterStatus: CharacterStatus = {
+      hp,
+      tempHp,
+      spellSlots,
+      abilities,
+    };
     localStorage.setItem('character-status', JSON.stringify(characterStatus));
   }, [hp, tempHp, spellSlots, abilities]);
 
@@ -124,10 +130,16 @@ export const useAbilities = () => {
     setHp((prev) => ({ ...prev, current: getAbilityNumber(prev.maximum) }));
     setTempHp((prev) => ({ ...prev, current: 0 }));
     setSpellSlots((prev) =>
-      prev.map((spellSlot) => ({ ...spellSlot, current: getAbilityNumber(spellSlot.maximum) })),
+      prev.map((spellSlot) => ({
+        ...spellSlot,
+        current: getAbilityNumber(spellSlot.maximum),
+      })),
     );
     setAbilities((prev) =>
-      prev.map((ability) => ({ ...ability, current: getAbilityNumber(ability.maximum) })),
+      prev.map((ability) => ({
+        ...ability,
+        current: getAbilityNumber(ability.maximum),
+      })),
     );
   }, []);
 
@@ -148,12 +160,9 @@ export const useAbilities = () => {
     }),
     [
       hp,
-      setHp,
       tempHp,
-      setTempHp,
       spellSlots,
       abilities,
-      setAbilities,
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,

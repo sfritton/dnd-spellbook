@@ -1,10 +1,11 @@
-import { readdir } from 'fs/promises';
-import { consoleLogEmphasis, nameFromUrl } from './util';
-import { fetchDndPage } from './fetch-dnd-page';
+import { readdir } from 'node:fs/promises';
 import { load } from 'cheerio';
+
+import { SPELL_DIRECTORY_PATH } from './constants';
+import { fetchDndPage } from './fetch-dnd-page';
 import { rateLimitedMap } from './rate-limited-map';
 import { saveSpell } from './save-spell';
-import { SPELL_DIRECTORY_PATH } from './constants';
+import { consoleLogEmphasis, nameFromUrl } from './util';
 
 export const getSavedSpells = async () => {
   const allSpells = await readdir(SPELL_DIRECTORY_PATH);
@@ -24,7 +25,7 @@ const fetchAllSpellNames = async () => {
 
   return dom(`td > a`)
     .map((_, anchor) => {
-      const url = anchor.attribs['href'];
+      const url = anchor.attribs.href;
 
       return {
         url,

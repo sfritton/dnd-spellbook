@@ -1,4 +1,5 @@
-import { readFile, readdir, writeFile } from 'fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+
 import SPELL_LISTS from '../../data/spell-lists.json';
 
 const DATA_DIRECTORY_PATH = `${__dirname}/../../../data`;
@@ -43,7 +44,14 @@ const generateSpellTypescriptImports = async (spellFileNames: string[]) => {
     (spellFileName, index) => `  '${spellFileName.replace(/\.json$/, '')}': spell${index},`,
   );
 
-  const fileText = [...imports, '', 'export const spellDetails = {', ...exports, '};'].join('\n');
+  const fileText = [
+    ...imports,
+    "import type { Spell } from '../react-app/types';",
+    '',
+    'export const spellDetails: Record<string, Spell.Details> = {',
+    ...exports,
+    '};',
+  ].join('\n');
 
   return writeFile(`${__dirname}/../../../src/constants/spell-details.ts`, fileText);
 };
@@ -86,7 +94,10 @@ const generateFilters = async (spellFileNames: string[]) => {
     const { castingTime, components, range, duration } = spell;
 
     return {
-      castingTime: { ...acc.castingTime, [castingTime.toLowerCase().split(',')[0]]: true },
+      castingTime: {
+        ...acc.castingTime,
+        [castingTime.toLowerCase().split(',')[0]]: true,
+      },
       // components: { ...acc.components, [components]: true },
       duration: { ...acc.duration, [duration]: true },
       range: { ...acc.range, [range]: true },

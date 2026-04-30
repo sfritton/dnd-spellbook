@@ -43,8 +43,5 @@
     "Bonus Action",
     "Shadow Stealth (Fear Only). While in dim light or darkness, the spirit takes the Hide action."
   ],
-  "spellLists": [
-    "/spells:warlock",
-    "/spells:wizard"
-  ]
+  "spellLists": ["/spells:warlock", "/spells:wizard"]
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { useFilterContext } from '../../../FilterContext';
 import { FilterSection } from './FilterSection';
 
@@ -17,6 +18,7 @@ export const FilterDrawerContent = ({ closeFilterDrawer }: { closeFilterDrawer: 
         <FilterSection key={filterId} id={filterId} filters={filters} setFilters={setFilters} />
       ))}
       <button
+        type="button"
         onClick={() => {
           setContextFilters(filters);
           closeFilterDrawer();

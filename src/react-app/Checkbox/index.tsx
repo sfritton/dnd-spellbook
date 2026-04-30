@@ -1,4 +1,5 @@
-import { ChangeEventHandler, useCallback } from 'react';
+import { type ChangeEventHandler, useCallback } from 'react';
+
 import style from './index.module.css';
 
 interface CheckboxProps {

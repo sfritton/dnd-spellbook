@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './index.module.css';
+
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
 import { AbilityTracker } from './components/AbilityTracker';
-import { getAbilityNumber } from './util';
+import styles from './index.module.css';
 import { useAbilities } from './use-abilities';
+import { getAbilityNumber } from './util';
 
 export const HealthAndSpellSlots = () => {
   const { isCharacterOpen, setIsCharacterOpen } = useSettingsContext();
@@ -41,6 +42,7 @@ export const HealthAndSpellSlots = () => {
           Character Status
         </h2>
         <button
+          type="button"
           className="secondary"
           onClick={() => setIsCharacterOpen(false)}
           aria-label={'Close'}
@@ -84,6 +86,7 @@ export const HealthAndSpellSlots = () => {
         ) : null}
         {spellSlots.map(({ name, current, maximum }, index) => (
           <AbilityTracker
+            // biome-ignore lint/suspicious/noArrayIndexKey: There's nothing else guaranteed to be unique
             key={index}
             name={name}
             current={current}
@@ -98,6 +101,7 @@ export const HealthAndSpellSlots = () => {
         ) : null}
         {abilities.map(({ name, current, maximum }, index) => (
           <AbilityTracker
+            // biome-ignore lint/suspicious/noArrayIndexKey: There's nothing else guaranteed to be unique
             key={index}
             isRange
             name={name}
@@ -110,6 +114,7 @@ export const HealthAndSpellSlots = () => {
           />
         ))}
         {isEditing ? (
+          // biome-ignore lint/a11y/useValidAnchor: TODO: I don't want to deal with this right now
           <a
             href="#"
             onClick={(e) => {
@@ -124,8 +129,11 @@ export const HealthAndSpellSlots = () => {
       <div className={styles.buttons}>
         {isEditing ? (
           <>
-            <button onClick={() => setIsEditing(false)}>Save</button>
+            <button type="button" onClick={() => setIsEditing(false)}>
+              Save
+            </button>
             <button
+              type="button"
               className="secondary"
               onClick={() => {
                 handleCancelEdit();
@@ -137,8 +145,11 @@ export const HealthAndSpellSlots = () => {
           </>
         ) : (
           <>
-            <button onClick={handleLongRest}>Long rest</button>
+            <button type="button" onClick={handleLongRest}>
+              Long rest
+            </button>
             <button
+              type="button"
               onClick={() => {
                 handleEdit();
                 setIsEditing(true);

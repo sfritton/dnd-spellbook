@@ -1,5 +1,5 @@
-import * as artificer from '../constants/spells/artificer.json';
 import * as arcaneTrickster from '../constants/spells/arcane-trickster.json';
+import * as artificer from '../constants/spells/artificer.json';
 import * as bard from '../constants/spells/bard.json';
 import * as cleric from '../constants/spells/cleric.json';
 import * as druid from '../constants/spells/druid.json';
@@ -9,10 +9,11 @@ import * as ranger from '../constants/spells/ranger.json';
 import * as sorcerer from '../constants/spells/sorcerer.json';
 import * as warlock from '../constants/spells/warlock.json';
 import * as wizard from '../constants/spells/wizard.json';
+import type { Spell } from './types';
 
-export {
-  artificer,
+export const spellLists: Record<string, Spell.Summary[][]> = {
   arcaneTrickster,
+  artificer,
   bard,
   cleric,
   druid,

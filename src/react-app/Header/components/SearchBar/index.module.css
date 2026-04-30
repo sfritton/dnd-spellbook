@@ -10,25 +10,25 @@
     position: relative;
 
     > input {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-    padding: 0 16px;
-    padding-right: 48px;
-    height: 32px;
-    border-radius: 8px;
-    font-family: var(--serif);
-    border: none;
-    background: #222;
-    color: #fff;
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      padding: 0 16px;
+      padding-right: 48px;
+      height: 32px;
+      border-radius: 8px;
+      font-family: var(--serif);
+      border: none;
+      background: #222;
+      color: #fff;
 
-    &::placeholder {
-      color: #bbb;
-    }
+      &::placeholder {
+        color: #bbb;
+      }
 
-    &:focus {
-      outline: 2px solid #666;
-    }
+      &:focus {
+        outline: 2px solid #666;
+      }
     }
 
     > svg {
@@ -40,7 +40,6 @@
       width: 24px;
       height: 24px;
     }
-
   }
 
   .dropdown {
@@ -51,7 +50,9 @@
     transform: translateY(-200px);
     z-index: -2;
     opacity: 0;
-    transition: opacity 300ms, transform 300ms;
+    transition:
+      opacity 300ms,
+      transform 300ms;
     margin: 0;
     padding: 8px 12px;
     display: flex;

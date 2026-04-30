@@ -1,11 +1,11 @@
+import { DialogProvider } from '../Dialog';
+import { FilterContextProvider } from '../FilterContext';
 import { Header } from '../Header';
+import { HealthAndSpellSlots } from '../HealthAndSpellSlots';
+import { PrintSection } from '../PrintSection';
+import { SettingsContextProvider } from '../SettingsContext';
 import { Spellbook } from '../Spellbook';
 import { SpellListContextProvider } from '../SpellListContext';
-import { DialogProvider } from '../Dialog';
-import { SettingsContextProvider } from '../SettingsContext';
-import { HealthAndSpellSlots } from '../HealthAndSpellSlots';
-import { FilterContextProvider } from '../FilterContext';
-import { PrintSection } from '../PrintSection';
 
 export const App = () => {
   return (

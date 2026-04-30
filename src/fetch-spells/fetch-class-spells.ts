@@ -1,14 +1,15 @@
+import { writeFile } from 'node:fs/promises';
 import { load } from 'cheerio';
+
+import { CLASS_SPELL_LINKS } from './constants';
 import { fetchDndPage } from './fetch-dnd-page';
 import { rateLimitedMap } from './rate-limited-map';
-import { writeFile } from 'fs/promises';
 import { consoleLogEmphasis, nameFromUrl } from './util';
-import { CLASS_SPELL_LINKS } from './constants';
 
 /** Fetches each class's spell list, and saves them in spells/spell-lists.json */
 export const fetchClassSpellLists = async () => {
   consoleLogEmphasis('FETCHING CLASS SPELL LISTS');
-  let classSpellLists: Record<string, { name: string; url: string; level: number }[]> = {};
+  const classSpellLists: Record<string, { name: string; url: string; level: number }[]> = {};
 
   await rateLimitedMap(CLASS_SPELL_LINKS, async (url, i) => {
     console.log(i, new Date(), `Fetching spells from ${url} ...`);
@@ -28,7 +29,7 @@ export const fetchClassSpellLists = async () => {
     const getSpellUrlsByLevel = (level: number, tabIndex: number) =>
       dom(`#wiki-tab-0-${tabIndex} td > a`)
         .map((_, anchor) => {
-          const url = anchor.attribs['href'];
+          const url = anchor.attribs.href;
 
           return {
             url,
@@ -38,7 +39,7 @@ export const fetchClassSpellLists = async () => {
         })
         .toArray();
 
-    const spellUrls = spellLevels.map((level, i) => getSpellUrlsByLevel(level, i)).flat();
+    const spellUrls = spellLevels.flatMap((level, i) => getSpellUrlsByLevel(level, i));
 
     classSpellLists[nameFromUrl(url)] = spellUrls;
   });

@@ -18,11 +18,12 @@ export const FilterSummary = () => {
       Object.entries(values).map(([id, value]) =>
         value ? (
           <button
+            type="button"
             onClick={() =>
               setFilters((prevFilters) => ({
                 ...prevFilters,
                 [filterName]: {
-                  ...prevFilters[filterName],
+                  ...prevFilters[filterName as keyof typeof prevFilters],
                   [id]: false,
                 },
               }))
@@ -42,7 +43,7 @@ export const FilterSummary = () => {
       <h2 className="hidden">Active Filters:</h2>
       {filterButtons}
       {filterButtons.filter((button) => Boolean(button)).length > 1 ? (
-        <button onClick={() => setFilters(DEFAULT_FILTERS)} className="secondary">
+        <button type="button" onClick={() => setFilters(DEFAULT_FILTERS)} className="secondary">
           Clear all
         </button>
       ) : null}

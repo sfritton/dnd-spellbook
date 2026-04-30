@@ -1,24 +1,26 @@
-import styles from './index.module.css';
-import { IconDotsVertical } from '../../icons/IconDotsVertical';
-import { SpellSummaryButtonProps } from './types';
-import { getStatus } from './utilities';
+import { type MouseEventHandler, useCallback } from 'react';
+
 import { useSingleDialog } from '../../Dialog';
-import { useSpellListContext } from '../../SpellListContext';
-import { MouseEventHandler, useCallback } from 'react';
-import { IconDelete } from '../../icons/IconDelete';
-import { IconCircle } from '../../icons/IconCircle';
 import { IconCheckmark } from '../../icons/IconCheckmark';
+import { IconCircle } from '../../icons/IconCircle';
+import { IconDelete } from '../../icons/IconDelete';
+import { IconDotsVertical } from '../../icons/IconDotsVertical';
 import { IconStar } from '../../icons/IconStar';
+import { useSpellListContext } from '../../SpellListContext';
+import styles from './index.module.css';
+import type { SpellSummaryButtonProps } from './types';
+import { getStatus } from './utilities';
 
 export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
   const label = 'More options';
   const status = getStatus(props);
   const { open, close } = useSingleDialog();
   const { makeToggleSpell, makeToggleSpellAlwaysPrepared, removeSpell } = useSpellListContext();
-  const { isKnown, disabled, ...spell } = props;
+  const { disabled } = props;
 
   const openOptionsDialog = useCallback<MouseEventHandler>(
     (e) => {
+      const { isKnown, disabled, ...spell } = props;
       e.preventDefault();
       open({
         title: `Update Spell`,
@@ -28,6 +30,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
             <h4>{spell.title}</h4>
             {status === 'always_prepared' ? null : (
               <button
+                type="button"
                 className="secondary"
                 onClick={() => {
                   makeToggleSpellAlwaysPrepared(spell)(true);
@@ -42,6 +45,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
             )}
             {status === 'prepared' ? null : (
               <button
+                type="button"
                 className="secondary"
                 onClick={() => {
                   makeToggleSpell(spell)(true);
@@ -57,6 +61,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
             )}
             {status === 'known' ? null : (
               <button
+                type="button"
                 className="secondary"
                 onClick={() => {
                   makeToggleSpellAlwaysPrepared(spell)(false);
@@ -68,6 +73,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
               </button>
             )}
             <button
+              type="button"
               className="secondary"
               onClick={() => {
                 removeSpell(spell);
@@ -80,13 +86,14 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
         ),
       });
     },
-    [spell, status, close, makeToggleSpell, makeToggleSpellAlwaysPrepared, removeSpell],
+    [props, status, open, close, makeToggleSpell, makeToggleSpellAlwaysPrepared, removeSpell],
   );
 
   if (status === 'new') return null;
 
   return (
     <button
+      type="button"
       aria-label={label}
       className={`${styles.spellStatusButton} secondary`}
       disabled={disabled}

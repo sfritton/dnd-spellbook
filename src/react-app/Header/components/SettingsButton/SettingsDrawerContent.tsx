@@ -1,11 +1,12 @@
-import style from './index.module.css';
-import { Checkbox } from '../../../Checkbox';
-import { HighlightKey, useSettingsContext } from '../../../SettingsContext';
-import { SpellSummary } from '../../../SpellSummary';
 import allSpells from '../../../../constants/spells/all.json';
+import { Checkbox } from '../../../Checkbox';
 import { IconDelete } from '../../../icons/IconDelete';
+import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
+import { SpellSummary } from '../../../SpellSummary';
+import type { Spell } from '../../../types';
+import style from './index.module.css';
 
-const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic');
+const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic') as Spell.Summary;
 const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {
   castingTime: 'Casting Time',
   isRitual: 'Ritual',
@@ -28,7 +29,11 @@ export const SettingsDrawerContent = ({
 
   return (
     <div className={style.settings}>
-      <button className={`secondary ${style.removeSpellsButton}`} onClick={onClickClearSpells}>
+      <button
+        type="button"
+        className={`secondary ${style.removeSpellsButton}`}
+        onClick={onClickClearSpells}
+      >
         <IconDelete /> Remove all spells
       </button>
       <h4>Spell display options</h4>

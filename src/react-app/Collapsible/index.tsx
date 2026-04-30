@@ -1,7 +1,7 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
-import styles from './index.module.css';
 import { IconMore } from '../icons/IconMore';
+import styles from './index.module.css';
 
 export const Collapsible = ({
   children,

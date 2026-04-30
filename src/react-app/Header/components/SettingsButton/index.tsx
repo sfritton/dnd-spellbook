@@ -1,10 +1,11 @@
-import { IconSettings } from '../../../icons/IconSettings';
-import { NavButton } from '../NavButton';
-import { useSingleDialog } from '../../../Dialog';
 import { useCallback } from 'react';
-import { SettingsDrawerContent } from './SettingsDrawerContent';
+
+import { useSingleDialog } from '../../../Dialog';
+import { IconSettings } from '../../../icons/IconSettings';
 import { useSpellListContext } from '../../../SpellListContext';
 import styles from '../../index.module.css';
+import { NavButton } from '../NavButton';
+import { SettingsDrawerContent } from './SettingsDrawerContent';
 
 export const SettingsButton = () => {
   const { clearSpells } = useSpellListContext();
@@ -23,10 +24,12 @@ export const SettingsButton = () => {
         <>
           <div>Are you sure you want to remove all spells from your spellbook? </div>
           <b>This cannot be undone.</b>
-          <button className="secondary" onClick={handleYes}>
+          <button type="button" className="secondary" onClick={handleYes}>
             Yes
           </button>
-          <button onClick={closeClearDialog}>No</button>
+          <button type="button" onClick={closeClearDialog}>
+            No
+          </button>
         </>
       ),
     });
@@ -38,7 +41,7 @@ export const SettingsButton = () => {
       isDrawer: true,
       children: <SettingsDrawerContent onClickClearSpells={handleClickClearSpells} />,
     });
-  }, [open]);
+  }, [openSettingsDrawer, handleClickClearSpells]);
 
   return <NavButton label="Settings" icon={<IconSettings />} onClick={handleClick} />;
 };

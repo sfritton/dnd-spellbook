@@ -1,7 +1,8 @@
+import { writeFile } from 'node:fs/promises';
 import { load } from 'cheerio';
-import { writeFile } from 'fs/promises';
-import { fetchDndPage } from './fetch-dnd-page';
+
 import { SPELL_DIRECTORY_PATH } from './constants';
+import { fetchDndPage } from './fetch-dnd-page';
 
 const parseSpellPage = async (url: string) => {
   const response = await fetchDndPage(url);
@@ -14,7 +15,7 @@ const parseSpellPage = async (url: string) => {
     pageContents.replace(/\n+/g, '\n').split('\n');
 
   const spellLists = dom('#page-content a')
-    .map((_, anchor) => anchor.attribs['href'])
+    .map((_, anchor) => anchor.attribs.href)
     .toArray();
 
   return {

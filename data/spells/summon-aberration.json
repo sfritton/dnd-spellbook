@@ -41,8 +41,5 @@
     "Eye Ray (Beholderkin Only). Ranged Spell Attack: your spell attack modifier to hit, range 150 ft., one creature. Hit: 1d8 + 3 + the spell’s level psychic damage.",
     "Psychic Slam (Star Spawn Only). Melee Spell Attack: your spell attack modifier to hit, reach 5 ft., one creature. Hit: 1d8 + 3 + the spell’s level psychic damage"
   ],
-  "spellLists": [
-    "/spells:warlock",
-    "/spells:wizard"
-  ]
+  "spellLists": ["/spells:warlock", "/spells:wizard"]
 }

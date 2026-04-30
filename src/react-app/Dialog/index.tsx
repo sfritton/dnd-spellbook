@@ -1,7 +1,7 @@
 import {
-  MouseEventHandler,
-  PropsWithChildren,
   createContext,
+  type MouseEventHandler,
+  type PropsWithChildren,
   useCallback,
   useContext,
   useEffect,
@@ -9,8 +9,9 @@ import {
   useRef,
   useState,
 } from 'react';
-import styles from './index.module.css';
+
 import { IconClose } from '../icons/IconClose';
+import styles from './index.module.css';
 
 // TODO: this whole file is a mess, let's find a better way to combine react + dialog + animations
 interface DialogProps {
@@ -39,6 +40,8 @@ const useDialog = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
+    if (!dialogRef.current) return;
+
     dialogObserver.observe(dialogRef.current, { attributes: true });
   }, []);
 
@@ -61,6 +64,7 @@ const useDialog = () => {
     }: PropsWithChildren<DialogProps>) => {
       const closeFn = onClose ?? close;
 
+      // biome-ignore lint/correctness/useHookAtTopLevel: biome doesn't recognize that this is a nested React component (or maybe nested React components are a bad idea)
       const handleBackdropClick = useCallback<MouseEventHandler<HTMLDialogElement>>(
         (e) => {
           if (e.target !== dialogRef.current) return;
@@ -85,7 +89,14 @@ const useDialog = () => {
           >
             <header>
               <h3>{title}</h3>
-              <button className="secondary" autoFocus aria-label="Close" onClick={closeFn}>
+              <button
+                type="button"
+                className="secondary"
+                /** biome-ignore lint/a11y/noAutofocus: autoFocus is fine and needed on dialogs */
+                autoFocus
+                aria-label="Close"
+                onClick={closeFn}
+              >
                 <IconClose />
               </button>
             </header>
@@ -129,7 +140,7 @@ export const DialogProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     if (dialogProps.isOpen) openDialog();
     else closeDialog();
-  }, [dialogProps.isOpen]);
+  }, [dialogProps.isOpen, openDialog, closeDialog]);
 
   useEffect(() => {
     const escHandler = (e: KeyboardEvent) => {
