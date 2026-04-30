@@ -10,11 +10,5 @@
   "description": [
     "This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:cleric",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "cleric", "sorcerer", "warlock", "wizard"]
 }

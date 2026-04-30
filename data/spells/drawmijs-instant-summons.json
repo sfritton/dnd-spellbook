@@ -12,8 +12,5 @@
     "At any time thereafter, you can use your action to speak the item’s name and crush the sapphire. The item instantly appears in your hand regardless of physical or planar distances, and the spell ends. If another creature is holding or carrying the item, crushing the sapphire doesn’t transport the item to you, but instead you learn who the creature possessing the object is and roughly where that creature is located at that moment.",
     "Dispel Magic or a similar effect successfully applied to the sapphire ends this spell’s effect."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:dispel-magic",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["wizard"]
 }

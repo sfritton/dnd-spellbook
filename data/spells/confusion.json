@@ -23,10 +23,5 @@
     "At the end of its turns, an affected target can make a Wisdom saving throw. If it succeeds, this effect ends for that target.",
     "At Higher Levels. When you cast this spell using a spell slot of 5th level or higher, the radius of the sphere increases by 5 feet for each slot level above 4th."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "druid", "arcane-trickster", "sorcerer", "wizard"]
 }

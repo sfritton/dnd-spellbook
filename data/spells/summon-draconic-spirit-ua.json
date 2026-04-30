@@ -41,9 +41,5 @@
     "Bite and Claw. Melee Weapon Attack: your spell attack modifier to hit, reach 10 ft., one target. Hit: 1d6 + 4 + the spell’s level piercing damage.",
     "Breath Weapon. The dragon exhales a stream of multicolored energy in a 30-foot cone. Each creature in that area must make a Dexterity saving throw, taking 2d6 damage of your choice of a damage type this dragon has resistance to on a failed save, or half as much damage on a successful one."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["druid", "sorcerer", "wizard"]
 }

@@ -16,10 +16,5 @@
     "All your weapon attacks are magical, and when you make a weapon attack, you can use your spellcasting ability modifier, instead of Strength or Dexterity, for the attack and damage rolls.",
     "You can attack twice, instead of once, when you take the Attack action on your turn. You ignore this benefit if you already have a feature, like Extra Attack, that gives you extra attacks"
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:cleric",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["cleric", "sorcerer", "warlock", "wizard"]
 }

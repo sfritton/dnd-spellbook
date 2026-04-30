@@ -12,9 +12,5 @@
     "If you cast this spell while concentrating on a spell or an ability that allows you to read or manipulate the thoughts of others (such as detect thoughts or modify memory), you can transform the thoughts or memories you read, rather than your own, into a thought strand.",
     "Casting this spell while holding a thought strand allows you to instantly receive whatever memory, idea, or message the thought strand contains. (Casting detect thoughts on the strand has the same effect.)"
   ],
-  "spellLists": [
-    "/spell:detect-thoughts",
-    "/spell:modify-memory",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["eldritch-knight", "arcane-trickster", "wizard"]
 }

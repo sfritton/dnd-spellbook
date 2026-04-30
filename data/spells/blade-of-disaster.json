@@ -12,10 +12,5 @@
     "As a bonus action on your turn, you can move the blade up to 30 feet to an unoccupied space you can see and then make up to two melee spell attacks with it again.",
     "The blade can harmlessly pass through any barrier, including a Wall of Force."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:wall-of-force",
-    "/spells:sorcerer",
-    "/spells:warlock",
-    "/spells:wizard"
-  ]
+  "spellLists": ["sorcerer", "warlock", "wizard"]
 }

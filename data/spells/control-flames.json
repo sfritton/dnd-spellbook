@@ -15,9 +15,5 @@
     "You cause simple shapes—such as the vague form of a creature, an inanimate object, or a location—to appear within the flames and animate as you like. The shapes last for 1 hour.",
     "If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["druid", "eldritch-knight", "arcane-trickster", "sorcerer", "wizard"]
 }

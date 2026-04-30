@@ -16,10 +16,5 @@
     "The attack rolls of ranged weapon attacks have disadvantage if they pass in or out of the wind.",
     "It hedges out vapor, gas, and fog that can be dispersed by strong wind."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "druid", "eldritch-knight", "sorcerer", "wizard"]
 }

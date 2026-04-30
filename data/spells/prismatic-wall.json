@@ -29,12 +29,5 @@
     "Violet",
     "On a failed save, the creature is blinded. It must then make a Wisdom saving throw at the start of your next turn. A successful save ends the blindness. If it fails that save, the creature is transported to another plane of the DM’s choosing and is no longer blinded. (Typically, a creature that is on a plane that isn’t its home plane is banished home, while other creatures are usually cast into the Astral or Ethereal planes.) This layer is destroyed by a Dispel Magic spell or similar spell of equal or higher level that can end spells and magical effects."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:antimagic-field",
-    "http://dnd5e.wikidot.com/spell:passwall",
-    "http://dnd5e.wikidot.com/spell:daylight",
-    "http://dnd5e.wikidot.com/spell:dispel-magic",
-    "/spells:bard",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "wizard"]
 }

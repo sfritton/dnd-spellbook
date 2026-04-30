@@ -11,7 +11,7 @@ import {
 } from 'react';
 
 import { spellDetails } from '../../constants/spell-details';
-import type { Spell } from '../types';
+import type { Spell } from '../../types';
 import { DEFAULT_FILTERS, type Filters } from './constants';
 
 export { DEFAULT_FILTERS, Filters } from './constants';

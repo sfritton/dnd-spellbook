@@ -3,6 +3,7 @@ data.js
 node_modules
 .*cache*
 .npmrc
+.vscode
 
 # Build output
 dist

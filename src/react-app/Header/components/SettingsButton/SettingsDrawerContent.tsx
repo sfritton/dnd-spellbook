@@ -1,9 +1,9 @@
 import allSpells from '../../../../constants/spells/all.json';
+import type { Spell } from '../../../../types';
 import { Checkbox } from '../../../Checkbox';
 import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';
-import type { Spell } from '../../../types';
 import style from './index.module.css';
 
 const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic') as Spell.Summary;

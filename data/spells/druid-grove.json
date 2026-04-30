@@ -18,12 +18,5 @@
     "Wind wall in two locations of your choice",
     "To a creature immune to this effect, the winds are a fragrant, gentle breeze, and the area of spike growth is harmless."
   ],
-  "spellLists": [
-    "/spell:dispel-magic",
-    "/spell:entangle",
-    "/spell:gust-of-wind",
-    "/spell:spike-growth",
-    "/spell:wind-wall",
-    "http://dnd5e.wikidot.com/spells:druid"
-  ]
+  "spellLists": ["druid"]
 }

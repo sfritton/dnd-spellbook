@@ -37,8 +37,5 @@
     "Actions",
     "Slam. Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) bludgeoning damage."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:wizard",
-    "http://dnd5e.wikidot.com/spells:artificer"
-  ]
+  "spellLists": ["artificer", "wizard"]
 }

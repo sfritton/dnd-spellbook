@@ -13,14 +13,5 @@
     "You can issue any command you choose, short of an activity that would result in certain death. Should you issue a suicidal command, the spell ends. You can end the spell early by using an action to dismiss it. A Remove Curse, Greater Restoration, or Wish spell also ends it.",
     "At Higher Levels. When you cast this spell using a spell slot of 7th or 8th level, the duration is 1 year. When you cast this spell using a spell slot of 9th level, the spell lasts until it is ended by one of the spells mentioned above."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:remove-curse",
-    "http://dnd5e.wikidot.com/spell:greater-restoration",
-    "http://dnd5e.wikidot.com/spell:wish",
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:cleric",
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:paladin",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "cleric", "druid", "paladin", "wizard"]
 }

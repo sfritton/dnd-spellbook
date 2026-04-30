@@ -12,5 +12,5 @@
     "If the original d20 roll has advantage or disadvantage, the creature rolls the additional d20 after advantage or disadvantage has been applied to the original roll.",
     "At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd."
   ],
-  "spellLists": ["http://dnd5e.wikidot.com/spells:wizard"]
+  "spellLists": ["wizard"]
 }

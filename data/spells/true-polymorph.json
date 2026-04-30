@@ -22,9 +22,5 @@
     "Creature into Object.",
     "If you turn a creature into an object, it transforms along with whatever it is wearing and carrying into that form, as long as the object's size is no larger than the creature's size. The creature's statistics become those of the object, and the creature has no memory of time spent in this form, after the spell ends and it returns to its normal form."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "warlock", "wizard"]
 }

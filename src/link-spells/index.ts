@@ -1,11 +1,12 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 
 import SPELL_LISTS from '../../data/spell-lists.json';
+import type { Spell } from '../types';
 
 const DATA_DIRECTORY_PATH = `${__dirname}/../../../data`;
 
 const generateSpellList = async (name: string, spellFileNames: string[]) => {
-  const spells = await Promise.all(
+  const spells: Spell.Summary[] = await Promise.all(
     spellFileNames.map(async (spellFileName) => {
       const spellFile = await readFile(`${DATA_DIRECTORY_PATH}/spells/${spellFileName}`, 'utf8');
 
@@ -21,19 +22,23 @@ const generateSpellList = async (name: string, spellFileNames: string[]) => {
     }),
   );
 
-  const emptyHistogram = new Array(10).fill([]);
+  const emptyHistogram: Spell.Summary[][] = new Array(10).fill([]);
 
-  const spellsByLevel = spells.reduce((histogram, spell) => {
-    return histogram.map((leveledSpells, level) => [
-      ...leveledSpells,
-      ...(level === spell.level ? [spell] : []),
-    ]);
-  }, emptyHistogram);
+  const spellsByLevel = spells.reduce(
+    (histogram, spell) =>
+      histogram.map((leveledSpells, level) => [
+        ...leveledSpells,
+        ...(level === spell.level ? [spell] : []),
+      ]),
+    emptyHistogram,
+  );
 
-  return writeFile(
+  await writeFile(
     `${__dirname}/../../../src/constants/spells/${name}.json`,
     JSON.stringify(spellsByLevel, null, 2),
   );
+
+  return spellsByLevel;
 };
 
 const generateSpellTypescriptImports = async (spellFileNames: string[]) => {
@@ -46,7 +51,7 @@ const generateSpellTypescriptImports = async (spellFileNames: string[]) => {
 
   const fileText = [
     ...imports,
-    "import type { Spell } from '../react-app/types';",
+    "import type { Spell } from '../types';",
     '',
     'export const spellDetails: Record<string, Spell.Details> = {',
     ...exports,
@@ -56,33 +61,68 @@ const generateSpellTypescriptImports = async (spellFileNames: string[]) => {
   return writeFile(`${__dirname}/../../../src/constants/spell-details.ts`, fileText);
 };
 
+const writeSpellListToSpell = async (
+  spellId: string,
+  spellLists: Record<string, Spell.Summary[][]>,
+) => {
+  const fileName = `${DATA_DIRECTORY_PATH}/spells/${spellId}.json`;
+  const spellFile = await readFile(fileName, 'utf8');
+  const spell: Spell.Details = JSON.parse(spellFile);
+
+  spell.spellLists = Object.entries(spellLists).flatMap(([className, spellsByLevel]) => {
+    const classIncludesSpell = spellsByLevel[spell.level].some((s) => s.id === spellId);
+
+    return classIncludesSpell ? [className] : [];
+  });
+
+  return writeFile(fileName, JSON.stringify(spell, null, 2));
+};
+
 const generateSpellLists = async () => {
   const spellFileNames = await readdir(`${DATA_DIRECTORY_PATH}/spells`);
-
-  generateFilters(spellFileNames);
+  const spellIds = spellFileNames.map((spellFileName) => spellFileName.replace(/\.json$/, ''));
 
   generateSpellList('all', spellFileNames);
-  Object.entries(SPELL_LISTS).map(([className, spells]) =>
-    generateSpellList(
-      className,
-      spells.map((spell) => `${spell.name}.json`),
+  const spellListEntries = await Promise.all(
+    Object.entries(SPELL_LISTS).map(([className, spells]) =>
+      generateSpellList(
+        className,
+        spells.map((spell) => `${spell.name}.json`),
+      ).then((spellsByLevel) => [className, spellsByLevel] as const),
     ),
   );
+
+  const spellLists = Object.fromEntries(spellListEntries);
+
+  await Promise.all(spellIds.map((id) => writeSpellListToSpell(id, spellLists)));
+
+  generateFilters(spellFileNames);
 
   generateSpellTypescriptImports(spellFileNames);
 };
 
+type FilterHistogram = Record<string, boolean>;
+
+interface Histograms {
+  castingTime: FilterHistogram;
+  // components: FilterHistogram;
+  // concentration: FilterHistogram;
+  duration: FilterHistogram;
+  range: FilterHistogram;
+  // ritual: FilterHistogram;
+}
+
 const generateFilters = async (spellFileNames: string[]) => {
-  const emptyHistograms = {
+  const emptyHistograms: Histograms = {
     castingTime: {},
-    components: {},
-    concentration: {},
+    // components: {},
+    // concentration: {},
     duration: {},
     range: {},
-    ritual: {},
+    // ritual: {},
   };
 
-  const spells = await Promise.all(
+  const spells: Spell.Details[] = await Promise.all(
     spellFileNames.map(async (spellFileName) => {
       const spellFile = await readFile(`${DATA_DIRECTORY_PATH}/spells/${spellFileName}`, 'utf8');
 
@@ -90,7 +130,7 @@ const generateFilters = async (spellFileNames: string[]) => {
     }),
   );
 
-  const filterHistograms = spells.reduce((acc, spell) => {
+  const filterHistograms = spells.reduce<Histograms>((acc, spell) => {
     const { castingTime, components, range, duration } = spell;
 
     return {

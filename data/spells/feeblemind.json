@@ -12,13 +12,5 @@
     "On a failed save, the creature’s Intelligence and Charisma scores become 1. The creature can’t cast spells, activate magic items, understand language, or communicate in any intelligible way. The creature can, however, identify its friends, follow them, and even protect them.",
     "At the end of every 30 days, the creature can repeat its saving throw against this spell. If it succeeds on its saving throw, the spell ends. The spell can also be ended by Greater Restoration, Heal, or Wish."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:greater-restoration",
-    "http://dnd5e.wikidot.com/spell:heal",
-    "http://dnd5e.wikidot.com/spell:wish",
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "druid", "warlock", "wizard"]
 }

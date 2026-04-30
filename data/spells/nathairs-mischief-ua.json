@@ -21,9 +21,5 @@
     "4",
     "Drops of molasses appear and hover in the cube, turning it into difficult terrain until the start of your next turn."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "arcane-trickster", "sorcerer", "wizard"]
 }

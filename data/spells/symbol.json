@@ -22,10 +22,5 @@
     "Sleep. Each target must make a Wisdom saving throw and falls unconscious for 10 minutes on a failed save. A creature awakens if it takes damage or if someone uses an action to shake or slap it awake.",
     "Stunning. Each target must make a Wisdom saving throw and becomes stunned for 1 minute on a failed save."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:cleric",
-    "/spells:druid",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "cleric", "druid", "wizard"]
 }

@@ -18,10 +18,12 @@
     "If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
   ],
   "spellLists": [
-    "http://dnd5e.wikidot.com/spells:artificer",
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
+    "artificer",
+    "bard",
+    "eldritch-knight",
+    "arcane-trickster",
+    "sorcerer",
+    "warlock",
+    "wizard"
   ]
 }

@@ -15,9 +15,5 @@
     "You freeze the water, provided that there are no creatures in it. The water unfreezes in 1 hour.",
     "If you cast this spell multiple times, you can have no more than two of its non-instantaneous effects active at a time, and you can dismiss such an effect as an action."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:druid",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["druid", "eldritch-knight", "arcane-trickster", "sorcerer", "wizard"]
 }

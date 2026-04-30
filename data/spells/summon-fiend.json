@@ -44,5 +44,5 @@
     "Claws (Yugoloth Only). Melee Weapon Attack: your spell attack modifier to hit, reach 5 ft., one target. Hit: 1d8 + 3 + the spell’s level slashing damage. Immediately after the attack hits or misses, the fiend can magically teleport up to 30 feet to an unoccupied space it can see.",
     "Hurl Flame (Devil Only). Ranged Spell Attack: your spell attack modifier to hit, range 150 ft., one target. Hit: 2d6 + 3 + the spell’s level fire damage. If the target is a flammable object that isn’t being worn or carried, it also catches fire."
   ],
-  "spellLists": ["/spells:warlock", "/spells:wizard"]
+  "spellLists": ["warlock", "wizard"]
 }

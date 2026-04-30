@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 
-import type { Spell } from '../types';
+import type { Spell } from '../../types';
 
 type MakeToggleSpell = ({
   id,

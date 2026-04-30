@@ -43,10 +43,5 @@
     "Bonus Actions",
     "Flurry of Blows (Monk Only). The monk makes one Unarmed Strike attack."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/wondrous-items:deck-of-many-things",
-    "http://dnd5e.wikidot.com/spells:sorcerer,",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["sorcerer", "warlock", "wizard"]
 }

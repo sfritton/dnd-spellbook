@@ -12,8 +12,5 @@
     "The creatures are under your control until the spell ends, after which they become inanimate once more.",
     "At Higher Levels. When you cast this spell using a spell slot‘ of 6th level or higher, you animate up to two additional corpses for each slot level above 5th."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["warlock", "wizard"]
 }

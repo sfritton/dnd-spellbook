@@ -12,11 +12,5 @@
     "At Higher Levels. When you cast this spell using a spell slot of 4th level or higher, you can target one additional creature for each slot level above 3rd. The creatures must be within 30 feet of each other when you target them.",
     "Spell Lists: Artificer, Bard (Optional), Sorcerer (Optional), Warlock (Optional), Wizard (Optional)"
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:artificer",
-    "/spells:bard",
-    "/spells:sorcerer",
-    "/spells:warlock",
-    "/spells:wizard"
-  ]
+  "spellLists": ["artificer", "bard", "eldritch-knight", "sorcerer", "warlock", "wizard"]
 }

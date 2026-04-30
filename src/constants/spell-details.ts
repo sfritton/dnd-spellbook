@@ -579,7 +579,7 @@ import spell577 from '../../data/spells/wrathful-smite.json';
 import spell578 from '../../data/spells/wristpocket.json';
 import spell579 from '../../data/spells/zephyr-strike.json';
 import spell580 from '../../data/spells/zone-of-truth.json';
-import type { Spell } from '../react-app/types';
+import type { Spell } from '../types';
 
 export const spellDetails: Record<string, Spell.Details> = {
   'abi-dalzims-horrid-wilting': spell0,

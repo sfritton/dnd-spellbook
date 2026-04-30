@@ -9,7 +9,7 @@ import * as ranger from '../constants/spells/ranger.json';
 import * as sorcerer from '../constants/spells/sorcerer.json';
 import * as warlock from '../constants/spells/warlock.json';
 import * as wizard from '../constants/spells/wizard.json';
-import type { Spell } from './types';
+import type { Spell } from '../types';
 
 export const spellLists: Record<string, Spell.Summary[][]> = {
   arcaneTrickster,

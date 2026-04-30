@@ -21,11 +21,5 @@
     "You can perform one of these tasks without being noticed by a creature if you succeed on a Dexterity (Sleight of Hand) check contested by the creature's Wisdom (Perception) check.",
     "In addition, you can use the bonus action granted by your Cunning Action to control the hand."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:artificer",
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["arcane-trickster"]
 }

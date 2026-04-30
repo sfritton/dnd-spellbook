@@ -1,11 +1,11 @@
 import { type MouseEventHandler, useCallback } from 'react';
 
 import { spellDetails } from '../../constants/spell-details';
+import type { Spell } from '../../types';
 import { useSingleDialog } from '../Dialog';
 import { type HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellCard } from '../SpellCard';
 import { type SpellSummaryData, useSpellListContext } from '../SpellListContext';
-import type { Spell } from '../types';
 import { formatSpellLevel } from '../util';
 import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';

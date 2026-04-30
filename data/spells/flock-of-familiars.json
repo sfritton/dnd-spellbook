@@ -13,10 +13,5 @@
     "When you cast a spell with a range of touch, one of the familiars conjured by this spell can deliver the spell, as normal. However, you can cast a touch spell through only one familiar per turn.",
     "At Higher Levels. When you cast this spell using a spell slot of 3rd level or higher, you conjure an additional familiar for each slot level above 2nd."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spell:find-familiar",
-    "http://dnd5e.wikidot.com/spell:find-familiar",
-    "http://dnd5e.wikidot.com/spells:warlock",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["warlock", "wizard"]
 }

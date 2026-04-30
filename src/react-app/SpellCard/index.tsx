@@ -1,5 +1,5 @@
 import { spellDetails } from '../../constants/spell-details';
-import type { Spell } from '../types';
+import type { Spell } from '../../types';
 import styles from './index.module.css';
 
 export const SpellCard = ({

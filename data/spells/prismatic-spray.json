@@ -37,9 +37,5 @@
     "Special",
     "The target is struck by two rays. Roll twice more, rerolling any 8."
   ],
-  "spellLists": [
-    "http://dnd5e.wikidot.com/spells:bard",
-    "http://dnd5e.wikidot.com/spells:sorcerer",
-    "http://dnd5e.wikidot.com/spells:wizard"
-  ]
+  "spellLists": ["bard", "sorcerer", "wizard"]
 }
