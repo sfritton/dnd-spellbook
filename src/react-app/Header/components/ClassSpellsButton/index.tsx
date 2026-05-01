@@ -1,6 +1,6 @@
 import { type FormEvent, useCallback } from 'react';
 
-import { CLASSES } from '../../../../constants/classes';
+import { CLASS_NAME_MAP } from '../../../../constants/classes';
 import { Checkbox } from '../../../Checkbox';
 import { useSingleDialog } from '../../../Dialog';
 import { IconAdd } from '../../../icons/IconAdd';
@@ -46,7 +46,7 @@ export const ClassSpellsButton = ({ isNav = false }: { isNav?: boolean }) => {
               Choose a class
             </label>
             <select id="class-select">
-              {CLASSES.map(({ id, name }) => (
+              {Object.entries(CLASS_NAME_MAP).map(([id, name]) => (
                 <option key={id} value={id}>
                   {name}
                 </option>

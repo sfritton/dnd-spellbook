@@ -12,12 +12,12 @@ import * as wizard from '../constants/spells/wizard.json';
 import type { Spell } from '../types';
 
 export const spellLists: Record<string, Spell.Summary[][]> = {
-  arcaneTrickster,
+  'arcane-trickster': arcaneTrickster,
   artificer,
   bard,
   cleric,
   druid,
-  eldritchKnight,
+  'eldritch-knight': eldritchKnight,
   paladin,
   ranger,
   sorcerer,

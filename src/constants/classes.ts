@@ -1,46 +1,13 @@
-export const CLASSES = [
-  {
-    id: 'artificer',
-    name: 'Artificer',
-  },
-  {
-    id: 'bard',
-    name: 'Bard',
-  },
-  {
-    id: 'cleric',
-    name: 'Cleric',
-  },
-  {
-    id: 'druid',
-    name: 'Druid',
-  },
-  {
-    id: 'eldritchKnight',
-    name: 'Fighter: Eldritch Knight',
-  },
-  {
-    id: 'paladin',
-    name: 'Paladin',
-  },
-  {
-    id: 'ranger',
-    name: 'Ranger',
-  },
-  {
-    id: 'arcaneTrickster',
-    name: 'Rogue: Arcane Trickster',
-  },
-  {
-    id: 'sorcerer',
-    name: 'Sorcerer',
-  },
-  {
-    id: 'warlock',
-    name: 'Warlock',
-  },
-  {
-    id: 'wizard',
-    name: 'Wizard',
-  },
-];
+export const CLASS_NAME_MAP = {
+  artificer: 'Artificer',
+  bard: 'Bard',
+  cleric: 'Cleric',
+  druid: 'Druid',
+  'eldritch-knight': 'Fighter (Eldritch Knight)',
+  paladin: 'Paladin',
+  ranger: 'Ranger',
+  'arcane-trickster': 'Rogue (Arcane Trickster)',
+  sorcerer: 'Sorcerer',
+  warlock: 'Warlock',
+  wizard: 'Wizard',
+};

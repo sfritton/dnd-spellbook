@@ -1,3 +1,4 @@
+import { CLASS_NAME_MAP } from '../../constants/classes';
 import { spellDetails } from '../../constants/spell-details';
 import type { Spell } from '../../types';
 import styles from './index.module.css';
@@ -66,12 +67,7 @@ export const SpellCard = ({
         ))}
         <div>
           <b>Class lists:</b>{' '}
-          {spellLists
-            .map((spellList) => {
-              const listName = spellList.split(':').at(-1)?.replace(/\//g, '').replace(/-/g, ' ');
-              return `${listName?.charAt(0).toUpperCase() ?? ''}${listName?.slice(1) ?? ''}`;
-            })
-            .join(', ')}
+          {spellLists.map((spellListId) => CLASS_NAME_MAP[spellListId] ?? spellListId).join(', ')}
         </div>
       </div>
       <div className={styles.source}>
