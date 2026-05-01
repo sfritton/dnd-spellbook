@@ -14,6 +14,7 @@ const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {
   range: 'Range',
   components: 'Components',
   duration: 'Duration',
+  spellLists: 'Spell Lists',
 };
 
 const OPTIONS = Object.entries(HIGHLIGHT_LABEL_MAP)

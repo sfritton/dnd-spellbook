@@ -13,7 +13,8 @@ export type HighlightKey =
   | 'isConcentration'
   | 'range'
   | 'components'
-  | 'duration';
+  | 'duration'
+  | 'spellLists';
 
 interface SettingsContextValue {
   isCardMode: boolean;

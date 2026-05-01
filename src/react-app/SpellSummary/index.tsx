@@ -10,9 +10,10 @@ import { formatSpellLevel } from '../util';
 import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
 import styles from './index.module.css';
+import { CLASS_NAME_MAP } from '../../constants/classes';
 
 const getSpellHighlight = (
-  { castingTime, levelAndSchool, duration, range, components }: Spell.Details,
+  { castingTime, levelAndSchool, duration, range, components, spellLists }: Spell.Details,
   highlight: HighlightKey,
 ) => {
   switch (highlight) {
@@ -28,6 +29,8 @@ const getSpellHighlight = (
       return range;
     case 'components':
       return components.split(' (')[0];
+    case 'spellLists':
+      return spellLists.map((listId) => CLASS_NAME_MAP[listId]).join(', ');
   }
 };
 
