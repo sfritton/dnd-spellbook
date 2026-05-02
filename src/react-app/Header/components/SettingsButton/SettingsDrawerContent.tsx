@@ -3,11 +3,11 @@ import { useMemo } from 'react';
 import allSpells from '../../../../constants/spells/all.json';
 import type { Spell } from '../../../../types';
 import { Checkbox } from '../../../Checkbox';
+import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
 import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';
 import style from './index.module.css';
-import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
 
 const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic') as Spell.Summary;
 const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {

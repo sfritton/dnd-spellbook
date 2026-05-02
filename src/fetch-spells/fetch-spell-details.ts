@@ -12,6 +12,7 @@ export const getSavedSpells = async () => {
 
   return allSpells.reduce<Record<string, boolean>>(
     (histogram, spellFileName) => ({
+      // biome-ignore lint/performance/noAccumulatingSpread: TODO: fix
       ...histogram,
       [spellFileName.replace(/\.json$/, '')]: true,
     }),

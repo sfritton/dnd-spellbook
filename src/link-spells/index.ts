@@ -131,7 +131,12 @@ const generateFilters = async (spellFileNames: string[]) => {
   );
 
   const filterHistograms = spells.reduce<Histograms>((acc, spell) => {
-    const { castingTime, components, range, duration } = spell;
+    const {
+      castingTime,
+      // components,
+      range,
+      duration,
+    } = spell;
 
     return {
       castingTime: {

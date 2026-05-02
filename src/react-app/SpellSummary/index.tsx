@@ -1,8 +1,12 @@
 import { type MouseEventHandler, useCallback } from 'react';
 
+import { CLASS_NAME_MAP } from '../../constants/classes';
 import { spellDetails } from '../../constants/spell-details';
 import type { ClassId, Spell } from '../../types';
 import { useSingleDialog } from '../Dialog';
+import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
+import { useAbilities } from '../HealthAndSpellSlots/use-abilities';
+import { getAbilityNumber } from '../HealthAndSpellSlots/util';
 import { type HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellCard } from '../SpellCard';
 import { type SpellSummaryData, useSpellListContext } from '../SpellListContext';
@@ -10,10 +14,6 @@ import { formatSpellLevel } from '../util';
 import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
 import styles from './index.module.css';
-import { CLASS_NAME_MAP } from '../../constants/classes';
-import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
-import { getAbilityNumber } from '../HealthAndSpellSlots/util';
-import { useAbilities } from '../HealthAndSpellSlots/use-abilities';
 
 const getSpellHighlight = (
   { castingTime, levelAndSchool, duration, range, components, spellLists, level }: Spell.Details,

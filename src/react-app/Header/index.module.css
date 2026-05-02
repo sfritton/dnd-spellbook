@@ -73,6 +73,7 @@
       margin: 0;
     }
 
+    /* biome-ignore lint/style/noDescendingSpecificity: TODO: fix */
     button {
       display: none;
     }
