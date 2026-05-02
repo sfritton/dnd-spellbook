@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
@@ -6,6 +6,9 @@ import { AbilityTracker } from './components/AbilityTracker';
 import styles from './index.module.css';
 import { useAbilities } from './use-abilities';
 import { getAbilityNumber } from './util';
+import { ClassMaximumForm } from './components/ClassMaximumForm';
+import type { ClassId } from '../../types';
+import { CLASS_NAME_MAP } from '../../constants/classes';
 
 export const HealthAndSpellSlots = () => {
   const { isCharacterOpen, setIsCharacterOpen } = useSettingsContext();
@@ -19,6 +22,8 @@ export const HealthAndSpellSlots = () => {
     spellSlots,
     abilities,
     setAbilities,
+    characterClassMap,
+    setCharacterClassMap,
     makeUpdateSpellSlot,
     makeUpdateAbility,
     handleLongRest,
@@ -33,6 +38,11 @@ export const HealthAndSpellSlots = () => {
   // If max HP is 0, we want to default to edit mode
   const [isEditing, setIsEditing] = useState(getAbilityNumber(hp.maximum) === 0);
 
+  const characterClasses = useMemo(
+    () => Object.entries(characterClassMap).filter(([_, value]) => Boolean(value)),
+    [characterClassMap],
+  );
+
   if (!isCharacterOpen) return null;
 
   return (
@@ -45,7 +55,7 @@ export const HealthAndSpellSlots = () => {
           type="button"
           className="secondary"
           onClick={() => setIsCharacterOpen(false)}
-          aria-label={'Close'}
+          aria-label="Close"
         >
           <IconClose />
         </button>
@@ -81,6 +91,77 @@ export const HealthAndSpellSlots = () => {
             setTempHp((prev) => ({ ...prev, maximum: newMaximum }));
           }}
         />
+        {isEditing || characterClasses.length > 0 ? <h3>Maximum Prepared Spells</h3> : null}
+        <ul className={styles.characterClasses}>
+          {characterClasses.map(([classId, { maxSpellLevel, maxSpellsPrepared } = {}]) => (
+            <ClassMaximumForm
+              classId={classId as ClassId}
+              isEditing={isEditing}
+              key={classId}
+              maxSpellLevel={maxSpellLevel}
+              maxSpellsPrepared={maxSpellsPrepared}
+              onChangeMaxSpellLevel={(newSpellLevel: number | '') => {
+                setCharacterClassMap((prev) => ({
+                  ...prev,
+                  [classId]: {
+                    ...prev[classId],
+                    maxSpellLevel: newSpellLevel,
+                  },
+                }));
+              }}
+              onChangeMaxSpellsPrepared={(newSpellsPrepared: number | '') => {
+                setCharacterClassMap((prev) => ({
+                  ...prev,
+                  [classId]: {
+                    ...prev[classId],
+                    maxSpellsPrepared: newSpellsPrepared,
+                  },
+                }));
+              }}
+              onRemoveClass={() =>
+                setCharacterClassMap((prev) => ({
+                  ...prev,
+                  [classId]: undefined,
+                }))
+              }
+            />
+          ))}
+        </ul>
+        {isEditing ? (
+          <>
+            <label className={styles.newClassSelectLabel} htmlFor="new-class-select">
+              Add a class
+            </label>
+            <select
+              id="new-class-select"
+              onChange={(e) => {
+                const classId = e.target.value;
+                const className = CLASS_NAME_MAP[classId];
+
+                // Do nothing if they select the null option
+                if (!className) return;
+
+                setCharacterClassMap((prev) => ({
+                  ...prev,
+                  [e.target.value]: {
+                    maxSpellLevel: 0,
+                    maxSpellsPrepared: 0,
+                  },
+                }));
+              }}
+            >
+              <option value="">--</option>
+              {Object.entries(CLASS_NAME_MAP)
+                // Only include classes that the character does not already have
+                .filter(([id]) => !characterClassMap[id])
+                .map(([id, name]) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+            </select>
+          </>
+        ) : null}
         {isEditing || spellSlots.some(({ maximum }) => getAbilityNumber(maximum) > 0) ? (
           <h3>Spell Slots</h3>
         ) : null}

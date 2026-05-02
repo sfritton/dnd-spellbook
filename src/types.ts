@@ -19,3 +19,16 @@ export namespace Spell {
     spellLists: string[];
   }
 }
+
+export type ClassId =
+  | 'artificer'
+  | 'bard'
+  | 'cleric'
+  | 'druid'
+  | 'eldritch-knight'
+  | 'paladin'
+  | 'ranger'
+  | 'arcane-trickster'
+  | 'sorcerer'
+  | 'warlock'
+  | 'wizard';

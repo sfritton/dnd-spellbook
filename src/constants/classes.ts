@@ -1,4 +1,6 @@
-export const CLASS_NAME_MAP = {
+import type { ClassId } from '../types';
+
+export const CLASS_NAME_MAP: Record<ClassId, string> = {
   artificer: 'Artificer',
   bard: 'Bard',
   cleric: 'Cleric',

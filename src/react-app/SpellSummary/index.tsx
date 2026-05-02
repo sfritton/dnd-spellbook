@@ -1,7 +1,7 @@
 import { type MouseEventHandler, useCallback } from 'react';
 
 import { spellDetails } from '../../constants/spell-details';
-import type { Spell } from '../../types';
+import type { ClassId, Spell } from '../../types';
 import { useSingleDialog } from '../Dialog';
 import { type HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellCard } from '../SpellCard';
@@ -11,10 +11,14 @@ import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
 import styles from './index.module.css';
 import { CLASS_NAME_MAP } from '../../constants/classes';
+import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
+import { getAbilityNumber } from '../HealthAndSpellSlots/util';
+import { useAbilities } from '../HealthAndSpellSlots/use-abilities';
 
 const getSpellHighlight = (
-  { castingTime, levelAndSchool, duration, range, components, spellLists }: Spell.Details,
+  { castingTime, levelAndSchool, duration, range, components, spellLists, level }: Spell.Details,
   highlight: HighlightKey,
+  characterClassMap: CharacterClassMap,
 ) => {
   switch (highlight) {
     case 'isRitual':
@@ -31,6 +35,17 @@ const getSpellHighlight = (
       return components.split(' (')[0];
     case 'spellLists':
       return spellLists.map((listId) => CLASS_NAME_MAP[listId]).join(', ');
+
+    case 'mySpellLists':
+      return spellLists
+        .filter((listId) => {
+          const relevantClass = characterClassMap[listId as ClassId];
+          if (!relevantClass) return false;
+
+          return level <= getAbilityNumber(relevantClass.maxSpellLevel);
+        })
+        .map((listId) => CLASS_NAME_MAP[listId])
+        .join(', ');
   }
 };
 
@@ -49,6 +64,7 @@ export const SpellSummary = ({
   const { open } = useSingleDialog();
   const spellWithDetails: Spell.Details = spellDetails[id];
   const { highlights, isCardMode } = useSettingsContext();
+  const { characterClassMap } = useAbilities();
   const { spellLists } = useSpellListContext();
   const foundSpell = spellLists[level].find(({ id: idFromList }) => id === idFromList);
   const isKnown = Boolean(foundSpell);
@@ -92,7 +108,9 @@ export const SpellSummary = ({
           <div className={styles.levelAndTime}>
             {[
               showLevel ? formatSpellLevel(level) : false,
-              ...highlights.map((highlight) => getSpellHighlight(spellWithDetails, highlight)),
+              ...highlights.map((highlight) =>
+                getSpellHighlight(spellWithDetails, highlight, characterClassMap),
+              ),
             ]
               .filter(Boolean)
               .join(' • ')}

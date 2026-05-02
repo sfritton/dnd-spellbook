@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import allSpells from '../../../../constants/spells/all.json';
 import type { Spell } from '../../../../types';
 import { Checkbox } from '../../../Checkbox';
@@ -5,6 +7,7 @@ import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';
 import style from './index.module.css';
+import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
 
 const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic') as Spell.Summary;
 const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {
@@ -15,6 +18,7 @@ const HIGHLIGHT_LABEL_MAP: Record<HighlightKey, string> = {
   components: 'Components',
   duration: 'Duration',
   spellLists: 'Spell Lists',
+  mySpellLists: 'My Spell Lists',
 };
 
 const OPTIONS = Object.entries(HIGHLIGHT_LABEL_MAP)
@@ -27,6 +31,22 @@ export const SettingsDrawerContent = ({
   onClickClearSpells: () => void;
 }) => {
   const { isCardMode, setIsCardMode, highlights, makeUpdateHighlight } = useSettingsContext();
+
+  const { characterClassMap } = useAbilities();
+
+  const characterClasses = useMemo(
+    () => Object.entries(characterClassMap).filter(([_, value]) => Boolean(value)),
+    [characterClassMap],
+  );
+
+  const highlightOptions = useMemo(
+    () =>
+      characterClasses.length > 0
+        ? OPTIONS
+        : // Only include this option if they have spell lists selected
+          OPTIONS.filter(({ value }) => value !== 'mySpellLists'),
+    [characterClasses],
+  );
 
   return (
     <div className={style.settings}>
@@ -47,7 +67,7 @@ export const SettingsDrawerContent = ({
         value={highlights[0]}
         onChange={(e) => makeUpdateHighlight(0)(e.target.value as HighlightKey)}
       >
-        {OPTIONS.map(({ label, value }) => (
+        {highlightOptions.map(({ label, value }) => (
           <option key={value} value={value}>
             {label}
           </option>
@@ -61,7 +81,7 @@ export const SettingsDrawerContent = ({
         value={highlights[1]}
         onChange={(e) => makeUpdateHighlight(1)(e.target.value as HighlightKey)}
       >
-        {OPTIONS.map(({ label, value }) => (
+        {highlightOptions.map(({ label, value }) => (
           <option key={value} value={value}>
             {label}
           </option>
@@ -75,7 +95,7 @@ export const SettingsDrawerContent = ({
         value={highlights[2]}
         onChange={(e) => makeUpdateHighlight(2)(e.target.value as HighlightKey)}
       >
-        {OPTIONS.map(({ label, value }) => (
+        {highlightOptions.map(({ label, value }) => (
           <option key={value} value={value}>
             {label}
           </option>

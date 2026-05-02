@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { formatSpellLevel } from '../util';
-import type { Ability } from './types';
+import type { Ability, CharacterClassMap } from './types';
 import { getAbilityNumber } from './util';
 
 interface CharacterStatus {
@@ -9,6 +9,7 @@ interface CharacterStatus {
   tempHp: Ability;
   spellSlots: Ability[];
   abilities: Ability[];
+  characterClassMap: CharacterClassMap;
 }
 
 const DEFAULT_ABILITIES: CharacterStatus = {
@@ -20,6 +21,7 @@ const DEFAULT_ABILITIES: CharacterStatus = {
     maximum: 0,
   })),
   abilities: [],
+  characterClassMap: {},
 };
 
 const convertLegacyStructure = ({
@@ -46,6 +48,7 @@ const convertLegacyStructure = ({
     maximum: maximums.spellSlots[index],
   })),
   abilities,
+  characterClassMap: {},
 });
 
 const getDefaultAbilities = (): CharacterStatus => {
@@ -66,12 +69,16 @@ export const useAbilities = () => {
   const [tempHp, setTempHp] = useState(defaultAbilities.tempHp);
   const [spellSlots, setSpellSlots] = useState(defaultAbilities.spellSlots);
   const [abilities, setAbilities] = useState(defaultAbilities.abilities ?? []);
+  const [characterClassMap, setCharacterClassMap] = useState(
+    defaultAbilities.characterClassMap ?? {},
+  );
 
   const uneditedCharacterStatusRef = useRef<CharacterStatus>({
     hp,
     tempHp,
     spellSlots,
     abilities,
+    characterClassMap,
   });
 
   const stashCharacterStatus = useCallback(() => {
@@ -80,14 +87,16 @@ export const useAbilities = () => {
       tempHp,
       spellSlots,
       abilities,
+      characterClassMap,
     };
-  }, [hp, tempHp, spellSlots, abilities]);
+  }, [hp, tempHp, spellSlots, abilities, characterClassMap]);
 
   const restoreCharacterStatus = useCallback(() => {
     setHp(uneditedCharacterStatusRef.current.hp);
     setTempHp(uneditedCharacterStatusRef.current.tempHp);
     setSpellSlots(uneditedCharacterStatusRef.current.spellSlots);
     setAbilities(uneditedCharacterStatusRef.current.abilities);
+    setCharacterClassMap(uneditedCharacterStatusRef.current.characterClassMap);
   }, []);
 
   useEffect(() => {
@@ -96,9 +105,10 @@ export const useAbilities = () => {
       tempHp,
       spellSlots,
       abilities,
+      characterClassMap,
     };
     localStorage.setItem('character-status', JSON.stringify(characterStatus));
-  }, [hp, tempHp, spellSlots, abilities]);
+  }, [hp, tempHp, spellSlots, abilities, characterClassMap]);
 
   const makeUpdateSpellSlot = useCallback(
     <T extends keyof Ability>(key: T, index: number) =>
@@ -152,6 +162,8 @@ export const useAbilities = () => {
       spellSlots,
       abilities,
       setAbilities,
+      characterClassMap,
+      setCharacterClassMap,
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,
@@ -163,6 +175,7 @@ export const useAbilities = () => {
       tempHp,
       spellSlots,
       abilities,
+      characterClassMap,
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,

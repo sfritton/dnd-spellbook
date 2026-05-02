@@ -1,0 +1,47 @@
+.classMaximumForm {
+  &.display {
+    padding: 8 16px;
+    background: #fff4;
+    margin: 8px 0;
+  }
+
+  .spellLevelText {
+    font-size: 14px;
+  }
+
+  h4 {
+    margin: 16px 0 0;
+  }
+
+  .form {
+    gap: 2px 8px;
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-rows: auto auto;
+    display: grid;
+    grid-auto-flow: column;
+    margin: 8px 0;
+
+    > label {
+      font-size: 14px;
+    }
+
+    button {
+      grid-row: span 2;
+      align-self: flex-end;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      text-decoration: none;
+      padding: 0;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        fill: var(--color-accent);
+        transition: transform 300ms;
+      }
+    }
+  }
+}

@@ -14,7 +14,8 @@ export type HighlightKey =
   | 'range'
   | 'components'
   | 'duration'
-  | 'spellLists';
+  | 'spellLists'
+  | 'mySpellLists';
 
 interface SettingsContextValue {
   isCardMode: boolean;
