@@ -207,7 +207,7 @@ export const HealthAndSpellSlots = () => {
           </a>
         ) : null}
       </div>
-      <div className={styles.buttons}>
+      <div className={styles.footer}>
         {isEditing ? (
           <>
             <button type="button" onClick={() => setIsEditing(false)}>

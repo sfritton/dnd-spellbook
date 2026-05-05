@@ -33,7 +33,12 @@ const getDefaultFilters = (): Filters => {
 
   if (!storedString) return DEFAULT_FILTERS;
 
-  return JSON.parse(storedString);
+  const storedFilters = JSON.parse(storedString);
+
+  return {
+    ...DEFAULT_FILTERS,
+    ...storedFilters,
+  };
 };
 
 export const FilterContextProvider = ({ children }: PropsWithChildren) => {
@@ -96,6 +101,15 @@ export const FilterContextProvider = ({ children }: PropsWithChildren) => {
       const areAllSourcesValid = Object.values(filters.sources).every((value) => !value);
 
       if (!areAllSourcesValid && !filters.sources[spell.source]) return false;
+
+      // Spell Lists
+      const areAllSpellListsValid = Object.values(filters.spell_lists).every((value) => !value);
+
+      if (
+        !areAllSpellListsValid &&
+        !spell.spellLists.some((spellList) => filters.spell_lists[spellList])
+      )
+        return false;
 
       return true;
     },

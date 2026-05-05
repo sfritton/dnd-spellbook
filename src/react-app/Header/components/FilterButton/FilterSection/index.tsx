@@ -1,9 +1,18 @@
 import type { Dispatch, SetStateAction } from 'react';
 
+import { CLASS_NAME_MAP } from '../../../../../constants/classes';
 import { Checkbox } from '../../../../Checkbox';
 import { Collapsible } from '../../../../Collapsible';
 import type { Filters } from '../../../../FilterContext';
 import styles from './index.module.css';
+
+const getCheckboxLabel = (value: string) => {
+  const className = CLASS_NAME_MAP[value];
+
+  if (className) return className;
+
+  return value.replace(/_/g, ' ').replace(/non /, 'non-');
+};
 
 export const FilterSection = ({
   id,
@@ -22,7 +31,7 @@ export const FilterSection = ({
         {Object.keys(filters[id]).map((value) => (
           <Checkbox
             key={value}
-            label={value.replace(/_/g, ' ').replace(/non /, 'non-')}
+            label={getCheckboxLabel(value)}
             id={`${id}-${value}`}
             checked={filters[id][value]}
             onChange={() =>

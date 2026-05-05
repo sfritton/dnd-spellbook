@@ -1,3 +1,5 @@
+import { CLASS_NAME_MAP } from '../../constants/classes';
+
 export const DEFAULT_FILTERS = {
   casting_time: {
     action: false,
@@ -46,6 +48,9 @@ export const DEFAULT_FILTERS = {
     'Unearthed Arcana 78 - Draconic Options': false,
     'Unearthed Arcana 85 - Wonders of the Multiverse': false,
   },
+  spell_lists: Object.fromEntries(
+    Object.entries(CLASS_NAME_MAP).map(([className]) => [className, false]),
+  ) as Record<keyof typeof CLASS_NAME_MAP, boolean>,
 };
 
 export type Filters = typeof DEFAULT_FILTERS;

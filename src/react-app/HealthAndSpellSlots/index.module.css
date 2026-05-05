@@ -106,7 +106,7 @@
     margin: 16px 0 8px;
   }
 
-  .buttons {
+  .footer {
     border-top: 1px solid var(--color-parchment-dark);
     display: flex;
     gap: 8px;
