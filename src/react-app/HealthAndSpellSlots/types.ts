@@ -13,5 +13,5 @@ export interface ClassMaximums {
   maxSpellsPrepared: '' | number;
 }
 
-export type CharacterClassMap = Partial<Record<ClassId, ClassMaximums>>;
+export type CharacterClassMap = { [Key in ClassId]?: ClassMaximums };
 export type SetCharacterClassAttributes = Dispatch<SetStateAction<CharacterClassMap>>;

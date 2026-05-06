@@ -7,8 +7,10 @@
   --sans: var(--serif);
 
   --color-text: #23130a;
-  --color-accent: #155b98;
-  --color-accent-hover: #1c79ca;
+  --color-accent: hsl(208deg 76% 34%);
+  --color-accent-hover: hsl(208deg 76% 45%);
+  --color-warning: hsl(347deg 76% 34%);
+  --color-warning-hover: hsl(347deg 76% 45%);
   --color-parchment-light: #fffef0;
   --color-parchment-dark: #d09963;
   --color-bg-white: #fff6;

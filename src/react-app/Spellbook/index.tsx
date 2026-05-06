@@ -1,16 +1,15 @@
 import { Collapsible } from '../Collapsible';
 import { useFilterContext } from '../FilterContext';
 import { FilterSummary } from '../FilterSummary';
-import { IconCheckmark } from '../icons/IconCheckmark';
-import { IconStar } from '../icons/IconStar';
 import { SpellList } from '../SpellList';
 import { useSpellListContext } from '../SpellListContext';
 import { formatSpellLevel } from '../util';
 import { WelcomePage } from '../WelcomePage';
+import { BadgeList } from './components/BadgeList';
 import styles from './index.module.css';
 
 export const Spellbook = () => {
-  const { spellLists, preparedSpells, alwaysPreparedSpells } = useSpellListContext();
+  const { spellLists, preparedSpells } = useSpellListContext();
   const { getShouldShowSpell } = useFilterContext();
 
   const knownSpellCount = spellLists.reduce(
@@ -25,12 +24,6 @@ export const Spellbook = () => {
   );
   const hasPreparedSpells = preparedSpellCount > 0;
 
-  const alwaysPreparedSpellCount = alwaysPreparedSpells.reduce(
-    (sum, list) => sum + list.filter((spell) => getShouldShowSpell(spell)).length,
-    0,
-  );
-  const hasAlwaysPreparedSpells = alwaysPreparedSpellCount > 0;
-
   if (!hasSpells) return <WelcomePage />;
 
   return (
@@ -38,20 +31,7 @@ export const Spellbook = () => {
       <FilterSummary />
       <h2 className={styles.spellListsHeader}>
         Prepared Spells
-        <div className={styles.badgeList}>
-          {hasAlwaysPreparedSpells ? (
-            <>
-              <div className={styles.spellCount}>
-                <IconCheckmark /> {preparedSpellCount - alwaysPreparedSpellCount} prepared
-              </div>
-              <div className={styles.spellCount}>
-                <IconStar /> {alwaysPreparedSpellCount} always prepared
-              </div>
-            </>
-          ) : (
-            <div className={styles.spellCount}>{preparedSpellCount}</div>
-          )}
-        </div>
+        <BadgeList />
       </h2>
       {hasPreparedSpells ? (
         preparedSpells.map((spells, index) =>

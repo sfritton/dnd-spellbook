@@ -8,7 +8,10 @@ import {
   useState,
 } from 'react';
 
+import { spellDetails } from '../../constants/spell-details';
 import type { Spell } from '../../types';
+import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
+import { makeGetSpellCountByClass } from './make-get-spell-count-by-class';
 
 type MakeToggleSpell = ({
   id,
@@ -29,6 +32,7 @@ interface SpellListContextValue {
   makeToggleSpell: MakeToggleSpell;
   makeToggleSpellAlwaysPrepared: MakeToggleSpell;
   clearSpells: () => void;
+  getSpellCountByClass: (characterClassMap: CharacterClassMap) => Partial<Record<string, number>>;
 }
 
 const SpellListContext = createContext<SpellListContextValue>({
@@ -40,6 +44,7 @@ const SpellListContext = createContext<SpellListContextValue>({
   makeToggleSpell: () => () => {},
   makeToggleSpellAlwaysPrepared: () => () => {},
   clearSpells: () => {},
+  getSpellCountByClass: () => ({}),
 });
 
 const getStoredSpellLists = (): SpellSummaryData[][] | undefined => {
@@ -149,6 +154,18 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
     [spellLists],
   );
 
+  const getSpellCountByClass = useCallback(
+    (characterClassMap: CharacterClassMap) =>
+      makeGetSpellCountByClass(
+        preparedSpells.flatMap((spellList) =>
+          spellList.flatMap(({ isAlwaysPrepared, id }) =>
+            isAlwaysPrepared ? [] : [spellDetails[id]],
+          ),
+        ),
+      )(characterClassMap),
+    [preparedSpells],
+  );
+
   const value = useMemo(
     () => ({
       spellLists,
@@ -159,6 +176,7 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
       makeToggleSpell,
       makeToggleSpellAlwaysPrepared,
       clearSpells,
+      getSpellCountByClass,
     }),
     [
       spellLists,
@@ -169,6 +187,7 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
       makeToggleSpell,
       makeToggleSpellAlwaysPrepared,
       clearSpells,
+      getSpellCountByClass,
     ],
   );
 
