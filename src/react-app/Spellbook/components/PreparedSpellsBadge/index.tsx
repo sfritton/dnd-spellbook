@@ -7,6 +7,7 @@ import { IconCheckmark } from '../../../icons/IconCheckmark';
 import { IconChevronRight } from '../../../icons/IconChevronRight';
 import { useSpellListContext } from '../../../SpellListContext';
 import { NO_VALID_CLASSES_KEY } from '../../../SpellListContext/make-get-spell-count-by-class';
+import { classNames } from '../../../util';
 import { BadgeSegment } from './BadgeSegment';
 import styles from './index.module.css';
 
@@ -72,10 +73,13 @@ export const PreparedSpellsBadge = () => {
   return (
     <button
       type="button"
-      className={`${styles.preparedSpellsBadge} ${isOpen && hasCharacterClasses ? styles.open : ''} ${hasTooManyPrepared || hasTooManyClassSpellsPrepared ? styles.warning : ''}`}
+      className={classNames(styles.preparedSpellsBadge, {
+        [styles.open]: hasCharacterClasses && isOpen,
+        [styles.warning]: hasTooManyPrepared || hasTooManyClassSpellsPrepared,
+      })}
       onClick={() => setIsOpen((prev) => !prev)}
     >
-      <div className={`${styles.badgeSegment} ${hasTooManyPrepared ? styles.warning : ''}`}>
+      <div className={styles.badgeSegment}>
         {hasAlwaysPreparedSpells ? <IconCheckmark className={styles.checkmark} /> : null}{' '}
         {preparedSpellCount}
         {hasTooManyPrepared ? `/${maximumPreparedSpells}` : null}

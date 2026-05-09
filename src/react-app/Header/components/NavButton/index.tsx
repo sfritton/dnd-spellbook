@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 
+import { classNames } from '../../../util';
 import styles from './index.module.css';
 
 export const NavButton = ({
@@ -18,7 +19,7 @@ export const NavButton = ({
   return (
     <button
       type="button"
-      className={`${styles.navButton} ${isSmall ? styles.small : ''} ${className}`}
+      className={classNames(styles.navButton, className, { [styles.small]: isSmall })}
       onClick={onClick}
     >
       {icon}

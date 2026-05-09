@@ -1,5 +1,6 @@
 import { type ChangeEventHandler, useCallback } from 'react';
 
+import { classNames } from '../util';
 import style from './index.module.css';
 
 interface CheckboxProps {
@@ -26,7 +27,7 @@ export const Checkbox = ({
     [onChange],
   );
   return (
-    <label htmlFor={id} className={`${style.checkboxWrapper} ${className}`}>
+    <label htmlFor={id} className={classNames(style.checkboxWrapper, className)}>
       <input id={id} type="checkbox" onChange={handleChange} checked={checked} />
       <div className={style.checkbox}></div>{' '}
       <span className={hideLabel ? 'hidden' : ''}>{label}</span>

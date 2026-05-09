@@ -3,6 +3,7 @@ import { useState } from 'react';
 import allSpells from '../../../../constants/spells/all.json';
 import { IconSearch } from '../../../icons/IconSearch';
 import { SpellSummary } from '../../../SpellSummary';
+import { classNames } from '../../../util';
 import styles from './index.module.css';
 
 const allSpellsFlat = allSpells.flat();
@@ -34,7 +35,11 @@ export const SearchBar = () => {
         />
         <IconSearch />
       </div>
-      <ul className={`${styles.dropdown} parchment overlay ${showDropdown ? styles.open : ''}`}>
+      <ul
+        className={classNames(styles.dropdown, 'parchment', 'overlay', {
+          [styles.open]: showDropdown,
+        })}
+      >
         {showDropdown
           ? matchingSpells.map((spell) => <SpellSummary key={spell.id} {...spell} showLevel />)
           : null}

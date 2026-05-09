@@ -4,6 +4,7 @@ import { CLASS_NAME_MAP } from '../../constants/classes';
 import type { ClassId } from '../../types';
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
+import { classNames } from '../util';
 import { AbilityTracker } from './components/AbilityTracker';
 import { ClassMaximumForm } from './components/ClassMaximumForm';
 import styles from './index.module.css';
@@ -46,7 +47,7 @@ export const HealthAndSpellSlots = () => {
   if (!isCharacterOpen) return null;
 
   return (
-    <div className={`parchment overlay ${styles.healthAndSpellSlots}`}>
+    <div className={classNames('parchment', 'overlay', styles.healthAndSpellSlots)}>
       <div className={styles.header}>
         <h2 tabIndex={-1} ref={headingRef}>
           Character Status

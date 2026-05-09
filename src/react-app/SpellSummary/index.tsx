@@ -10,7 +10,7 @@ import { getAbilityNumber } from '../HealthAndSpellSlots/util';
 import { type HighlightKey, useSettingsContext } from '../SettingsContext';
 import { SpellCard } from '../SpellCard';
 import { type SpellSummaryData, useSpellListContext } from '../SpellListContext';
-import { formatSpellLevel } from '../util';
+import { classNames, formatSpellLevel } from '../util';
 import { SpellSummaryButtonLeading } from './components/SpellStatusButtonLeading';
 import { SpellSummaryButtonTrailing } from './components/SpellStatusButtonTrailing';
 import styles from './index.module.css';
@@ -99,7 +99,7 @@ export const SpellSummary = ({
         <SpellSummaryButtonLeading isKnown={isKnown} disabled={disabled} {...spellSummaryData} />
         {/** biome-ignore lint/a11y/useValidAnchor: TODO: fix */}
         <a
-          className={`${styles.summary} ${disabled ? styles.disabled : ''}`}
+          className={classNames(styles.summary, { [styles.disabled]: disabled })}
           tabIndex={0}
           href="#"
           onClick={openSpellDialog}

@@ -18,3 +18,14 @@ export const getDescriptionLength = (id: string) => {
 
   return description.join('').length;
 };
+
+export const classNames = (...classNames: (Record<string, boolean> | string | undefined)[]) =>
+  classNames
+    .flatMap((className) =>
+      typeof className === 'undefined'
+        ? []
+        : typeof className === 'string'
+          ? [className]
+          : Object.entries(className).flatMap(([name, value]) => (value ? [name] : [])),
+    )
+    .join(' ');

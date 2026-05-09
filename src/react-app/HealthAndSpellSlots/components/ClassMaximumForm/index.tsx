@@ -1,7 +1,7 @@
 import { CLASS_NAME_MAP } from '../../../../constants/classes';
 import type { ClassId } from '../../../../types';
 import { IconDelete } from '../../../icons/IconDelete';
-import { formatSpellLevel } from '../../../util';
+import { classNames, formatSpellLevel } from '../../../util';
 import type { ClassMaximums } from '../../types';
 import { getAbilityNumber, validateAbilityInput } from '../../util';
 import styles from './index.module.css';
@@ -31,7 +31,7 @@ export const ClassMaximumForm = ({
     const spellLevelText = maxSpellLevel > 0 ? `(${formatSpellLevel(maxSpellLevel)} or lower)` : '';
 
     return (
-      <li className={`${styles.classMaximumForm} ${styles.display}`}>
+      <li className={classNames(styles.classMaximumForm, styles.display)}>
         {maxSpellsPrepared} {className} {pluralizedSpell}{' '}
         <span className={styles.spellLevelText}>{spellLevelText}</span>
       </li>

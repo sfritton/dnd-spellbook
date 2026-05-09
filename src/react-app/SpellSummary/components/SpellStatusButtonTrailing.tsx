@@ -7,6 +7,7 @@ import { IconDelete } from '../../icons/IconDelete';
 import { IconDotsVertical } from '../../icons/IconDotsVertical';
 import { IconStar } from '../../icons/IconStar';
 import { useSpellListContext } from '../../SpellListContext';
+import { classNames } from '../../util';
 import styles from './index.module.css';
 import type { SpellSummaryButtonProps } from './types';
 import { getStatus } from './utilities';
@@ -95,7 +96,7 @@ export const SpellSummaryButtonTrailing = (props: SpellSummaryButtonProps) => {
     <button
       type="button"
       aria-label={label}
-      className={`${styles.spellStatusButton} secondary`}
+      className={classNames(styles.spellStatusButton, 'secondary')}
       disabled={disabled}
       onClick={openOptionsDialog}
       title={label}

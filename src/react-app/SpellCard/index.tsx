@@ -1,6 +1,7 @@
 import { CLASS_NAME_MAP } from '../../constants/classes';
 import { spellDetails } from '../../constants/spell-details';
 import type { Spell } from '../../types';
+import { classNames } from '../util';
 import styles from './index.module.css';
 
 export const SpellCard = ({
@@ -31,7 +32,7 @@ export const SpellCard = ({
   } = spell;
 
   return (
-    <div className={`${styles.spellCard} ${className}`}>
+    <div className={classNames(styles.spellCard, className)}>
       {showTitle ? <h3 className={styles.title}>{title}</h3> : null}
       <div className={styles.levelAndSchool}>{levelAndSchool}</div>
       <div className={styles.details}>

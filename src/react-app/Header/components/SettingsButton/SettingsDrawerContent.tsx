@@ -7,6 +7,7 @@ import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
 import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';
+import { classNames } from '../../../util';
 import style from './index.module.css';
 
 const SAMPLE_SPELL = allSpells[1].find(({ id }) => id === 'detect-magic') as Spell.Summary;
@@ -52,7 +53,7 @@ export const SettingsDrawerContent = ({
     <div className={style.settings}>
       <button
         type="button"
-        className={`secondary ${style.removeSpellsButton}`}
+        className={classNames('secondary', style.removeSpellsButton)}
         onClick={onClickClearSpells}
       >
         <IconDelete /> Remove all spells

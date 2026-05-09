@@ -5,6 +5,7 @@ import { IconCheckmark } from '../../icons/IconCheckmark';
 import { IconCircle } from '../../icons/IconCircle';
 import { IconStar } from '../../icons/IconStar';
 import { useSpellListContext } from '../../SpellListContext';
+import { classNames } from '../../util';
 import styles from './index.module.css';
 import type { SpellSummaryButtonProps } from './types';
 import { getStatus } from './utilities';
@@ -43,7 +44,7 @@ export const SpellSummaryButtonLeading = (props: SpellSummaryButtonProps) => {
     <button
       type="button"
       aria-label={label}
-      className={`${styles.spellStatusButton} ${styles.leading} ${styles[status]} secondary`}
+      className={classNames(styles.spellStatusButton, styles.leading, styles[status], 'secondary')}
       disabled={disabled || status === 'always_prepared'}
       onClick={handleClick}
       title={label}

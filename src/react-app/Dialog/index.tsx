@@ -11,6 +11,7 @@ import {
 } from 'react';
 
 import { IconClose } from '../icons/IconClose';
+import { classNames } from '../util';
 import styles from './index.module.css';
 
 // TODO: this whole file is a mess, let's find a better way to combine react + dialog + animations
@@ -83,9 +84,10 @@ const useDialog = () => {
           ref={dialogRef}
         >
           <div
-            className={`${styles.dialog} ${className} ${
-              isDrawer ? styles.drawer : styles.modal
-            } parchment overlay`}
+            className={classNames(styles.dialog, className, 'parchment', 'overlay', {
+              [styles.drawer]: isDrawer,
+              [styles.modal]: !isDrawer,
+            })}
           >
             <header>
               <h3>{title}</h3>
