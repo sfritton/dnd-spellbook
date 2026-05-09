@@ -28,12 +28,11 @@ export const ClassMaximumForm = ({
   if (!isEditing) {
     const pluralizedSpell = maxSpellsPrepared === 1 ? 'spell' : 'spells';
     const maxSpellLevel = getAbilityNumber(maxSpellLevelProp);
-    const spellLevelText =
-      maxSpellLevel > 0 ? ` (${formatSpellLevel(maxSpellLevel)} or lower)` : '';
+    const spellLevelText = maxSpellLevel > 0 ? `(${formatSpellLevel(maxSpellLevel)} or lower)` : '';
 
     return (
       <li className={`${styles.classMaximumForm} ${styles.display}`}>
-        {maxSpellsPrepared} {className} {pluralizedSpell}
+        {maxSpellsPrepared} {className} {pluralizedSpell}{' '}
         <span className={styles.spellLevelText}>{spellLevelText}</span>
       </li>
     );

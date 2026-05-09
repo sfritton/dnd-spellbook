@@ -4,7 +4,7 @@ import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
 import { getAbilityNumber } from '../HealthAndSpellSlots/util';
 
 const CLASS_DELIMITER = '__';
-const NO_VALID_CLASSES_KEY = 'no-valid-classes';
+export const NO_VALID_CLASSES_KEY = 'no-valid-classes';
 
 export const makeGetSpellCountByClass =
   (preparedSpells: Spell.Details[]) => (characterClassMap: CharacterClassMap) => {

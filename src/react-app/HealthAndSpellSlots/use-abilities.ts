@@ -63,6 +63,7 @@ const getDefaultAbilities = (): CharacterStatus => {
   return parsedValue;
 };
 
+// TODO: move this to a context so it can be shared between health & spell slots and prepared spells badges
 export const useAbilities = () => {
   const defaultAbilities = getDefaultAbilities();
   const [hp, setHp] = useState(defaultAbilities.hp);
