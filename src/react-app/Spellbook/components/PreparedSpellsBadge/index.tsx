@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 
+import { useAbilities } from '../../../AbilityContext';
+import { getAbilityNumber } from '../../../AbilityContext/util';
 import { useFilterContext } from '../../../FilterContext';
-import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
-import { getAbilityNumber } from '../../../HealthAndSpellSlots/util';
 import { IconCheckmark } from '../../../icons/IconCheckmark';
 import { IconChevronRight } from '../../../icons/IconChevronRight';
 import { useSpellListContext } from '../../../SpellListContext';

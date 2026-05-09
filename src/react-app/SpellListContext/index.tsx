@@ -10,7 +10,7 @@ import {
 
 import { spellDetails } from '../../constants/spell-details';
 import type { Spell } from '../../types';
-import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
+import type { CharacterClassMap } from '../AbilityContext/types';
 import { makeGetSpellCountByClass } from './make-get-spell-count-by-class';
 
 type MakeToggleSpell = ({

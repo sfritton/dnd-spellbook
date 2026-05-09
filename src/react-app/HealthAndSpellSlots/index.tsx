@@ -2,14 +2,14 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { CLASS_NAME_MAP } from '../../constants/classes';
 import type { ClassId } from '../../types';
+import { useAbilities } from '../AbilityContext';
+import { getAbilityNumber } from '../AbilityContext/util';
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
 import { classNames } from '../util';
 import { AbilityTracker } from './components/AbilityTracker';
 import { ClassMaximumForm } from './components/ClassMaximumForm';
 import styles from './index.module.css';
-import { useAbilities } from './use-abilities';
-import { getAbilityNumber } from './util';
 
 export const HealthAndSpellSlots = () => {
   const { isCharacterOpen, setIsCharacterOpen } = useSettingsContext();

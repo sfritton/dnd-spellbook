@@ -1,8 +1,8 @@
 import { type ChangeEvent, useCallback } from 'react';
 
+import type { Ability } from '../../../AbilityContext/types';
+import { getAbilityNumber, validateAbilityInput } from '../../../AbilityContext/util';
 import { Checkbox } from '../../../Checkbox';
-import type { Ability } from '../../types';
-import { getAbilityNumber, validateAbilityInput } from '../../util';
 import styles from './index.module.css';
 
 interface AbilityTrackerProps extends Ability {

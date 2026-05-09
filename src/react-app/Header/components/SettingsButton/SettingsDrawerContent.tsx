@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 
 import allSpells from '../../../../constants/spells/all.json';
 import type { Spell } from '../../../../types';
+import { useAbilities } from '../../../AbilityContext';
 import { Checkbox } from '../../../Checkbox';
-import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
 import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
 import { SpellSummary } from '../../../SpellSummary';

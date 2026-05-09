@@ -1,7 +1,7 @@
 import { CLASS_NAME_MAP } from '../../constants/classes';
 import type { ClassId, Spell } from '../../types';
-import type { CharacterClassMap } from '../HealthAndSpellSlots/types';
-import { getAbilityNumber } from '../HealthAndSpellSlots/util';
+import type { CharacterClassMap } from '../AbilityContext/types';
+import { getAbilityNumber } from '../AbilityContext/util';
 
 const CLASS_DELIMITER = '__';
 export const NO_VALID_CLASSES_KEY = 'no-valid-classes';

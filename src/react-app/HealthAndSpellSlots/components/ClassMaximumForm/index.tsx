@@ -1,9 +1,9 @@
 import { CLASS_NAME_MAP } from '../../../../constants/classes';
 import type { ClassId } from '../../../../types';
+import type { ClassMaximums } from '../../../AbilityContext/types';
+import { getAbilityNumber, validateAbilityInput } from '../../../AbilityContext/util';
 import { IconDelete } from '../../../icons/IconDelete';
 import { classNames, formatSpellLevel } from '../../../util';
-import type { ClassMaximums } from '../../types';
-import { getAbilityNumber, validateAbilityInput } from '../../util';
 import styles from './index.module.css';
 
 interface ClassMaximumFormProps extends ClassMaximums {

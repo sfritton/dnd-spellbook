@@ -1,7 +1,7 @@
 import { CLASS_NAME_MAP } from '../../../../constants/classes';
 import type { ClassId } from '../../../../types';
-import { useAbilities } from '../../../HealthAndSpellSlots/use-abilities';
-import { getAbilityNumber } from '../../../HealthAndSpellSlots/util';
+import { useAbilities } from '../../../AbilityContext';
+import { getAbilityNumber } from '../../../AbilityContext/util';
 import styles from './index.module.css';
 
 interface ClassSpellBadgeProps {

@@ -1,4 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  createContext,
+  type PropsWithChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { formatSpellLevel } from '../util';
 import type { Ability, CharacterClassMap } from './types';
@@ -23,6 +32,42 @@ const DEFAULT_ABILITIES: CharacterStatus = {
   abilities: [],
   characterClassMap: {},
 };
+
+interface AbilityContextValue {
+  hp: Ability;
+  setHp: React.Dispatch<React.SetStateAction<Ability>>;
+  tempHp: Ability;
+  setTempHp: React.Dispatch<React.SetStateAction<Ability>>;
+  spellSlots: Ability[];
+  abilities: Ability[];
+  setAbilities: React.Dispatch<React.SetStateAction<Ability[]>>;
+  characterClassMap: CharacterClassMap;
+  setCharacterClassMap: React.Dispatch<React.SetStateAction<CharacterClassMap>>;
+  makeUpdateSpellSlot: <T extends keyof Ability>(
+    key: T,
+    index: number,
+  ) => (value: Ability[T]) => void;
+  makeUpdateAbility: <T extends keyof Ability>(
+    key: T,
+    index: number,
+  ) => (value: Ability[T]) => void;
+  handleLongRest: () => void;
+  handleEdit: () => void;
+  handleCancelEdit: () => void;
+}
+
+const AbilityContext = createContext<AbilityContextValue>({
+  ...DEFAULT_ABILITIES,
+  setHp: () => {},
+  setTempHp: () => {},
+  setAbilities: () => {},
+  setCharacterClassMap: () => {},
+  makeUpdateSpellSlot: () => () => {},
+  makeUpdateAbility: () => () => {},
+  handleLongRest: () => {},
+  handleEdit: () => {},
+  handleCancelEdit: () => {},
+});
 
 const convertLegacyStructure = ({
   hp,
@@ -63,8 +108,7 @@ const getDefaultAbilities = (): CharacterStatus => {
   return parsedValue;
 };
 
-// TODO: move this to a context so it can be shared between health & spell slots and prepared spells badges
-export const useAbilities = () => {
+export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
   const defaultAbilities = getDefaultAbilities();
   const [hp, setHp] = useState(defaultAbilities.hp);
   const [tempHp, setTempHp] = useState(defaultAbilities.tempHp);
@@ -154,7 +198,7 @@ export const useAbilities = () => {
     );
   }, []);
 
-  return useMemo(
+  const value = useMemo(
     () => ({
       hp,
       setHp,
@@ -184,4 +228,8 @@ export const useAbilities = () => {
       restoreCharacterStatus,
     ],
   );
+
+  return <AbilityContext.Provider value={value}>{children}</AbilityContext.Provider>;
 };
+
+export const useAbilities = () => useContext(AbilityContext);
