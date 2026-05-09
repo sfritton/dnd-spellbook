@@ -6,8 +6,10 @@
   --serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
   --sans: var(--serif);
   --color-text: #23130a;
-  --color-accent: #155b98;
+  --color-accent: #155b99;
   --color-accent-hover: #1c79ca;
+  --color-warning: #991531;
+  --color-warning-hover: #ca1c41;
   --color-parchment-light: #fffef0;
   --color-parchment-dark: #d09963;
   --color-bg-white: #fff6;
@@ -62,25 +64,6 @@ main > * {
   box-shadow: var(--shadow-md), var(--shadow-parchment);
 }
 
-.placeholder-header {
-  color: #fff;
-  box-shadow: var(--shadow-md);
-  background: #000;
-  min-height: 98px;
-  padding: 10px 20px 10px 48px;
-}
-
-@media (width >= 630px) {
-  .placeholder-header {
-    min-height: 48px;
-  }
-}
-
-.placeholder-header h1 {
-  margin: 0;
-  font-size: 20px;
-}
-
 section {
   margin: 32px 0;
 }
@@ -100,6 +83,25 @@ h2 {
 }
 
 h3 {
+  font-size: 20px;
+}
+
+.placeholder-header {
+  color: #fff;
+  min-height: 98px;
+  box-shadow: var(--shadow-md);
+  background: #000;
+  padding: 10px 20px 10px 48px;
+}
+
+@media (width >= 630px) {
+  .placeholder-header {
+    min-height: 48px;
+  }
+}
+
+.placeholder-header h1 {
+  margin: 0;
   font-size: 20px;
 }
 
@@ -168,6 +170,7 @@ select {
   appearance: none;
   font-family: var(--serif);
   border: 1px solid var(--color-text);
+  width: 100%;
   color: var(--color-text);
   background-color: var(--color-bg-white);
   cursor: pointer;
@@ -176,7 +179,6 @@ select {
   background-repeat: no-repeat;
   background-size: 24px;
   border-radius: 4px;
-  width: 100%;
   padding: 8px 16px;
   font-size: 16px;
   display: block;
@@ -208,4 +210,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=index.df302c24.css.map */
+/*# sourceMappingURL=dnd-spellbook.3fc542c1.css.map */

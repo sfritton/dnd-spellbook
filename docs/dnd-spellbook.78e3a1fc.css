@@ -24,11 +24,7 @@
     background: #fff;
   }
 
-  :not(:is(:has(.printableSpells), .printableSpells, .printableSpells *)) {
-    display: none !important;
-  }
-
-  :not(:is(:has(.printableSpells), .printableSpells, .printableSpells *)) {
+  :not(:has(.printableSpells), .printableSpells, .printableSpells *) {
     display: none !important;
   }
 
@@ -50,4 +46,4 @@
     display: grid;
   }
 }
-/*# sourceMappingURL=index.204c04f7.css.map */
+/*# sourceMappingURL=dnd-spellbook.78e3a1fc.css.map */
