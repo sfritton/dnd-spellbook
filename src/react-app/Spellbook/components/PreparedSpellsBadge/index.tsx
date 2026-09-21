@@ -73,7 +73,7 @@ export const PreparedSpellsBadge = () => {
   return (
     <button
       type="button"
-      className={classNames(styles.preparedSpellsBadge, {
+      className={classNames(styles.badge, {
         [styles.open]: hasCharacterClasses && isOpen,
         [styles.warning]: hasTooManyPrepared || hasTooManyClassSpellsPrepared,
       })}
