@@ -1,27 +1,17 @@
-import {
-  createContext,
-  type PropsWithChildren,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, type PropsWithChildren, useCallback, useContext, useMemo } from 'react';
 
 import { spellDetails } from '../../constants/spell-details';
 import type { Spell } from '../../types';
 import type { CharacterClassMap } from '../AbilityContext/types';
+import { useCharacterContext } from '../CharacterContext';
+import { getStateValue, type StateFunction } from '../util';
 import { makeGetSpellCountByClass } from './make-get-spell-count-by-class';
+import type { SpellSummaryData } from './types';
 
 type MakeToggleSpell = ({
   id,
   level,
 }: Pick<Spell.Summary, 'id' | 'level'>) => (isPrepared: boolean) => void;
-
-export interface SpellSummaryData extends Spell.Summary {
-  isPrepared: boolean;
-  isAlwaysPrepared: boolean;
-}
 
 interface SpellListContextValue {
   spellLists: SpellSummaryData[][];
@@ -47,48 +37,56 @@ const SpellListContext = createContext<SpellListContextValue>({
   getSpellCountByClass: () => ({}),
 });
 
-const getStoredSpellLists = (): SpellSummaryData[][] | undefined => {
-  const storedString = localStorage.getItem('spell-lists');
-
-  if (!storedString) return undefined;
-
-  return JSON.parse(storedString);
-};
-
 export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
-  const storedSpellLists = getStoredSpellLists();
-  const [spellLists, setSpellLists] = useState<SpellSummaryData[][]>(
-    storedSpellLists ?? new Array(10).fill([]),
+  const {
+    currentCharacter: { spellLists },
+    updateCurrentCharacter,
+  } = useCharacterContext();
+
+  const setSpellLists = useCallback<StateFunction<SpellSummaryData[][]>>(
+    (spellListsOrFn) =>
+      updateCurrentCharacter((prev) => ({
+        ...prev,
+        spellLists: getStateValue(spellListsOrFn, prev.spellLists),
+      })),
+    [updateCurrentCharacter],
   );
-  const appendSpells = useCallback((spells: Spell.Summary[]) => {
-    setSpellLists((prevSpells) =>
-      prevSpells.map((leveledSpells, currentLevel) =>
-        [
-          ...leveledSpells,
-          ...spells
-            .filter(
-              ({ id, level }) =>
-                level === currentLevel && leveledSpells.every((prevSpell) => prevSpell.id !== id),
-            )
-            .map((spell) => ({
-              ...spell,
-              isPrepared: false,
-              isAlwaysPrepared: false,
-            })),
-        ].sort((spellA, spellB) => spellA.level - spellB.level),
-      ),
-    );
-  }, []);
 
-  const removeSpell = useCallback((spell: Spell.Summary) => {
-    setSpellLists((prevSpells) => {
-      const newSpells = [...prevSpells];
+  const appendSpells = useCallback(
+    (spells: Spell.Summary[]) => {
+      setSpellLists((prevSpells) =>
+        prevSpells.map((leveledSpells, currentLevel) =>
+          [
+            ...leveledSpells,
+            ...spells
+              .filter(
+                ({ id, level }) =>
+                  level === currentLevel && leveledSpells.every((prevSpell) => prevSpell.id !== id),
+              )
+              .map((spell) => ({
+                ...spell,
+                isPrepared: false,
+                isAlwaysPrepared: false,
+              })),
+          ].sort((spellA, spellB) => spellA.level - spellB.level),
+        ),
+      );
+    },
+    [setSpellLists],
+  );
 
-      newSpells[spell.level] = newSpells[spell.level].filter(({ id }) => id !== spell.id);
+  const removeSpell = useCallback(
+    (spell: Spell.Summary) => {
+      setSpellLists((prevSpells) => {
+        const newSpells = [...prevSpells];
 
-      return newSpells;
-    });
-  }, []);
+        newSpells[spell.level] = newSpells[spell.level].filter(({ id }) => id !== spell.id);
+
+        return newSpells;
+      });
+    },
+    [setSpellLists],
+  );
 
   const makeToggleSpell = useCallback<MakeToggleSpell>(
     ({ id, level }) =>
@@ -109,7 +107,7 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
           return newSpellLists;
         });
       },
-    [],
+    [setSpellLists],
   );
 
   const makeToggleSpellAlwaysPrepared = useCallback<MakeToggleSpell>(
@@ -134,12 +132,12 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
           return newSpellLists;
         });
       },
-    [],
+    [setSpellLists],
   );
 
   const clearSpells = useCallback(() => {
     setSpellLists(new Array(10).fill([]));
-  }, []);
+  }, [setSpellLists]);
 
   const preparedSpells = useMemo(
     () =>
@@ -190,10 +188,6 @@ export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
       getSpellCountByClass,
     ],
   );
-
-  useEffect(() => {
-    localStorage.setItem('spell-lists', JSON.stringify(spellLists));
-  }, [spellLists]);
 
   return <SpellListContext.Provider value={value}>{children}</SpellListContext.Provider>;
 };

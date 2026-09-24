@@ -1,6 +1,7 @@
 import { spellDetails } from '../../constants/spell-details';
 import { SpellCard } from '../SpellCard';
-import { type SpellSummaryData, useSpellListContext } from '../SpellListContext';
+import { useSpellListContext } from '../SpellListContext';
+import type { SpellSummaryData } from '../SpellListContext/types';
 import { formatSpellLevel } from '../util';
 
 const sortByLength = (spellSummaryA: SpellSummaryData, spellSummaryB: SpellSummaryData) => {

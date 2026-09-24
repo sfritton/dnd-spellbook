@@ -1,4 +1,5 @@
 import { AbilityContextProvider } from '../AbilityContext';
+import { CharacterContextProvider } from '../CharacterContext';
 import { DialogProvider } from '../Dialog';
 import { FilterContextProvider } from '../FilterContext';
 import { Header } from '../Header';
@@ -10,21 +11,23 @@ import { SpellListContextProvider } from '../SpellListContext';
 
 export const App = () => {
   return (
-    <AbilityContextProvider>
-      <SettingsContextProvider>
-        <FilterContextProvider>
-          <SpellListContextProvider>
-            <DialogProvider>
-              <Header />
-              <PrintSection />
-              <main>
-                <Spellbook />
-                <HealthAndSpellSlots />
-              </main>
-            </DialogProvider>
-          </SpellListContextProvider>
-        </FilterContextProvider>
-      </SettingsContextProvider>
-    </AbilityContextProvider>
+    <CharacterContextProvider>
+      <AbilityContextProvider>
+        <SettingsContextProvider>
+          <FilterContextProvider>
+            <SpellListContextProvider>
+              <DialogProvider>
+                <Header />
+                <PrintSection />
+                <main>
+                  <Spellbook />
+                  <HealthAndSpellSlots />
+                </main>
+              </DialogProvider>
+            </SpellListContextProvider>
+          </FilterContextProvider>
+        </SettingsContextProvider>
+      </AbilityContextProvider>
+    </CharacterContextProvider>
   );
 };

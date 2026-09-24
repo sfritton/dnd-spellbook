@@ -3,23 +3,14 @@ import {
   type PropsWithChildren,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
-  useState,
 } from 'react';
 
-import { formatSpellLevel } from '../util';
-import type { Ability, CharacterClassMap } from './types';
+import { useCharacterContext } from '../CharacterContext';
+import { formatSpellLevel, getStateValue, type StateFunctionParameter } from '../util';
+import type { Ability, CharacterClassMap, CharacterStatus } from './types';
 import { getAbilityNumber } from './util';
-
-interface CharacterStatus {
-  hp: Ability;
-  tempHp: Ability;
-  spellSlots: Ability[];
-  abilities: Ability[];
-  characterClassMap: CharacterClassMap;
-}
 
 const DEFAULT_ABILITIES: CharacterStatus = {
   hp: { name: 'HP', current: 0, maximum: 0 },
@@ -69,54 +60,32 @@ const AbilityContext = createContext<AbilityContextValue>({
   handleCancelEdit: () => {},
 });
 
-const convertLegacyStructure = ({
-  hp,
-  maximums,
-  tempHp,
-  spellSlots,
-  abilities,
-}: {
-  maximums: {
-    hp: number;
-    spellSlots: number[];
-  };
-  hp: number;
-  tempHp: number;
-  spellSlots: number[];
-  abilities: Ability[];
-}): CharacterStatus => ({
-  hp: { name: 'HP', current: hp, maximum: maximums.hp },
-  tempHp: { name: 'temp HP', current: tempHp, maximum: maximums.hp },
-  spellSlots: spellSlots.map((current, index) => ({
-    name: formatSpellLevel(index + 1),
-    current,
-    maximum: maximums.spellSlots[index],
-  })),
-  abilities,
-  characterClassMap: {},
-});
-
-const getDefaultAbilities = (): CharacterStatus => {
-  const storedString = localStorage.getItem('character-status');
-
-  if (!storedString) return DEFAULT_ABILITIES;
-
-  const parsedValue = JSON.parse(storedString);
-
-  if (parsedValue.maximums) return convertLegacyStructure(parsedValue);
-
-  return parsedValue;
-};
-
 export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
-  const defaultAbilities = getDefaultAbilities();
-  const [hp, setHp] = useState(defaultAbilities.hp);
-  const [tempHp, setTempHp] = useState(defaultAbilities.tempHp);
-  const [spellSlots, setSpellSlots] = useState(defaultAbilities.spellSlots);
-  const [abilities, setAbilities] = useState(defaultAbilities.abilities ?? []);
-  const [characterClassMap, setCharacterClassMap] = useState(
-    defaultAbilities.characterClassMap ?? {},
+  const {
+    currentCharacter: {
+      status: { hp, tempHp, spellSlots, abilities, characterClassMap },
+    },
+    updateCurrentCharacter,
+  } = useCharacterContext();
+
+  const makeUpdateCharacterStatus = useCallback(
+    <K extends keyof CharacterStatus>(key: K) =>
+      (valueOrFn: StateFunctionParameter<CharacterStatus[K]>) =>
+        updateCurrentCharacter((prev) => ({
+          ...prev,
+          status: {
+            ...prev.status,
+            [key]: getStateValue(valueOrFn, prev.status[key]),
+          },
+        })),
+    [updateCurrentCharacter],
   );
+
+  const setSpellSlots = makeUpdateCharacterStatus('spellSlots');
+  const setAbilities = makeUpdateCharacterStatus('abilities');
+  const setHp = makeUpdateCharacterStatus('hp');
+  const setTempHp = makeUpdateCharacterStatus('tempHp');
+  const setCharacterClassMap = makeUpdateCharacterStatus('characterClassMap');
 
   const uneditedCharacterStatusRef = useRef<CharacterStatus>({
     hp,
@@ -137,23 +106,18 @@ export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
   }, [hp, tempHp, spellSlots, abilities, characterClassMap]);
 
   const restoreCharacterStatus = useCallback(() => {
-    setHp(uneditedCharacterStatusRef.current.hp);
-    setTempHp(uneditedCharacterStatusRef.current.tempHp);
-    setSpellSlots(uneditedCharacterStatusRef.current.spellSlots);
-    setAbilities(uneditedCharacterStatusRef.current.abilities);
-    setCharacterClassMap(uneditedCharacterStatusRef.current.characterClassMap);
-  }, []);
-
-  useEffect(() => {
-    const characterStatus: CharacterStatus = {
-      hp,
-      tempHp,
-      spellSlots,
-      abilities,
-      characterClassMap,
-    };
-    localStorage.setItem('character-status', JSON.stringify(characterStatus));
-  }, [hp, tempHp, spellSlots, abilities, characterClassMap]);
+    updateCurrentCharacter((prev) => ({
+      ...prev,
+      status: {
+        ...prev.status,
+        hp: uneditedCharacterStatusRef.current.hp,
+        tempHp: uneditedCharacterStatusRef.current.tempHp,
+        spellSlots: uneditedCharacterStatusRef.current.spellSlots,
+        abilities: uneditedCharacterStatusRef.current.abilities,
+        characterClassMap: uneditedCharacterStatusRef.current.characterClassMap,
+      },
+    }));
+  }, [updateCurrentCharacter]);
 
   const makeUpdateSpellSlot = useCallback(
     <T extends keyof Ability>(key: T, index: number) =>
@@ -165,7 +129,7 @@ export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
           return newPrev;
         });
       },
-    [],
+    [setSpellSlots],
   );
 
   const makeUpdateAbility = useCallback(
@@ -178,25 +142,27 @@ export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
           return newPrev;
         });
       },
-    [],
+    [setAbilities],
   );
 
   const handleLongRest = useCallback(() => {
-    setHp((prev) => ({ ...prev, current: getAbilityNumber(prev.maximum) }));
-    setTempHp((prev) => ({ ...prev, current: 0 }));
-    setSpellSlots((prev) =>
-      prev.map((spellSlot) => ({
-        ...spellSlot,
-        current: getAbilityNumber(spellSlot.maximum),
-      })),
-    );
-    setAbilities((prev) =>
-      prev.map((ability) => ({
-        ...ability,
-        current: getAbilityNumber(ability.maximum),
-      })),
-    );
-  }, []);
+    updateCurrentCharacter((prev) => ({
+      ...prev,
+      status: {
+        ...prev.status,
+        hp: { ...prev.status.hp, current: getAbilityNumber(prev.status.hp.maximum) },
+        tempHp: { ...prev.status.tempHp, current: 0 },
+        spellSlots: prev.status.spellSlots.map((spellSlot) => ({
+          ...spellSlot,
+          current: getAbilityNumber(spellSlot.maximum),
+        })),
+        abilities: prev.status.abilities.map((ability) => ({
+          ...ability,
+          current: getAbilityNumber(ability.maximum),
+        })),
+      },
+    }));
+  }, [updateCurrentCharacter]);
 
   const value = useMemo(
     () => ({
@@ -217,10 +183,14 @@ export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
     }),
     [
       hp,
+      setHp,
       tempHp,
+      setTempHp,
       spellSlots,
       abilities,
+      setAbilities,
       characterClassMap,
+      setCharacterClassMap,
       makeUpdateSpellSlot,
       makeUpdateAbility,
       handleLongRest,

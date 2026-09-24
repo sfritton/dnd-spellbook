@@ -15,3 +15,11 @@ export interface ClassMaximums {
 
 export type CharacterClassMap = { [Key in ClassId]?: ClassMaximums };
 export type SetCharacterClassAttributes = Dispatch<SetStateAction<CharacterClassMap>>;
+
+export interface CharacterStatus {
+  hp: Ability;
+  tempHp: Ability;
+  spellSlots: Ability[];
+  abilities: Ability[];
+  characterClassMap: CharacterClassMap;
+}
