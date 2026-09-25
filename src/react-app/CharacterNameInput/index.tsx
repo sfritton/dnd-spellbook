@@ -1,10 +1,13 @@
-import { type ChangeEventHandler, useCallback } from 'react';
+import { type ChangeEventHandler, useCallback, useMemo } from 'react';
 
 import { useCharacterContext } from '../CharacterContext';
 import styles from './index.module.css';
+import { getRandomName } from './util';
 
 export const CharacterNameInput = ({ id }: { id: string }) => {
   const { currentCharacter: { name } = {}, updateCurrentCharacter } = useCharacterContext();
+
+  const placeholder = useMemo(() => getRandomName(), []);
 
   const handleChangeName = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (e) => {
@@ -21,8 +24,13 @@ export const CharacterNameInput = ({ id }: { id: string }) => {
       <label className="hidden" htmlFor={id}>
         Character Name
       </label>
-      {/* TODO: a placeholder of generated names could be cool */}
-      <input id={id} type="text" value={name ?? ''} onChange={handleChangeName} />
+      <input
+        placeholder={placeholder}
+        id={id}
+        type="text"
+        value={name ?? ''}
+        onChange={handleChangeName}
+      />
     </div>
   );
 };
