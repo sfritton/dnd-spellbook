@@ -38,10 +38,7 @@ const SpellListContext = createContext<SpellListContextValue>({
 });
 
 export const SpellListContextProvider = ({ children }: PropsWithChildren) => {
-  const {
-    currentCharacter: { spellLists },
-    updateCurrentCharacter,
-  } = useCharacterContext();
+  const { currentCharacter: { spellLists } = {}, updateCurrentCharacter } = useCharacterContext();
 
   const setSpellLists = useCallback<StateFunction<SpellSummaryData[][]>>(
     (spellListsOrFn) =>

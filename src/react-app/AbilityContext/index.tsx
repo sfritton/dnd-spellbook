@@ -64,7 +64,7 @@ export const AbilityContextProvider = ({ children }: PropsWithChildren) => {
   const {
     currentCharacter: {
       status: { hp, tempHp, spellSlots, abilities, characterClassMap },
-    },
+    } = {},
     updateCurrentCharacter,
   } = useCharacterContext();
 

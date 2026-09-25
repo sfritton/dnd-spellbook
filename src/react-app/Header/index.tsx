@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { useCharacterContext } from '../CharacterContext';
+import { CharacterName } from '../CharacterName';
+import { IconAdd } from '../icons/IconAdd';
 import { IconCharacter } from '../icons/IconCharacter';
+import { IconCheckmark } from '../icons/IconCheckmark';
 import { IconMenu } from '../icons/IconMenu';
 import { useSettingsContext } from '../SettingsContext';
 import { ClassSpellsButton } from './components/ClassSpellsButton';
@@ -12,7 +16,9 @@ import styles from './index.module.css';
 
 export const Header = () => {
   const { setIsCharacterOpen, isCharacterOpen } = useSettingsContext();
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const { currentCharacterId, characters, addCharacter, setCurrentCharacterId } =
+    useCharacterContext();
+  const [currentNav, setCurrentNav] = useState<'MENU' | 'CHARACTER_SELECT'>();
   const headerRef = useRef<HTMLDivElement>(null);
 
   // Close nav on a click outside
@@ -25,7 +31,7 @@ export const Header = () => {
 
       if (isInHeader && !isInSearchBar) return;
 
-      setIsNavOpen(false);
+      setCurrentNav(undefined);
     };
 
     document.addEventListener('click', closeNav);
@@ -41,15 +47,22 @@ export const Header = () => {
           className={styles.menuButton}
           icon={<IconMenu />}
           label="Menu"
-          onClick={() => setIsNavOpen((prev) => !prev)}
+          onClick={() => setCurrentNav((prev) => (prev === 'MENU' ? undefined : 'MENU'))}
           isSmall
         />
-        <h1>D&amp;D 5e Spellbook</h1>
+        <NavButton
+          className={styles.menuButton}
+          icon={<IconCharacter />}
+          label={<CharacterName as="h1" />}
+          onClick={() =>
+            setCurrentNav((prev) => (prev === 'CHARACTER_SELECT' ? undefined : 'CHARACTER_SELECT'))
+          }
+        />
         <nav
-          className={isNavOpen ? styles.open : styles.closed}
-          aria-hidden={isNavOpen ? undefined : 'true'}
+          className={currentNav === 'MENU' ? styles.open : styles.closed}
+          aria-hidden={currentNav === 'MENU' ? undefined : 'true'}
           // @ts-expect-error -- TS doesn't believe in inert, but it's real
-          inert={isNavOpen ? undefined : 'true'}
+          inert={currentNav === 'MENU' ? undefined : 'true'}
         >
           <ul>
             <li>
@@ -64,12 +77,49 @@ export const Header = () => {
                 label="Character status"
                 onClick={() => {
                   setIsCharacterOpen(!isCharacterOpen);
-                  setIsNavOpen(false);
+                  setCurrentNav(undefined);
                 }}
               />
             </li>
             <li>
               <SettingsButton />
+            </li>
+          </ul>
+        </nav>
+        <nav
+          className={currentNav === 'CHARACTER_SELECT' ? styles.open : styles.closed}
+          aria-hidden={currentNav === 'CHARACTER_SELECT' ? undefined : 'true'}
+          // @ts-expect-error -- TS doesn't believe in inert, but it's real
+          inert={currentNav === 'CHARACTER_SELECT' ? undefined : 'true'}
+        >
+          <ul>
+            {Object.values(characters).map((character) => (
+              <li key={character?.id}>
+                <NavButton
+                  icon={
+                    character?.id === currentCharacterId ? (
+                      <IconCheckmark />
+                    ) : (
+                      <span style={{ width: 24 }} />
+                    )
+                  }
+                  label={<CharacterName id={character?.id} />}
+                  onClick={() => {
+                    setCurrentNav(undefined);
+                    setCurrentCharacterId(character?.id);
+                  }}
+                />
+              </li>
+            ))}
+            <li>
+              <NavButton
+                icon={<IconAdd />}
+                label="Add new character"
+                onClick={() => {
+                  setCurrentNav(undefined);
+                  addCharacter();
+                }}
+              />
             </li>
           </ul>
         </nav>

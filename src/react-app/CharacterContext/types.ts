@@ -9,6 +9,6 @@ export interface Character {
 }
 
 export interface StoredCharactersItem {
-  characters: Record<string, Character>;
+  characters: Record<string, Character | undefined>;
   currentCharacterId: string;
 }

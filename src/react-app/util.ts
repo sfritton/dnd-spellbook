@@ -42,5 +42,5 @@ const isStateFunction = <T>(value: any): value is (prevValue: T) => T => {
   return typeof value === 'function';
 };
 
-export const getStateValue = <T>(valueOrFn: StateFunctionParameter<T>, prev: T) =>
-  isStateFunction(valueOrFn) ? valueOrFn(prev) : valueOrFn;
+export const getStateValue = <T>(valueOrFn: StateFunctionParameter<T>, prev: T): T =>
+  isStateFunction<T>(valueOrFn) ? valueOrFn(prev) : valueOrFn;

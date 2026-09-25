@@ -1,11 +1,11 @@
 import type { Ability, CharacterStatus } from '../AbilityContext/types';
 import type { SpellSummaryData } from '../SpellListContext/types';
 import { formatSpellLevel } from '../util';
-import type { StoredCharactersItem } from './types';
+import type { Character, StoredCharactersItem } from './types';
 
-const DEFAULT_CHARACTER_ID = 'FIRST_CHARACTER';
+const DEFAULT_CHARACTER_ID = crypto.randomUUID();
 
-const DEFAULT_ABILITIES: CharacterStatus = {
+const getDefaultAbilities = (): CharacterStatus => ({
   hp: { name: 'HP', current: 0, maximum: 0 },
   tempHp: { name: 'temp HP', current: 0, maximum: 0 },
   spellSlots: [...new Array(9)].map((_, index) => ({
@@ -15,7 +15,7 @@ const DEFAULT_ABILITIES: CharacterStatus = {
   })),
   abilities: [],
   characterClassMap: {},
-};
+});
 
 const convertLegacyStructure = ({
   hp,
@@ -44,10 +44,10 @@ const convertLegacyStructure = ({
   characterClassMap: {},
 });
 
-const getDefaultAbilities = (): CharacterStatus => {
+const getStoredAbilities = (): CharacterStatus => {
   const storedString = localStorage.getItem('character-status');
 
-  if (!storedString) return DEFAULT_ABILITIES;
+  if (!storedString) return getDefaultAbilities();
 
   const parsedValue = JSON.parse(storedString);
 
@@ -56,10 +56,12 @@ const getDefaultAbilities = (): CharacterStatus => {
   return parsedValue;
 };
 
-const getStoredSpellLists = (): SpellSummaryData[][] | undefined => {
+const getDefaultSpellLists = (): SpellSummaryData[][] => new Array(10).fill([]);
+
+const getStoredSpellLists = (): SpellSummaryData[][] => {
   const storedString = localStorage.getItem('spell-lists');
 
-  if (!storedString) return new Array(10).fill([]);
+  if (!storedString) return getDefaultSpellLists();
 
   return JSON.parse(storedString);
 };
@@ -70,7 +72,7 @@ const getDefaultCharacters = (): StoredCharactersItem => ({
       name: undefined,
       id: DEFAULT_CHARACTER_ID,
       spellLists: getStoredSpellLists(),
-      status: getDefaultAbilities(),
+      status: getStoredAbilities(),
     },
   },
   currentCharacterId: DEFAULT_CHARACTER_ID,
@@ -85,3 +87,10 @@ export const getStoredCharacters = (): StoredCharactersItem => {
 
   return parsedValue;
 };
+
+export const getNewCharacter = (): Character => ({
+  name: undefined,
+  id: crypto.randomUUID(),
+  spellLists: getDefaultSpellLists(),
+  status: getDefaultAbilities(),
+});

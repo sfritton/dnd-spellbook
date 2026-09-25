@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import { classNames } from '../../../util';
 import styles from './index.module.css';
@@ -11,7 +11,7 @@ export const NavButton = ({
   isSmall = false,
 }: {
   icon: ReactElement;
-  label: string;
+  label: ReactNode;
   className?: string;
   onClick?: () => void;
   isSmall?: boolean;

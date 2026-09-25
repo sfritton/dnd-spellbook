@@ -4,6 +4,8 @@ import { CLASS_NAME_MAP } from '../../constants/classes';
 import type { ClassId } from '../../types';
 import { useAbilities } from '../AbilityContext';
 import { getAbilityNumber } from '../AbilityContext/util';
+import { CharacterName } from '../CharacterName';
+import { CharacterNameInput } from '../CharacterNameInput';
 import { IconClose } from '../icons/IconClose';
 import { useSettingsContext } from '../SettingsContext';
 import { classNames } from '../util';
@@ -62,6 +64,9 @@ export const HealthAndSpellSlots = () => {
         </button>
       </div>
       <div className={styles.content}>
+        <h3>Character Name</h3>
+        {/* TODO: store this before editing, so that cancel works */}
+        {isEditing ? <CharacterNameInput id="character-name-input" /> : <CharacterName />}
         <h3>Health</h3>
         {isEditing ? null : (
           <AbilityTracker

@@ -9,13 +9,14 @@ import {
 } from 'react';
 
 import { getStateValue, type StateFunction } from '../util';
-import { getStoredCharacters } from './storage';
+import { getNewCharacter, getStoredCharacters } from './storage';
 import type { Character, StoredCharactersItem } from './types';
 
 interface CharacterContextValue extends StoredCharactersItem {
   currentCharacter: Character | undefined;
   updateCurrentCharacter: StateFunction<Character>;
   setCurrentCharacterId: (id: string) => void;
+  addCharacter: () => void;
 }
 
 const DEFAULT_CHARACTERS: StoredCharactersItem = {
@@ -28,9 +29,9 @@ const CharacterContext = createContext<CharacterContextValue>({
   currentCharacter: undefined,
   updateCurrentCharacter: () => {},
   setCurrentCharacterId: () => {},
+  addCharacter: () => {},
 });
 
-// TODO: load from local storage and add fallbacks for legacy data
 export const CharacterContextProvider = ({ children }: PropsWithChildren) => {
   const storedCharacters = getStoredCharacters();
   const [characters, setCharacters] = useState(storedCharacters.characters);
@@ -53,15 +54,23 @@ export const CharacterContextProvider = ({ children }: PropsWithChildren) => {
     [currentCharacterId],
   );
 
-  const value = useMemo(
+  const addCharacter = useCallback(() => {
+    const character = getNewCharacter();
+
+    setCharacters((prev) => ({ ...prev, [character.id]: character }));
+    setCurrentCharacterId(character.id);
+  }, []);
+
+  const value: CharacterContextValue = useMemo(
     () => ({
       characters,
       currentCharacterId,
       currentCharacter: characters[currentCharacterId],
       updateCurrentCharacter,
       setCurrentCharacterId,
+      addCharacter,
     }),
-    [characters, currentCharacterId, updateCurrentCharacter],
+    [characters, currentCharacterId, updateCurrentCharacter, addCharacter],
   );
 
   return <CharacterContext.Provider value={value}>{children}</CharacterContext.Provider>;
