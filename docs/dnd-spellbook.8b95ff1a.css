@@ -156,6 +156,10 @@
   }
 }
 
+.h9lpga_unnamed {
+  opacity: .8;
+}
+
 ._3_6aeG_checkboxWrapper {
   cursor: pointer;
   border-radius: 2px;
@@ -236,6 +240,7 @@
   justify-content: flex-start;
   height: 48px;
   padding: 12px;
+  overflow-x: hidden;
 }
 
 ._Ood6G_navButton svg {
@@ -247,6 +252,7 @@
 
 ._Ood6G_navButton ._Ood6G_buttonLabel {
   padding-left: 12px;
+  overflow-x: hidden;
 }
 
 ._Ood6G_navButton:hover, ._Ood6G_navButton:focus-visible {
@@ -751,13 +757,29 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   position: relative;
 }
 
-.iPi3oW_header > .iPi3oW_visualHeader > button, .iPi3oW_header > .iPi3oW_visualHeader input, .iPi3oW_header > .iPi3oW_visualHeader div > svg {
+.iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons > button:first-child {
+  flex-shrink: 0;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons > button:last-child {
+  flex-shrink: 1;
+}
+
+.iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons > button, .iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons input, .iPi3oW_header > .iPi3oW_visualHeader .iPi3oW_leftButtons div > svg {
   animation: .3s iPi3oW_fadeIn;
 }
 
 .iPi3oW_header > .iPi3oW_visualHeader h1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin: 0;
   font-size: 20px;
+  overflow-x: hidden;
 }
 
 .iPi3oW_header > .iPi3oW_visualHeader nav {
@@ -850,6 +872,21 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
 .h8tqUW_settings ul {
   margin: 0;
   padding: 0;
+}
+
+.Wct1jW_nameInput {
+  margin: 16px 0;
+}
+
+.Wct1jW_nameInput input {
+  border: 1px solid var(--color-text);
+  width: 100%;
+  color: var(--color-text);
+  background: var(--color-bg-white);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  display: block;
 }
 
 .HYU1Gq_editAbility {
@@ -1249,7 +1286,7 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   display: inline-block;
 }
 
-.bCvxsa_preparedSpellsBadge {
+.bCvxsa_badge {
   --color-bg: var(--color-accent);
   color: #fff;
   background: none;
@@ -1265,16 +1302,16 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   overflow: hidden;
 }
 
-.bCvxsa_preparedSpellsBadge.bCvxsa_warning {
+.bCvxsa_badge.bCvxsa_warning {
   --color-bg: var(--color-warning);
 }
 
-.bCvxsa_preparedSpellsBadge:hover {
+.bCvxsa_badge:hover {
   filter: brightness(1.1);
   background: none;
 }
 
-.bCvxsa_preparedSpellsBadge .bCvxsa_badgeSegment {
+.bCvxsa_badge .bCvxsa_badgeSegment {
   background: var(--color-bg);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1289,15 +1326,15 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   overflow: hidden;
 }
 
-.bCvxsa_preparedSpellsBadge .bCvxsa_badgeSegment:not(:last-child) {
+.bCvxsa_badge .bCvxsa_badgeSegment:not(:last-child) {
   margin-right: 1px;
 }
 
-.bCvxsa_preparedSpellsBadge .bCvxsa_badgeSegment:last-child:first-child:has(svg) {
+.bCvxsa_badge .bCvxsa_badgeSegment:last-child:first-child:has(svg) {
   padding-right: 16px;
 }
 
-.bCvxsa_preparedSpellsBadge .bCvxsa_badgeSegment > svg {
+.bCvxsa_badge .bCvxsa_badgeSegment > svg {
   fill: #fff;
   width: 20px;
   height: 20px;
@@ -1305,7 +1342,7 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   display: inline-block;
 }
 
-.bCvxsa_preparedSpellsBadge:not(.bCvxsa_open) .bCvxsa_badgeSegment:not(:first-child, :last-child) {
+.bCvxsa_badge:not(.bCvxsa_open) .bCvxsa_badgeSegment:not(:first-child, :last-child) {
   color: #0000;
   max-width: 0;
   margin: 0;
@@ -1313,11 +1350,11 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
   transition-timing-function: ease-out;
 }
 
-.bCvxsa_preparedSpellsBadge .bCvxsa_seeMore path {
+.bCvxsa_badge .bCvxsa_seeMore path {
   transition: d .3s;
 }
 
-.bCvxsa_preparedSpellsBadge.bCvxsa_open .bCvxsa_seeMore path {
+.bCvxsa_badge.bCvxsa_open .bCvxsa_seeMore path {
   d: path("M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z");
 }
-/*# sourceMappingURL=dnd-spellbook.90f2d33a.css.map */
+/*# sourceMappingURL=dnd-spellbook.8b95ff1a.css.map */

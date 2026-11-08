@@ -101,6 +101,7 @@ h3 {
 }
 
 .placeholder-header h1 {
+  opacity: 0;
   margin: 0;
   font-size: 20px;
 }
@@ -210,4 +211,4 @@ footer a {
     opacity: 0;
   }
 }
-/*# sourceMappingURL=dnd-spellbook.3fc542c1.css.map */
+/*# sourceMappingURL=dnd-spellbook.1d3fdbf4.css.map */

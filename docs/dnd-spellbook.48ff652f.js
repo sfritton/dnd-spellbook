@@ -7987,6 +7987,11 @@ function $15057e10b63d3f53$export$71511d61b312f219(target, source) {
 
 
 var $bwXBY = parcelRequire("bwXBY");
+
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
 var $cc52012d1a8e92a6$exports = {};
 $cc52012d1a8e92a6$exports = JSON.parse('{"title":"Abi-Dalzim\'s Horrid Wilting","source":"Xanathar\'s Guide to Everything","levelAndSchool":"8th-level necromancy","level":8,"castingTime":"1 action","range":"150 feet","components":"V, S, M (a bit of sponge)","duration":"Instantaneous","description":["You draw the moisture from every creature in a 30-foot cube centered on a point you choose within range. Each creature in that area must make a Constitution saving throw. Constructs and undead aren\u2019t affected, and plants and water elementals make this saving throw with disadvantage. A creature takes 10d8 necrotic damage on a failed save, or half as much damage on a successful one."],"spellLists":["sorcerer","wizard"]}');
 
@@ -10896,7 +10901,20 @@ const $f278a73600af97eb$export$400852b624061e8 = {
 };
 
 
-const $afae47e020802ade$export$89c6395f9ab5b552 = (level, isPlural = false)=>level === 0 ? `Cantrip${isPlural ? 's' : ''}` : level === 1 ? '1st-Level' : level === 2 ? '2nd-Level' : level === 3 ? '3rd-Level' : `${level}th-Level`;
+const $afae47e020802ade$export$89c6395f9ab5b552 = (level, isPlural = false)=>{
+    switch(level){
+        case 0:
+            return `Cantrip${isPlural ? 's' : ''}`;
+        case 1:
+            return '1st-Level';
+        case 2:
+            return '2nd-Level';
+        case 3:
+            return '3rd-Level';
+        default:
+            return `${level}th-Level`;
+    }
+};
 const $afae47e020802ade$export$f0bcdc7c752196ef = (id)=>{
     var _spellDetails_id;
     const { description: description } = (_spellDetails_id = (0, $f278a73600af97eb$export$400852b624061e8)[id]) !== null && _spellDetails_id !== void 0 ? _spellDetails_id : {};
@@ -10908,6 +10926,170 @@ const $afae47e020802ade$export$ce4ab0c55987d1ff = (...classNames)=>classNames.fl
         ] : Object.entries(className).flatMap(([name, value])=>value ? [
                 name
             ] : [])).join(' ');
+// biome-ignore lint/suspicious/noExplicitAny: Valid use of any
+const $afae47e020802ade$var$isStateFunction = (value)=>{
+    return typeof value === 'function';
+};
+const $afae47e020802ade$export$9a61606f14c59e5 = (valueOrFn, prev)=>$afae47e020802ade$var$isStateFunction(valueOrFn) ? valueOrFn(prev) : valueOrFn;
+
+
+
+const $964f5c8ba21568d4$var$DEFAULT_CHARACTER_ID = crypto.randomUUID();
+const $964f5c8ba21568d4$var$getDefaultAbilities = ()=>({
+        hp: {
+            name: 'HP',
+            current: 0,
+            maximum: 0
+        },
+        tempHp: {
+            name: 'temp HP',
+            current: 0,
+            maximum: 0
+        },
+        spellSlots: [
+            ...new Array(9)
+        ].map((_, index)=>({
+                name: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index + 1),
+                current: 0,
+                maximum: 0
+            })),
+        abilities: [],
+        characterClassMap: {}
+    });
+const $964f5c8ba21568d4$var$convertLegacyStructure = ({ hp: hp, maximums: maximums, tempHp: tempHp, spellSlots: spellSlots, abilities: abilities })=>({
+        hp: {
+            name: 'HP',
+            current: hp,
+            maximum: maximums.hp
+        },
+        tempHp: {
+            name: 'temp HP',
+            current: tempHp,
+            maximum: maximums.hp
+        },
+        spellSlots: spellSlots.map((current, index)=>({
+                name: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index + 1),
+                current: current,
+                maximum: maximums.spellSlots[index]
+            })),
+        abilities: abilities,
+        characterClassMap: {}
+    });
+const $964f5c8ba21568d4$var$getStoredAbilities = ()=>{
+    const storedString = localStorage.getItem('character-status');
+    if (!storedString) return $964f5c8ba21568d4$var$getDefaultAbilities();
+    const parsedValue = JSON.parse(storedString);
+    if (parsedValue.maximums) return $964f5c8ba21568d4$var$convertLegacyStructure(parsedValue);
+    return parsedValue;
+};
+const $964f5c8ba21568d4$var$getDefaultSpellLists = ()=>new Array(10).fill([]);
+const $964f5c8ba21568d4$var$getStoredSpellLists = ()=>{
+    const storedString = localStorage.getItem('spell-lists');
+    if (!storedString) return $964f5c8ba21568d4$var$getDefaultSpellLists();
+    return JSON.parse(storedString);
+};
+const $964f5c8ba21568d4$var$getDefaultCharacters = ()=>({
+        characters: {
+            [$964f5c8ba21568d4$var$DEFAULT_CHARACTER_ID]: {
+                name: undefined,
+                id: $964f5c8ba21568d4$var$DEFAULT_CHARACTER_ID,
+                spellLists: $964f5c8ba21568d4$var$getStoredSpellLists(),
+                status: $964f5c8ba21568d4$var$getStoredAbilities()
+            }
+        },
+        currentCharacterId: $964f5c8ba21568d4$var$DEFAULT_CHARACTER_ID
+    });
+const $964f5c8ba21568d4$export$8726a0c5285c190a = ()=>{
+    const storedString = localStorage.getItem('characters');
+    if (!storedString) return $964f5c8ba21568d4$var$getDefaultCharacters();
+    const parsedValue = JSON.parse(storedString);
+    return parsedValue;
+};
+const $964f5c8ba21568d4$export$7c4f13c3c7376885 = ()=>({
+        name: undefined,
+        id: crypto.randomUUID(),
+        spellLists: $964f5c8ba21568d4$var$getDefaultSpellLists(),
+        status: $964f5c8ba21568d4$var$getDefaultAbilities()
+    });
+
+
+const $c569484d30962c7e$var$DEFAULT_CHARACTERS = {
+    characters: {},
+    currentCharacterId: ''
+};
+const $c569484d30962c7e$var$CharacterContext = /*#__PURE__*/ (0, $bwXBY.createContext)((0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, $c569484d30962c7e$var$DEFAULT_CHARACTERS), {
+    currentCharacter: undefined,
+    updateCurrentCharacter: ()=>{},
+    setCurrentCharacterId: ()=>{},
+    addCharacter: ()=>{},
+    deleteCurrentCharacter: ()=>{}
+}));
+const $c569484d30962c7e$export$65ea7944df111e4c = ({ children: children })=>{
+    const storedCharacters = (0, $964f5c8ba21568d4$export$8726a0c5285c190a)();
+    const [characters, setCharacters] = (0, $bwXBY.useState)(storedCharacters.characters);
+    const [currentCharacterId, setCurrentCharacterId] = (0, $bwXBY.useState)(storedCharacters.currentCharacterId);
+    (0, $bwXBY.useEffect)(()=>{
+        const charactersToStore = {
+            characters: characters,
+            currentCharacterId: currentCharacterId
+        };
+        localStorage.setItem('characters', JSON.stringify(charactersToStore));
+    }, [
+        characters,
+        currentCharacterId
+    ]);
+    const updateCurrentCharacter = (0, $bwXBY.useCallback)((characterOrFn)=>setCharacters((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                [currentCharacterId]: (0, $afae47e020802ade$export$9a61606f14c59e5)(characterOrFn, prev[currentCharacterId])
+            })), [
+        currentCharacterId
+    ]);
+    const addCharacter = (0, $bwXBY.useCallback)(()=>{
+        const character = (0, $964f5c8ba21568d4$export$7c4f13c3c7376885)();
+        setCharacters((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                [character.id]: character
+            }));
+        setCurrentCharacterId(character.id);
+    }, []);
+    const deleteCurrentCharacter = (0, $bwXBY.useCallback)(()=>{
+        const otherCharacterIds = Object.keys(characters).filter((id)=>id !== currentCharacterId);
+        // Try to load an existing character
+        if (otherCharacterIds.length >= 1) {
+            setCurrentCharacterId(otherCharacterIds[0]);
+            setCharacters((prev)=>Object.fromEntries(Object.entries(prev).filter(([id])=>id !== currentCharacterId)));
+            return;
+        }
+        // Otherwise, load a blank character
+        const newCharacter = (0, $964f5c8ba21568d4$export$7c4f13c3c7376885)();
+        setCharacters({
+            [newCharacter.id]: newCharacter
+        });
+        setCurrentCharacterId(newCharacter.id);
+    }, [
+        currentCharacterId,
+        characters
+    ]);
+    const value = (0, $bwXBY.useMemo)(()=>({
+            characters: characters,
+            currentCharacterId: currentCharacterId,
+            currentCharacter: characters[currentCharacterId],
+            updateCurrentCharacter: updateCurrentCharacter,
+            setCurrentCharacterId: setCurrentCharacterId,
+            addCharacter: addCharacter,
+            deleteCurrentCharacter: deleteCurrentCharacter
+        }), [
+        characters,
+        currentCharacterId,
+        updateCurrentCharacter,
+        addCharacter,
+        deleteCurrentCharacter
+    ]);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)($c569484d30962c7e$var$CharacterContext.Provider, {
+        value: value,
+        children: children
+    });
+};
+const $c569484d30962c7e$export$f2078a1c0f62490b = ()=>(0, $bwXBY.useContext)($c569484d30962c7e$var$CharacterContext);
+
 
 
 const $8a9e3fd55352694c$export$940a3fd2b098bc11 = (valueStr)=>{
@@ -10954,41 +11136,20 @@ const $5f4e3bb5330ea03a$var$AbilityContext = /*#__PURE__*/ (0, $bwXBY.createCont
     handleEdit: ()=>{},
     handleCancelEdit: ()=>{}
 }));
-const $5f4e3bb5330ea03a$var$convertLegacyStructure = ({ hp: hp, maximums: maximums, tempHp: tempHp, spellSlots: spellSlots, abilities: abilities })=>({
-        hp: {
-            name: 'HP',
-            current: hp,
-            maximum: maximums.hp
-        },
-        tempHp: {
-            name: 'temp HP',
-            current: tempHp,
-            maximum: maximums.hp
-        },
-        spellSlots: spellSlots.map((current, index)=>({
-                name: (0, $afae47e020802ade$export$89c6395f9ab5b552)(index + 1),
-                current: current,
-                maximum: maximums.spellSlots[index]
-            })),
-        abilities: abilities,
-        characterClassMap: {}
-    });
-const $5f4e3bb5330ea03a$var$getDefaultAbilities = ()=>{
-    const storedString = localStorage.getItem('character-status');
-    if (!storedString) return $5f4e3bb5330ea03a$var$DEFAULT_ABILITIES;
-    const parsedValue = JSON.parse(storedString);
-    if (parsedValue.maximums) return $5f4e3bb5330ea03a$var$convertLegacyStructure(parsedValue);
-    return parsedValue;
-};
 const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
-    const defaultAbilities = $5f4e3bb5330ea03a$var$getDefaultAbilities();
-    const [hp, setHp] = (0, $bwXBY.useState)(defaultAbilities.hp);
-    const [tempHp, setTempHp] = (0, $bwXBY.useState)(defaultAbilities.tempHp);
-    const [spellSlots, setSpellSlots] = (0, $bwXBY.useState)(defaultAbilities.spellSlots);
-    var _defaultAbilities_abilities;
-    const [abilities, setAbilities] = (0, $bwXBY.useState)((_defaultAbilities_abilities = defaultAbilities.abilities) !== null && _defaultAbilities_abilities !== void 0 ? _defaultAbilities_abilities : []);
-    var _defaultAbilities_characterClassMap;
-    const [characterClassMap, setCharacterClassMap] = (0, $bwXBY.useState)((_defaultAbilities_characterClassMap = defaultAbilities.characterClassMap) !== null && _defaultAbilities_characterClassMap !== void 0 ? _defaultAbilities_characterClassMap : {});
+    const { currentCharacter: { status: { hp: hp, tempHp: tempHp, spellSlots: spellSlots, abilities: abilities, characterClassMap: characterClassMap } } = {}, updateCurrentCharacter: updateCurrentCharacter } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
+    const makeUpdateCharacterStatus = (0, $bwXBY.useCallback)((key)=>(valueOrFn)=>updateCurrentCharacter((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                    status: (0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev.status), {
+                        [key]: (0, $afae47e020802ade$export$9a61606f14c59e5)(valueOrFn, prev.status[key])
+                    })
+                })), [
+        updateCurrentCharacter
+    ]);
+    const setSpellSlots = makeUpdateCharacterStatus('spellSlots');
+    const setAbilities = makeUpdateCharacterStatus('abilities');
+    const setHp = makeUpdateCharacterStatus('hp');
+    const setTempHp = makeUpdateCharacterStatus('tempHp');
+    const setCharacterClassMap = makeUpdateCharacterStatus('characterClassMap');
     const uneditedCharacterStatusRef = (0, $bwXBY.useRef)({
         hp: hp,
         tempHp: tempHp,
@@ -11012,27 +11173,17 @@ const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
         characterClassMap
     ]);
     const restoreCharacterStatus = (0, $bwXBY.useCallback)(()=>{
-        setHp(uneditedCharacterStatusRef.current.hp);
-        setTempHp(uneditedCharacterStatusRef.current.tempHp);
-        setSpellSlots(uneditedCharacterStatusRef.current.spellSlots);
-        setAbilities(uneditedCharacterStatusRef.current.abilities);
-        setCharacterClassMap(uneditedCharacterStatusRef.current.characterClassMap);
-    }, []);
-    (0, $bwXBY.useEffect)(()=>{
-        const characterStatus = {
-            hp: hp,
-            tempHp: tempHp,
-            spellSlots: spellSlots,
-            abilities: abilities,
-            characterClassMap: characterClassMap
-        };
-        localStorage.setItem('character-status', JSON.stringify(characterStatus));
+        updateCurrentCharacter((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                status: (0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev.status), {
+                    hp: uneditedCharacterStatusRef.current.hp,
+                    tempHp: uneditedCharacterStatusRef.current.tempHp,
+                    spellSlots: uneditedCharacterStatusRef.current.spellSlots,
+                    abilities: uneditedCharacterStatusRef.current.abilities,
+                    characterClassMap: uneditedCharacterStatusRef.current.characterClassMap
+                })
+            }));
     }, [
-        hp,
-        tempHp,
-        spellSlots,
-        abilities,
-        characterClassMap
+        updateCurrentCharacter
     ]);
     const makeUpdateSpellSlot = (0, $bwXBY.useCallback)((key, index)=>(value)=>{
             setSpellSlots((prev)=>{
@@ -11044,7 +11195,9 @@ const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
                 });
                 return newPrev;
             });
-        }, []);
+        }, [
+        setSpellSlots
+    ]);
     const makeUpdateAbility = (0, $bwXBY.useCallback)((key, index)=>(value)=>{
             setAbilities((prev)=>{
                 const newPrev = [
@@ -11055,21 +11208,29 @@ const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
                 });
                 return newPrev;
             });
-        }, []);
+        }, [
+        setAbilities
+    ]);
     const handleLongRest = (0, $bwXBY.useCallback)(()=>{
-        setHp((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
-                current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(prev.maximum)
+        updateCurrentCharacter((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                status: (0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev.status), {
+                    hp: (0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev.status.hp), {
+                        current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(prev.status.hp.maximum)
+                    }),
+                    tempHp: (0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev.status.tempHp), {
+                        current: 0
+                    }),
+                    spellSlots: prev.status.spellSlots.map((spellSlot)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, spellSlot), {
+                            current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(spellSlot.maximum)
+                        })),
+                    abilities: prev.status.abilities.map((ability)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, ability), {
+                            current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(ability.maximum)
+                        }))
+                })
             }));
-        setTempHp((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
-                current: 0
-            }));
-        setSpellSlots((prev)=>prev.map((spellSlot)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, spellSlot), {
-                    current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(spellSlot.maximum)
-                })));
-        setAbilities((prev)=>prev.map((ability)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, ability), {
-                    current: (0, $8a9e3fd55352694c$export$a9abd138eb32f3bc)(ability.maximum)
-                })));
-    }, []);
+    }, [
+        updateCurrentCharacter
+    ]);
     const value = (0, $bwXBY.useMemo)(()=>({
             hp: hp,
             setHp: setHp,
@@ -11087,10 +11248,14 @@ const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
             handleCancelEdit: restoreCharacterStatus
         }), [
         hp,
+        setHp,
         tempHp,
+        setTempHp,
         spellSlots,
         abilities,
+        setAbilities,
         characterClassMap,
+        setCharacterClassMap,
         makeUpdateSpellSlot,
         makeUpdateAbility,
         handleLongRest,
@@ -11103,6 +11268,7 @@ const $5f4e3bb5330ea03a$export$9403f431d8a60269 = ({ children: children })=>{
     });
 };
 const $5f4e3bb5330ea03a$export$ea63f837adc336e9 = ()=>(0, $bwXBY.useContext)($5f4e3bb5330ea03a$var$AbilityContext);
+
 
 
 
@@ -11462,6 +11628,42 @@ const $ba83cb97b7fd8383$export$396ef541d9951d45 = ()=>(0, $bwXBY.useContext)($ba
 
 var $bwXBY = parcelRequire("bwXBY");
 
+
+
+var $b4150ae04e2ac0e3$exports = {};
+
+$parcel$export($b4150ae04e2ac0e3$exports, "unnamed", function () { return $b4150ae04e2ac0e3$export$a88cc0adfe069553; }, function (v) { return $b4150ae04e2ac0e3$export$a88cc0adfe069553 = v; });
+var $b4150ae04e2ac0e3$export$a88cc0adfe069553;
+$b4150ae04e2ac0e3$export$a88cc0adfe069553 = `h9lpga_unnamed`;
+
+
+const $8ec4e501d692b6b6$export$2797ea18653e0b2a = ({ as: Component = 'span', id: idProp })=>{
+    const { currentCharacterId: currentCharacterId, characters: characters } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
+    const id = idProp !== null && idProp !== void 0 ? idProp : currentCharacterId;
+    var _characters_id;
+    const { name: name } = (_characters_id = characters[id]) !== null && _characters_id !== void 0 ? _characters_id : {};
+    const className = name ? undefined : String((0, (/*@__PURE__*/$parcel$interopDefault($b4150ae04e2ac0e3$exports))).unnamed);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)(Component, {
+        className: className,
+        children: name !== null && name !== void 0 ? name : 'Unnamed Character'
+    });
+};
+
+
+
+const $c3fbb44f23bacc75$export$4176b1d4e95be624 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
+        })
+    });
+
+
+
 const $b5ff744370571cdc$export$8e9f25373eb3da50 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
         focusable: "false",
         "aria-hidden": "true",
@@ -11469,6 +11671,19 @@ const $b5ff744370571cdc$export$8e9f25373eb3da50 = ()=>/*#__PURE__*/ (0, $086df4e
         tabIndex: -1,
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
             d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
+        })
+    });
+
+
+
+const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
+        className: className,
+        focusable: "false",
+        "aria-hidden": "true",
+        viewBox: "0 0 24 24",
+        tabIndex: -1,
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
+            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
         })
     });
 
@@ -11583,23 +11798,13 @@ const $da63c334bfef3117$export$48513f6b9f8ce62d = ({ className: className = '', 
 
 
 
-const $c3fbb44f23bacc75$export$4176b1d4e95be624 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
-        className: className,
-        focusable: "false",
-        "aria-hidden": "true",
-        viewBox: "0 0 24 24",
-        tabIndex: -1,
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
-            d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
-        })
-    });
-
-
 
 
 
 
 var $bwXBY = parcelRequire("bwXBY");
+
+
 
 
 
@@ -11668,14 +11873,13 @@ const $624eed663fdde719$var$SpellListContext = /*#__PURE__*/ (0, $bwXBY.createCo
     clearSpells: ()=>{},
     getSpellCountByClass: ()=>({})
 });
-const $624eed663fdde719$var$getStoredSpellLists = ()=>{
-    const storedString = localStorage.getItem('spell-lists');
-    if (!storedString) return undefined;
-    return JSON.parse(storedString);
-};
 const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
-    const storedSpellLists = $624eed663fdde719$var$getStoredSpellLists();
-    const [spellLists, setSpellLists] = (0, $bwXBY.useState)(storedSpellLists !== null && storedSpellLists !== void 0 ? storedSpellLists : new Array(10).fill([]));
+    const { currentCharacter: { spellLists: spellLists } = {}, updateCurrentCharacter: updateCurrentCharacter } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
+    const setSpellLists = (0, $bwXBY.useCallback)((spellListsOrFn)=>updateCurrentCharacter((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                spellLists: (0, $afae47e020802ade$export$9a61606f14c59e5)(spellListsOrFn, prev.spellLists)
+            })), [
+        updateCurrentCharacter
+    ]);
     const appendSpells = (0, $bwXBY.useCallback)((spells)=>{
         setSpellLists((prevSpells)=>prevSpells.map((leveledSpells, currentLevel)=>[
                     ...leveledSpells,
@@ -11684,7 +11888,9 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                             isAlwaysPrepared: false
                         }))
                 ].sort((spellA, spellB)=>spellA.level - spellB.level)));
-    }, []);
+    }, [
+        setSpellLists
+    ]);
     const removeSpell = (0, $bwXBY.useCallback)((spell)=>{
         setSpellLists((prevSpells)=>{
             const newSpells = [
@@ -11693,7 +11899,9 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
             newSpells[spell.level] = newSpells[spell.level].filter(({ id: id })=>id !== spell.id);
             return newSpells;
         });
-    }, []);
+    }, [
+        setSpellLists
+    ]);
     const makeToggleSpell = (0, $bwXBY.useCallback)(({ id: id, level: level })=>(isPrepared)=>{
             setSpellLists((prevSpellLists)=>{
                 const newSpellLists = prevSpellLists.map((spells)=>[
@@ -11707,7 +11915,9 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                 newSpellLists[level][selectedIndex] = newSpell;
                 return newSpellLists;
             });
-        }, []);
+        }, [
+        setSpellLists
+    ]);
     const makeToggleSpellAlwaysPrepared = (0, $bwXBY.useCallback)(({ id: id, level: level })=>(isAlwaysPrepared)=>{
             setSpellLists((prevSpellLists)=>{
                 const newSpellLists = prevSpellLists.map((spells)=>[
@@ -11724,10 +11934,14 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
                 newSpellLists[level][selectedIndex] = newSpell;
                 return newSpellLists;
             });
-        }, []);
+        }, [
+        setSpellLists
+    ]);
     const clearSpells = (0, $bwXBY.useCallback)(()=>{
         setSpellLists(new Array(10).fill([]));
-    }, []);
+    }, [
+        setSpellLists
+    ]);
     const preparedSpells = (0, $bwXBY.useMemo)(()=>spellLists.map((spells)=>spells.filter(({ isPrepared: isPrepared, isAlwaysPrepared: isAlwaysPrepared })=>isPrepared || isAlwaysPrepared)), [
         spellLists
     ]);
@@ -11759,11 +11973,6 @@ const $624eed663fdde719$export$42c2aab753184bed = ({ children: children })=>{
         makeToggleSpellAlwaysPrepared,
         clearSpells,
         getSpellCountByClass
-    ]);
-    (0, $bwXBY.useEffect)(()=>{
-        localStorage.setItem('spell-lists', JSON.stringify(spellLists));
-    }, [
-        spellLists
     ]);
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)($624eed663fdde719$var$SpellListContext.Provider, {
         value: value,
@@ -12366,18 +12575,6 @@ function $18169b4fbd00762b$export$71511d61b312f219(source, excluded) {
 var $bwXBY = parcelRequire("bwXBY");
 
 
-const $0cdc08a00dce2cc7$export$a589d21fc6aff466 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
-        className: className,
-        focusable: "false",
-        "aria-hidden": "true",
-        viewBox: "0 0 24 24",
-        tabIndex: -1,
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("path", {
-            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
-        })
-    });
-
-
 
 const $8c36ae5dc31bea39$export$c5585d306191014 = ({ className: className })=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
         className: className,
@@ -12855,6 +13052,8 @@ const $6ceefef6d1a49563$export$79d13b60110f33be = ()=>{
 var $bwXBY = parcelRequire("bwXBY");
 
 
+
+
 const $9917e8a1c9cc274e$export$f8295d9ceeb6d2d6 = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("svg", {
         focusable: "false",
         "aria-hidden": "true",
@@ -12866,23 +13065,25 @@ const $9917e8a1c9cc274e$export$f8295d9ceeb6d2d6 = ()=>/*#__PURE__*/ (0, $086df4e
     });
 
 
-
 var $157a59a2d978efda$exports = {};
 
 $parcel$export($157a59a2d978efda$exports, "clearDialog", function () { return $157a59a2d978efda$export$cedab6903badeb9a; }, function (v) { return $157a59a2d978efda$export$cedab6903badeb9a = v; });
 $parcel$export($157a59a2d978efda$exports, "fadeIn", function () { return $157a59a2d978efda$export$82e6205b15e6c637; }, function (v) { return $157a59a2d978efda$export$82e6205b15e6c637 = v; });
 $parcel$export($157a59a2d978efda$exports, "header", function () { return $157a59a2d978efda$export$38e42c68cf43b5d4; }, function (v) { return $157a59a2d978efda$export$38e42c68cf43b5d4 = v; });
+$parcel$export($157a59a2d978efda$exports, "leftButtons", function () { return $157a59a2d978efda$export$b44c15cc2b81d82c; }, function (v) { return $157a59a2d978efda$export$b44c15cc2b81d82c = v; });
 $parcel$export($157a59a2d978efda$exports, "open", function () { return $157a59a2d978efda$export$3ce6949f20cea765; }, function (v) { return $157a59a2d978efda$export$3ce6949f20cea765 = v; });
 $parcel$export($157a59a2d978efda$exports, "visualHeader", function () { return $157a59a2d978efda$export$e75a5077ed9b40c7; }, function (v) { return $157a59a2d978efda$export$e75a5077ed9b40c7 = v; });
 var $157a59a2d978efda$export$cedab6903badeb9a;
 var $157a59a2d978efda$export$82e6205b15e6c637;
 var $157a59a2d978efda$export$38e42c68cf43b5d4;
+var $157a59a2d978efda$export$b44c15cc2b81d82c;
 var $157a59a2d978efda$export$3ce6949f20cea765;
 var $157a59a2d978efda$export$e75a5077ed9b40c7;
 $157a59a2d978efda$export$cedab6903badeb9a = `iPi3oW_clearDialog`;
 $157a59a2d978efda$export$82e6205b15e6c637 = `iPi3oW_fadeIn`;
 $157a59a2d978efda$export$82e6205b15e6c637;
 $157a59a2d978efda$export$38e42c68cf43b5d4 = `iPi3oW_header`;
+$157a59a2d978efda$export$b44c15cc2b81d82c = `iPi3oW_leftButtons`;
 $157a59a2d978efda$export$3ce6949f20cea765 = `iPi3oW_open`;
 $157a59a2d978efda$export$e75a5077ed9b40c7 = `iPi3oW_visualHeader`;
 
@@ -12893,6 +13094,7 @@ $157a59a2d978efda$export$e75a5077ed9b40c7 = `iPi3oW_visualHeader`;
 
 
 var $bwXBY = parcelRequire("bwXBY");
+
 
 
 
@@ -12928,7 +13130,7 @@ const $a9a1e86cd248f07a$var$OPTIONS = Object.entries($a9a1e86cd248f07a$var$HIGHL
         value: value,
         label: label
     })).sort((a, b)=>a.label.localeCompare(b.label));
-const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClickClearSpells })=>{
+const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickDeleteCharacter: onClickDeleteCharacter })=>{
     const { isCardMode: isCardMode, setIsCardMode: setIsCardMode, highlights: highlights, makeUpdateHighlight: makeUpdateHighlight } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
     const { characterClassMap: characterClassMap } = (0, $5f4e3bb5330ea03a$export$ea63f837adc336e9)();
     const characterClasses = (0, $bwXBY.useMemo)(()=>Object.entries(characterClassMap).filter(([_, value])=>Boolean(value)), [
@@ -12943,10 +13145,16 @@ const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClick
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
                 type: "button",
                 className: (0, $afae47e020802ade$export$ce4ab0c55987d1ff)('secondary', (0, (/*@__PURE__*/$parcel$interopDefault($c069e0c64752bfed$exports))).removeSpellsButton),
-                onClick: onClickClearSpells,
+                onClick: onClickDeleteCharacter,
                 children: [
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $7cd0eeac64f16c45$export$4d4e10ce882b8153), {}),
-                    " Remove all spells"
+                    ' ',
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("span", {
+                        children: [
+                            "Delete ",
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8ec4e501d692b6b6$export$2797ea18653e0b2a), {})
+                        ]
+                    })
                 ]
             }),
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h4", {
@@ -13014,21 +13222,27 @@ const $a9a1e86cd248f07a$export$9cde5251e401e1c3 = ({ onClickClearSpells: onClick
 
 
 const $b8f3d6f68091dea0$export$e2457e1974c298c3 = ()=>{
-    const { clearSpells: clearSpells } = (0, $624eed663fdde719$export$2f6c272b35a49e1a)();
+    const { deleteCurrentCharacter: deleteCurrentCharacter } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
     const { open: openSettingsDrawer } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
     const { open: openClearDialog, close: closeClearDialog } = (0, $12c96dc3e262eca0$export$f7a7fc9cab0e1fcf)();
-    const handleClickClearSpells = (0, $bwXBY.useCallback)(()=>{
+    const handleClickDeleteCharacter = (0, $bwXBY.useCallback)(()=>{
         const handleYes = ()=>{
-            clearSpells();
+            deleteCurrentCharacter();
             closeClearDialog();
         };
         openClearDialog({
-            title: 'Remove all spells?',
+            title: 'Delete this character?',
             className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).clearDialog,
             children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $086df4e28a6f4e89$exports.Fragment), {
                 children: [
-                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {
-                        children: "Are you sure you want to remove all spells from your spellbook? "
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                        children: [
+                            "Are you sure you want to delete ",
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8ec4e501d692b6b6$export$2797ea18653e0b2a), {
+                                as: "b"
+                            }),
+                            "?"
+                        ]
                     }),
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("b", {
                         children: "This cannot be undone."
@@ -13050,19 +13264,19 @@ const $b8f3d6f68091dea0$export$e2457e1974c298c3 = ()=>{
     }, [
         openClearDialog,
         closeClearDialog,
-        clearSpells
+        deleteCurrentCharacter
     ]);
     const handleClick = (0, $bwXBY.useCallback)(()=>{
         openSettingsDrawer({
             title: 'Settings',
             isDrawer: true,
             children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $a9a1e86cd248f07a$export$9cde5251e401e1c3), {
-                onClickClearSpells: handleClickClearSpells
+                onClickDeleteCharacter: handleClickDeleteCharacter
             })
         });
     }, [
         openSettingsDrawer,
-        handleClickClearSpells
+        handleClickDeleteCharacter
     ]);
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
         label: "Settings",
@@ -13075,7 +13289,8 @@ const $b8f3d6f68091dea0$export$e2457e1974c298c3 = ()=>{
 
 const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
     const { setIsCharacterOpen: setIsCharacterOpen, isCharacterOpen: isCharacterOpen } = (0, $2772f785971991b7$export$c56093d34e5fa43e)();
-    const [isNavOpen, setIsNavOpen] = (0, $bwXBY.useState)(false);
+    const { currentCharacterId: currentCharacterId, characters: characters, addCharacter: addCharacter, setCurrentCharacterId: setCurrentCharacterId } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
+    const [currentNav, setCurrentNav] = (0, $bwXBY.useState)();
     const headerRef = (0, $bwXBY.useRef)(null);
     // Close nav on a click outside
     (0, $bwXBY.useEffect)(()=>{
@@ -13086,7 +13301,7 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
             // @ts-expect-error -- TS doesn't believe in .closest(), but it's real
             const isInSearchBar = Boolean((_e_target_closest1 = (_e_target1 = e.target).closest) === null || _e_target_closest1 === void 0 ? void 0 : _e_target_closest1.call(_e_target1, '#search-bar'));
             if (isInHeader && !isInSearchBar) return;
-            setIsNavOpen(false);
+            setCurrentNav(undefined);
         };
         document.addEventListener('click', closeNav);
         // TODO: close on ESC press
@@ -13101,21 +13316,32 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                 viewTransitionName: 'header'
             },
             children: [
-                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
-                    className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).menuButton,
-                    icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $709b17d34e23b824$export$94155298424a8522), {}),
-                    label: "Menu",
-                    onClick: ()=>setIsNavOpen((prev)=>!prev),
-                    isSmall: true
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+                    className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).leftButtons,
+                    children: [
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).menuButton,
+                            icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $709b17d34e23b824$export$94155298424a8522), {}),
+                            label: "Menu",
+                            onClick: ()=>setCurrentNav((prev)=>prev === 'MENU' ? undefined : 'MENU'),
+                            isSmall: true
+                        }),
+                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                            className: (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).menuButton,
+                            icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b5ff744370571cdc$export$8e9f25373eb3da50), {}),
+                            label: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8ec4e501d692b6b6$export$2797ea18653e0b2a), {
+                                as: "h1"
+                            }),
+                            onClick: ()=>setCurrentNav((prev)=>prev === 'CHARACTER_SELECT' ? undefined : 'CHARACTER_SELECT')
+                        })
+                    ]
                 }),
-                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h1", {
-                    children: "D&D 5e Spellbook"
-                }),
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("div", {}),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
-                    className: isNavOpen ? (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).open : (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).closed,
-                    "aria-hidden": isNavOpen ? undefined : 'true',
+                    className: currentNav === 'MENU' ? (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).open : (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).closed,
+                    "aria-hidden": currentNav === 'MENU' ? undefined : 'true',
                     // @ts-expect-error -- TS doesn't believe in inert, but it's real
-                    inert: isNavOpen ? undefined : 'true',
+                    inert: currentNav === 'MENU' ? undefined : 'true',
                     children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("ul", {
                         children: [
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
@@ -13132,12 +13358,48 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
                                     label: "Character status",
                                     onClick: ()=>{
                                         setIsCharacterOpen(!isCharacterOpen);
-                                        setIsNavOpen(false);
+                                        setCurrentNav(undefined);
                                     }
                                 })
                             }),
                             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
                                 children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b8f3d6f68091dea0$export$e2457e1974c298c3), {})
+                            })
+                        ]
+                    })
+                }),
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("nav", {
+                    className: currentNav === 'CHARACTER_SELECT' ? (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).open : (0, (/*@__PURE__*/$parcel$interopDefault($157a59a2d978efda$exports))).closed,
+                    "aria-hidden": currentNav === 'CHARACTER_SELECT' ? undefined : 'true',
+                    // @ts-expect-error -- TS doesn't believe in inert, but it's real
+                    inert: currentNav === 'CHARACTER_SELECT' ? undefined : 'true',
+                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("ul", {
+                        children: [
+                            Object.values(characters).map((character)=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                                        icon: (character === null || character === void 0 ? void 0 : character.id) === currentCharacterId ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $0cdc08a00dce2cc7$export$a589d21fc6aff466), {}) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("span", {
+                                            style: {
+                                                width: 24
+                                            }
+                                        }),
+                                        label: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8ec4e501d692b6b6$export$2797ea18653e0b2a), {
+                                            id: character === null || character === void 0 ? void 0 : character.id
+                                        }),
+                                        onClick: ()=>{
+                                            setCurrentNav(undefined);
+                                            setCurrentCharacterId(character === null || character === void 0 ? void 0 : character.id);
+                                        }
+                                    })
+                                }, character === null || character === void 0 ? void 0 : character.id)),
+                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("li", {
+                                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $3617e600d306eca2$export$3b0a9d598f613fa), {
+                                    icon: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c3fbb44f23bacc75$export$4176b1d4e95be624), {}),
+                                    label: "Add new character",
+                                    onClick: ()=>{
+                                        setCurrentNav(undefined);
+                                        addCharacter();
+                                    }
+                                })
                             })
                         ]
                     })
@@ -13155,6 +13417,86 @@ const $5c113dab75ce6f68$export$8b251419efc915eb = ()=>{
 
 var $bwXBY = parcelRequire("bwXBY");
 
+
+
+
+
+
+
+
+var $bwXBY = parcelRequire("bwXBY");
+
+var $073ec3ccf23de286$exports = {};
+
+$parcel$export($073ec3ccf23de286$exports, "nameInput", function () { return $073ec3ccf23de286$export$d52247b927a0044; }, function (v) { return $073ec3ccf23de286$export$d52247b927a0044 = v; });
+var $073ec3ccf23de286$export$d52247b927a0044;
+$073ec3ccf23de286$export$d52247b927a0044 = `Wct1jW_nameInput`;
+
+
+const $f967ec660d09c354$var$FIRST_NAMES = [
+    'Jastira',
+    'Verrona',
+    'Leena',
+    'Elanil',
+    'Twig',
+    'Khaoth',
+    'Morujor',
+    'Lagunarilan',
+    'Kell',
+    'Wren',
+    'Lucy',
+    'Reginald',
+    'Dimble'
+];
+const $f967ec660d09c354$var$LAST_NAMES = [
+    ' Mossbrook',
+    ', The Soulcleaver',
+    ' Torrulon',
+    ' Bottomhill',
+    ' Brightleaf',
+    ' Treestrider',
+    ' Dalynn',
+    ' Welbeck',
+    ' Thrundok',
+    ' Arvannis',
+    ' Blacksong',
+    ' Forethorne'
+];
+const $f967ec660d09c354$export$899caa88e79f0830 = ()=>{
+    const firstNameIndex = Math.floor(Math.random() * $f967ec660d09c354$var$FIRST_NAMES.length);
+    const lastNameIndex = Math.floor(Math.random() * $f967ec660d09c354$var$LAST_NAMES.length);
+    return `ex. ${$f967ec660d09c354$var$FIRST_NAMES[firstNameIndex]}${$f967ec660d09c354$var$LAST_NAMES[lastNameIndex]}`;
+};
+
+
+const $2b0d59c956139fca$export$e544cab971fd42ae = ({ id: id })=>{
+    const { currentCharacter: { name: name } = {}, updateCurrentCharacter: updateCurrentCharacter } = (0, $c569484d30962c7e$export$f2078a1c0f62490b)();
+    const placeholder = (0, $bwXBY.useMemo)(()=>(0, $f967ec660d09c354$export$899caa88e79f0830)(), []);
+    const handleChangeName = (0, $bwXBY.useCallback)((e)=>{
+        updateCurrentCharacter((prev)=>(0, $15057e10b63d3f53$export$71511d61b312f219)((0, $a3422dfe53205ea8$export$71511d61b312f219)({}, prev), {
+                name: e.target.value
+            }));
+    }, [
+        updateCurrentCharacter
+    ]);
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
+        className: (0, (/*@__PURE__*/$parcel$interopDefault($073ec3ccf23de286$exports))).nameInput,
+        children: [
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("label", {
+                className: "hidden",
+                htmlFor: id,
+                children: "Character Name"
+            }),
+            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("input", {
+                placeholder: placeholder,
+                id: id,
+                type: "text",
+                value: name !== null && name !== void 0 ? name : '',
+                onChange: handleChangeName
+            })
+        ]
+    });
+};
 
 
 
@@ -13439,6 +13781,12 @@ const $b20b8bb4b1343cb6$export$aefa9c246aea9939 = ()=>{
             /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
                 className: (0, (/*@__PURE__*/$parcel$interopDefault($d4c4e74eb4a3e8fd$exports))).content,
                 children: [
+                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                        children: "Character Name"
+                    }),
+                    isEditing ? /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2b0d59c956139fca$export$e544cab971fd42ae), {
+                        id: "character-name-input"
+                    }) : /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $8ec4e501d692b6b6$export$2797ea18653e0b2a), {}),
                     /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
                         children: "Health"
                     }),
@@ -13737,6 +14085,7 @@ const $ecc4f5810c88e7af$export$84ccc72e121d6e1e = ({ spells: spells, showLevel: 
 
 
 
+
 var $2724695350ce1fbb$exports = {};
 
 $parcel$export($2724695350ce1fbb$exports, "buttons", function () { return $2724695350ce1fbb$export$bbea856fdb3e3c5f; }, function (v) { return $2724695350ce1fbb$export$bbea856fdb3e3c5f = v; });
@@ -13747,8 +14096,7 @@ $2724695350ce1fbb$export$bbea856fdb3e3c5f = `C2D9ya_buttons`;
 $2724695350ce1fbb$export$424aefd0ddb3521d = `C2D9ya_welcome`;
 
 
-const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
-    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
+const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>/*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("section", {
         className: (0, (/*@__PURE__*/$parcel$interopDefault($2724695350ce1fbb$exports))).welcome,
         children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("div", {
             className: (0, (/*@__PURE__*/$parcel$interopDefault($2724695350ce1fbb$exports))).welcomeInner,
@@ -13758,6 +14106,12 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
                 }),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("p", {
                     children: "This is a simple tool to assemble your character's spells and quickly reference them during combat."
+                }),
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
+                    children: "Name your character"
+                }),
+                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2b0d59c956139fca$export$e544cab971fd42ae), {
+                    id: "welcome-name-input"
                 }),
                 /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)("h3", {
                     children: "Start adding spells"
@@ -13779,7 +14133,6 @@ const $f38424f14b50a993$export$630ad10f0e1a953d = ()=>{
             ]
         })
     });
-};
 
 
 
@@ -13840,19 +14193,19 @@ const $642234fbbcac29e7$export$3f284407ead563ae = ({ className: className })=>/*
 
 var $c6df2375529abeba$exports = {};
 
+$parcel$export($c6df2375529abeba$exports, "badge", function () { return $c6df2375529abeba$export$4aebd143f31d0c0d; }, function (v) { return $c6df2375529abeba$export$4aebd143f31d0c0d = v; });
 $parcel$export($c6df2375529abeba$exports, "badgeSegment", function () { return $c6df2375529abeba$export$7a2e4023a4c8cc21; }, function (v) { return $c6df2375529abeba$export$7a2e4023a4c8cc21 = v; });
 $parcel$export($c6df2375529abeba$exports, "open", function () { return $c6df2375529abeba$export$3ce6949f20cea765; }, function (v) { return $c6df2375529abeba$export$3ce6949f20cea765 = v; });
-$parcel$export($c6df2375529abeba$exports, "preparedSpellsBadge", function () { return $c6df2375529abeba$export$408601472a8a3805; }, function (v) { return $c6df2375529abeba$export$408601472a8a3805 = v; });
 $parcel$export($c6df2375529abeba$exports, "seeMore", function () { return $c6df2375529abeba$export$25abe53343d4736f; }, function (v) { return $c6df2375529abeba$export$25abe53343d4736f = v; });
 $parcel$export($c6df2375529abeba$exports, "warning", function () { return $c6df2375529abeba$export$491112666e282270; }, function (v) { return $c6df2375529abeba$export$491112666e282270 = v; });
+var $c6df2375529abeba$export$4aebd143f31d0c0d;
 var $c6df2375529abeba$export$7a2e4023a4c8cc21;
 var $c6df2375529abeba$export$3ce6949f20cea765;
-var $c6df2375529abeba$export$408601472a8a3805;
 var $c6df2375529abeba$export$25abe53343d4736f;
 var $c6df2375529abeba$export$491112666e282270;
+$c6df2375529abeba$export$4aebd143f31d0c0d = `bCvxsa_badge`;
 $c6df2375529abeba$export$7a2e4023a4c8cc21 = `bCvxsa_badgeSegment`;
 $c6df2375529abeba$export$3ce6949f20cea765 = `bCvxsa_open`;
-$c6df2375529abeba$export$408601472a8a3805 = `bCvxsa_preparedSpellsBadge`;
 $c6df2375529abeba$export$25abe53343d4736f = `bCvxsa_seeMore`;
 $c6df2375529abeba$export$491112666e282270 = `bCvxsa_warning`;
 
@@ -13919,7 +14272,7 @@ const $030f8e9a4cdf4813$export$d42230f5aca4d741 = ()=>{
     const hasTooManyPrepared = hasCharacterClasses && preparedSpellCount > maximumPreparedSpells;
     return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("button", {
         type: "button",
-        className: (0, $afae47e020802ade$export$ce4ab0c55987d1ff)((0, (/*@__PURE__*/$parcel$interopDefault($c6df2375529abeba$exports))).preparedSpellsBadge, {
+        className: (0, $afae47e020802ade$export$ce4ab0c55987d1ff)((0, (/*@__PURE__*/$parcel$interopDefault($c6df2375529abeba$exports))).badge, {
             [(0, (/*@__PURE__*/$parcel$interopDefault($c6df2375529abeba$exports))).open]: hasCharacterClasses && isOpen,
             [(0, (/*@__PURE__*/$parcel$interopDefault($c6df2375529abeba$exports))).warning]: hasTooManyPrepared || hasTooManyClassSpellsPrepared
         }),
@@ -14041,21 +14394,23 @@ const $01aac05e63d98b80$export$57f8ab36097d4484 = ()=>{
 
 
 const $7c3f3016d2ebaa98$export$86fbec116b87613f = ()=>{
-    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5f4e3bb5330ea03a$export$9403f431d8a60269), {
-        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2772f785971991b7$export$e498e32368a8ac8c), {
-            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ba83cb97b7fd8383$export$eb71bf38f5ae0f9c), {
-                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $624eed663fdde719$export$42c2aab753184bed), {
-                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $12c96dc3e262eca0$export$7ab5cfe96fae86d3), {
-                        children: [
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5c113dab75ce6f68$export$8b251419efc915eb), {}),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $d81e426059e8d23d$export$53d846d902cb1eb8), {}),
-                            /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("main", {
-                                children: [
-                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {}),
-                                    /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b20b8bb4b1343cb6$export$aefa9c246aea9939), {})
-                                ]
-                            })
-                        ]
+    return /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $c569484d30962c7e$export$65ea7944df111e4c), {
+        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5f4e3bb5330ea03a$export$9403f431d8a60269), {
+            children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $2772f785971991b7$export$e498e32368a8ac8c), {
+                children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $ba83cb97b7fd8383$export$eb71bf38f5ae0f9c), {
+                    children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $624eed663fdde719$export$42c2aab753184bed), {
+                        children: /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)((0, $12c96dc3e262eca0$export$7ab5cfe96fae86d3), {
+                            children: [
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $5c113dab75ce6f68$export$8b251419efc915eb), {}),
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $d81e426059e8d23d$export$53d846d902cb1eb8), {}),
+                                /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsxs)("main", {
+                                    children: [
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $01aac05e63d98b80$export$57f8ab36097d4484), {}),
+                                        /*#__PURE__*/ (0, $086df4e28a6f4e89$exports.jsx)((0, $b20b8bb4b1343cb6$export$aefa9c246aea9939), {})
+                                    ]
+                                })
+                            ]
+                        })
                     })
                 })
             })
@@ -14073,4 +14428,4 @@ if ($8f07faf69cb4dee9$var$container) {
 }
 
 
-//# sourceMappingURL=dnd-spellbook.d36fb74b.js.map
+//# sourceMappingURL=dnd-spellbook.48ff652f.js.map
