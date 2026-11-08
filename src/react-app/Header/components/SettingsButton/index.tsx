@@ -1,28 +1,31 @@
 import { useCallback } from 'react';
 
+import { useCharacterContext } from '../../../CharacterContext';
+import { CharacterName } from '../../../CharacterName';
 import { useSingleDialog } from '../../../Dialog';
 import { IconSettings } from '../../../icons/IconSettings';
-import { useSpellListContext } from '../../../SpellListContext';
 import styles from '../../index.module.css';
 import { NavButton } from '../NavButton';
 import { SettingsDrawerContent } from './SettingsDrawerContent';
 
 export const SettingsButton = () => {
-  const { clearSpells } = useSpellListContext();
+  const { deleteCurrentCharacter } = useCharacterContext();
   const { open: openSettingsDrawer } = useSingleDialog();
   const { open: openClearDialog, close: closeClearDialog } = useSingleDialog();
 
-  const handleClickClearSpells = useCallback(() => {
+  const handleClickDeleteCharacter = useCallback(() => {
     const handleYes = () => {
-      clearSpells();
+      deleteCurrentCharacter();
       closeClearDialog();
     };
     openClearDialog({
-      title: 'Remove all spells?',
+      title: 'Delete this character?',
       className: styles.clearDialog,
       children: (
         <>
-          <div>Are you sure you want to remove all spells from your spellbook? </div>
+          <div>
+            Are you sure you want to delete <CharacterName as="b" />?
+          </div>
           <b>This cannot be undone.</b>
           <button type="button" className="secondary" onClick={handleYes}>
             Yes
@@ -33,15 +36,15 @@ export const SettingsButton = () => {
         </>
       ),
     });
-  }, [openClearDialog, closeClearDialog, clearSpells]);
+  }, [openClearDialog, closeClearDialog, deleteCurrentCharacter]);
 
   const handleClick = useCallback(() => {
     openSettingsDrawer({
       title: 'Settings',
       isDrawer: true,
-      children: <SettingsDrawerContent onClickClearSpells={handleClickClearSpells} />,
+      children: <SettingsDrawerContent onClickDeleteCharacter={handleClickDeleteCharacter} />,
     });
-  }, [openSettingsDrawer, handleClickClearSpells]);
+  }, [openSettingsDrawer, handleClickDeleteCharacter]);
 
   return <NavButton label="Settings" icon={<IconSettings />} onClick={handleClick} />;
 };

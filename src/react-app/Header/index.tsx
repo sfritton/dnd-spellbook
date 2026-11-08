@@ -43,21 +43,27 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.visualHeader} ref={headerRef} style={{ viewTransitionName: 'header' }}>
-        <NavButton
-          className={styles.menuButton}
-          icon={<IconMenu />}
-          label="Menu"
-          onClick={() => setCurrentNav((prev) => (prev === 'MENU' ? undefined : 'MENU'))}
-          isSmall
-        />
-        <NavButton
-          className={styles.menuButton}
-          icon={<IconCharacter />}
-          label={<CharacterName as="h1" />}
-          onClick={() =>
-            setCurrentNav((prev) => (prev === 'CHARACTER_SELECT' ? undefined : 'CHARACTER_SELECT'))
-          }
-        />
+        <div className={styles.leftButtons}>
+          <NavButton
+            className={styles.menuButton}
+            icon={<IconMenu />}
+            label="Menu"
+            onClick={() => setCurrentNav((prev) => (prev === 'MENU' ? undefined : 'MENU'))}
+            isSmall
+          />
+          <NavButton
+            className={styles.menuButton}
+            icon={<IconCharacter />}
+            label={<CharacterName as="h1" />}
+            onClick={() =>
+              setCurrentNav((prev) =>
+                prev === 'CHARACTER_SELECT' ? undefined : 'CHARACTER_SELECT',
+              )
+            }
+          />
+        </div>
+        {/* Placeholder for grid spacing, probably a better way to do this */}
+        <div></div>
         <nav
           className={currentNav === 'MENU' ? styles.open : styles.closed}
           aria-hidden={currentNav === 'MENU' ? undefined : 'true'}

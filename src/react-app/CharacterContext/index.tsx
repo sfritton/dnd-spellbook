@@ -17,6 +17,7 @@ interface CharacterContextValue extends StoredCharactersItem {
   updateCurrentCharacter: StateFunction<Character>;
   setCurrentCharacterId: (id: string) => void;
   addCharacter: () => void;
+  deleteCurrentCharacter: () => void;
 }
 
 const DEFAULT_CHARACTERS: StoredCharactersItem = {
@@ -30,6 +31,7 @@ const CharacterContext = createContext<CharacterContextValue>({
   updateCurrentCharacter: () => {},
   setCurrentCharacterId: () => {},
   addCharacter: () => {},
+  deleteCurrentCharacter: () => {},
 });
 
 export const CharacterContextProvider = ({ children }: PropsWithChildren) => {
@@ -61,6 +63,26 @@ export const CharacterContextProvider = ({ children }: PropsWithChildren) => {
     setCurrentCharacterId(character.id);
   }, []);
 
+  const deleteCurrentCharacter = useCallback(() => {
+    const otherCharacterIds = Object.keys(characters).filter((id) => id !== currentCharacterId);
+
+    // Try to load an existing character
+    if (otherCharacterIds.length >= 1) {
+      setCurrentCharacterId(otherCharacterIds[0]);
+      setCharacters((prev) =>
+        Object.fromEntries(Object.entries(prev).filter(([id]) => id !== currentCharacterId)),
+      );
+
+      return;
+    }
+
+    // Otherwise, load a blank character
+    const newCharacter = getNewCharacter();
+
+    setCharacters({ [newCharacter.id]: newCharacter });
+    setCurrentCharacterId(newCharacter.id);
+  }, [currentCharacterId, characters]);
+
   const value: CharacterContextValue = useMemo(
     () => ({
       characters,
@@ -69,8 +91,9 @@ export const CharacterContextProvider = ({ children }: PropsWithChildren) => {
       updateCurrentCharacter,
       setCurrentCharacterId,
       addCharacter,
+      deleteCurrentCharacter,
     }),
-    [characters, currentCharacterId, updateCurrentCharacter, addCharacter],
+    [characters, currentCharacterId, updateCurrentCharacter, addCharacter, deleteCurrentCharacter],
   );
 
   return <CharacterContext.Provider value={value}>{children}</CharacterContext.Provider>;

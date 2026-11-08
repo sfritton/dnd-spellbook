@@ -14,15 +14,31 @@
     box-shadow: var(--shadow-md);
     position: relative;
 
-    > button,
-    input,
-    div > svg {
-      animation: fadeIn 300ms;
+    .leftButtons {
+      display: flex;
+      overflow-x: hidden;
+
+      > button:first-child {
+        flex-shrink: 0;
+      }
+
+      > button:last-child {
+        flex-shrink: 1;
+      }
+
+      > button,
+      input,
+      div > svg {
+        animation: fadeIn 300ms;
+      }
     }
 
     h1 {
       font-size: 20px;
       margin: 0;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     nav {

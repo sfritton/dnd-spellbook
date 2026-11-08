@@ -4,6 +4,7 @@
   border-radius: 0;
   justify-content: flex-start;
   padding: 12px;
+  overflow-x: hidden;
 
   svg {
     fill: #fff;
@@ -14,6 +15,7 @@
 
   .buttonLabel {
     padding-left: 12px;
+    overflow-x: hidden;
   }
 
   &:hover,

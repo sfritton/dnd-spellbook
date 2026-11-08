@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import allSpells from '../../../../constants/spells/all.json';
 import type { Spell } from '../../../../types';
 import { useAbilities } from '../../../AbilityContext';
+import { CharacterName } from '../../../CharacterName';
 import { Checkbox } from '../../../Checkbox';
 import { IconDelete } from '../../../icons/IconDelete';
 import { type HighlightKey, useSettingsContext } from '../../../SettingsContext';
@@ -27,9 +28,9 @@ const OPTIONS = Object.entries(HIGHLIGHT_LABEL_MAP)
   .sort((a, b) => a.label.localeCompare(b.label));
 
 export const SettingsDrawerContent = ({
-  onClickClearSpells,
+  onClickDeleteCharacter,
 }: {
-  onClickClearSpells: () => void;
+  onClickDeleteCharacter: () => void;
 }) => {
   const { isCardMode, setIsCardMode, highlights, makeUpdateHighlight } = useSettingsContext();
 
@@ -54,9 +55,12 @@ export const SettingsDrawerContent = ({
       <button
         type="button"
         className={classNames('secondary', style.removeSpellsButton)}
-        onClick={onClickClearSpells}
+        onClick={onClickDeleteCharacter}
       >
-        <IconDelete /> Remove all spells
+        <IconDelete />{' '}
+        <span>
+          Delete <CharacterName />
+        </span>
       </button>
       <h4>Spell display options</h4>
       <Checkbox checked={isCardMode} onChange={setIsCardMode} label="Card mode" id="card-mode" />
