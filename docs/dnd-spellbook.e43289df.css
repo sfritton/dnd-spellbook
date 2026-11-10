@@ -240,7 +240,7 @@
   justify-content: flex-start;
   height: 48px;
   padding: 12px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 ._Ood6G_navButton svg {
@@ -1357,4 +1357,4 @@ button.RHcxFa_spellStatusButton.RHcxFa_spellStatusButton.RHcxFa_leading.RHcxFa_a
 .bCvxsa_badge.bCvxsa_open .bCvxsa_seeMore path {
   d: path("M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z");
 }
-/*# sourceMappingURL=dnd-spellbook.8b95ff1a.css.map */
+/*# sourceMappingURL=dnd-spellbook.e43289df.css.map */
